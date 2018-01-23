@@ -10,5 +10,5 @@
 
 	<resource name="sites" path="sites.xml" type="application/xml" />
 
-	<resourceDir name="amberfiles" path="amberfiles" type="application/xsd+xml" />
+	<resourceDir name="amberfiles" path="amberfiles" type="application/x-xsd+xml" />
 </module>
