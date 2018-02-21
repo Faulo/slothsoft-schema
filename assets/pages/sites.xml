@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<data>
+<pages xmlns="http://schema.slothsoft.net/farah/sites"
+xmlns:sfm="http://schema.slothsoft.net/farah/module">
 	<page name="amberfiles" title="amberfiles" ref="home" status-active="" status-public=""/>
-</data>
+</pages>

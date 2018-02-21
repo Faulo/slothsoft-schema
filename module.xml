@@ -22,15 +22,13 @@ Llo
     <resource-directory name="xsl" path="template" type="application/xslt+xml"/>
     <resource-directory name="dictionary" path="dictionary" type="application/xml"/>
     <resource-directory name="pages" path="pages" type="application/xml"/>
+    <directory name="static">
+    </directory>
     <fragment name="index">
       <use-template ref="xsl/_index"/>
     </fragment>
     <fragment name="home">
       <use-template ref="xsl/_home"/>
     </fragment>
-    <directory name="static">
-      <resource name="sites" path="sites.xml" type="application/xml"/>
-      <resource-directory name="amberfiles" path="amberfiles" type="application/x-xsd+xml"/>
-    </directory>
   </assets>
 </module>
