@@ -1,14 +1,36 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<module>
-	<fragment name="index">
-		<template name="_index" />
-	</fragment>
+<?xml version="1.0"?>
+<module xmlns="http://schema.slothsoft.net/farah/module" xmlns:sfm="http://schema.slothsoft.net/farah/module">
+  <!--
+Farah Module Manifest
 
-	<fragment name="home">
-		<template name="_home" />
-	</fragment>
+Module: schema
+Vendor: slothsoft
+Farah ID: farah://slothsoft@schema
+Composer ID: slothsoft/schema
 
-	<resource name="sites" path="sites.xml" type="application/xml" />
+Homepage: http://farah.slothsoft.net/modules/schema
+Packagist: https://packagist.org/packages/slothsoft/schema
+GitHub: https://github.com/Faulo/slothsoft-schema
 
-	<resourceDir name="amberfiles" path="amberfiles" type="application/x-xsd+xml" />
+Llo
+-->
+  <default-configuration/>
+  <assets>
+    <resource-directory name="data" path="data" type="application/x-php"/>
+    <resource-directory name="css" path="stylesheet" type="text/css"/>
+    <resource-directory name="js" path="script" type="application/javascript"/>
+    <resource-directory name="xsl" path="template" type="application/xslt+xml"/>
+    <resource-directory name="dictionary" path="dictionary" type="application/xml"/>
+    <resource-directory name="pages" path="pages" type="application/xml"/>
+    <fragment name="index">
+      <use-template ref="xsl/_index"/>
+    </fragment>
+    <fragment name="home">
+      <use-template ref="xsl/_home"/>
+    </fragment>
+    <directory name="static">
+      <resource name="sites" path="sites.xml" type="application/xml"/>
+      <resource-directory name="amberfiles" path="amberfiles" type="application/x-xsd+xml"/>
+    </directory>
+  </assets>
 </module>
