@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 namespace Slothsoft\Schema\Documentation;
 
 class XSDCategory extends XSDNode {
