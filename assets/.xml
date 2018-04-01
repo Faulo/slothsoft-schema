@@ -2,5 +2,40 @@
 <assets xmlns="http://schema.slothsoft.net/farah/module">
     <resource-directory name="xsl" type="application/xslt+xml"/>
     
-    <resource-directory name="sites" type="application/xml"/>
+    <directory name="sites">
+    	<directory name="schemata">
+    		<resource use="template" name="template" type="application/xslt+xml"/>
+    		<use-document ref="schemata"/>
+    	</directory>
+    	<resource name="schema.slothsoft.net" type="application/xml"/>
+    </directory>
+    
+    <fragment name="schemata">
+    	<fragment use="document" name="amber">
+	    	<use-document ref="//slothsoft@amber/schema/amberdata"/>
+	   	</fragment>
+    	<fragment use="document" name="farah">
+	    	<use-document ref="//slothsoft@farah/schema/module"/>
+	    	<use-document ref="//slothsoft@farah/schema/sites"/>
+	    	<use-document ref="//slothsoft@farah/schema/dictionary"/>
+	   	</fragment>
+    	<fragment use="document" name="savegame">
+	    	<use-document ref="//slothsoft@savegame/schema/editor"/>
+	    </fragment>
+    </fragment>
+    
+    <fragment name="pages">
+    	<fragment name="index">
+    		<use-template ref="xsl/index"/>
+    		<use-document ref="schemata"/>
+    		<import ref="//slothsoft@core/api/HTML5"/>
+    	</fragment>
+    	<fragment name="schema">
+	    	<fragment name="home">
+	    		<use-template ref="xsl/schema.home"/>
+	    		<use-document ref="//slothsoft@farah/request"/>
+	    		<import ref="//slothsoft@core/api/HTML5"/>
+	    	</fragment>
+    	</fragment>
+    </fragment>
 </assets>

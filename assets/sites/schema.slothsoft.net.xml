@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pages xmlns="http://schema.slothsoft.net/farah/sites"
-xmlns:sfm="http://schema.slothsoft.net/farah/module">
-	<page name="amberfiles" title="amberfiles" ref="home" status-active="" status-public=""/>
-</pages>
+<domain 
+	xmlns="http://schema.slothsoft.net/farah/sites"
+	xmlns:sfd="http://schema.slothsoft.net/farah/dictionary"
+	xmlns:sfm="http://schema.slothsoft.net/farah/module"
+	name="schema.slothsoft.net"
+	vendor="slothsoft"
+	module="schema"
+	ref="pages/index" status-active="" status-public=""
+	sfd:languages="de-de en-us">
+	
+	<include-pages ref="sites/schemata"/>
+	
+</domain>

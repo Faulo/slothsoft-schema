@@ -11,14 +11,18 @@
 	"require" : {
 		"php" : ">=7.0",
 		"slothsoft/core" : "*",
-		"slothsoft/farah" : "*"
+		"slothsoft/farah" : "*",
+		"slothsoft/amber" : "*",
+		"slothsoft/savegame" : "*"
 	},
 	"require-dev" : {
 		"phpunit/phpunit" : ">=6.0",
 		"slothsoft/core" : "dev-master",
 		"slothsoft/farah" : "dev-master",
 		"slothsoft/lang" : "dev-master",
-		"slothsoft/w3c" : "dev-master"
+		"slothsoft/w3c" : "dev-master",
+		"slothsoft/amber" : "dev-master",
+		"slothsoft/savegame" : "dev-master"
 	},
 	"autoload" : {
 		"files" : [
