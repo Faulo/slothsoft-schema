@@ -10,5 +10,4 @@
 	sfd:languages="de-de en-us">
 	
 	<include-pages ref="sites/schemata"/>
-	
 </domain>
