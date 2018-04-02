@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<xsd:schema
+	targetNamespace="http://schema.slothsoft.net/schema/versioning"
+	xmlns="http://schema.slothsoft.net/schema/versioning"
+	xmlns:ssv="http://schema.slothsoft.net/schema/versioning"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+	
+	<xsd:annotation>
+		<xsd:appinfo>
+			<ssv:manifest version="1.0">
+				<ssv:name>Schema Versioning Manifest</ssv:name>
+				<ssv:version>1.0</ssv:version>
+				<ssv:revision>R20180402</ssv:revision>
+				<ssv:prefix>ssv</ssv:prefix>
+				<ssv:namespace>http://schema.slothsoft.net/schema/versioning</ssv:namespace>
+				<ssv:author email="daniel.lio.schulz@gmail.com">Daniel Schulz</ssv:author>
+				<ssv:description><![CDATA[
+This namespace defines elements used inside XML schemata to identify meta information about that schema, like its version and revision.
+				]]></ssv:description>
+				<ssv:changelog><![CDATA[
+*** Version 1.0 ***
+	R20180402
+		- initial release
+				]]></ssv:changelog>
+			</ssv:manifest>
+		</xsd:appinfo>
+	</xsd:annotation>
+	
+	<xsd:attributeGroup name="schemaVersion">
+		<xsd:attribute name="version" type="xsd:token" use="required" fixed="1.0">
+			<xsd:annotation>
+				<xsd:documentation>The schema version used by the instance document.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+	</xsd:attributeGroup>
+	
+	<xsd:element name="manifest">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="name" type="xsd:normalizedString"/>
+				<xsd:element name="version" type="xsd:decimal"/>
+				<xsd:element name="revision">
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:token">
+							<xsd:pattern value="R\d{8}"/>
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element name="prefix">
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:token">
+							<xsd:pattern value="[a-z]+"/>
+						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+				<xsd:element name="namespace" type="xsd:anyURI"/>
+				<xsd:element name="author">
+					<xsd:complexType>
+						<xsd:simpleContent>
+							<xsd:extension base="xsd:normalizedString">
+								<xsd:attribute name="email" type="xsd:normalizedString" use="optional"/>
+							</xsd:extension>
+						</xsd:simpleContent>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="description" type="xsd:string"/>
+				<xsd:element name="changelog" type="xsd:string"/>
+			</xsd:sequence>
+			<xsd:attributeGroup ref="schemaVersion"/>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <assets xmlns="http://schema.slothsoft.net/farah/module">
+    <resource-directory name="css" type="text/css"/>
     <resource-directory name="xsl" type="application/xslt+xml"/>
     
     <directory name="sites">
@@ -10,17 +11,24 @@
     	<resource name="schema.slothsoft.net" type="application/xml"/>
     </directory>
     
+    <directory name="schema">
+    	<resource-directory name="versioning" type="application/x-xsd+xml"/>
+    </directory>
+    
     <fragment name="schemata">
     	<fragment use="document" name="amber">
 	    	<use-document ref="//slothsoft@amber/schema/amberdata"/>
 	   	</fragment>
     	<fragment use="document" name="farah">
 	    	<use-document ref="//slothsoft@farah/schema/module"/>
-	    	<use-document ref="//slothsoft@farah/schema/sites"/>
+	    	<use-document ref="//slothsoft@farah/schema/sitemap"/>
 	    	<use-document ref="//slothsoft@farah/schema/dictionary"/>
 	   	</fragment>
     	<fragment use="document" name="savegame">
 	    	<use-document ref="//slothsoft@savegame/schema/editor"/>
+	    </fragment>
+    	<fragment use="document" name="schema">
+	    	<use-document ref="//slothsoft@schema/schema/versioning"/>
 	    </fragment>
     </fragment>
     
@@ -28,14 +36,29 @@
     	<fragment name="index">
     		<use-template ref="xsl/index"/>
     		<use-document ref="schemata"/>
+    		<use-document ref="//slothsoft@farah/sites"/>
     		<import ref="//slothsoft@core/api/HTML5"/>
+    		<link-stylesheet ref="css/default"/>
     	</fragment>
     	<fragment name="schema">
 	    	<fragment name="home">
 	    		<use-template ref="xsl/schema.home"/>
-	    		<use-document ref="//slothsoft@farah/request"/>
+	    		<use-document ref="api/schema-info"/>
 	    		<import ref="//slothsoft@core/api/HTML5"/>
+    			<link-stylesheet ref="css/default"/>
+	    	</fragment>
+	    	<fragment name="documentation">
+	    		<use-template ref="xsl/schema.documentation"/>
+	    		<use-document ref="api/schema-info"/>
+	    		<use-document ref="api/schema-manifest"/>
+	    		<import ref="//slothsoft@core/api/HTML5"/>
+    			<link-stylesheet ref="css/default"/>
 	    	</fragment>
     	</fragment>
+    </fragment>
+    
+    <fragment name="api">
+    	<custom-asset name="schema-info" class="Slothsoft\Schema\Assets\SchemaInfo"/>
+    	<custom-asset name="schema-manifest" class="Slothsoft\Schema\Assets\SchemaManifest"/>
     </fragment>
 </assets>
