@@ -32,7 +32,7 @@
 							</a>
 						</td>
 						<td>
-							<a href="/getAsset.php/{@xml:id}" download="{$file}"><xsl:value-of select="$file"/></a>
+							<a href="/getAsset.php/{@url}" download="{$file}"><xsl:value-of select="$file"/></a>
 						</td>
 					</tr>
 				</xsl:for-each>

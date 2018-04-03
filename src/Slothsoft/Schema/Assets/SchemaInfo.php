@@ -22,6 +22,7 @@ class SchemaInfo extends AbstractSchema
             $schemaDoc = $versionAsset->createResult()->toDocument();
             if ($versionNode = $schemaDoc->getElementsByTagNameNS(DOMHelper::NS_SCHEMA_VERSIONING, 'info')->item(0)) {
                 $versionNode = $dataDoc->importNode($versionNode, true);
+                $versionNode->setAttribute('url', $id);
                 $rootNode->appendChild($versionNode);
             } else {
                 throw new SchemaVersioningNotFoundException("<ssv:info> not found for schema '$schemaDoc->documentURI'");
