@@ -11,8 +11,6 @@
 	
 	<xsl:variable name="tocElementLimit" select="2500"/>
 	
-	<xsl:variable name="documentationURI" select="concat($config/@uri-base, $config/@uri-documentation, '&amp;schema=', $schema/@id)"/>
-	
 	<xsl:variable name="rootElementList" 			select="$manifest/element[@isRoot]"/>
 	<xsl:variable name="elementDefinitionList" 		select="ibp:getDescendantElements($rootElementList)"/>
 	<xsl:variable name="elementReferenceList" 		select="$elementDefinitionList//elementReference"/>
@@ -27,19 +25,14 @@
 	<xsl:variable name="categoryDefinitionList" 	select="$manifest/category"/>
 	<xsl:variable name="rootCategoryList" 			select="$categoryDefinitionList[@name]"/>
 	
+	<xsl:variable name="groupDefinitionList" 		select="$manifest/group"/>
+	<xsl:variable name="rootGroupList" 				select="$groupDefinitionList[@name]"/>
+	
 	<xsl:variable name="annotationDefinitionList" 	select="$manifest/annotation"/>
 	<xsl:variable name="rootAnnotationList" 		select="$annotationDefinitionList[not(@id = $manifest//annotationReference/@id)]"/>
 	
 	
 	
-	
-	<xsl:template match="*" mode="header">
-		<h1><xsl:apply-templates select="$latest" mode="title"/></h1>
-		<p>
-			This document describes the namespace <a href="{$latest/ssv:namespace}"><code><xsl:value-of select="$latest/ssv:namespace"/></code></a>, conventionally prefixed as <code><xsl:value-of select="$latest/ssv:prefix"/></code>.
-		</p>
-		<xsl:apply-templates select="$rootAnnotationList" mode="content"/>
-	</xsl:template>
 	
 	<xsl:template match="*" mode="nav">
 	</xsl:template>
@@ -47,7 +40,7 @@
 	<xsl:template match="*" mode="body">
 		<nav>
 			<details>
-				<summary><h2>Table of contents</h2></summary>
+				<summary><h2 data-dict="">doc/toc</h2></summary>
 				<xsl:apply-templates select="$manifest" mode="toc"/>
 			</details>
 		</nav>
@@ -59,7 +52,7 @@
 		<ul class="toc">
 			<xsl:if test="count($elementDefinitionList)">
 				<li>
-					<a href="#{generate-id(.)}-elements">Elemente im Namensraum <code class="namespace"><xsl:value-of select="$config/@namespace"/></code></a>
+					<a href="#{generate-id(.)}-elements"><span data-dict=".">doc/elements-in-namespace</span><code class="namespace"><xsl:value-of select="$info/ssv:namespace"/></code></a>
 					<ul>
 						<xsl:choose>
 							<xsl:when test="count($rootElementList) &gt; 0 and count($elementReferenceList) &lt; $tocElementLimit">
@@ -68,7 +61,7 @@
 							<xsl:otherwise>
 								<xsl:for-each select="$elementDefinitionList">
 									<!--<xsl:sort select="@sort"/>-->
-									<li><a href="#{@href}">Das Element <code class="element"><xsl:value-of select="@name"/></code></a></li>
+									<li><a href="#{@href}"><span data-dict=".">doc/the-element</span><code class="element"><xsl:value-of select="@name"/></code></a></li>
 								</xsl:for-each>
 							</xsl:otherwise>
 						</xsl:choose>
@@ -77,33 +70,44 @@
 			</xsl:if>
 			<xsl:if test="count($attributeDefinitionList)">
 				<li>
-					<a href="#{generate-id(.)}-attributes">Attribute im Namensraum <code class="namespace"><xsl:value-of select="$config/@namespace"/></code></a>
+					<a href="#{generate-id(.)}-attributes"><span data-dict=".">doc/attributes-in-namespace</span><code class="namespace"><xsl:value-of select="$info/ssv:namespace"/></code></a>
 					<ul>
 						<xsl:for-each select="$attributeDefinitionList">
 							<!--<xsl:sort select="@sort"/>-->
-							<li><a href="#{@href}">Das Attribute <code class="attribute"><xsl:value-of select="@name"/></code></a></li>
+							<li><a href="#{@href}"><span data-dict=".">doc/the-attribute</span><code class="attribute"><xsl:value-of select="@name"/></code></a></li>
 						</xsl:for-each>
 					</ul>
 				</li>
 			</xsl:if>
 			<xsl:if test="count($rootTypeList)">
 				<li>
-					<a href="#{generate-id(.)}-types">Content Models im Namensraum <code class="namespace"><xsl:value-of select="$config/@namespace"/></code></a>
+					<a href="#{generate-id(.)}-types"><span data-dict=".">doc/content-models-in-namespace</span><code class="namespace"><xsl:value-of select="$info/ssv:namespace"/></code></a>
 					<ul>
 						<xsl:for-each select="$rootTypeList">
 							<xsl:sort select="@sort"/>
-							<li><a href="#{@href}">Das Content Model <code class="type"><xsl:value-of select="@name"/></code></a></li>
+							<li><a href="#{@href}"><span data-dict=".">doc/the-content-model</span><code class="type"><xsl:value-of select="@name"/></code></a></li>
 						</xsl:for-each>
 					</ul>
 				</li>
 			</xsl:if>
 			<xsl:if test="count($rootCategoryList)">
 				<li>
-					<a href="#{generate-id(.)}-categories">Kategorien im Namensraum <code class="namespace"><xsl:value-of select="$config/@namespace"/></code></a>
+					<a href="#{generate-id(.)}-categories"><span data-dict=".">doc/categories-in-namespace</span><code class="namespace"><xsl:value-of select="$info/ssv:namespace"/></code></a>
 					<ul>
 						<xsl:for-each select="$rootCategoryList">
 							<xsl:sort select="@sort"/>
-							<li><a href="#{@href}">Die Kategorie <code class="category"><xsl:value-of select="@name"/></code></a></li>
+							<li><a href="#{@href}"><span data-dict=".">doc/the-category</span><code class="category"><xsl:value-of select="@name"/></code></a></li>
+						</xsl:for-each>
+					</ul>
+				</li>
+			</xsl:if>
+			<xsl:if test="count($rootGroupList)">
+				<li>
+					<a href="#{generate-id(.)}-categories"><span data-dict=".">doc/groups-in-namespace</span><code class="namespace"><xsl:value-of select="$info/ssv:namespace"/></code></a>
+					<ul>
+						<xsl:for-each select="$rootGroupList">
+							<xsl:sort select="@sort"/>
+							<li><a href="#{@href}"><span data-dict=".">doc/the-group</span><code class="group"><xsl:value-of select="@name"/></code></a></li>
 						</xsl:for-each>
 					</ul>
 				</li>
@@ -134,26 +138,32 @@
 	<!-- Content -->
 	<xsl:template match="manifest" mode="content">
 		<xsl:if test="count($elementDefinitionList)">
-			<h2 id="{generate-id(.)}-elements">Elemente im Namensraum <code class="namespace"><xsl:value-of select="$config/@namespace"/></code></h2>
+			<h2 id="{generate-id(.)}-elements"><span data-dict=".">doc/elements-in-namespace</span><code class="namespace"><xsl:value-of select="$info/ssv:namespace"/></code></h2>
 			<xsl:apply-templates select="$elementDefinitionList" mode="content">
 				<!--<xsl:sort select="@sort"/>-->
 			</xsl:apply-templates>
 		</xsl:if>
 		<xsl:if test="count($attributeDefinitionList)">
-			<h2 id="{generate-id(.)}-attributes">Attribute im Namensraum <code class="namespace"><xsl:value-of select="$config/@namespace"/></code></h2>
+			<h2 id="{generate-id(.)}-attributes"><span data-dict=".">doc/attributes-in-namespace</span><code class="namespace"><xsl:value-of select="$info/ssv:namespace"/></code></h2>
 			<xsl:apply-templates select="$attributeDefinitionList" mode="content">
 				<!--<xsl:sort select="@sort"/>-->
 			</xsl:apply-templates>
 		</xsl:if>
 		<xsl:if test="count($rootTypeList)">
-			<h2 id="{generate-id(.)}-types">Content Models im Namensraum <code class="namespace"><xsl:value-of select="$config/@namespace"/></code></h2>
+			<h2 id="{generate-id(.)}-types"><span data-dict=".">doc/content-models-in-namespace</span><code class="namespace"><xsl:value-of select="$info/ssv:namespace"/></code></h2>
 			<xsl:apply-templates select="$rootTypeList" mode="content">
 				<xsl:sort select="@sort"/>
 			</xsl:apply-templates>
 		</xsl:if>
 		<xsl:if test="count($rootCategoryList)">
-			<h2 id="{generate-id(.)}-categories">Kategorien im Namensraum <code class="namespace"><xsl:value-of select="$config/@namespace"/></code></h2>
+			<h2 id="{generate-id(.)}-categories"><span data-dict=".">doc/categories-in-namespace</span><code class="namespace"><xsl:value-of select="$info/ssv:namespace"/></code></h2>
 			<xsl:apply-templates select="$rootCategoryList" mode="content">
+				<xsl:sort select="@sort"/>
+			</xsl:apply-templates>
+		</xsl:if>
+		<xsl:if test="count($rootGroupList)">
+			<h2 id="{generate-id(.)}-categories"><span data-dict=".">doc/groups-in-namespace</span><code class="namespace"><xsl:value-of select="$info/ssv:namespace"/></code></h2>
+			<xsl:apply-templates select="$rootGroupList" mode="content">
 				<xsl:sort select="@sort"/>
 			</xsl:apply-templates>
 		</xsl:if>
@@ -163,7 +173,7 @@
 		<xsl:variable name="currentNode" select="."/>
 		
 		<xsl:variable name="parentElementNodeList" select="$elementDefinitionList[.//elementReference/@id = $currentNode/@id]"/>
-		<xsl:variable name="childElementNodeList" select=".//childNamespace | .//elementReference"/>
+		<xsl:variable name="childElementNodeList" select=".//childNamespace | .//elementReference | $groupDefinitionList[@id = $currentNode//groupReference/@id]"/>
 		<xsl:variable name="attributeNodeList" select="$attributeDefinitionList[@id = $currentNode//attributeReference/@id]"/>
 		
 		<xsl:variable name="parentTypeNodeList" select="$rootTypeList[@id = ($currentNode//typeReference[@id = $rootTypeList/@id])[1]/@id]"/>
@@ -175,10 +185,10 @@
 		<xsl:variable name="patternNodeList" select=".//pattern"/>
 		<xsl:variable name="tokenNodeList" select=".//token"/>
 		
-		<h3 id="{@href}">Das Element <code class="element"><xsl:value-of select="@name"/></code></h3>
+		<h3 id="{@href}"><span data-dict=".">doc/the-element</span><code class="element"><xsl:value-of select="@name"/></code></h3>
 		<dl class="element">
 			<xsl:if test="count($categoryNodeList)">
-				<dt>Kategorie:</dt>
+				<dt><span data-dict=".">doc/category</span></dt>
 				<dd>
 					<ul>
 						<xsl:for-each select="$categoryNodeList">
@@ -193,11 +203,11 @@
 				<xsl:when test="@isRoot">
 				</xsl:when>
 				<xsl:otherwise>
-					<dt>Kontext, in welchem dieses Element vorkommen kann:</dt>
+					<dt><span data-dict=".">doc/element-parents</span></dt>
 					<dd>
 						<xsl:choose>
 							<xsl:when test="@isRoot">
-								<i>Wurzelelement</i>
+								<i><span data-dict=".">doc/is-root</span></i>
 							</xsl:when>
 							<xsl:when test="count($parentElementNodeList)">
 								<ul>
@@ -216,7 +226,7 @@
 				</xsl:otherwise>
 			</xsl:choose>
 			<xsl:if test="count($typeNodeList)">
-				<dt>Content Model:</dt>
+				<dt><span data-dict=".">doc/content-model</span></dt>
 				<dd>
 					<ul>
 						<xsl:for-each select="$typeNodeList">
@@ -227,7 +237,7 @@
 					</ul>
 				</dd>
 			</xsl:if>
-			<dt>Mögliche Kind-Elemente:</dt>
+			<dt><span data-dict=".">doc/element-children</span></dt>
 			<dd>
 				<xsl:choose>
 					<xsl:when test="count($childElementNodeList)">
@@ -244,7 +254,7 @@
 					</xsl:otherwise>
 				</xsl:choose>
 			</dd>
-			<dt>Mögliche Attribute:</dt>
+			<dt><span data-dict=".">doc/attribute-children</span></dt>
 			<dd>
 				<xsl:choose>
 					<xsl:when test="count($attributeNodeList)">
@@ -262,7 +272,7 @@
 				</xsl:choose>
 			</dd>
 			<xsl:if test="count($patternNodeList)">
-				<dt>Erlaubtes Muster:</dt>
+				<dt><span data-dict=".">doc/value-patterns</span></dt>
 				<dd>
 					<ul>
 						<xsl:for-each select="$patternNodeList">
@@ -274,7 +284,7 @@
 				</dd>
 			</xsl:if>
 			<xsl:if test="count($tokenNodeList)">
-				<dt>Mögliche Werte:</dt>
+				<dt><span data-dict=".">doc/value-tokens</span></dt>
 				<dd>
 					<ul>
 						<xsl:for-each select="$tokenNodeList">
@@ -302,10 +312,10 @@
 		<xsl:variable name="patternNodeList" select=".//pattern"/>
 		<xsl:variable name="tokenNodeList" select=".//token"/>
 		
-		<h3 id="{@href}">Das Attribut <code class="attribute"><xsl:value-of select="@name"/></code></h3>
+		<h3 id="{@href}"><span data-dict=".">doc/the-attribute</span><code class="attribute"><xsl:value-of select="@name"/></code></h3>
 		<dl class="attribute">
 			<xsl:if test="count($categoryNodeList)">
-				<dt>Kategorie:</dt>
+				<dt><span data-dict=".">doc/category</span></dt>
 				<dd>
 					<ul>
 						<xsl:for-each select="$categoryNodeList">
@@ -316,18 +326,18 @@
 					</ul>
 				</dd>
 			</xsl:if>
-			<dt>Erforderlich:</dt>
+			<dt><span data-dict=".">doc/required</span></dt>
 			<dd>
 				<xsl:choose>
 					<xsl:when test="$currentNode/@isRequired = '1'">
-						Ja
+						<span data-dict=".">doc/required/true</span>
 					</xsl:when>
 					<xsl:otherwise>
-						Nein
+						<span data-dict=".">doc/required/false</span>
 					</xsl:otherwise>
 				</xsl:choose>
 			</dd>
-			<dt>Elemente, die dieses Attribut verwenden:</dt>
+			<dt><span data-dict=".">doc/attribute-parents</span></dt>
 			<dd>
 				<xsl:choose>
 					<xsl:when test="count($ownerElementNodeList)">
@@ -345,7 +355,7 @@
 				</xsl:choose>
 			</dd>
 			<xsl:if test="count($typeNodeList)">
-				<dt>Content Model:</dt>
+				<dt><span data-dict=".">doc/content-model</span></dt>
 				<dd>
 					<ul>
 						<xsl:for-each select="$typeNodeList">
@@ -357,7 +367,7 @@
 				</dd>
 			</xsl:if>
 			<xsl:if test="count($patternNodeList)">
-				<dt>Erlaubtes Muster:</dt>
+				<dt><span data-dict=".">doc/value-patterns</span></dt>
 				<dd>
 					<ul>
 						<xsl:for-each select="$patternNodeList">
@@ -369,7 +379,7 @@
 				</dd>
 			</xsl:if>
 			<xsl:if test="count($tokenNodeList)">
-				<dt>Mögliche Werte:</dt>
+				<dt><span data-dict=".">doc/value-tokens</span></dt>
 				<dd>
 					<ul>
 						<xsl:for-each select="$tokenNodeList">
@@ -401,7 +411,7 @@
 		<xsl:variable name="patternNodeList" select=".//pattern"/>
 		<xsl:variable name="tokenNodeList" select=".//token"/>
 		
-		<h3 id="{@href}">Das Content Model <code class="type"><xsl:value-of select="@name"/></code></h3>
+		<h3 id="{@href}"><span data-dict=".">doc/the-content-model</span><code class="type"><xsl:value-of select="@name"/></code></h3>
 		<dl class="type">
 			<!--
 			<xsl:if test="count($memberElementNodeList) = 0 and count($memberAttributeNodeList) = 0">
@@ -409,7 +419,7 @@
 			</xsl:if>
 			-->
 			<xsl:if test="count($memberElementNodeList)">
-				<dt>Elemente, die dieses Content Model verwenden:</dt>
+				<dt><span data-dict=".">doc/elements-in-content-model</span></dt>
 				<dd>
 					<xsl:choose>
 						<xsl:when test="count($memberElementNodeList)">
@@ -428,7 +438,7 @@
 				</dd>
 			</xsl:if>
 			<xsl:if test="count($memberAttributeNodeList)">
-				<dt>Attribute, die dieses Content Model verwenden:</dt>
+				<dt><span data-dict=".">doc/attributes-in-content-model</span></dt>
 				<dd>
 					<xsl:choose>
 						<xsl:when test="count($memberAttributeNodeList)">
@@ -447,7 +457,7 @@
 				</dd>
 			</xsl:if>
 			<xsl:if test="count($typeNodeList)">
-				<dt>Content Model, von dem dieses Model abgeleitet ist:</dt>
+				<dt><span data-dict=".">doc/content-model-ancestors</span></dt>
 				<dd>
 					<ul>
 						<xsl:for-each select="$typeNodeList">
@@ -459,7 +469,7 @@
 				</dd>
 			</xsl:if>
 			<xsl:if test="count($childTypeNodeList)">
-				<dt>Content Models, die dieses Model ableiten:</dt>
+				<dt><span data-dict=".">doc/content-model-heirs</span></dt>
 				<dd>
 					<ul>
 						<xsl:for-each select="$childTypeNodeList">
@@ -471,7 +481,7 @@
 				</dd>
 			</xsl:if>
 			<xsl:if test="count($childElementNodeList) or count($childAttributeNodeList)">
-				<dt>Mögliche Kind-Elemente:</dt>
+				<dt><span data-dict=".">doc/element-children</span></dt>
 				<dd>
 					<xsl:choose>
 						<xsl:when test="count($childElementNodeList)">
@@ -488,7 +498,7 @@
 						</xsl:otherwise>
 					</xsl:choose>
 				</dd>
-				<dt>Mögliche Attribute:</dt>
+				<dt><span data-dict=".">doc/attribute-children</span></dt>
 				<dd>
 					<xsl:choose>
 						<xsl:when test="count($childAttributeNodeList)">
@@ -507,7 +517,7 @@
 				</dd>
 			</xsl:if>
 			<xsl:if test="count($patternNodeList)">
-				<dt>Erlaubtes Muster:</dt>
+				<dt><span data-dict=".">doc/value-patterns</span></dt>
 				<dd>
 					<ul>
 						<xsl:for-each select="$patternNodeList">
@@ -519,7 +529,7 @@
 				</dd>
 			</xsl:if>
 			<xsl:if test="count($tokenNodeList)">
-				<dt>Mögliche Werte:</dt>
+				<dt><span data-dict=".">doc/value-tokens</span></dt>
 				<dd>
 					<ul>
 						<xsl:for-each select="$tokenNodeList">
@@ -540,9 +550,38 @@
 		<xsl:variable name="memberElementNodeList" select="$elementDefinitionList[.//categoryReference/@id = $currentNode/@id]"/>
 		<xsl:variable name="annotationNodeList" select="$annotationDefinitionList[@id = $currentNode//annotationReference/@id]"/>
 		
-		<h3 id="{@href}">Die Kategorie <code class="category"><xsl:value-of select="@name"/></code></h3>
+		<h3 id="{@href}"><span data-dict=".">doc/the-category</span><code class="category"><xsl:value-of select="@name"/></code></h3>
 		<dl class="category">
-			<dt>Elemente in dieser Kategorie:</dt>
+			<dt><span data-dict=".">doc/elements-in-category</span></dt>
+			<dd>
+				<xsl:choose>
+					<xsl:when test="count($memberElementNodeList)">
+						<ul>
+							<xsl:for-each select="$memberElementNodeList">
+								<li>
+									<xsl:apply-templates select="." mode="href"/>
+								</li>
+							</xsl:for-each>
+						</ul>
+					</xsl:when>
+					<xsl:otherwise>
+						-
+					</xsl:otherwise>
+				</xsl:choose>
+			</dd>
+		</dl>
+		<xsl:apply-templates select="$annotationNodeList" mode="content"/>
+	</xsl:template>
+	
+	<xsl:template match="group" mode="content">
+		<xsl:variable name="currentNode" select="."/>
+		
+		<xsl:variable name="memberElementNodeList" select="$elementDefinitionList[@id = $currentNode//elementReference/@id] | $groupDefinitionList[@id = $currentNode//groupReference/@id]"/>
+		<xsl:variable name="annotationNodeList" select="$annotationDefinitionList[@id = $currentNode//annotationReference/@id]"/>
+		
+		<h3 id="{@href}"><span data-dict=".">doc/the-group</span><code class="group"><xsl:value-of select="@name"/></code></h3>
+		<dl class="group">
+			<dt><span data-dict=".">doc/elements-in-group</span></dt>
 			<dd>
 				<xsl:choose>
 					<xsl:when test="count($memberElementNodeList)">
@@ -628,16 +667,16 @@
 				<xsl:attribute name="title">
 					<xsl:choose>
 						<xsl:when test="@min = @max">
-							<xsl:value-of select="concat('Genau ', @min, '')"/>
+							<xsl:value-of select="concat('exactly ', @min, '')"/>
 						</xsl:when>
 						<xsl:when test="@max = 'unbounded' and @min = '0'">
-							<xsl:value-of select="'Beliebig viele'"/>
+							<xsl:value-of select="'any number'"/>
 						</xsl:when>
 						<xsl:when test="@max = 'unbounded'">
-							<xsl:value-of select="concat('Mindestens ', @min, '')"/>
+							<xsl:value-of select="concat('at least ', @min, '')"/>
 						</xsl:when>
 						<xsl:otherwise>
-							<xsl:value-of select="concat('Mindestens ', @min, ', höchstens ', @max, '')"/>
+							<xsl:value-of select="concat('at least ', @min, ', at most ', @max, '')"/>
 						</xsl:otherwise>
 					</xsl:choose>
 				</xsl:attribute>
@@ -660,6 +699,9 @@
 	</xsl:template>
 	<xsl:template match="category[@name]" mode="href">
 		<a href="#{@href}"><code class="category"><xsl:value-of select="@name"/></code></a>
+	</xsl:template>
+	<xsl:template match="group[@name]" mode="href">
+		<a href="#{@href}"><code class="group"><xsl:value-of select="@name"/></code></a>
 	</xsl:template>
 	<xsl:template match="foreignType[@name]" mode="href">
 		<xsl:variable name="content">

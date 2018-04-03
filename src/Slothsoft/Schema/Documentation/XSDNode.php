@@ -90,6 +90,18 @@ abstract class XSDNode
         $this->initRefNodeList();
         
         foreach ($this->refNodeList as $refNode) {
+            if ($refNode->hasAttribute('ref')) {
+                $ref = $refNode->getAttribute('ref');
+                $foreignType = explode(':', $ref, 2);
+                if (count($foreignType) === 2) {
+                    $this->isDefaultName = false;
+                    $this->name = $ref;
+                    $this->_addForeignType($foreignType[0], $foreignType[1]);
+                }
+            }
+        }
+        
+        foreach ($this->refNodeList as $refNode) {
             if ($refNode->hasAttribute('name')) {
                 $this->isDefaultName = false;
                 $this->name = $refNode->getAttribute('name');
@@ -100,6 +112,7 @@ abstract class XSDNode
         foreach ($this->refNodeList as $refNode) {
             $this->_addTypeParentNode($refNode);
             $this->_addCategoryParentNode($refNode);
+            $this->_addGroupParentNode($refNode);
             $this->_addAnnotationParentNode($refNode);
             $this->_addTokenParentNode($refNode);
         }
@@ -272,6 +285,9 @@ abstract class XSDNode
                         case 'XSDCategory':
                             $retNode = $doc->createElement('category');
                             break;
+                        case 'XSDGroup':
+                            $retNode = $doc->createElement('group');
+                            break;
                         case 'XSDAnnotation':
                             $retNode = $doc->createElement('annotation');
                             break;
@@ -294,7 +310,12 @@ abstract class XSDNode
                             $retNode->setAttribute('isRequired', $this->optionList['isRequired']);
                         }
                         
-                        $content = $this->getExampleContent();
+                        try {
+                            $content = $this->getExampleContent();
+                        } catch(\Exception $e) {
+                            echo "Unknown content type!" . PHP_EOL . $e . PHP_EOL;
+                            $content = null;
+                        }
                         if ($content !== null) {
                             $retNode->setAttribute('example', $content);
                         }
@@ -318,6 +339,9 @@ abstract class XSDNode
                                     break;
                                 case 'XSDCategory':
                                     $childNode = $doc->createElement('categoryReference');
+                                    break;
+                                case 'XSDGroup':
+                                    $childNode = $doc->createElement('groupReference');
                                     break;
                                 case 'XSDAnnotation':
                                     $childNode = $doc->createElement('annotationReference');
@@ -410,6 +434,7 @@ abstract class XSDNode
                             }
                             break;
                         case 'XSDCategory':
+                        case 'XSDGroup':
                         case 'XSDAnnotation':
                             break;
                     }
@@ -442,6 +467,7 @@ abstract class XSDNode
                                         }
                                         break;
                                     case 'XSDCategory':
+                                    case 'XSDGroup':
                                     case 'XSDAnnotation':
                                         break;
                                 }
@@ -572,6 +598,8 @@ abstract class XSDNode
                     return base64_encode($schemaType);
                 case 'anyURI':
                     return $this->ownerFile->getTargetNS();
+                case 'anyType':
+                    return 'anyType';
                 default:
                     throw new Exception(json_encode($schemaType));
             }
@@ -678,11 +706,6 @@ abstract class XSDNode
 
     protected function _addCategoryParentNode(DOMElement $parentNode)
     {
-        $nodeList = $this->xpath->evaluate('xsd:group[@ref] | */xsd:group[@ref]', $parentNode);
-        foreach ($nodeList as $node) {
-            $this->_addCategoryName($node->getAttribute('ref'));
-        }
-        
         $nodeList = $this->xpath->evaluate('xsd:annotation/xsd:appinfo/xsd:category', $parentNode);
         foreach ($nodeList as $node) {
             if ($node->hasAttribute('ref')) {
@@ -703,12 +726,27 @@ abstract class XSDNode
             $this->childCategoryList[] = $child;
         }
     }
-
-    protected function _addCategoryName($category)
+    
+    protected function _addGroupParentNode(DOMElement $parentNode)
     {
-        $nodeList = $this->xpath->evaluate(sprintf('/xsd:schema/xsd:group[@name = "%s"]', $category));
+        $nodeList = $this->xpath->evaluate('xsd:group[@ref] | */xsd:group[@ref]', $parentNode);
         foreach ($nodeList as $node) {
-            $this->_addCategoryNode($node);
+            $this->_addGroupName($node->getAttribute('ref'));
+        }
+    }
+    
+    protected function _addGroupNode(DOMElement $node)
+    {
+        if ($child = $this->ownerFile->createXSDGroup($node)) {
+            $this->childCategoryList[] = $child;
+        }
+    }
+    
+    protected function _addGroupName($group)
+    {
+        $nodeList = $this->xpath->evaluate(sprintf('/xsd:schema/xsd:group[@name = "%s"]', $group));
+        foreach ($nodeList as $node) {
+            $this->_addGroupNode($node);
         }
     }
 

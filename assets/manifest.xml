@@ -3,6 +3,7 @@
     <resource-directory name="css" type="text/css"/>
     <resource-directory name="xsl" type="application/xslt+xml"/>
     
+    <resource-directory name="dictionary" type="application/xml"/>
     <directory name="sites">
     	<directory name="schemata">
     		<resource use="template" name="template" type="application/xslt+xml"/>

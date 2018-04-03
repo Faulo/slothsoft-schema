@@ -2,7 +2,9 @@
 <xsl:stylesheet version="1.0"
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-	xmlns:sfs="http://schema.slothsoft.net/farah/sitemap">
+	xmlns:sfs="http://schema.slothsoft.net/farah/sitemap"
+	xmlns:sfm="http://schema.slothsoft.net/farah/module"
+	xmlns:ssv="http://schema.slothsoft.net/schema/versioning">
 	
 	<xsl:template match="/*">
 		<html>
@@ -14,27 +16,17 @@
 			<body>
 				<main>
 					<h1>Slothsoft Schema Index</h1>
-					<xsl:apply-templates select="*[@name='sites']/*" mode="navi"/>
+					<p>Available namespace declarations:</p>
+					<ul>
+						<xsl:for-each select="*[@name='sites']/*/*/*">
+							<li>
+								<a href="{@uri}"><code class="namespace"><xsl:value-of select="@title"/></code></a>
+							</li>
+						</xsl:for-each>
+						
+					</ul>
 				</main>
 			</body>
 		</html>
-	</xsl:template>
-	
-	<xsl:template match="sfs:domain | sfs:page" mode="navi">
-		<xsl:choose>
-			<xsl:when test="@ref">
-				<a href="{@uri}"><xsl:value-of select="@name"/></a>
-			</xsl:when>
-			<xsl:otherwise>
-				<span><xsl:value-of select="@name"/></span>
-			</xsl:otherwise>
-		</xsl:choose>
-		<xsl:if test="*">
-			<ul>
-				<xsl:for-each select="sfs:page">
-					<li><xsl:apply-templates select="." mode="navi"/></li>
-				</xsl:for-each>
-			</ul>
-		</xsl:if>
 	</xsl:template>
 </xsl:stylesheet>

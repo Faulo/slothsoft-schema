@@ -6,12 +6,17 @@
 	<xsl:template match="/*">
 		<sitemap version="1.0">
 			<xsl:for-each select="*[@name='schemata']/*/*">
+				<xsl:variable name="url-base" select="concat('http://schema.slothsoft.net/', @name)"/>
 				<page name="{@name}" redirect=".." status-active="" status-public="">
 					<xsl:for-each select="*/*">
-						<page name="{@name}" ref="pages/schema/home" status-active="" status-public="">
+						<xsl:variable name="url-schema" select="concat($url-base, '/', @name)"/>
+						<page name="{@name}" title="{$url-schema}" ref="pages/schema/home" status-active="" status-public="">
 							<sfm:param name="schema" value="{@url}"/>
 							<xsl:for-each select="*/*">
-								<page name="{@name}" ref="pages/schema/documentation" status-active="" status-public=""/>
+								<xsl:variable name="url-version" select="concat($url-schema, '/', @name)"/>
+								<page name="{@name}" title="{$url-version}" ref="pages/schema/documentation" status-active="" status-public="">
+									<sfm:param name="schema" value="{@url}"/>
+								</page>
 							</xsl:for-each>
 						</page>
 					</xsl:for-each>

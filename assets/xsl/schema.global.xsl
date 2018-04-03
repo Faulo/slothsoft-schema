@@ -44,20 +44,16 @@
 		</func:result>
 	</func:function>
 	
-	<xsl:variable name="config" select="/data/config"/>
-	<xsl:variable name="schemaList" select="/*/*[@name='schema-manifest']/*"/>
+	<xsl:variable name="infoList" select="/*/*[@name='schema-info']/*/ssv:info"/>
+	<xsl:variable name="info" select="$infoList[1]"/>
 	
-	<xsl:variable name="schema-info" select="//ssv:manifest"/>
-	<xsl:variable name="latest" select="$schema-info[1]"/>
-	
-	<xsl:variable name="schema" select="$schemaList[@active]"/>
-	
-	<xsl:variable name="manifest" select="$schemaList[1]//manifest"/>
+	<xsl:variable name="manifestList" select="/*/*[@name='schema-manifest']/*/manifest"/>
+	<xsl:variable name="manifest" select="$manifestList[1]"/>
 	
 	<xsl:template match="/*">
 		<html>
 			<head>
-				<title><xsl:apply-templates select="$latest" mode="title"/></title>
+				<title><xsl:apply-templates select="$info" mode="title"/></title>
 			</head>
 			<body>
 				<header>
@@ -74,9 +70,13 @@
 	</xsl:template>
 	
 	<xsl:template match="*" mode="header">
-		<h1><xsl:apply-templates select="$latest" mode="title"/></h1>
+		<h1><xsl:apply-templates select="$info" mode="title"/></h1>
 		<p>
-			This document describes the namespace <a href="{$latest/ssv:namespace}"><code><xsl:value-of select="$latest/ssv:namespace"/></code></a>, conventionally prefixed as <code><xsl:value-of select="$latest/ssv:prefix"/></code>.
+			<span data-dict=".">header/1</span>
+			<a href="{$info/ssv:namespace}"><code><xsl:value-of select="$info/ssv:namespace"/></code></a>
+			<span data-dict=".">header/2</span>
+			<code><xsl:value-of select="$info/ssv:prefix"/></code>
+			<span data-dict=".">header/3</span>
 		</p>
 	</xsl:template>
 	
@@ -86,11 +86,16 @@
 	<xsl:template match="*" mode="footer">
 		<div>
 			© 2017, 2018 
-			<a href="mailto:{$latest/ssv:author/@email}"><xsl:value-of select="$latest/ssv:author"/></a>
+			<a href="mailto:{$info/ssv:author/@email}"><xsl:value-of select="$info/ssv:author"/></a>
 		</div>
 	</xsl:template>
 	
 	<xsl:template match="*" mode="title">
-		<xsl:value-of select="concat('Slothsoft Schema: ', ssv:name, ' v', ssv:version, ' ', ssv:revision)"/>
+		<span data-dict=".">title</span>
+		<xsl:apply-templates select="." mode="name"/>
+	</xsl:template>
+	
+	<xsl:template match="*" mode="name">
+		<xsl:value-of select="concat(ssv:name, ' v', ssv:version, ' ', ssv:revision)"/>
 	</xsl:template>
 </xsl:stylesheet>

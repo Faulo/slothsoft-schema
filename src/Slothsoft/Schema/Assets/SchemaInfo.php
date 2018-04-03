@@ -3,41 +3,25 @@ namespace Slothsoft\Schema\Assets;
 
 use Slothsoft\Core\DOMHelper;
 use Slothsoft\Farah\Module\FarahUrl\FarahUrl;
-use Slothsoft\Farah\Module\FarahUrl\FarahUrlResolver;
-use Slothsoft\Farah\Module\Node\Asset\AssetImplementation;
 use Slothsoft\Farah\Module\Results\ResultCatalog;
 use Slothsoft\Farah\Module\Results\ResultInterface;
 
-class SchemaInfo extends AssetImplementation
+class SchemaInfo extends AbstractSchema
 {
     protected function loadResult(FarahUrl $url) : ResultInterface {
         $args = $url->getArguments();
-        $schemaId = $args->get('schema');
-        
-        $schemaAsset = FarahUrlResolver::resolveToAsset(FarahUrl::createFromReference($schemaId));
-        
-        $versionAssets = $schemaAsset->getAssetChildren();
-        if (!count($versionAssets)) {
-            $versionAssets = [$schemaAsset];
-        }
-        $versionNodes = [];
-        foreach ($versionAssets as $versionAsset) {
-            $url = $versionAsset->createUrl();
-            $schemaDoc = $versionAsset->createResult()->toDocument();
-            if ($versionNode = $schemaDoc->getElementsByTagNameNS(DOMHelper::NS_SCHEMA_VERSIONING, 'manifest')->item(0)) {
-                $versionNodes[(string) $url] = $versionNode;
-            }
-        }
-        
-        ksort($versionNodes);
-        $versionNodes = array_reverse($versionNodes, true);
+        $versionAssets = $this->getVersionAssets($args->get('schema'));
         
         $dataDoc = new \DOMDocument();
         $rootNode = $dataDoc->createElement('schema-info');
-        foreach ($versionNodes as $id => $versionNode) {
-            $versionNode = $dataDoc->importNode($versionNode, true);
-            $versionNode->setAttribute('xml:id', $id);
-            $rootNode->appendChild($versionNode);
+        foreach ($versionAssets as $id => $versionAsset) {
+            $schemaDoc = $versionAsset->createResult()->toDocument();
+            if ($versionNode = $schemaDoc->getElementsByTagNameNS(DOMHelper::NS_SCHEMA_VERSIONING, 'info')->item(0)) {
+                $versionNode = $dataDoc->importNode($versionNode, true);
+                $rootNode->appendChild($versionNode);
+            } else {
+                echo $schemaDoc->documentURI;
+            }
         }
         $dataDoc->appendChild($rootNode);
         

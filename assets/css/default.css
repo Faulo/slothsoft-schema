@@ -76,6 +76,12 @@ code {
 .element {
 	background: rgba(127, 127, 255, 0.1);
 }
+code.element::before {
+	content: "<";
+}
+code.element::after {
+	content: ">";
+}
 
 .attribute {
 	background: rgba(255, 127, 127, 0.1);
@@ -88,9 +94,22 @@ code {
 .type {
 	background: rgba(127, 255, 127, 0.1);
 }
+code.type {
+	font-weight: bold;
+}
 
 .category {
 	background: rgba(127, 255, 127, 0.1);
+}
+code.group {
+	font-style: italic;
+}
+
+.group {
+	background: rgba(127, 255, 127, 0.1);
+}
+code.group {
+	font-style: italic;
 }
 
 .type {

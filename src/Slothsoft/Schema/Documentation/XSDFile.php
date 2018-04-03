@@ -138,12 +138,22 @@ class XSDFile
         }
         return $this->xsdList[$id];
     }
-
+    
     public function createXSDCategory(DOMElement $node)
     {
         $id = $this->getIdByNode($node, 'XSDCategory');
         if (! isset($this->xsdList[$id])) {
             $this->xsdList[$id] = new XSDCategory($this);
+            $this->xsdList[$id]->init($node);
+        }
+        return $this->xsdList[$id];
+    }
+    
+    public function createXSDGroup(DOMElement $node)
+    {
+        $id = $this->getIdByNode($node, 'XSDGroup');
+        if (! isset($this->xsdList[$id])) {
+            $this->xsdList[$id] = new XSDGroup($this);
             $this->xsdList[$id]->init($node);
         }
         return $this->xsdList[$id];

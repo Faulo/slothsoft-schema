@@ -8,29 +8,28 @@
 	
 	<xsl:template match="*" mode="body">
 		<p>
-			<xsl:value-of select="$latest/ssv:description"/>
+			<xsl:value-of select="$info/ssv:description"/>
 		</p>
-		<p>
-			The following specifications define this namespace:
-		</p>
+		<p data-dict="">home/table/caption</p>
 		<table>
 			<thead>
 				<tr>
-					<th>Version</th>
-					<th>Revision</th>
-					<th>Documentation</th>
-					<th>Download</th>
+					<th data-dict="">home/table/version</th>
+					<th data-dict="">home/table/revision</th>
+					<th data-dict="">home/table/documentation</th>
+					<th data-dict="">home/table/download</th>
 				</tr>
 			</thead>
 			<tbody>
-				<xsl:for-each select="$schema-info">
-					<xsl:variable name="title" select="concat(ssv:name, ' v', ssv:version, ' ', ssv:revision)"/>
+				<xsl:for-each select="$infoList">
 					<xsl:variable name="file" select="concat(ssv:prefix, '-', ssv:revision, '.xsd')"/>
 					<tr>
 						<td class="version"><xsl:value-of select="ssv:version"/></td>
 						<td class="version"><xsl:value-of select="ssv:revision"/></td>
 						<td>
-							<a href="{ssv:version}"><xsl:value-of select="$title"/></a>
+							<a href="{ssv:version}">
+								<xsl:apply-templates select="." mode="name"/>
+							</a>
 						</td>
 						<td>
 							<a href="/getAsset.php/{@xml:id}" download="{$file}"><xsl:value-of select="$file"/></a>
