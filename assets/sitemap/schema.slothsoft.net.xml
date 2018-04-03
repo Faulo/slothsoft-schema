@@ -9,7 +9,7 @@
 	ref="pages/index" status-active="" status-public=""
 	sfd:languages="de-de en-us">
 	
-	<include-pages ref="sites/schemata"/>
+	<include-pages ref="sitemap/schemata"/>
 	
 	<page name="sitemap" ref="//slothsoft@farah/sitemap-generator" status-active=""/>
 </domain>
