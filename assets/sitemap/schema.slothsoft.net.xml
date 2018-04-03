@@ -10,4 +10,6 @@
 	sfd:languages="de-de en-us">
 	
 	<include-pages ref="sites/schemata"/>
+	
+	<page name="sitemap" ref="//slothsoft@farah/sitemap-generator" status-active=""/>
 </domain>
