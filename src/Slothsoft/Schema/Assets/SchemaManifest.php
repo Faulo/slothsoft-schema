@@ -10,6 +10,9 @@ class SchemaManifest extends AbstractSchema
 {
     protected function loadResult(FarahUrl $url) : ResultInterface {
         $args = $url->getArguments();
+        if (!$args->has('schema')) {
+            return ResultCatalog::createNullResult($url);
+        }
         $versionAssets = $this->getVersionAssets($args->get('schema'));
         
         $dataDoc = new \DOMDocument();
