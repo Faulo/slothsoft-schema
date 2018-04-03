@@ -5,6 +5,7 @@ use Slothsoft\Core\DOMHelper;
 use Slothsoft\Farah\Module\FarahUrl\FarahUrl;
 use Slothsoft\Farah\Module\Results\ResultCatalog;
 use Slothsoft\Farah\Module\Results\ResultInterface;
+use Slothsoft\Schema\Exceptions\SchemaVersioningNotFoundException;
 
 class SchemaInfo extends AbstractSchema
 {
@@ -23,7 +24,7 @@ class SchemaInfo extends AbstractSchema
                 $versionNode = $dataDoc->importNode($versionNode, true);
                 $rootNode->appendChild($versionNode);
             } else {
-                echo $schemaDoc->documentURI;
+                throw new SchemaVersioningNotFoundException("<ssv:info> not found for schema '$schemaDoc->documentURI'");
             }
         }
         $dataDoc->appendChild($rootNode);
