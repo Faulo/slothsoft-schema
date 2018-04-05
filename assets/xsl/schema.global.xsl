@@ -86,7 +86,10 @@
 	<xsl:template match="*" mode="footer">
 		<div>
 			© 2017, 2018 
-			<a href="mailto:{$info/ssv:author/@email}"><xsl:value-of select="$info/ssv:author"/></a>
+			<xsl:for-each select="$info/ssv:author">
+				<a href="mailto:{@email}"><xsl:value-of select="."/></a>,
+			</xsl:for-each>
+			<a href="mailto:info.slothsoft@gmail.com">Slothsoft</a>
 		</div>
 	</xsl:template>
 	

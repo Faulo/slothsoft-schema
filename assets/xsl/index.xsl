@@ -14,8 +14,10 @@
 			]]></style>
 			</head>
 			<body>
-				<main>
+				<header>
 					<h1>Slothsoft Schema Index</h1>
+				</header>
+				<main>
 					<p>Available namespace declarations:</p>
 					<ul>
 						<xsl:for-each select="*[@name='sites']/*/*/*">
@@ -23,9 +25,12 @@
 								<a href="{@uri}"><code class="namespace"><xsl:value-of select="@title"/></code></a>
 							</li>
 						</xsl:for-each>
-						
 					</ul>
 				</main>
+				<footer>
+					© 2017, 2018 
+					<a href="mailto:info.slothsoft@gmail.com">Slothsoft</a>
+				</footer>
 			</body>
 		</html>
 	</xsl:template>
