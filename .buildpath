@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <buildpath>
+	<buildpathentry combineaccessrules="false" kind="prj" path="/slothsoft-amber"/>
 	<buildpathentry combineaccessrules="false" kind="prj" path="/slothsoft-core"/>
 	<buildpathentry combineaccessrules="false" kind="prj" path="/slothsoft-farah"/>
+	<buildpathentry combineaccessrules="false" kind="prj" path="/slothsoft-savegame"/>
 	<buildpathentry kind="con" path="org.eclipse.dltk.USER_LIBRARY/COM"/>
 	<buildpathentry kind="con" path="org.eclipse.dltk.USER_LIBRARY/DS"/>
 	<buildpathentry kind="con" path="org.eclipse.dltk.USER_LIBRARY/pthreads"/>
 	<buildpathentry kind="con" path="org.eclipse.php.core.LANGUAGE"/>
 	<buildpathentry kind="src" path="src">
+		<attributes>
+			<attribute name="composer" value="source"/>
+		</attributes>
+	</buildpathentry>
+	<buildpathentry kind="src" path="tests">
 		<attributes>
 			<attribute name="composer" value="source"/>
 		</attributes>

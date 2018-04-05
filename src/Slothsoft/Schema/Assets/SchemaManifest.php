@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 namespace Slothsoft\Schema\Assets;
 
 use Slothsoft\Farah\Module\FarahUrl\FarahUrl;
