@@ -4,9 +4,9 @@ namespace Slothsoft\Schema\Assets;
 
 use Slothsoft\Farah\Module\FarahUrl\FarahUrl;
 use Slothsoft\Farah\Module\FarahUrl\FarahUrlResolver;
-use Slothsoft\Farah\Module\Node\Asset\AssetImplementation;
+use Slothsoft\Farah\Module\Node\Asset\AssetBase;
 
-class AbstractSchema extends AssetImplementation
+class AbstractSchema extends AssetBase
 {
     protected function getVersionAssets(string $schemaId) : array {
         $ret = [];

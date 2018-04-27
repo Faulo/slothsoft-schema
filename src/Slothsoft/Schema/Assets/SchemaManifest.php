@@ -2,30 +2,21 @@
 declare(strict_types = 1);
 namespace Slothsoft\Schema\Assets;
 
-use Slothsoft\Farah\Module\FarahUrl\FarahUrl;
-use Slothsoft\Farah\Module\Results\ResultCatalog;
-use Slothsoft\Farah\Module\Results\ResultInterface;
-use Slothsoft\Schema\Documentation\XSDFile;
+use Slothsoft\Farah\Module\Executables\ExecutableInterface;
+use Slothsoft\Farah\Module\FarahUrl\FarahUrlArguments;
+use Slothsoft\Schema\Executables\SchemaExecutableCreator;
 
 class SchemaManifest extends AbstractSchema
 {
-    protected function loadResult(FarahUrl $url) : ResultInterface {
-        $args = $url->getArguments();
-        if (!$args->has('schema')) {
-            return ResultCatalog::createNullResult($url);
-        }
-        $versionAssets = $this->getVersionAssets($args->get('schema'));
+    protected function loadExecutable(FarahUrlArguments $args) : ExecutableInterface {
+        $creator = new SchemaExecutableCreator($this, $args);
         
-        $dataDoc = new \DOMDocument();
-        $rootNode = $dataDoc->createElement('schema-manifest');
-        foreach ($versionAssets as $versionAsset) {
-            $versionFile = $versionAsset->getRealPath();
-            $xsd = new XSDFile($versionFile);
-            $rootNode->appendChild($xsd->asManifest($dataDoc));
+        if ($args->has('schema')) {
+            $schemaId = $args->get('schema');
+            return $creator->createSchemaManifest($this->getVersionAssets($schemaId));
+        } else {
+            return $creator->createNullExecutable();
         }
-        $dataDoc->appendChild($rootNode);
-        
-        return ResultCatalog::createDOMDocumentResult($url, $dataDoc);
     }
 }
 

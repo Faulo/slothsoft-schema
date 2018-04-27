@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0"
 	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:sfm="http://schema.slothsoft.net/farah/module"
 	xmlns:ssv="http://schema.slothsoft.net/schema/versioning"
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -9,6 +10,8 @@
 	xmlns:str="http://exslt.org/strings"
 	xmlns:ibp="http://www.ibp-dresden.de"
 	extension-element-prefixes="exsl func str ibp">
+	
+	<xsl:include href="farah://slothsoft@farah/xsl/module"/>
 	
 	<func:function name="ibp:getDescendantElements">
 		<xsl:param name="rootNode"/>
@@ -60,6 +63,7 @@
 					<xsl:apply-templates select="." mode="header"/>
 				</header>
 				<main>
+					<xsl:apply-templates select="sfm:error" mode="sfm:html"/>
 					<xsl:apply-templates select="." mode="body"/>
 				</main>
 				<footer>
