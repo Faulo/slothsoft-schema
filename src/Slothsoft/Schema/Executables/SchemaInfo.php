@@ -1,4 +1,5 @@
 <?php
+declare(strict_types = 1);
 namespace Slothsoft\Schema\Executables;
 
 use Slothsoft\Core\DOMHelper;
