@@ -21,182 +21,182 @@
 <path fill="none" stroke="gray" d="M631.895,-168C631.895,-168 1255.32,-168 1255.32,-168 1261.32,-168 1267.32,-174 1267.32,-180 1267.32,-180 1267.32,-1090 1267.32,-1090 1267.32,-1096 1261.32,-1102 1255.32,-1102 1255.32,-1102 631.895,-1102 631.895,-1102 625.895,-1102 619.895,-1096 619.895,-1090 619.895,-1090 619.895,-180 619.895,-180 619.895,-174 625.895,-168 631.895,-168"/>
 <text text-anchor="middle" x="943.609" y="-1089.2" font-family="Times New Roman,serif" font-size="11.00" fill="gray">Schema</text>
 </g>
-<g id="clust6" class="cluster"><title>cluster_\Slothsoft\Schema\Assets</title>
+<g id="clust4" class="cluster"><title>cluster_\Slothsoft\Schema\Assets</title>
 <path fill="none" stroke="gray" d="M639.895,-948C639.895,-948 1183.32,-948 1183.32,-948 1189.32,-948 1195.32,-954 1195.32,-960 1195.32,-960 1195.32,-1062 1195.32,-1062 1195.32,-1068 1189.32,-1074 1183.32,-1074 1183.32,-1074 639.895,-1074 639.895,-1074 633.895,-1074 627.895,-1068 627.895,-1062 627.895,-1062 627.895,-960 627.895,-960 627.895,-954 633.895,-948 639.895,-948"/>
 <text text-anchor="middle" x="911.609" y="-1061.2" font-family="Times New Roman,serif" font-size="11.00" fill="gray">Assets</text>
 </g>
-<g id="clust7" class="cluster"><title>cluster_\Slothsoft\Schema\Exceptions</title>
-<path fill="none" stroke="gray" d="M1016.32,-276C1016.32,-276 1247.32,-276 1247.32,-276 1253.32,-276 1259.32,-282 1259.32,-288 1259.32,-288 1259.32,-336 1259.32,-336 1259.32,-342 1253.32,-348 1247.32,-348 1247.32,-348 1016.32,-348 1016.32,-348 1010.32,-348 1004.32,-342 1004.32,-336 1004.32,-336 1004.32,-288 1004.32,-288 1004.32,-282 1010.32,-276 1016.32,-276"/>
-<text text-anchor="middle" x="1131.82" y="-335.2" font-family="Times New Roman,serif" font-size="11.00" fill="gray">Exceptions</text>
-</g>
-<g id="clust5" class="cluster"><title>cluster_\Slothsoft\Schema\Executables</title>
-<path fill="none" stroke="gray" d="M1049.82,-356C1049.82,-356 1213.82,-356 1213.82,-356 1219.82,-356 1225.82,-362 1225.82,-368 1225.82,-368 1225.82,-524 1225.82,-524 1225.82,-530 1219.82,-536 1213.82,-536 1213.82,-536 1049.82,-536 1049.82,-536 1043.82,-536 1037.82,-530 1037.82,-524 1037.82,-524 1037.82,-368 1037.82,-368 1037.82,-362 1043.82,-356 1049.82,-356"/>
-<text text-anchor="middle" x="1131.82" y="-523.2" font-family="Times New Roman,serif" font-size="11.00" fill="gray">Executables</text>
-</g>
-<g id="clust4" class="cluster"><title>cluster_\Slothsoft\Schema\Documentation</title>
+<g id="clust5" class="cluster"><title>cluster_\Slothsoft\Schema\Documentation</title>
 <path fill="none" stroke="gray" d="M653.395,-544C653.395,-544 1179.82,-544 1179.82,-544 1185.82,-544 1191.82,-550 1191.82,-556 1191.82,-556 1191.82,-928 1191.82,-928 1191.82,-934 1185.82,-940 1179.82,-940 1179.82,-940 653.395,-940 653.395,-940 647.395,-940 641.395,-934 641.395,-928 641.395,-928 641.395,-556 641.395,-556 641.395,-550 647.395,-544 653.395,-544"/>
 <text text-anchor="middle" x="916.609" y="-927.2" font-family="Times New Roman,serif" font-size="11.00" fill="gray">Documentation</text>
 </g>
+<g id="clust6" class="cluster"><title>cluster_\Slothsoft\Schema\Exceptions</title>
+<path fill="none" stroke="gray" d="M1016.32,-464C1016.32,-464 1247.32,-464 1247.32,-464 1253.32,-464 1259.32,-470 1259.32,-476 1259.32,-476 1259.32,-524 1259.32,-524 1259.32,-530 1253.32,-536 1247.32,-536 1247.32,-536 1016.32,-536 1016.32,-536 1010.32,-536 1004.32,-530 1004.32,-524 1004.32,-524 1004.32,-476 1004.32,-476 1004.32,-470 1010.32,-464 1016.32,-464"/>
+<text text-anchor="middle" x="1131.82" y="-523.2" font-family="Times New Roman,serif" font-size="11.00" fill="gray">Exceptions</text>
+</g>
+<g id="clust7" class="cluster"><title>cluster_\Slothsoft\Schema\Executables</title>
+<path fill="none" stroke="gray" d="M1049.82,-276C1049.82,-276 1213.82,-276 1213.82,-276 1219.82,-276 1225.82,-282 1225.82,-288 1225.82,-288 1225.82,-444 1225.82,-444 1225.82,-450 1219.82,-456 1213.82,-456 1213.82,-456 1049.82,-456 1049.82,-456 1043.82,-456 1037.82,-450 1037.82,-444 1037.82,-444 1037.82,-288 1037.82,-288 1037.82,-282 1043.82,-276 1049.82,-276"/>
+<text text-anchor="middle" x="1131.82" y="-443.2" font-family="Times New Roman,serif" font-size="11.00" fill="gray">Executables</text>
+</g>
+<!-- \\Slothsoft\\Schema\\Assets\\AbstractSchema -->
+<g id="node1" class="node"><title>\\Slothsoft\\Schema\\Assets\\AbstractSchema</title>
+<polygon fill="none" stroke="black" points="746.895,-1019 635.895,-1019 635.895,-983 746.895,-983 746.895,-1019"/>
+<text text-anchor="middle" x="691.395" y="-998.2" font-family="Courier,monospace" font-size="11.00">AbstractSchema</text>
+</g>
+<!-- \\Slothsoft\\Farah\\Module\\Node\\Asset\\AssetBase -->
+<g id="node18" class="node"><title>\\Slothsoft\\Farah\\Module\\Node\\Asset\\AssetBase</title>
+<ellipse fill="none" stroke="black" cx="185.234" cy="-1001" rx="185.467" ry="18"/>
+<text text-anchor="middle" x="185.234" y="-997.3" font-family="Times New Roman,serif" font-size="14.00" fill="gray">\Slothsoft\Farah\Module\Node\Asset\AssetBase</text>
+</g>
+<!-- \\Slothsoft\\Schema\\Assets\\AbstractSchema&#45;&gt;\\Slothsoft\\Farah\\Module\\Node\\Asset\\AssetBase -->
+<g id="edge1" class="edge"><title>\\Slothsoft\\Schema\\Assets\\AbstractSchema&#45;&gt;\\Slothsoft\\Farah\\Module\\Node\\Asset\\AssetBase</title>
+<path fill="none" stroke="black" d="M635.481,-1001C574.415,-1001 472.306,-1001 380.854,-1001"/>
+<polygon fill="none" stroke="black" points="380.617,-997.5 370.617,-1001 380.617,-1004.5 380.617,-997.5"/>
+</g>
+<!-- \\Slothsoft\\Schema\\Assets\\SchemaInfo -->
+<g id="node2" class="node"><title>\\Slothsoft\\Schema\\Assets\\SchemaInfo</title>
+<polygon fill="none" stroke="black" points="1173.82,-1046 1089.82,-1046 1089.82,-1010 1173.82,-1010 1173.82,-1046"/>
+<text text-anchor="middle" x="1131.82" y="-1025.2" font-family="Courier,monospace" font-size="11.00">SchemaInfo</text>
+</g>
+<!-- \\Slothsoft\\Schema\\Assets\\SchemaInfo&#45;&gt;\\Slothsoft\\Schema\\Assets\\AbstractSchema -->
+<g id="edge2" class="edge"><title>\\Slothsoft\\Schema\\Assets\\SchemaInfo&#45;&gt;\\Slothsoft\\Schema\\Assets\\AbstractSchema</title>
+<path fill="none" stroke="black" d="M1089.58,-1025.46C1013.12,-1020.75 848.865,-1010.64 757.347,-1005"/>
+<polygon fill="none" stroke="black" points="757.295,-1001.49 747.099,-1004.37 756.865,-1008.48 757.295,-1001.49"/>
+</g>
+<!-- \\Slothsoft\\Schema\\Assets\\SchemaManifest -->
+<g id="node3" class="node"><title>\\Slothsoft\\Schema\\Assets\\SchemaManifest</title>
+<polygon fill="none" stroke="black" points="1187.32,-992 1076.32,-992 1076.32,-956 1187.32,-956 1187.32,-992"/>
+<text text-anchor="middle" x="1131.82" y="-971.2" font-family="Courier,monospace" font-size="11.00">SchemaManifest</text>
+</g>
+<!-- \\Slothsoft\\Schema\\Assets\\SchemaManifest&#45;&gt;\\Slothsoft\\Schema\\Assets\\AbstractSchema -->
+<g id="edge3" class="edge"><title>\\Slothsoft\\Schema\\Assets\\SchemaManifest&#45;&gt;\\Slothsoft\\Schema\\Assets\\AbstractSchema</title>
+<path fill="none" stroke="black" d="M1076.18,-977.365C995.229,-982.35 843.712,-991.681 757.247,-997.006"/>
+<polygon fill="none" stroke="black" points="756.8,-993.527 747.034,-997.635 757.23,-1000.51 756.8,-993.527"/>
+</g>
 <!-- \\Slothsoft\\Schema\\Documentation\\XSDAnnotation -->
-<g id="node1" class="node"><title>\\Slothsoft\\Schema\\Documentation\\XSDAnnotation</title>
+<g id="node4" class="node"><title>\\Slothsoft\\Schema\\Documentation\\XSDAnnotation</title>
 <polygon fill="none" stroke="black" points="1183.82,-912 1079.82,-912 1079.82,-876 1183.82,-876 1183.82,-912"/>
 <text text-anchor="middle" x="1131.82" y="-891.2" font-family="Courier,monospace" font-size="11.00">XSDAnnotation</text>
 </g>
 <!-- \\Slothsoft\\Schema\\Documentation\\XSDNode -->
-<g id="node8" class="node"><title>\\Slothsoft\\Schema\\Documentation\\XSDNode</title>
+<g id="node10" class="node"><title>\\Slothsoft\\Schema\\Documentation\\XSDNode</title>
 <polygon fill="none" stroke="black" points="733.395,-777 649.395,-777 649.395,-741 733.395,-741 733.395,-777"/>
 <text text-anchor="start" x="657.395" y="-762.2" font-family="Courier,monospace" font-size="11.00">«abstract»</text>
 <text text-anchor="start" x="667.395" y="-750.2" font-family="Courier,monospace" font-size="11.00">XSDNode</text>
 </g>
 <!-- \\Slothsoft\\Schema\\Documentation\\XSDAnnotation&#45;&gt;\\Slothsoft\\Schema\\Documentation\\XSDNode -->
-<g id="edge1" class="edge"><title>\\Slothsoft\\Schema\\Documentation\\XSDAnnotation&#45;&gt;\\Slothsoft\\Schema\\Documentation\\XSDNode</title>
+<g id="edge4" class="edge"><title>\\Slothsoft\\Schema\\Documentation\\XSDAnnotation&#45;&gt;\\Slothsoft\\Schema\\Documentation\\XSDNode</title>
 <path fill="none" stroke="black" d="M1079.69,-884.576C1056.52,-879.925 1028.88,-873.843 1004.32,-867 910.787,-840.932 804.424,-802.061 743.188,-778.753"/>
 <polygon fill="none" stroke="black" points="744.347,-775.449 733.756,-775.15 741.849,-781.988 744.347,-775.449"/>
 </g>
+<!-- \\Slothsoft\\Schema\\Documentation\\XSDAttribute -->
+<g id="node5" class="node"><title>\\Slothsoft\\Schema\\Documentation\\XSDAttribute</title>
+<polygon fill="none" stroke="black" points="1180.82,-858 1082.82,-858 1082.82,-822 1180.82,-822 1180.82,-858"/>
+<text text-anchor="middle" x="1131.82" y="-837.2" font-family="Courier,monospace" font-size="11.00">XSDAttribute</text>
+</g>
+<!-- \\Slothsoft\\Schema\\Documentation\\XSDAttribute&#45;&gt;\\Slothsoft\\Schema\\Documentation\\XSDNode -->
+<g id="edge5" class="edge"><title>\\Slothsoft\\Schema\\Documentation\\XSDAttribute&#45;&gt;\\Slothsoft\\Schema\\Documentation\\XSDNode</title>
+<path fill="none" stroke="black" d="M1082.65,-831.1C999.285,-815.698 828.873,-784.214 743.509,-768.443"/>
+<polygon fill="none" stroke="black" points="744.001,-764.975 733.532,-766.6 742.73,-771.859 744.001,-764.975"/>
+</g>
 <!-- \\Slothsoft\\Schema\\Documentation\\XSDCategory -->
-<g id="node2" class="node"><title>\\Slothsoft\\Schema\\Documentation\\XSDCategory</title>
-<polygon fill="none" stroke="black" points="1177.32,-858 1086.32,-858 1086.32,-822 1177.32,-822 1177.32,-858"/>
-<text text-anchor="middle" x="1131.82" y="-837.2" font-family="Courier,monospace" font-size="11.00">XSDCategory</text>
+<g id="node6" class="node"><title>\\Slothsoft\\Schema\\Documentation\\XSDCategory</title>
+<polygon fill="none" stroke="black" points="1177.32,-804 1086.32,-804 1086.32,-768 1177.32,-768 1177.32,-804"/>
+<text text-anchor="middle" x="1131.82" y="-783.2" font-family="Courier,monospace" font-size="11.00">XSDCategory</text>
 </g>
 <!-- \\Slothsoft\\Schema\\Documentation\\XSDCategory&#45;&gt;\\Slothsoft\\Schema\\Documentation\\XSDNode -->
-<g id="edge3" class="edge"><title>\\Slothsoft\\Schema\\Documentation\\XSDCategory&#45;&gt;\\Slothsoft\\Schema\\Documentation\\XSDNode</title>
-<path fill="none" stroke="black" d="M1085.96,-831.712C1003.88,-816.547 830.015,-784.425 743.505,-768.443"/>
-<polygon fill="none" stroke="black" points="744.121,-764.997 733.651,-766.622 742.849,-771.881 744.121,-764.997"/>
-</g>
-<!-- \\Slothsoft\\Schema\\Documentation\\XSDGroup -->
-<g id="node3" class="node"><title>\\Slothsoft\\Schema\\Documentation\\XSDGroup</title>
-<polygon fill="none" stroke="black" points="1167.32,-804 1096.32,-804 1096.32,-768 1167.32,-768 1167.32,-804"/>
-<text text-anchor="middle" x="1131.82" y="-783.2" font-family="Courier,monospace" font-size="11.00">XSDGroup</text>
-</g>
-<!-- \\Slothsoft\\Schema\\Documentation\\XSDGroup&#45;&gt;\\Slothsoft\\Schema\\Documentation\\XSDNode -->
-<g id="edge5" class="edge"><title>\\Slothsoft\\Schema\\Documentation\\XSDGroup&#45;&gt;\\Slothsoft\\Schema\\Documentation\\XSDNode</title>
-<path fill="none" stroke="black" d="M1096.05,-783.859C1019.02,-779.115 833.684,-767.701 743.461,-762.145"/>
-<polygon fill="none" stroke="black" points="743.661,-758.651 733.465,-761.529 743.231,-765.637 743.661,-758.651"/>
+<g id="edge6" class="edge"><title>\\Slothsoft\\Schema\\Documentation\\XSDCategory&#45;&gt;\\Slothsoft\\Schema\\Documentation\\XSDNode</title>
+<path fill="none" stroke="black" d="M1085.96,-783.237C1003.96,-778.188 830.368,-767.497 743.769,-762.164"/>
+<polygon fill="none" stroke="black" points="743.848,-758.662 733.651,-761.541 743.417,-765.649 743.848,-758.662"/>
 </g>
 <!-- \\Slothsoft\\Schema\\Documentation\\XSDElement -->
-<g id="node4" class="node"><title>\\Slothsoft\\Schema\\Documentation\\XSDElement</title>
+<g id="node7" class="node"><title>\\Slothsoft\\Schema\\Documentation\\XSDElement</title>
 <polygon fill="none" stroke="black" points="1173.82,-750 1089.82,-750 1089.82,-714 1173.82,-714 1173.82,-750"/>
 <text text-anchor="middle" x="1131.82" y="-729.2" font-family="Courier,monospace" font-size="11.00">XSDElement</text>
 </g>
 <!-- \\Slothsoft\\Schema\\Documentation\\XSDElement&#45;&gt;\\Slothsoft\\Schema\\Documentation\\XSDNode -->
-<g id="edge6" class="edge"><title>\\Slothsoft\\Schema\\Documentation\\XSDElement&#45;&gt;\\Slothsoft\\Schema\\Documentation\\XSDNode</title>
+<g id="edge7" class="edge"><title>\\Slothsoft\\Schema\\Documentation\\XSDElement&#45;&gt;\\Slothsoft\\Schema\\Documentation\\XSDNode</title>
 <path fill="none" stroke="black" d="M1089.58,-734.54C1009.1,-739.496 831.335,-750.444 743.527,-755.851"/>
 <polygon fill="none" stroke="black" points="743.297,-752.359 733.531,-756.467 743.727,-759.345 743.297,-752.359"/>
 </g>
-<!-- \\Slothsoft\\Schema\\Documentation\\XSDAttribute -->
-<g id="node5" class="node"><title>\\Slothsoft\\Schema\\Documentation\\XSDAttribute</title>
-<polygon fill="none" stroke="black" points="1180.82,-696 1082.82,-696 1082.82,-660 1180.82,-660 1180.82,-696"/>
-<text text-anchor="middle" x="1131.82" y="-675.2" font-family="Courier,monospace" font-size="11.00">XSDAttribute</text>
-</g>
-<!-- \\Slothsoft\\Schema\\Documentation\\XSDAttribute&#45;&gt;\\Slothsoft\\Schema\\Documentation\\XSDNode -->
-<g id="edge7" class="edge"><title>\\Slothsoft\\Schema\\Documentation\\XSDAttribute&#45;&gt;\\Slothsoft\\Schema\\Documentation\\XSDNode</title>
-<path fill="none" stroke="black" d="M1082.65,-686.9C999.285,-702.302 828.873,-733.786 743.509,-749.557"/>
-<polygon fill="none" stroke="black" points="742.73,-746.141 733.532,-751.4 744.001,-753.025 742.73,-746.141"/>
-</g>
 <!-- \\Slothsoft\\Schema\\Documentation\\XSDFile -->
-<g id="node6" class="node"><title>\\Slothsoft\\Schema\\Documentation\\XSDFile</title>
-<polygon fill="none" stroke="black" points="1163.82,-642 1099.82,-642 1099.82,-606 1163.82,-606 1163.82,-642"/>
-<text text-anchor="middle" x="1131.82" y="-621.2" font-family="Courier,monospace" font-size="11.00">XSDFile</text>
+<g id="node8" class="node"><title>\\Slothsoft\\Schema\\Documentation\\XSDFile</title>
+<polygon fill="none" stroke="black" points="1163.82,-696 1099.82,-696 1099.82,-660 1163.82,-660 1163.82,-696"/>
+<text text-anchor="middle" x="1131.82" y="-675.2" font-family="Courier,monospace" font-size="11.00">XSDFile</text>
+</g>
+<!-- \\Slothsoft\\Schema\\Documentation\\XSDGroup -->
+<g id="node9" class="node"><title>\\Slothsoft\\Schema\\Documentation\\XSDGroup</title>
+<polygon fill="none" stroke="black" points="1167.32,-642 1096.32,-642 1096.32,-606 1167.32,-606 1167.32,-642"/>
+<text text-anchor="middle" x="1131.82" y="-621.2" font-family="Courier,monospace" font-size="11.00">XSDGroup</text>
+</g>
+<!-- \\Slothsoft\\Schema\\Documentation\\XSDGroup&#45;&gt;\\Slothsoft\\Schema\\Documentation\\XSDNode -->
+<g id="edge8" class="edge"><title>\\Slothsoft\\Schema\\Documentation\\XSDGroup&#45;&gt;\\Slothsoft\\Schema\\Documentation\\XSDNode</title>
+<path fill="none" stroke="black" d="M1096.18,-630.201C1070.6,-635.068 1035.04,-642.439 1004.32,-651 910.787,-677.068 804.424,-715.939 743.188,-739.247"/>
+<polygon fill="none" stroke="black" points="741.849,-736.012 733.756,-742.85 744.347,-742.551 741.849,-736.012"/>
 </g>
 <!-- \\Slothsoft\\Schema\\Documentation\\XSDType -->
-<g id="node7" class="node"><title>\\Slothsoft\\Schema\\Documentation\\XSDType</title>
+<g id="node11" class="node"><title>\\Slothsoft\\Schema\\Documentation\\XSDType</title>
 <polygon fill="none" stroke="black" points="1163.82,-588 1099.82,-588 1099.82,-552 1163.82,-552 1163.82,-588"/>
 <text text-anchor="middle" x="1131.82" y="-567.2" font-family="Courier,monospace" font-size="11.00">XSDType</text>
 </g>
 <!-- \\Slothsoft\\Schema\\Documentation\\XSDType&#45;&gt;\\Slothsoft\\Schema\\Documentation\\XSDNode -->
-<g id="edge11" class="edge"><title>\\Slothsoft\\Schema\\Documentation\\XSDType&#45;&gt;\\Slothsoft\\Schema\\Documentation\\XSDNode</title>
+<g id="edge9" class="edge"><title>\\Slothsoft\\Schema\\Documentation\\XSDType&#45;&gt;\\Slothsoft\\Schema\\Documentation\\XSDNode</title>
 <path fill="none" stroke="black" d="M1099.77,-574.241C1073.75,-578.354 1035.92,-585.657 1004.32,-597 899.923,-634.477 786.514,-700.41 729.527,-735.493"/>
 <polygon fill="none" stroke="black" points="727.535,-732.61 720.875,-740.85 731.22,-738.561 727.535,-732.61"/>
 </g>
+<!-- \\Slothsoft\\Schema\\Exceptions\\SchemaVersioningNotFoundException -->
+<g id="node12" class="node"><title>\\Slothsoft\\Schema\\Exceptions\\SchemaVersioningNotFoundException</title>
+<polygon fill="none" stroke="black" points="1251.32,-508 1012.32,-508 1012.32,-472 1251.32,-472 1251.32,-508"/>
+<text text-anchor="middle" x="1131.82" y="-487.2" font-family="Courier,monospace" font-size="11.00">SchemaVersioningNotFoundException</text>
+</g>
+<!-- \\UnexpectedValueException -->
+<g id="node19" class="node"><title>\\UnexpectedValueException</title>
+<ellipse fill="none" stroke="black" cx="691.395" cy="-126" rx="113.98" ry="18"/>
+<text text-anchor="middle" x="691.395" y="-122.3" font-family="Times New Roman,serif" font-size="14.00" fill="gray">\UnexpectedValueException</text>
+</g>
+<!-- \\Slothsoft\\Schema\\Exceptions\\SchemaVersioningNotFoundException&#45;&gt;\\UnexpectedValueException -->
+<g id="edge10" class="edge"><title>\\Slothsoft\\Schema\\Exceptions\\SchemaVersioningNotFoundException&#45;&gt;\\UnexpectedValueException</title>
+<path fill="none" stroke="black" d="M1029.95,-471.897C1021.01,-468.577 1012.33,-464.648 1004.32,-460 865.038,-379.099 750.497,-216.46 709.05,-152.603"/>
+<polygon fill="none" stroke="black" points="711.821,-150.441 703.471,-143.92 705.932,-154.225 711.821,-150.441"/>
+</g>
 <!-- \\Slothsoft\\Schema\\Executables\\SchemaExecutableCreator -->
-<g id="node9" class="node"><title>\\Slothsoft\\Schema\\Executables\\SchemaExecutableCreator</title>
-<polygon fill="none" stroke="black" points="1217.82,-508 1045.82,-508 1045.82,-472 1217.82,-472 1217.82,-508"/>
-<text text-anchor="middle" x="1131.82" y="-487.2" font-family="Courier,monospace" font-size="11.00">SchemaExecutableCreator</text>
+<g id="node13" class="node"><title>\\Slothsoft\\Schema\\Executables\\SchemaExecutableCreator</title>
+<polygon fill="none" stroke="black" points="1217.82,-428 1045.82,-428 1045.82,-392 1217.82,-392 1217.82,-428"/>
+<text text-anchor="middle" x="1131.82" y="-407.2" font-family="Courier,monospace" font-size="11.00">SchemaExecutableCreator</text>
 </g>
 <!-- \\Slothsoft\\Farah\\Module\\Executables\\ExecutableCreator -->
-<g id="node18" class="node"><title>\\Slothsoft\\Farah\\Module\\Executables\\ExecutableCreator</title>
-<ellipse fill="none" stroke="black" cx="691.395" cy="-126" rx="214.462" ry="18"/>
-<text text-anchor="middle" x="691.395" y="-122.3" font-family="Times New Roman,serif" font-size="14.00" fill="gray">\Slothsoft\Farah\Module\Executables\ExecutableCreator</text>
+<g id="node20" class="node"><title>\\Slothsoft\\Farah\\Module\\Executables\\ExecutableCreator</title>
+<ellipse fill="none" stroke="black" cx="691.395" cy="-72" rx="214.462" ry="18"/>
+<text text-anchor="middle" x="691.395" y="-68.3" font-family="Times New Roman,serif" font-size="14.00" fill="gray">\Slothsoft\Farah\Module\Executables\ExecutableCreator</text>
 </g>
 <!-- \\Slothsoft\\Schema\\Executables\\SchemaExecutableCreator&#45;&gt;\\Slothsoft\\Farah\\Module\\Executables\\ExecutableCreator -->
-<g id="edge2" class="edge"><title>\\Slothsoft\\Schema\\Executables\\SchemaExecutableCreator&#45;&gt;\\Slothsoft\\Farah\\Module\\Executables\\ExecutableCreator</title>
-<path fill="none" stroke="black" d="M1045.5,-479.3C1031.19,-475.428 1016.91,-470.161 1004.32,-463 863.638,-382.981 749.917,-217.939 708.87,-153.049"/>
-<polygon fill="none" stroke="black" points="711.619,-150.844 703.347,-144.224 705.686,-154.557 711.619,-150.844"/>
+<g id="edge11" class="edge"><title>\\Slothsoft\\Schema\\Executables\\SchemaExecutableCreator&#45;&gt;\\Slothsoft\\Farah\\Module\\Executables\\ExecutableCreator</title>
+<path fill="none" stroke="black" d="M1045.55,-405.548C1030.23,-401.179 1015.58,-394.131 1004.32,-383 912.314,-292.031 1036.84,-185.17 940.323,-99 931.642,-91.2499 922.051,-84.8296 911.837,-79.5451"/>
+<polygon fill="none" stroke="black" points="913.24,-76.3367 902.708,-75.1888 910.226,-82.6543 913.24,-76.3367"/>
 </g>
 <!-- \\Slothsoft\\Schema\\Executables\\SchemaInfo -->
-<g id="node10" class="node"><title>\\Slothsoft\\Schema\\Executables\\SchemaInfo</title>
-<polygon fill="none" stroke="black" points="1173.82,-454 1089.82,-454 1089.82,-418 1173.82,-418 1173.82,-454"/>
-<text text-anchor="middle" x="1131.82" y="-433.2" font-family="Courier,monospace" font-size="11.00">SchemaInfo</text>
+<g id="node14" class="node"><title>\\Slothsoft\\Schema\\Executables\\SchemaInfo</title>
+<polygon fill="none" stroke="black" points="1173.82,-374 1089.82,-374 1089.82,-338 1173.82,-338 1173.82,-374"/>
+<text text-anchor="middle" x="1131.82" y="-353.2" font-family="Courier,monospace" font-size="11.00">SchemaInfo</text>
 </g>
 <!-- \\Slothsoft\\Farah\\Module\\Executables\\ExecutableDOMWriterBase -->
-<g id="node20" class="node"><title>\\Slothsoft\\Farah\\Module\\Executables\\ExecutableDOMWriterBase</title>
-<ellipse fill="none" stroke="black" cx="691.395" cy="-72" rx="248.856" ry="18"/>
-<text text-anchor="middle" x="691.395" y="-68.3" font-family="Times New Roman,serif" font-size="14.00" fill="gray">\Slothsoft\Farah\Module\Executables\ExecutableDOMWriterBase</text>
+<g id="node21" class="node"><title>\\Slothsoft\\Farah\\Module\\Executables\\ExecutableDOMWriterBase</title>
+<ellipse fill="none" stroke="black" cx="691.395" cy="-18" rx="248.856" ry="18"/>
+<text text-anchor="middle" x="691.395" y="-14.3" font-family="Times New Roman,serif" font-size="14.00" fill="gray">\Slothsoft\Farah\Module\Executables\ExecutableDOMWriterBase</text>
 </g>
 <!-- \\Slothsoft\\Schema\\Executables\\SchemaInfo&#45;&gt;\\Slothsoft\\Farah\\Module\\Executables\\ExecutableDOMWriterBase -->
-<g id="edge9" class="edge"><title>\\Slothsoft\\Schema\\Executables\\SchemaInfo&#45;&gt;\\Slothsoft\\Farah\\Module\\Executables\\ExecutableDOMWriterBase</title>
-<path fill="none" stroke="black" d="M1089.79,-438.123C1061.98,-437.246 1026.4,-431.225 1004.32,-409 905.178,-309.19 1044.42,-193.636 940.323,-99 934.706,-93.8939 928.697,-89.3605 922.373,-85.3453"/>
-<polygon fill="none" stroke="black" points="923.962,-82.2197 913.564,-80.1862 920.425,-88.2601 923.962,-82.2197"/>
+<g id="edge12" class="edge"><title>\\Slothsoft\\Schema\\Executables\\SchemaInfo&#45;&gt;\\Slothsoft\\Farah\\Module\\Executables\\ExecutableDOMWriterBase</title>
+<path fill="none" stroke="black" d="M1089.62,-357.988C1061.91,-357.02 1026.52,-350.946 1004.32,-329 912.314,-238.031 1036.84,-131.17 940.323,-45 934.605,-39.8952 928.492,-35.3674 922.067,-31.361"/>
+<polygon fill="none" stroke="black" points="923.532,-28.1663 913.119,-26.2159 920.043,-34.2347 923.532,-28.1663"/>
 </g>
 <!-- \\Slothsoft\\Schema\\Executables\\SchemaManifest -->
-<g id="node11" class="node"><title>\\Slothsoft\\Schema\\Executables\\SchemaManifest</title>
-<polygon fill="none" stroke="black" points="1187.32,-400 1076.32,-400 1076.32,-364 1187.32,-364 1187.32,-400"/>
-<text text-anchor="middle" x="1131.82" y="-379.2" font-family="Courier,monospace" font-size="11.00">SchemaManifest</text>
+<g id="node15" class="node"><title>\\Slothsoft\\Schema\\Executables\\SchemaManifest</title>
+<polygon fill="none" stroke="black" points="1187.32,-320 1076.32,-320 1076.32,-284 1187.32,-284 1187.32,-320"/>
+<text text-anchor="middle" x="1131.82" y="-299.2" font-family="Courier,monospace" font-size="11.00">SchemaManifest</text>
 </g>
 <!-- \\Slothsoft\\Schema\\Executables\\SchemaManifest&#45;&gt;\\Slothsoft\\Farah\\Module\\Executables\\ExecutableDOMWriterBase -->
 <g id="edge13" class="edge"><title>\\Slothsoft\\Schema\\Executables\\SchemaManifest&#45;&gt;\\Slothsoft\\Farah\\Module\\Executables\\ExecutableDOMWriterBase</title>
-<path fill="none" stroke="black" d="M1076.08,-381.463C1051.17,-378.393 1023.13,-370.534 1004.32,-352 921.699,-270.599 1027.85,-175.109 940.323,-99 934.483,-93.9215 928.249,-89.4206 921.706,-85.4413"/>
-<polygon fill="none" stroke="black" points="923.033,-82.1728 912.6,-80.3331 919.609,-88.2779 923.033,-82.1728"/>
-</g>
-<!-- \\Slothsoft\\Schema\\Assets\\SchemaManifest -->
-<g id="node12" class="node"><title>\\Slothsoft\\Schema\\Assets\\SchemaManifest</title>
-<polygon fill="none" stroke="black" points="1187.32,-1046 1076.32,-1046 1076.32,-1010 1187.32,-1010 1187.32,-1046"/>
-<text text-anchor="middle" x="1131.82" y="-1025.2" font-family="Courier,monospace" font-size="11.00">SchemaManifest</text>
-</g>
-<!-- \\Slothsoft\\Schema\\Assets\\AbstractSchema -->
-<g id="node13" class="node"><title>\\Slothsoft\\Schema\\Assets\\AbstractSchema</title>
-<polygon fill="none" stroke="black" points="746.895,-1019 635.895,-1019 635.895,-983 746.895,-983 746.895,-1019"/>
-<text text-anchor="middle" x="691.395" y="-998.2" font-family="Courier,monospace" font-size="11.00">AbstractSchema</text>
-</g>
-<!-- \\Slothsoft\\Schema\\Assets\\SchemaManifest&#45;&gt;\\Slothsoft\\Schema\\Assets\\AbstractSchema -->
-<g id="edge4" class="edge"><title>\\Slothsoft\\Schema\\Assets\\SchemaManifest&#45;&gt;\\Slothsoft\\Schema\\Assets\\AbstractSchema</title>
-<path fill="none" stroke="black" d="M1076.18,-1024.64C995.229,-1019.65 843.712,-1010.32 757.247,-1004.99"/>
-<polygon fill="none" stroke="black" points="757.23,-1001.49 747.034,-1004.36 756.8,-1008.47 757.23,-1001.49"/>
-</g>
-<!-- \\Slothsoft\\Farah\\Module\\Node\\Asset\\AssetBase -->
-<g id="node19" class="node"><title>\\Slothsoft\\Farah\\Module\\Node\\Asset\\AssetBase</title>
-<ellipse fill="none" stroke="black" cx="185.234" cy="-1001" rx="185.467" ry="18"/>
-<text text-anchor="middle" x="185.234" y="-997.3" font-family="Times New Roman,serif" font-size="14.00" fill="gray">\Slothsoft\Farah\Module\Node\Asset\AssetBase</text>
-</g>
-<!-- \\Slothsoft\\Schema\\Assets\\AbstractSchema&#45;&gt;\\Slothsoft\\Farah\\Module\\Node\\Asset\\AssetBase -->
-<g id="edge8" class="edge"><title>\\Slothsoft\\Schema\\Assets\\AbstractSchema&#45;&gt;\\Slothsoft\\Farah\\Module\\Node\\Asset\\AssetBase</title>
-<path fill="none" stroke="black" d="M635.481,-1001C574.415,-1001 472.306,-1001 380.854,-1001"/>
-<polygon fill="none" stroke="black" points="380.617,-997.5 370.617,-1001 380.617,-1004.5 380.617,-997.5"/>
-</g>
-<!-- \\Slothsoft\\Schema\\Assets\\SchemaInfo -->
-<g id="node14" class="node"><title>\\Slothsoft\\Schema\\Assets\\SchemaInfo</title>
-<polygon fill="none" stroke="black" points="1173.82,-992 1089.82,-992 1089.82,-956 1173.82,-956 1173.82,-992"/>
-<text text-anchor="middle" x="1131.82" y="-971.2" font-family="Courier,monospace" font-size="11.00">SchemaInfo</text>
-</g>
-<!-- \\Slothsoft\\Schema\\Assets\\SchemaInfo&#45;&gt;\\Slothsoft\\Schema\\Assets\\AbstractSchema -->
-<g id="edge10" class="edge"><title>\\Slothsoft\\Schema\\Assets\\SchemaInfo&#45;&gt;\\Slothsoft\\Schema\\Assets\\AbstractSchema</title>
-<path fill="none" stroke="black" d="M1089.58,-976.54C1013.12,-981.249 848.865,-991.364 757.347,-997"/>
-<polygon fill="none" stroke="black" points="756.865,-993.523 747.099,-997.631 757.295,-1000.51 756.865,-993.523"/>
-</g>
-<!-- \\Slothsoft\\Schema\\Exceptions\\SchemaVersioningNotFoundException -->
-<g id="node15" class="node"><title>\\Slothsoft\\Schema\\Exceptions\\SchemaVersioningNotFoundException</title>
-<polygon fill="none" stroke="black" points="1251.32,-320 1012.32,-320 1012.32,-284 1251.32,-284 1251.32,-320"/>
-<text text-anchor="middle" x="1131.82" y="-299.2" font-family="Courier,monospace" font-size="11.00">SchemaVersioningNotFoundException</text>
-</g>
-<!-- \\UnexpectedValueException -->
-<g id="node21" class="node"><title>\\UnexpectedValueException</title>
-<ellipse fill="none" stroke="black" cx="691.395" cy="-18" rx="113.98" ry="18"/>
-<text text-anchor="middle" x="691.395" y="-14.3" font-family="Times New Roman,serif" font-size="14.00" fill="gray">\UnexpectedValueException</text>
-</g>
-<!-- \\Slothsoft\\Schema\\Exceptions\\SchemaVersioningNotFoundException&#45;&gt;\\UnexpectedValueException -->
-<g id="edge12" class="edge"><title>\\Slothsoft\\Schema\\Exceptions\\SchemaVersioningNotFoundException&#45;&gt;\\UnexpectedValueException</title>
-<path fill="none" stroke="black" d="M1012.15,-286.203C1009.41,-284.314 1006.8,-282.251 1004.32,-280 924.279,-207.126 1022.65,-115.288 940.323,-45 897.49,-8.42991 834.175,-2.05268 782.25,-4.62706"/>
-<polygon fill="none" stroke="black" points="781.794,-1.14843 772.027,-5.25499 782.223,-8.13527 781.794,-1.14843"/>
+<path fill="none" stroke="black" d="M1076.18,-305.096C1051.45,-303.61 1023.53,-297.483 1004.32,-280 924.279,-207.126 1022.65,-115.288 940.323,-45 934.245,-39.811 927.755,-35.2299 920.944,-31.196"/>
+<polygon fill="none" stroke="black" points="922.602,-28.1137 912.151,-26.3744 919.237,-34.2515 922.602,-28.1137"/>
 </g>
 <!-- \\Slothsoft\\Schema\\DataDocument -->
 <g id="node16" class="node"><title>\\Slothsoft\\Schema\\DataDocument</title>
