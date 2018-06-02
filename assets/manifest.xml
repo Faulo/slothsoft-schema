@@ -6,7 +6,7 @@
     <resource-directory name="dictionary" type="application/xml"/>
     <directory name="sitemap">
     	<resource use="template" name="template" type="application/xslt+xml"/>
-    	<use-document ref="/schemata"/>
+    	<use-document ref="/schemata" name="schemata"/>
     </directory>
     
     <directory name="schema">
@@ -15,42 +15,42 @@
     
     <fragment name="schemata">
     	<fragment use="document" name="amber">
-	    	<use-document ref="//slothsoft@amber/schema/amberdata"/>
+	    	<use-document ref="//slothsoft@amber/schema/amberdata" name="amberdata"/>
 	   	</fragment>
     	<fragment use="document" name="farah">
-	    	<use-document ref="//slothsoft@farah/schema/module"/>
-	    	<use-document ref="//slothsoft@farah/schema/sitemap"/>
-	    	<use-document ref="//slothsoft@farah/schema/dictionary"/>
+	    	<use-document ref="//slothsoft@farah/schema/module" name="module"/>
+	    	<use-document ref="//slothsoft@farah/schema/sitemap" name="sitemap"/>
+	    	<use-document ref="//slothsoft@farah/schema/dictionary" name="dictionary"/>
 	   	</fragment>
     	<fragment use="document" name="savegame">
-	    	<use-document ref="//slothsoft@savegame/schema/editor"/>
+	    	<use-document ref="//slothsoft@savegame/schema/editor" name="editor"/>
 	    </fragment>
     	<fragment use="document" name="schema">
-	    	<use-document ref="//slothsoft@schema/schema/versioning"/>
+	    	<use-document ref="//slothsoft@schema/schema/versioning" name="versioning"/>
 	    </fragment>
     </fragment>
     
     <fragment name="pages">
     	<fragment name="index">
-    		<use-template ref="/xsl/index"/>
-    		<use-document ref="/schemata"/>
-    		<use-document ref="//slothsoft@farah/sites"/>
-    		<import ref="//slothsoft@core/api/HTML5"/>
-    		<link-stylesheet ref="/css/default"/>
+    		<use-template ref="/xsl/index" name="index"/>
+    		<use-document ref="/schemata" name="schemata"/>
+    		<use-document ref="//slothsoft@farah/sites" name="sites"/>
+    		<import ref="//slothsoft@core/api/HTML5" name="HTML5"/>
+    		<link-stylesheet ref="/css/default" name="default"/>
     	</fragment>
     	<fragment name="schema">
 	    	<fragment name="home">
-	    		<use-template ref="/xsl/schema.home"/>
-	    		<use-document ref="/api/schema-info"/>
-	    		<import ref="//slothsoft@core/api/HTML5"/>
-    			<link-stylesheet ref="/css/default"/>
+	    		<use-template ref="/xsl/schema.home" name="schema.home"/>
+	    		<use-document ref="/api/schema-info" name="schema-info"/>
+	    		<import ref="//slothsoft@core/api/HTML5" name="HTML5"/>
+    			<link-stylesheet ref="/css/default" name="default"/>
 	    	</fragment>
 	    	<fragment name="documentation">
-	    		<use-template ref="/xsl/schema.documentation"/>
-	    		<use-document ref="/api/schema-info"/>
-	    		<use-document ref="/api/schema-manifest"/>
-	    		<import ref="//slothsoft@core/api/HTML5"/>
-    			<link-stylesheet ref="/css/default"/>
+	    		<use-template ref="/xsl/schema.documentation" name="schema.documentation"/>
+	    		<use-document ref="/api/schema-info" name="schema-info"/>
+	    		<use-document ref="/api/schema-manifest" name="schema-manifest"/>
+	    		<import ref="//slothsoft@core/api/HTML5" name="HTML5"/>
+    			<link-stylesheet ref="/css/default" name="default"/>
 	    	</fragment>
     	</fragment>
     </fragment>
