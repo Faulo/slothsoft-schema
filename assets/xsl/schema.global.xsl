@@ -89,16 +89,16 @@
 	
 	<xsl:template match="*" mode="footer">
 		<div>
-			© 2017, 2018 
+			<span data-dict=".">footer/copyright</span>
 			<xsl:for-each select="$info/ssv:author">
 				<a href="mailto:{@email}"><xsl:value-of select="."/></a>,
 			</xsl:for-each>
-			<a href="mailto:info.slothsoft@gmail.com">Slothsoft</a>
+			<span data-dict=".">footer/company</span>
 		</div>
 	</xsl:template>
 	
 	<xsl:template match="*" mode="title">
-		<span data-dict=".">title</span>
+		<a href="/"><span data-dict=".">title</span></a>
 		<xsl:apply-templates select="." mode="name"/>
 	</xsl:template>
 	

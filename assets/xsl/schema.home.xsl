@@ -22,6 +22,7 @@
 			</thead>
 			<tbody>
 				<xsl:for-each select="$infoList">
+					<xsl:sort select="ssv:version" order="descending" data-type="number"/>
 					<xsl:variable name="file" select="concat(ssv:prefix, '-', ssv:revision, '.xsd')"/>
 					<tr>
 						<td class="version"><xsl:value-of select="ssv:version"/></td>
