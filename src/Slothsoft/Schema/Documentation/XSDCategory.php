@@ -4,6 +4,7 @@ namespace Slothsoft\Schema\Documentation;
 
 class XSDCategory extends XSDNode
 {
+
     protected $childElementList = array();
 
     protected function initRefNodeList()
@@ -35,7 +36,7 @@ class XSDCategory extends XSDNode
             }
         }
     }
-    
+
     public function getChildList()
     {
         return array_merge($this->childElementList, parent::getChildList());

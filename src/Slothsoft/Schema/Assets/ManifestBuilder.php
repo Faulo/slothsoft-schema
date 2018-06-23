@@ -17,13 +17,16 @@ use DOMElement;
 
 class ManifestBuilder implements ExecutableBuilderStrategyInterface
 {
+
     public function buildExecutableStrategies(AssetInterface $context, FarahUrlArguments $args): ExecutableStrategies
     {
         if ($schemaId = $args->get('schema')) {
             if ($version = $args->get('version')) {
                 $schemaId .= "/$version";
                 $schemaUrl = FarahUrl::createFromReference($schemaId);
-                $schemaVersions = [$schemaUrl];
+                $schemaVersions = [
+                    $schemaUrl
+                ];
             } else {
                 $schemaUrl = FarahUrl::createFromReference($schemaId);
                 $schemaVersions = [];
@@ -31,8 +34,7 @@ class ManifestBuilder implements ExecutableBuilderStrategyInterface
                     $schemaVersions[] = $asset->createUrl();
                 }
             }
-            $closure = function(DOMDocument $targetDoc) use ($schemaVersions) : DOMElement
-            {
+            $closure = function (DOMDocument $targetDoc) use ($schemaVersions): DOMElement {
                 $rootNode = $targetDoc->createElement('schema-manifest');
                 foreach ($schemaVersions as $url) {
                     $versionFile = "$url#xml";

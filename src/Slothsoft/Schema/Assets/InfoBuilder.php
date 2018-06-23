@@ -18,13 +18,16 @@ use DOMElement;
 
 class InfoBuilder implements ExecutableBuilderStrategyInterface
 {
+
     public function buildExecutableStrategies(AssetInterface $context, FarahUrlArguments $args): ExecutableStrategies
     {
         if ($schemaId = $args->get('schema')) {
             if ($version = $args->get('version')) {
                 $schemaId .= "/$version";
                 $schemaUrl = FarahUrl::createFromReference($schemaId);
-                $schemaVersions = [$schemaUrl];
+                $schemaVersions = [
+                    $schemaUrl
+                ];
             } else {
                 $schemaUrl = FarahUrl::createFromReference($schemaId);
                 $schemaVersions = [];
@@ -32,8 +35,7 @@ class InfoBuilder implements ExecutableBuilderStrategyInterface
                     $schemaVersions[] = $asset->createUrl();
                 }
             }
-            $closure = function(DOMDocument $targetDoc) use ($schemaVersions) : DOMElement
-            {
+            $closure = function (DOMDocument $targetDoc) use ($schemaVersions): DOMElement {
                 $rootNode = $targetDoc->createElement('schema-info');
                 foreach ($schemaVersions as $url) {
                     $schemaDoc = new \DOMDocument();
@@ -55,6 +57,5 @@ class InfoBuilder implements ExecutableBuilderStrategyInterface
         }
         return new ExecutableStrategies($resultBuilder);
     }
-
 }
 

@@ -1,11 +1,8 @@
 <?xml version="1.0"?>
-<xsd:schema
-	targetNamespace="http://schema.slothsoft.net/schema/versioning"
-	xmlns="http://schema.slothsoft.net/schema/versioning"
-	xmlns:ssv="http://schema.slothsoft.net/schema/versioning"
-	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-	elementFormDefault="qualified" attributeFormDefault="unqualified">
-	
+<xsd:schema targetNamespace="http://schema.slothsoft.net/schema/versioning"
+	xmlns="http://schema.slothsoft.net/schema/versioning" xmlns:ssv="http://schema.slothsoft.net/schema/versioning"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+
 	<xsd:annotation>
 		<xsd:appinfo>
 			<ssv:info version="1.0">
@@ -26,7 +23,7 @@ This namespace defines elements used inside XML schemata to identify meta inform
 			</ssv:info>
 		</xsd:appinfo>
 	</xsd:annotation>
-	
+
 	<xsd:attributeGroup name="schemaVersion">
 		<xsd:attribute name="version" type="xsd:token" use="required" fixed="1.0">
 			<xsd:annotation>
@@ -34,40 +31,40 @@ This namespace defines elements used inside XML schemata to identify meta inform
 			</xsd:annotation>
 		</xsd:attribute>
 	</xsd:attributeGroup>
-	
+
 	<xsd:element name="info">
 		<xsd:complexType>
 			<xsd:sequence>
-				<xsd:element name="name" type="xsd:normalizedString"/>
-				<xsd:element name="version" type="xsd:decimal"/>
+				<xsd:element name="name" type="xsd:normalizedString" />
+				<xsd:element name="version" type="xsd:decimal" />
 				<xsd:element name="revision">
 					<xsd:simpleType>
 						<xsd:restriction base="xsd:token">
-							<xsd:pattern value="R\d{8}"/>
+							<xsd:pattern value="R\d{8}" />
 						</xsd:restriction>
 					</xsd:simpleType>
 				</xsd:element>
 				<xsd:element name="prefix">
 					<xsd:simpleType>
 						<xsd:restriction base="xsd:token">
-							<xsd:pattern value="[a-z]+"/>
+							<xsd:pattern value="[a-z]+" />
 						</xsd:restriction>
 					</xsd:simpleType>
 				</xsd:element>
-				<xsd:element name="namespace" type="xsd:anyURI"/>
+				<xsd:element name="namespace" type="xsd:anyURI" />
 				<xsd:element name="author">
 					<xsd:complexType>
 						<xsd:simpleContent>
 							<xsd:extension base="xsd:normalizedString">
-								<xsd:attribute name="email" type="xsd:normalizedString" use="optional"/>
+								<xsd:attribute name="email" type="xsd:normalizedString" use="optional" />
 							</xsd:extension>
 						</xsd:simpleContent>
 					</xsd:complexType>
 				</xsd:element>
-				<xsd:element name="description" type="xsd:string"/>
-				<xsd:element name="changelog" type="xsd:string"/>
+				<xsd:element name="description" type="xsd:string" />
+				<xsd:element name="changelog" type="xsd:string" />
 			</xsd:sequence>
-			<xsd:attributeGroup ref="schemaVersion"/>
+			<xsd:attributeGroup ref="schemaVersion" />
 		</xsd:complexType>
 	</xsd:element>
 </xsd:schema>

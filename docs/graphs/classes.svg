@@ -21,128 +21,128 @@
 <path fill="none" stroke="gray" d="M303.019,-175.316C303.019,-175.316 1013.04,-175.316 1013.04,-175.316 1019.04,-175.316 1025.04,-181.316 1025.04,-187.316 1025.04,-187.316 1025.04,-963.316 1025.04,-963.316 1025.04,-969.316 1019.04,-975.316 1013.04,-975.316 1013.04,-975.316 303.019,-975.316 303.019,-975.316 297.019,-975.316 291.019,-969.316 291.019,-963.316 291.019,-963.316 291.019,-187.316 291.019,-187.316 291.019,-181.316 297.019,-175.316 303.019,-175.316"/>
 <text text-anchor="middle" x="658.029" y="-962.516" font-family="Times New Roman,serif" font-size="11.00" fill="gray">Schema</text>
 </g>
-<g id="clust4" class="cluster"><title>cluster_\Slothsoft\Schema\Assets</title>
-<path fill="none" stroke="gray" d="M814.538,-363.316C814.538,-363.316 964.538,-363.316 964.538,-363.316 970.538,-363.316 976.538,-369.316 976.538,-375.316 976.538,-375.316 976.538,-531.316 976.538,-531.316 976.538,-537.316 970.538,-543.316 964.538,-543.316 964.538,-543.316 814.538,-543.316 814.538,-543.316 808.538,-543.316 802.538,-537.316 802.538,-531.316 802.538,-531.316 802.538,-375.316 802.538,-375.316 802.538,-369.316 808.538,-363.316 814.538,-363.316"/>
-<text text-anchor="middle" x="889.538" y="-530.516" font-family="Times New Roman,serif" font-size="11.00" fill="gray">Assets</text>
-</g>
-<g id="clust5" class="cluster"><title>cluster_\Slothsoft\Schema\Documentation</title>
+<g id="clust4" class="cluster"><title>cluster_\Slothsoft\Schema\Documentation</title>
 <path fill="none" stroke="gray" d="M311.019,-551.316C311.019,-551.316 937.538,-551.316 937.538,-551.316 943.538,-551.316 949.538,-557.316 949.538,-563.316 949.538,-563.316 949.538,-935.316 949.538,-935.316 949.538,-941.316 943.538,-947.316 937.538,-947.316 937.538,-947.316 311.019,-947.316 311.019,-947.316 305.019,-947.316 299.019,-941.316 299.019,-935.316 299.019,-935.316 299.019,-563.316 299.019,-563.316 299.019,-557.316 305.019,-551.316 311.019,-551.316"/>
 <text text-anchor="middle" x="624.279" y="-934.516" font-family="Times New Roman,serif" font-size="11.00" fill="gray">Documentation</text>
+</g>
+<g id="clust5" class="cluster"><title>cluster_\Slothsoft\Schema\Assets</title>
+<path fill="none" stroke="gray" d="M814.538,-363.316C814.538,-363.316 964.538,-363.316 964.538,-363.316 970.538,-363.316 976.538,-369.316 976.538,-375.316 976.538,-375.316 976.538,-531.316 976.538,-531.316 976.538,-537.316 970.538,-543.316 964.538,-543.316 964.538,-543.316 814.538,-543.316 814.538,-543.316 808.538,-543.316 802.538,-537.316 802.538,-531.316 802.538,-531.316 802.538,-375.316 802.538,-375.316 802.538,-369.316 808.538,-363.316 814.538,-363.316"/>
+<text text-anchor="middle" x="889.538" y="-530.516" font-family="Times New Roman,serif" font-size="11.00" fill="gray">Assets</text>
 </g>
 <g id="clust6" class="cluster"><title>cluster_\Slothsoft\Schema\Exceptions</title>
 <path fill="none" stroke="gray" d="M774.038,-283.316C774.038,-283.316 1005.04,-283.316 1005.04,-283.316 1011.04,-283.316 1017.04,-289.316 1017.04,-295.316 1017.04,-295.316 1017.04,-343.316 1017.04,-343.316 1017.04,-349.316 1011.04,-355.316 1005.04,-355.316 1005.04,-355.316 774.038,-355.316 774.038,-355.316 768.038,-355.316 762.038,-349.316 762.038,-343.316 762.038,-343.316 762.038,-295.316 762.038,-295.316 762.038,-289.316 768.038,-283.316 774.038,-283.316"/>
 <text text-anchor="middle" x="889.538" y="-342.516" font-family="Times New Roman,serif" font-size="11.00" fill="gray">Exceptions</text>
 </g>
-<!-- \\Slothsoft\\Schema\\Assets\\InfoBuilder -->
-<g id="node1" class="node"><title>\\Slothsoft\\Schema\\Assets\\InfoBuilder</title>
-<polygon fill="none" stroke="black" points="935.038,-515.316 844.038,-515.316 844.038,-479.316 935.038,-479.316 935.038,-515.316"/>
-<text text-anchor="middle" x="889.538" y="-494.516" font-family="Courier,monospace" font-size="11.00">InfoBuilder</text>
-</g>
-<!-- \\Slothsoft\\Farah\\Module\\Asset\\ExecutableBuilderStrategy\\ExecutableBuilderStrategyInterface -->
-<g id="node15" class="node"><title>\\Slothsoft\\Farah\\Module\\Asset\\ExecutableBuilderStrategy\\ExecutableBuilderStrategyInterface</title>
-<ellipse fill="none" stroke="black" cx="349.019" cy="-133.316" rx="349.038" ry="18"/>
-<text text-anchor="middle" x="349.019" y="-129.616" font-family="Times New Roman,serif" font-size="14.00" fill="gray">\Slothsoft\Farah\Module\Asset\ExecutableBuilderStrategy\ExecutableBuilderStrategyInterface</text>
-</g>
-<!-- \\Slothsoft\\Schema\\Assets\\InfoBuilder&#45;&gt;\\Slothsoft\\Farah\\Module\\Asset\\ExecutableBuilderStrategy\\ExecutableBuilderStrategyInterface -->
-<g id="edge1" class="edge"><title>\\Slothsoft\\Schema\\Assets\\InfoBuilder&#45;&gt;\\Slothsoft\\Farah\\Module\\Asset\\ExecutableBuilderStrategy\\ExecutableBuilderStrategyInterface</title>
-<path fill="none" stroke="black" stroke-dasharray="1,5" d="M843.833,-493.024C818.831,-489.357 787.643,-482.62 762.038,-470.316 591.898,-388.564 430.956,-222.721 372.854,-159.028"/>
-<polygon fill="none" stroke="black" points="375.279,-156.491 365.971,-151.431 370.091,-161.191 375.279,-156.491"/>
-</g>
-<!-- \\Slothsoft\\Schema\\Assets\\ManifestBuilder -->
-<g id="node2" class="node"><title>\\Slothsoft\\Schema\\Assets\\ManifestBuilder</title>
-<polygon fill="none" stroke="black" points="948.538,-461.316 830.538,-461.316 830.538,-425.316 948.538,-425.316 948.538,-461.316"/>
-<text text-anchor="middle" x="889.538" y="-440.516" font-family="Courier,monospace" font-size="11.00">ManifestBuilder</text>
-</g>
-<!-- \\Slothsoft\\Schema\\Assets\\ManifestBuilder&#45;&gt;\\Slothsoft\\Farah\\Module\\Asset\\ExecutableBuilderStrategy\\ExecutableBuilderStrategyInterface -->
-<g id="edge2" class="edge"><title>\\Slothsoft\\Schema\\Assets\\ManifestBuilder&#45;&gt;\\Slothsoft\\Farah\\Module\\Asset\\ExecutableBuilderStrategy\\ExecutableBuilderStrategyInterface</title>
-<path fill="none" stroke="black" stroke-dasharray="1,5" d="M830.399,-435.821C808.394,-431.727 783.494,-425.542 762.038,-416.316 602.634,-347.778 440.888,-213.663 377.701,-158.219"/>
-<polygon fill="none" stroke="black" points="379.955,-155.541 370.142,-151.548 375.324,-160.79 379.955,-155.541"/>
-</g>
-<!-- \\Slothsoft\\Schema\\Assets\\SchemaParameterFilter -->
-<g id="node3" class="node"><title>\\Slothsoft\\Schema\\Assets\\SchemaParameterFilter</title>
-<polygon fill="none" stroke="black" points="968.538,-407.316 810.538,-407.316 810.538,-371.316 968.538,-371.316 968.538,-407.316"/>
-<text text-anchor="middle" x="889.538" y="-386.516" font-family="Courier,monospace" font-size="11.00">SchemaParameterFilter</text>
-</g>
-<!-- \\Slothsoft\\Farah\\Module\\Asset\\ParameterFilterStrategy\\AbstractMapParameterFilter -->
-<g id="node16" class="node"><title>\\Slothsoft\\Farah\\Module\\Asset\\ParameterFilterStrategy\\AbstractMapParameterFilter</title>
-<ellipse fill="none" stroke="black" cx="349.019" cy="-79.3164" rx="313.844" ry="18"/>
-<text text-anchor="middle" x="349.019" y="-75.6164" font-family="Times New Roman,serif" font-size="14.00" fill="gray">\Slothsoft\Farah\Module\Asset\ParameterFilterStrategy\AbstractMapParameterFilter</text>
-</g>
-<!-- \\Slothsoft\\Schema\\Assets\\SchemaParameterFilter&#45;&gt;\\Slothsoft\\Farah\\Module\\Asset\\ParameterFilterStrategy\\AbstractMapParameterFilter -->
-<g id="edge3" class="edge"><title>\\Slothsoft\\Schema\\Assets\\SchemaParameterFilter&#45;&gt;\\Slothsoft\\Farah\\Module\\Asset\\ParameterFilterStrategy\\AbstractMapParameterFilter</title>
-<path fill="none" stroke="black" d="M810.275,-384.414C792.508,-379.862 775.062,-372.147 762.038,-359.316 679.414,-277.916 786.732,-181.057 698.038,-106.316 626.412,-45.9587 514.416,-48.6413 436.906,-60.2441"/>
-<polygon fill="none" stroke="black" points="436.014,-56.8413 426.681,-61.8559 437.104,-63.756 436.014,-56.8413"/>
-</g>
 <!-- \\Slothsoft\\Schema\\Documentation\\XSDAnnotation -->
-<g id="node4" class="node"><title>\\Slothsoft\\Schema\\Documentation\\XSDAnnotation</title>
+<g id="node1" class="node"><title>\\Slothsoft\\Schema\\Documentation\\XSDAnnotation</title>
 <polygon fill="none" stroke="black" points="941.538,-919.316 837.538,-919.316 837.538,-883.316 941.538,-883.316 941.538,-919.316"/>
 <text text-anchor="middle" x="889.538" y="-898.516" font-family="Courier,monospace" font-size="11.00">XSDAnnotation</text>
 </g>
 <!-- \\Slothsoft\\Schema\\Documentation\\XSDNode -->
-<g id="node10" class="node"><title>\\Slothsoft\\Schema\\Documentation\\XSDNode</title>
+<g id="node8" class="node"><title>\\Slothsoft\\Schema\\Documentation\\XSDNode</title>
 <polygon fill="none" stroke="black" points="391.019,-784.316 307.019,-784.316 307.019,-748.316 391.019,-748.316 391.019,-784.316"/>
 <text text-anchor="start" x="315.019" y="-769.516" font-family="Courier,monospace" font-size="11.00">«abstract»</text>
 <text text-anchor="start" x="325.019" y="-757.516" font-family="Courier,monospace" font-size="11.00">XSDNode</text>
 </g>
 <!-- \\Slothsoft\\Schema\\Documentation\\XSDAnnotation&#45;&gt;\\Slothsoft\\Schema\\Documentation\\XSDNode -->
-<g id="edge4" class="edge"><title>\\Slothsoft\\Schema\\Documentation\\XSDAnnotation&#45;&gt;\\Slothsoft\\Schema\\Documentation\\XSDNode</title>
+<g id="edge1" class="edge"><title>\\Slothsoft\\Schema\\Documentation\\XSDAnnotation&#45;&gt;\\Slothsoft\\Schema\\Documentation\\XSDNode</title>
 <path fill="none" stroke="black" d="M837.331,-890.946C814.267,-886.132 786.726,-880.184 762.038,-874.316 631.39,-843.268 478.77,-801.924 401.091,-780.514"/>
 <polygon fill="none" stroke="black" points="401.661,-777.041 391.09,-777.754 399.799,-783.788 401.661,-777.041"/>
 </g>
-<!-- \\Slothsoft\\Schema\\Documentation\\XSDAttribute -->
-<g id="node5" class="node"><title>\\Slothsoft\\Schema\\Documentation\\XSDAttribute</title>
-<polygon fill="none" stroke="black" points="938.538,-865.316 840.538,-865.316 840.538,-829.316 938.538,-829.316 938.538,-865.316"/>
-<text text-anchor="middle" x="889.538" y="-844.516" font-family="Courier,monospace" font-size="11.00">XSDAttribute</text>
-</g>
-<!-- \\Slothsoft\\Schema\\Documentation\\XSDAttribute&#45;&gt;\\Slothsoft\\Schema\\Documentation\\XSDNode -->
-<g id="edge5" class="edge"><title>\\Slothsoft\\Schema\\Documentation\\XSDAttribute&#45;&gt;\\Slothsoft\\Schema\\Documentation\\XSDNode</title>
-<path fill="none" stroke="black" d="M840.274,-840.057C738.962,-824.818 504.943,-789.619 401.166,-774.01"/>
-<polygon fill="none" stroke="black" points="401.651,-770.543 391.242,-772.517 400.61,-777.465 401.651,-770.543"/>
-</g>
 <!-- \\Slothsoft\\Schema\\Documentation\\XSDCategory -->
-<g id="node6" class="node"><title>\\Slothsoft\\Schema\\Documentation\\XSDCategory</title>
-<polygon fill="none" stroke="black" points="935.038,-811.316 844.038,-811.316 844.038,-775.316 935.038,-775.316 935.038,-811.316"/>
-<text text-anchor="middle" x="889.538" y="-790.516" font-family="Courier,monospace" font-size="11.00">XSDCategory</text>
+<g id="node2" class="node"><title>\\Slothsoft\\Schema\\Documentation\\XSDCategory</title>
+<polygon fill="none" stroke="black" points="935.038,-865.316 844.038,-865.316 844.038,-829.316 935.038,-829.316 935.038,-865.316"/>
+<text text-anchor="middle" x="889.538" y="-844.516" font-family="Courier,monospace" font-size="11.00">XSDCategory</text>
 </g>
 <!-- \\Slothsoft\\Schema\\Documentation\\XSDCategory&#45;&gt;\\Slothsoft\\Schema\\Documentation\\XSDNode -->
-<g id="edge6" class="edge"><title>\\Slothsoft\\Schema\\Documentation\\XSDCategory&#45;&gt;\\Slothsoft\\Schema\\Documentation\\XSDNode</title>
-<path fill="none" stroke="black" d="M844.011,-791.084C744.875,-786.114 506.442,-774.159 401.3,-768.888"/>
-<polygon fill="none" stroke="black" points="401.413,-765.389 391.25,-768.384 401.062,-772.38 401.413,-765.389"/>
+<g id="edge2" class="edge"><title>\\Slothsoft\\Schema\\Documentation\\XSDCategory&#45;&gt;\\Slothsoft\\Schema\\Documentation\\XSDNode</title>
+<path fill="none" stroke="black" d="M844.011,-840.619C744.875,-825.708 506.442,-789.844 401.3,-774.03"/>
+<polygon fill="none" stroke="black" points="401.659,-770.544 391.25,-772.518 400.618,-777.467 401.659,-770.544"/>
+</g>
+<!-- \\Slothsoft\\Schema\\Documentation\\XSDGroup -->
+<g id="node3" class="node"><title>\\Slothsoft\\Schema\\Documentation\\XSDGroup</title>
+<polygon fill="none" stroke="black" points="925.038,-811.316 854.038,-811.316 854.038,-775.316 925.038,-775.316 925.038,-811.316"/>
+<text text-anchor="middle" x="889.538" y="-790.516" font-family="Courier,monospace" font-size="11.00">XSDGroup</text>
+</g>
+<!-- \\Slothsoft\\Schema\\Documentation\\XSDGroup&#45;&gt;\\Slothsoft\\Schema\\Documentation\\XSDNode -->
+<g id="edge3" class="edge"><title>\\Slothsoft\\Schema\\Documentation\\XSDGroup&#45;&gt;\\Slothsoft\\Schema\\Documentation\\XSDNode</title>
+<path fill="none" stroke="black" d="M854.032,-791.586C761.941,-786.969 509.981,-774.337 401.174,-768.881"/>
+<polygon fill="none" stroke="black" points="401.264,-765.381 391.101,-768.376 400.913,-772.373 401.264,-765.381"/>
 </g>
 <!-- \\Slothsoft\\Schema\\Documentation\\XSDElement -->
-<g id="node7" class="node"><title>\\Slothsoft\\Schema\\Documentation\\XSDElement</title>
+<g id="node4" class="node"><title>\\Slothsoft\\Schema\\Documentation\\XSDElement</title>
 <polygon fill="none" stroke="black" points="931.538,-757.316 847.538,-757.316 847.538,-721.316 931.538,-721.316 931.538,-757.316"/>
 <text text-anchor="middle" x="889.538" y="-736.516" font-family="Courier,monospace" font-size="11.00">XSDElement</text>
 </g>
 <!-- \\Slothsoft\\Schema\\Documentation\\XSDElement&#45;&gt;\\Slothsoft\\Schema\\Documentation\\XSDNode -->
-<g id="edge7" class="edge"><title>\\Slothsoft\\Schema\\Documentation\\XSDElement&#45;&gt;\\Slothsoft\\Schema\\Documentation\\XSDNode</title>
+<g id="edge4" class="edge"><title>\\Slothsoft\\Schema\\Documentation\\XSDElement&#45;&gt;\\Slothsoft\\Schema\\Documentation\\XSDNode</title>
 <path fill="none" stroke="black" d="M847.176,-741.39C750.046,-746.26 507.59,-758.416 401.307,-763.745"/>
 <polygon fill="none" stroke="black" points="400.965,-760.258 391.153,-764.254 401.316,-767.249 400.965,-760.258"/>
 </g>
+<!-- \\Slothsoft\\Schema\\Documentation\\XSDAttribute -->
+<g id="node5" class="node"><title>\\Slothsoft\\Schema\\Documentation\\XSDAttribute</title>
+<polygon fill="none" stroke="black" points="938.538,-703.316 840.538,-703.316 840.538,-667.316 938.538,-667.316 938.538,-703.316"/>
+<text text-anchor="middle" x="889.538" y="-682.516" font-family="Courier,monospace" font-size="11.00">XSDAttribute</text>
+</g>
+<!-- \\Slothsoft\\Schema\\Documentation\\XSDAttribute&#45;&gt;\\Slothsoft\\Schema\\Documentation\\XSDNode -->
+<g id="edge7" class="edge"><title>\\Slothsoft\\Schema\\Documentation\\XSDAttribute&#45;&gt;\\Slothsoft\\Schema\\Documentation\\XSDNode</title>
+<path fill="none" stroke="black" d="M840.274,-692.576C738.962,-707.814 504.943,-743.014 401.166,-758.623"/>
+<polygon fill="none" stroke="black" points="400.61,-755.167 391.242,-760.116 401.651,-762.09 400.61,-755.167"/>
+</g>
 <!-- \\Slothsoft\\Schema\\Documentation\\XSDFile -->
-<g id="node8" class="node"><title>\\Slothsoft\\Schema\\Documentation\\XSDFile</title>
-<polygon fill="none" stroke="black" points="921.538,-703.316 857.538,-703.316 857.538,-667.316 921.538,-667.316 921.538,-703.316"/>
-<text text-anchor="middle" x="889.538" y="-682.516" font-family="Courier,monospace" font-size="11.00">XSDFile</text>
-</g>
-<!-- \\Slothsoft\\Schema\\Documentation\\XSDGroup -->
-<g id="node9" class="node"><title>\\Slothsoft\\Schema\\Documentation\\XSDGroup</title>
-<polygon fill="none" stroke="black" points="925.038,-649.316 854.038,-649.316 854.038,-613.316 925.038,-613.316 925.038,-649.316"/>
-<text text-anchor="middle" x="889.538" y="-628.516" font-family="Courier,monospace" font-size="11.00">XSDGroup</text>
-</g>
-<!-- \\Slothsoft\\Schema\\Documentation\\XSDGroup&#45;&gt;\\Slothsoft\\Schema\\Documentation\\XSDNode -->
-<g id="edge8" class="edge"><title>\\Slothsoft\\Schema\\Documentation\\XSDGroup&#45;&gt;\\Slothsoft\\Schema\\Documentation\\XSDNode</title>
-<path fill="none" stroke="black" d="M853.811,-638.279C828.34,-643.496 792.953,-650.97 762.038,-658.316 631.39,-689.365 478.77,-730.709 401.091,-752.119"/>
-<polygon fill="none" stroke="black" points="399.799,-748.845 391.09,-754.879 401.661,-755.592 399.799,-748.845"/>
+<g id="node6" class="node"><title>\\Slothsoft\\Schema\\Documentation\\XSDFile</title>
+<polygon fill="none" stroke="black" points="921.538,-649.316 857.538,-649.316 857.538,-613.316 921.538,-613.316 921.538,-649.316"/>
+<text text-anchor="middle" x="889.538" y="-628.516" font-family="Courier,monospace" font-size="11.00">XSDFile</text>
 </g>
 <!-- \\Slothsoft\\Schema\\Documentation\\XSDType -->
-<g id="node11" class="node"><title>\\Slothsoft\\Schema\\Documentation\\XSDType</title>
+<g id="node7" class="node"><title>\\Slothsoft\\Schema\\Documentation\\XSDType</title>
 <polygon fill="none" stroke="black" points="921.538,-595.316 857.538,-595.316 857.538,-559.316 921.538,-559.316 921.538,-595.316"/>
 <text text-anchor="middle" x="889.538" y="-574.516" font-family="Courier,monospace" font-size="11.00">XSDType</text>
 </g>
 <!-- \\Slothsoft\\Schema\\Documentation\\XSDType&#45;&gt;\\Slothsoft\\Schema\\Documentation\\XSDNode -->
-<g id="edge9" class="edge"><title>\\Slothsoft\\Schema\\Documentation\\XSDType&#45;&gt;\\Slothsoft\\Schema\\Documentation\\XSDNode</title>
+<g id="edge8" class="edge"><title>\\Slothsoft\\Schema\\Documentation\\XSDType&#45;&gt;\\Slothsoft\\Schema\\Documentation\\XSDNode</title>
 <path fill="none" stroke="black" d="M857.506,-582.468C831.674,-587.106 794.078,-594.67 762.038,-604.316 627.584,-644.798 475.206,-710.002 398.957,-744.028"/>
 <polygon fill="none" stroke="black" points="397.295,-740.937 389.599,-748.218 400.156,-747.326 397.295,-740.937"/>
+</g>
+<!-- \\Slothsoft\\Schema\\Assets\\SchemaParameterFilter -->
+<g id="node9" class="node"><title>\\Slothsoft\\Schema\\Assets\\SchemaParameterFilter</title>
+<polygon fill="none" stroke="black" points="968.538,-515.316 810.538,-515.316 810.538,-479.316 968.538,-479.316 968.538,-515.316"/>
+<text text-anchor="middle" x="889.538" y="-494.516" font-family="Courier,monospace" font-size="11.00">SchemaParameterFilter</text>
+</g>
+<!-- \\Slothsoft\\Farah\\Module\\Asset\\ParameterFilterStrategy\\AbstractMapParameterFilter -->
+<g id="node15" class="node"><title>\\Slothsoft\\Farah\\Module\\Asset\\ParameterFilterStrategy\\AbstractMapParameterFilter</title>
+<ellipse fill="none" stroke="black" cx="349.019" cy="-133.316" rx="313.844" ry="18"/>
+<text text-anchor="middle" x="349.019" y="-129.616" font-family="Times New Roman,serif" font-size="14.00" fill="gray">\Slothsoft\Farah\Module\Asset\ParameterFilterStrategy\AbstractMapParameterFilter</text>
+</g>
+<!-- \\Slothsoft\\Schema\\Assets\\SchemaParameterFilter&#45;&gt;\\Slothsoft\\Farah\\Module\\Asset\\ParameterFilterStrategy\\AbstractMapParameterFilter -->
+<g id="edge5" class="edge"><title>\\Slothsoft\\Schema\\Assets\\SchemaParameterFilter&#45;&gt;\\Slothsoft\\Farah\\Module\\Asset\\ParameterFilterStrategy\\AbstractMapParameterFilter</title>
+<path fill="none" stroke="black" d="M810.349,-486.693C793.905,-482.806 777.016,-477.514 762.038,-470.316 591.898,-388.564 430.956,-222.721 372.854,-159.028"/>
+<polygon fill="none" stroke="black" points="375.279,-156.491 365.971,-151.431 370.091,-161.191 375.279,-156.491"/>
+</g>
+<!-- \\Slothsoft\\Schema\\Assets\\ManifestBuilder -->
+<g id="node10" class="node"><title>\\Slothsoft\\Schema\\Assets\\ManifestBuilder</title>
+<polygon fill="none" stroke="black" points="948.538,-461.316 830.538,-461.316 830.538,-425.316 948.538,-425.316 948.538,-461.316"/>
+<text text-anchor="middle" x="889.538" y="-440.516" font-family="Courier,monospace" font-size="11.00">ManifestBuilder</text>
+</g>
+<!-- \\Slothsoft\\Farah\\Module\\Asset\\ExecutableBuilderStrategy\\ExecutableBuilderStrategyInterface -->
+<g id="node16" class="node"><title>\\Slothsoft\\Farah\\Module\\Asset\\ExecutableBuilderStrategy\\ExecutableBuilderStrategyInterface</title>
+<ellipse fill="none" stroke="black" cx="349.019" cy="-79.3164" rx="349.038" ry="18"/>
+<text text-anchor="middle" x="349.019" y="-75.6164" font-family="Times New Roman,serif" font-size="14.00" fill="gray">\Slothsoft\Farah\Module\Asset\ExecutableBuilderStrategy\ExecutableBuilderStrategyInterface</text>
+</g>
+<!-- \\Slothsoft\\Schema\\Assets\\ManifestBuilder&#45;&gt;\\Slothsoft\\Farah\\Module\\Asset\\ExecutableBuilderStrategy\\ExecutableBuilderStrategyInterface -->
+<g id="edge6" class="edge"><title>\\Slothsoft\\Schema\\Assets\\ManifestBuilder&#45;&gt;\\Slothsoft\\Farah\\Module\\Asset\\ExecutableBuilderStrategy\\ExecutableBuilderStrategyInterface</title>
+<path fill="none" stroke="black" stroke-dasharray="1,5" d="M830.315,-444.236C806.192,-441.559 779.763,-434.16 762.038,-416.316 662.893,-316.506 803.589,-199.326 698.038,-106.316 626.892,-43.6247 512.699,-47.4837 434.662,-59.9597"/>
+<polygon fill="none" stroke="black" points="433.659,-56.5791 424.377,-61.687 434.818,-63.4824 433.659,-56.5791"/>
+</g>
+<!-- \\Slothsoft\\Schema\\Assets\\InfoBuilder -->
+<g id="node11" class="node"><title>\\Slothsoft\\Schema\\Assets\\InfoBuilder</title>
+<polygon fill="none" stroke="black" points="935.038,-407.316 844.038,-407.316 844.038,-371.316 935.038,-371.316 935.038,-407.316"/>
+<text text-anchor="middle" x="889.538" y="-386.516" font-family="Courier,monospace" font-size="11.00">InfoBuilder</text>
+</g>
+<!-- \\Slothsoft\\Schema\\Assets\\InfoBuilder&#45;&gt;\\Slothsoft\\Farah\\Module\\Asset\\ExecutableBuilderStrategy\\ExecutableBuilderStrategyInterface -->
+<g id="edge9" class="edge"><title>\\Slothsoft\\Schema\\Assets\\InfoBuilder&#45;&gt;\\Slothsoft\\Farah\\Module\\Asset\\ExecutableBuilderStrategy\\ExecutableBuilderStrategyInterface</title>
+<path fill="none" stroke="black" stroke-dasharray="1,5" d="M843.802,-389.786C816.731,-387.659 783.423,-380.384 762.038,-359.316 679.414,-277.916 786.732,-181.057 698.038,-106.316 626.634,-46.1456 515.109,-48.6253 437.627,-60.1366"/>
+<polygon fill="none" stroke="black" points="436.741,-56.7324 427.403,-61.7368 437.824,-63.6482 436.741,-56.7324"/>
 </g>
 <!-- \\Slothsoft\\Schema\\Exceptions\\SchemaVersioningNotFoundException -->
 <g id="node12" class="node"><title>\\Slothsoft\\Schema\\Exceptions\\SchemaVersioningNotFoundException</title>
