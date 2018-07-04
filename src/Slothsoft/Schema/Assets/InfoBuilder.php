@@ -3,12 +3,12 @@ declare(strict_types = 1);
 namespace Slothsoft\Schema\Assets;
 
 use Slothsoft\Core\DOMHelper;
+use Slothsoft\Core\IO\Writable\Delegates\DOMWriterFromElementDelegate;
 use Slothsoft\Farah\FarahUrl\FarahUrl;
 use Slothsoft\Farah\FarahUrl\FarahUrlArguments;
 use Slothsoft\Farah\Module\Module;
 use Slothsoft\Farah\Module\Asset\AssetInterface;
 use Slothsoft\Farah\Module\Asset\ExecutableBuilderStrategy\ExecutableBuilderStrategyInterface;
-use Slothsoft\Farah\Module\DOMWriter\ElementClosureDOMWriter;
 use Slothsoft\Farah\Module\Executable\ExecutableStrategies;
 use Slothsoft\Farah\Module\Executable\ResultBuilderStrategy\DOMWriterResultBuilder;
 use Slothsoft\Farah\Module\Executable\ResultBuilderStrategy\NullResultBuilder;
@@ -50,7 +50,7 @@ class InfoBuilder implements ExecutableBuilderStrategyInterface
                 }
                 return $rootNode;
             };
-            $writer = new ElementClosureDOMWriter($closure);
+            $writer = new DOMWriterFromElementDelegate($closure);
             $resultBuilder = new DOMWriterResultBuilder($writer);
         } else {
             $resultBuilder = new NullResultBuilder();
