@@ -44,7 +44,7 @@ class ManifestBuilder implements ExecutableBuilderStrategyInterface
                 return $rootNode;
             };
             $writer = new DOMWriterFromElementDelegate($closure);
-            $resultBuilder = new DOMWriterResultBuilder($writer);
+            $resultBuilder = new DOMWriterResultBuilder($writer, 'manifest.xml');
         } else {
             $resultBuilder = new NullResultBuilder();
         }

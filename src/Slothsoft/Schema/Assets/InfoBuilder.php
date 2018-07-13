@@ -51,7 +51,7 @@ class InfoBuilder implements ExecutableBuilderStrategyInterface
                 return $rootNode;
             };
             $writer = new DOMWriterFromElementDelegate($closure);
-            $resultBuilder = new DOMWriterResultBuilder($writer);
+            $resultBuilder = new DOMWriterResultBuilder($writer, 'info.xml');
         } else {
             $resultBuilder = new NullResultBuilder();
         }
