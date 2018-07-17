@@ -729,7 +729,7 @@ abstract class XSDNode
 
     protected function _addGroupParentNode(DOMElement $parentNode)
     {
-        $nodeList = $this->xpath->evaluate('xsd:group[@ref] | */xsd:group[@ref]', $parentNode);
+        $nodeList = $this->xpath->evaluate('xsd:group[@ref] | */xsd:group[@ref] | */*/xsd:group[@ref]', $parentNode);
         foreach ($nodeList as $node) {
             $this->_addGroupName($node->getAttribute('ref'));
         }

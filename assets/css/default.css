@@ -77,11 +77,11 @@ code {
 	background: rgba(127, 127, 255, 0.1);
 }
 
-code.element::before {
+.tag::before {
 	content: "<";
 }
 
-code.element::after {
+.tag::after {
 	content: ">";
 }
 
@@ -107,6 +107,7 @@ code.type {
 
 code.group {
 	font-style: italic;
+	font-weight: normal;
 }
 
 .group {

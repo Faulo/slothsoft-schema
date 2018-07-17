@@ -70,7 +70,7 @@
 									<li>
 										<a href="#{@href}">
 											<span data-dict=".">doc/the-element</span>
-											<code class="element">
+											<code class="element tag">
 												<xsl:value-of select="@name" />
 											</code>
 										</a>
@@ -152,7 +152,7 @@
 			</xsl:if>
 			<xsl:if test="count($rootGroupList)">
 				<li>
-					<a href="#{generate-id(.)}-categories">
+					<a href="#{generate-id(.)}-groups">
 						<span data-dict=".">doc/groups-in-namespace</span>
 						<code class="namespace">
 							<xsl:value-of select="$info/ssv:namespace" />
@@ -281,7 +281,7 @@
 
 		<h3 id="{@href}">
 			<span data-dict=".">doc/the-element</span>
-			<code class="element">
+			<code class="element tag">
 				<xsl:value-of select="@name" />
 			</code>
 		</h3>
@@ -836,7 +836,7 @@
 
 	<xsl:template match="element[@name]" mode="href">
 		<a href="#{@href}">
-			<code class="element">
+			<code class="element tag">
 				<xsl:value-of select="@name" />
 			</code>
 		</a>
@@ -844,7 +844,7 @@
 	<xsl:template match="elementReference" mode="href">
 		<xsl:variable name="target" select="$elementDefinitionList[@id = current()/@id]" />
 		<code class="element">
-			<a href="#{$target/@href}">
+			<a href="#{$target/@href}" class="tag">
 				<xsl:value-of select="$target/@name" />
 			</a>
 			<abbr>
