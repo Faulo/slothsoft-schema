@@ -1,28 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-<meta charset="utf-8" />
-<title>API Documentation</title>
-<meta name="author" content="" />
-<meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
 
-<link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
-<link href="../css/font-awesome.min.css" rel="stylesheet">
-<link href="../css/prism.css" rel="stylesheet" media="all" />
-<link href="../css/template.css" rel="stylesheet" media="all" />
-
-<!--[if lt IE 9]>
+    <link href="../css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
     <script src="../js/html5.js"></script>
     <![endif]-->
-<script src="../js/jquery-1.11.0.min.js"></script>
-<script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
-<script src="../js/bootstrap.min.js"></script>
-<script src="../js/jquery.smooth-scroll.js"></script>
-<script src="../js/prism.min.js"></script>
-<!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
-<script type="text/javascript">
+    <script src="../js/jquery-1.11.0.min.js"></script>
+    <script src="../js/ui/1.10.4/jquery-ui.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
     function loadExternalCodeSnippets() {
         Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
             var src = pre.getAttribute('data-src');
@@ -71,855 +70,694 @@
     })
 </script>
 
-<link rel="shortcut icon" href="../images/favicon.ico" />
-<link rel="apple-touch-icon" href="../images/apple-touch-icon.png" />
-<link rel="apple-touch-icon" sizes="72x72"
-	href="../images/apple-touch-icon-72x72.png" />
-<link rel="apple-touch-icon" sizes="114x114"
-	href="../images/apple-touch-icon-114x114.png" />
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
 </head>
 <body>
 
-	<div class="navbar navbar-fixed-top">
-		<div class="navbar-inner">
-			<div class="container">
-				<a class="btn btn-navbar" data-toggle="collapse"
-					data-target=".nav-collapse"> <i class="icon-ellipsis-vertical"></i>
-				</a> <a class="brand" href="../index.html">API Documentation</a>
-
-				<div class="nav-collapse">
-					<ul class="nav pull-right">
-						<li class="dropdown"><a href="../index.html"
-							class="dropdown-toggle" data-toggle="dropdown"> API
-								Documentation <b class="caret"></b>
-						</a>
-							<ul class="dropdown-menu">
-								<li><a href="../namespaces/Slothsoft.html">\Slothsoft</a></li>
-							</ul></li>
-						<li class="dropdown" id="charts-menu"><a href="#"
-							class="dropdown-toggle" data-toggle="dropdown"> Charts <b
-								class="caret"></b>
-						</a>
-							<ul class="dropdown-menu">
-								<li><a href="../graphs/class.html"> <i
-										class="icon-list-alt"></i>&#160;Class hierarchy diagram
-								</a></li>
-							</ul></li>
-						<li class="dropdown" id="reports-menu"><a href="#"
-							class="dropdown-toggle" data-toggle="dropdown"> Reports <b
-								class="caret"></b>
-						</a>
-							<ul class="dropdown-menu">
-								<li><a href="../reports/errors.html"> <i
-										class="icon-list-alt"></i>&#160;Errors <span
-										class="label label-info pull-right">214</span>
-								</a></li>
-								<li><a href="../reports/markers.html"> <i
-										class="icon-list-alt"></i>&#160;Markers <span
-										class="label label-info pull-right">0</span>
-								</a></li>
-								<li><a href="../reports/deprecated.html"> <i
-										class="icon-list-alt"></i>&#160;Deprecated <span
-										class="label label-info pull-right">0</span>
-								</a></li>
-							</ul></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<!--<div class="go_to_top">-->
-		<!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
-		<!--</div>-->
-	</div>
-
-	<div id="___" class="container-fluid">
-		<section class="row-fluid">
-			<div class="span2 sidebar">
-				<div class="accordion" style="margin-bottom: 0">
-					<div class="accordion-group">
-						<div class="accordion-heading">
-							<a class="accordion-toggle " data-toggle="collapse"
-								data-target="#namespace-1651972109"></a> <a
-								href="../namespaces/default.html"
-								style="margin-left: 30px; padding-left: 0">\</a>
-						</div>
-						<div id="namespace-1651972109" class="accordion-body collapse in">
-							<div class="accordion-inner">
-
-								<div class="accordion" style="margin-bottom: 0">
-									<div class="accordion-group">
-										<div class="accordion-heading">
-											<a class="accordion-toggle collapsed" data-toggle="collapse"
-												data-target="#namespace-2075693586"></a> <a
-												href="../namespaces/Slothsoft.html"
-												style="margin-left: 30px; padding-left: 0">Slothsoft</a>
-										</div>
-										<div id="namespace-2075693586"
-											class="accordion-body collapse ">
-											<div class="accordion-inner">
-
-												<div class="accordion" style="margin-bottom: 0">
-													<div class="accordion-group">
-														<div class="accordion-heading">
-															<a class="accordion-toggle collapsed"
-																data-toggle="collapse"
-																data-target="#namespace-2111229186"></a> <a
-																href="../namespaces/Slothsoft.Schema.html"
-																style="margin-left: 30px; padding-left: 0">Schema</a>
-														</div>
-														<div id="namespace-2111229186"
-															class="accordion-body collapse ">
-															<div class="accordion-inner">
-
-																<div class="accordion" style="margin-bottom: 0">
-																	<div class="accordion-group">
-																		<div class="accordion-heading">
-																			<a class="accordion-toggle collapsed"
-																				data-toggle="collapse"
-																				data-target="#namespace-2013629104"></a> <a
-																				href="../namespaces/Slothsoft.Schema.Assets.html"
-																				style="margin-left: 30px; padding-left: 0">Assets</a>
-																		</div>
-																		<div id="namespace-2013629104"
-																			class="accordion-body collapse ">
-																			<div class="accordion-inner">
-
-
-																				<ul>
-																					<li class="class"><a
-																						href="../classes/Slothsoft.Schema.Assets.InfoBuilder.html">InfoBuilder</a></li>
-																					<li class="class"><a
-																						href="../classes/Slothsoft.Schema.Assets.ManifestBuilder.html">ManifestBuilder</a></li>
-																					<li class="class"><a
-																						href="../classes/Slothsoft.Schema.Assets.SchemaParameterFilter.html">SchemaParameterFilter</a></li>
-																				</ul>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-
-																<div class="accordion" style="margin-bottom: 0">
-																	<div class="accordion-group">
-																		<div class="accordion-heading">
-																			<a class="accordion-toggle collapsed"
-																				data-toggle="collapse"
-																				data-target="#namespace-718111744"></a> <a
-																				href="../namespaces/Slothsoft.Schema.Documentation.html"
-																				style="margin-left: 30px; padding-left: 0">Documentation</a>
-																		</div>
-																		<div id="namespace-718111744"
-																			class="accordion-body collapse ">
-																			<div class="accordion-inner">
-
-
-																				<ul>
-																					<li class="class"><a
-																						href="../classes/Slothsoft.Schema.Documentation.XSDAnnotation.html">XSDAnnotation</a></li>
-																					<li class="class"><a
-																						href="../classes/Slothsoft.Schema.Documentation.XSDAttribute.html">XSDAttribute</a></li>
-																					<li class="class"><a
-																						href="../classes/Slothsoft.Schema.Documentation.XSDCategory.html">XSDCategory</a></li>
-																					<li class="class"><a
-																						href="../classes/Slothsoft.Schema.Documentation.XSDElement.html">XSDElement</a></li>
-																					<li class="class"><a
-																						href="../classes/Slothsoft.Schema.Documentation.XSDFile.html">XSDFile</a></li>
-																					<li class="class"><a
-																						href="../classes/Slothsoft.Schema.Documentation.XSDGroup.html">XSDGroup</a></li>
-																					<li class="class"><a
-																						href="../classes/Slothsoft.Schema.Documentation.XSDNode.html">XSDNode</a></li>
-																					<li class="class"><a
-																						href="../classes/Slothsoft.Schema.Documentation.XSDType.html">XSDType</a></li>
-																				</ul>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-
-																<div class="accordion" style="margin-bottom: 0">
-																	<div class="accordion-group">
-																		<div class="accordion-heading">
-																			<a class="accordion-toggle collapsed"
-																				data-toggle="collapse"
-																				data-target="#namespace-799298276"></a> <a
-																				href="../namespaces/Slothsoft.Schema.Exceptions.html"
-																				style="margin-left: 30px; padding-left: 0">Exceptions</a>
-																		</div>
-																		<div id="namespace-799298276"
-																			class="accordion-body collapse ">
-																			<div class="accordion-inner">
-
-
-																				<ul>
-																					<li class="class"><a
-																						href="../classes/Slothsoft.Schema.Exceptions.SchemaVersioningNotFoundException.html">SchemaVersioningNotFoundException</a></li>
-																				</ul>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-
-
-																<ul>
-																	<li class="class"><a
-																		href="../classes/Slothsoft.Schema.DataDocument.html">DataDocument</a></li>
-																	<li class="class"><a
-																		href="../classes/Slothsoft.Schema.DataElement.html">DataElement</a></li>
-																</ul>
-															</div>
-														</div>
-													</div>
-												</div>
-
-
-												<ul>
-												</ul>
-											</div>
-										</div>
-									</div>
-								</div>
-
-
-								<ul>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-
-			</div>
-		</section>
-		<section class="row-fluid">
-			<div class="span10 offset2">
-				<div class="row-fluid">
-					<div class="span8 content class">
-						<nav>
-							<a href="../namespaces/Slothsoft.Schema.html">\Slothsoft\Schema</a>
-							<i class="icon-level-up"></i>
-						</nav>
-						<a href="#source-view" role="button" class="pull-right btn"
-							data-toggle="modal"><i class="icon-code"></i></a>
-
-						<h1>
-							<small>\Slothsoft\Schema</small>DataElement
-						</h1>
-						<p>
-							<em></em>
-						</p>
-
-
-
-						<section id="summary">
-							<h2>Summary</h2>
-							<section class="row-fluid heading">
-								<section class="span4">
-									<a href="#methods">Methods</a>
-								</section>
-								<section class="span4">
-									<a href="#properties">Properties</a>
-								</section>
-								<section class="span4">
-									<a href="#constants">Constants</a>
-								</section>
-							</section>
-							<section class="row-fluid public">
-								<section class="span4">
-									<a
-										href="../classes/Slothsoft.Schema.DataElement.html#method_loadDocument"
-										class="">loadDocument()</a><br /> <a
-										href="../classes/Slothsoft.Schema.DataElement.html#method___construct"
-										class="">__construct()</a><br /> <a
-										href="../classes/Slothsoft.Schema.DataElement.html#method_appendAttributeList"
-										class="">appendAttributeList()</a><br /> <a
-										href="../classes/Slothsoft.Schema.DataElement.html#method_appendDataList"
-										class="">appendDataList()</a><br /> <a
-										href="../classes/Slothsoft.Schema.DataElement.html#method_getDataNode"
-										class="">getDataNode()</a><br /> <a
-										href="../classes/Slothsoft.Schema.DataElement.html#method_getElementList"
-										class="">getElementList()</a><br /> <a
-										href="../classes/Slothsoft.Schema.DataElement.html#method_getAttributes"
-										class="">getAttributes()</a><br />
-								</section>
-								<section class="span4">
-									<em>No public properties found</em>
-								</section>
-								<section class="span4">
-									<em>No constants found</em>
-								</section>
-							</section>
-							<section class="row-fluid protected">
-								<section class="span4">
-									<em>No protected methods found</em>
-								</section>
-								<section class="span4">
-									<a
-										href="../classes/Slothsoft.Schema.DataElement.html#property_schema"
-										class="">$schema</a><br /> <a
-										href="../classes/Slothsoft.Schema.DataElement.html#property_dataXPath"
-										class="">$dataXPath</a><br /> <a
-										href="../classes/Slothsoft.Schema.DataElement.html#property_dataNode"
-										class="">$dataNode</a><br /> <a
-										href="../classes/Slothsoft.Schema.DataElement.html#property_elementList"
-										class="">$elementList</a><br />
-								</section>
-								<section class="span4">
-									<em>N/A</em>
-								</section>
-							</section>
-							<section class="row-fluid private">
-								<section class="span4">
-									<em>No private methods found</em>
-								</section>
-								<section class="span4">
-									<em>No private properties found</em>
-								</section>
-								<section class="span4">
-									<em>N/A</em>
-								</section>
-							</section>
-						</section>
-					</div>
-					<aside class="span4 detailsbar">
-
-
-						<dl>
-							<dt>File</dt>
-							<dd>
-								<a href="../files/Slothsoft.Schema.DataElement.html"><div
-										class="path-wrapper">Slothsoft\Schema\DataElement.php</div></a>
-							</dd>
-							<dt>Package</dt>
-							<dd>
-								<div class="namespace-wrapper">Default</div>
-							</dd>
-							<dt>Class hierarchy</dt>
-							<dd class="hierarchy">
-								<div class="namespace-wrapper">\Slothsoft\Schema\DataElement</div>
-							</dd>
-
-
-
-
-
-						</dl>
-						<h2>Tags</h2>
-						<table class="table table-condensed">
-							<tr>
-								<td colspan="2"><em>None found</em></td>
-							</tr>
-						</table>
-					</aside>
-				</div>
-
-
-				<a id="properties" name="properties"></a>
-				<div class="row-fluid">
-					<div class="span8 content class">
-						<h2>Properties</h2>
-					</div>
-					<aside class="span4 detailsbar"></aside>
-				</div>
-
-				<div class="row-fluid">
-					<div class="span8 content class">
-						<a id="property_schema" name="property_schema" class="anchor"></a>
-						<article class="property">
-							<h3 class="protected ">$schema</h3>
-							<pre class="signature">$schema : </pre>
-							<p>
-								<em></em>
-							</p>
-
-
-							<h4>Type</h4>
-
-						</article>
-					</div>
-					<aside class="span4 detailsbar">
-						<h1>
-							<i class="icon-arrow-down"></i>
-						</h1>
-						<dl>
-						</dl>
-						<h2>Tags</h2>
-						<table class="table table-condensed">
-							<tr>
-								<td colspan="2"><em>None found</em></td>
-							</tr>
-						</table>
-					</aside>
-				</div>
-
-				<div class="row-fluid">
-					<div class="span8 content class">
-						<a id="property_dataXPath" name="property_dataXPath"
-							class="anchor"></a>
-						<article class="property">
-							<h3 class="protected ">$dataXPath</h3>
-							<pre class="signature">$dataXPath : </pre>
-							<p>
-								<em></em>
-							</p>
-
-
-							<h4>Type</h4>
-
-						</article>
-					</div>
-					<aside class="span4 detailsbar">
-						<h1>
-							<i class="icon-arrow-down"></i>
-						</h1>
-						<dl>
-						</dl>
-						<h2>Tags</h2>
-						<table class="table table-condensed">
-							<tr>
-								<td colspan="2"><em>None found</em></td>
-							</tr>
-						</table>
-					</aside>
-				</div>
-
-				<div class="row-fluid">
-					<div class="span8 content class">
-						<a id="property_dataNode" name="property_dataNode" class="anchor"></a>
-						<article class="property">
-							<h3 class="protected ">$dataNode</h3>
-							<pre class="signature">$dataNode : </pre>
-							<p>
-								<em></em>
-							</p>
-
-
-							<h4>Type</h4>
-
-						</article>
-					</div>
-					<aside class="span4 detailsbar">
-						<h1>
-							<i class="icon-arrow-down"></i>
-						</h1>
-						<dl>
-						</dl>
-						<h2>Tags</h2>
-						<table class="table table-condensed">
-							<tr>
-								<td colspan="2"><em>None found</em></td>
-							</tr>
-						</table>
-					</aside>
-				</div>
-
-				<div class="row-fluid">
-					<div class="span8 content class">
-						<a id="property_elementList" name="property_elementList"
-							class="anchor"></a>
-						<article class="property">
-							<h3 class="protected ">$elementList</h3>
-							<pre class="signature">$elementList : </pre>
-							<p>
-								<em></em>
-							</p>
-
-
-							<h4>Type</h4>
-
-						</article>
-					</div>
-					<aside class="span4 detailsbar">
-						<h1>
-							<i class="icon-arrow-down"></i>
-						</h1>
-						<dl>
-						</dl>
-						<h2>Tags</h2>
-						<table class="table table-condensed">
-							<tr>
-								<td colspan="2"><em>None found</em></td>
-							</tr>
-						</table>
-					</aside>
-				</div>
-
-
-				<a id="methods" name="methods"></a>
-				<div class="row-fluid">
-					<div class="span8 content class">
-						<h2>Methods</h2>
-					</div>
-					<aside class="span4 detailsbar"></aside>
-				</div>
-
-				<div class="row-fluid">
-					<div class="span8 content class">
-						<a id="method_loadDocument" name="method_loadDocument"
-							class="anchor"></a>
-						<article class="method">
-							<h3 class="public ">loadDocument()</h3>
-							<a href="#source-view" role="button" class="pull-right btn"
-								data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i
-								class="icon-code"></i></a>
-							<pre class="signature" style="margin-right: 54px;">loadDocument(\DOMDocument  <span
-									class="argument">$doc</span>, array  <span class="argument">$schema</span>) </pre>
-							<p>
-								<em></em>
-							</p>
-
-
-							<h4>Parameters</h4>
-							<table class="table table-condensed table-hover">
-								<tr>
-									<td>\DOMDocument</td>
-									<td>$doc</td>
-									<td></td>
-								</tr>
-								<tr>
-									<td>array</td>
-									<td>$schema</td>
-									<td></td>
-								</tr>
-							</table>
-
-
-
-						</article>
-					</div>
-					<aside class="span4 detailsbar">
-						<h1>
-							<i class="icon-arrow-down"></i>
-						</h1>
-						<span class="label label-info">static</span>
-						<dl>
-						</dl>
-						<h2>Tags</h2>
-						<table class="table table-condensed">
-							<tr>
-								<td colspan="2"><em>None found</em></td>
-							</tr>
-						</table>
-					</aside>
-				</div>
-
-				<div class="row-fluid">
-					<div class="span8 content class">
-						<a id="method___construct" name="method___construct"
-							class="anchor"></a>
-						<article class="method">
-							<h3 class="public ">__construct()</h3>
-							<a href="#source-view" role="button" class="pull-right btn"
-								data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i
-								class="icon-code"></i></a>
-							<pre class="signature" style="margin-right: 54px;">__construct(\DOMXPath  <span
-									class="argument">$dataXPath</span>, array  <span
-									class="argument">$schema</span>, \DOMElement  <span
-									class="argument">$dataNode</span>) </pre>
-							<p>
-								<em></em>
-							</p>
-
-
-							<h4>Parameters</h4>
-							<table class="table table-condensed table-hover">
-								<tr>
-									<td>\DOMXPath</td>
-									<td>$dataXPath</td>
-									<td></td>
-								</tr>
-								<tr>
-									<td>array</td>
-									<td>$schema</td>
-									<td></td>
-								</tr>
-								<tr>
-									<td>\DOMElement</td>
-									<td>$dataNode</td>
-									<td></td>
-								</tr>
-							</table>
-
-
-
-						</article>
-					</div>
-					<aside class="span4 detailsbar">
-						<h1>
-							<i class="icon-arrow-down"></i>
-						</h1>
-						<dl>
-						</dl>
-						<h2>Tags</h2>
-						<table class="table table-condensed">
-							<tr>
-								<td colspan="2"><em>None found</em></td>
-							</tr>
-						</table>
-					</aside>
-				</div>
-
-				<div class="row-fluid">
-					<div class="span8 content class">
-						<a id="method_appendAttributeList"
-							name="method_appendAttributeList" class="anchor"></a>
-						<article class="method">
-							<h3 class="public ">appendAttributeList()</h3>
-							<a href="#source-view" role="button" class="pull-right btn"
-								data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i
-								class="icon-code"></i></a>
-							<pre class="signature" style="margin-right: 54px;">appendAttributeList(array  <span
-									class="argument">$attributeList</span>) </pre>
-							<p>
-								<em></em>
-							</p>
-
-
-							<h4>Parameters</h4>
-							<table class="table table-condensed table-hover">
-								<tr>
-									<td>array</td>
-									<td>$attributeList</td>
-									<td></td>
-								</tr>
-							</table>
-
-
-
-						</article>
-					</div>
-					<aside class="span4 detailsbar">
-						<h1>
-							<i class="icon-arrow-down"></i>
-						</h1>
-						<dl>
-						</dl>
-						<h2>Tags</h2>
-						<table class="table table-condensed">
-							<tr>
-								<td colspan="2"><em>None found</em></td>
-							</tr>
-						</table>
-					</aside>
-				</div>
-
-				<div class="row-fluid">
-					<div class="span8 content class">
-						<a id="method_appendDataList" name="method_appendDataList"
-							class="anchor"></a>
-						<article class="method">
-							<h3 class="public ">appendDataList()</h3>
-							<a href="#source-view" role="button" class="pull-right btn"
-								data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i
-								class="icon-code"></i></a>
-							<pre class="signature" style="margin-right: 54px;">appendDataList(  <span
-									class="argument">$name</span>, array  <span class="argument">$dataList</span>) </pre>
-							<p>
-								<em></em>
-							</p>
-
-
-							<h4>Parameters</h4>
-							<table class="table table-condensed table-hover">
-								<tr>
-									<td></td>
-									<td>$name</td>
-									<td></td>
-								</tr>
-								<tr>
-									<td>array</td>
-									<td>$dataList</td>
-									<td></td>
-								</tr>
-							</table>
-
-
-
-						</article>
-					</div>
-					<aside class="span4 detailsbar">
-						<h1>
-							<i class="icon-arrow-down"></i>
-						</h1>
-						<dl>
-						</dl>
-						<h2>Tags</h2>
-						<table class="table table-condensed">
-							<tr>
-								<td colspan="2"><em>None found</em></td>
-							</tr>
-						</table>
-					</aside>
-				</div>
-
-				<div class="row-fluid">
-					<div class="span8 content class">
-						<a id="method_getDataNode" name="method_getDataNode"
-							class="anchor"></a>
-						<article class="method">
-							<h3 class="public ">getDataNode()</h3>
-							<a href="#source-view" role="button" class="pull-right btn"
-								data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i
-								class="icon-code"></i></a>
-							<pre class="signature" style="margin-right: 54px;">getDataNode() </pre>
-							<p>
-								<em></em>
-							</p>
-
-
-
-
-
-						</article>
-					</div>
-					<aside class="span4 detailsbar">
-						<h1>
-							<i class="icon-arrow-down"></i>
-						</h1>
-						<dl>
-						</dl>
-						<h2>Tags</h2>
-						<table class="table table-condensed">
-							<tr>
-								<td colspan="2"><em>None found</em></td>
-							</tr>
-						</table>
-					</aside>
-				</div>
-
-				<div class="row-fluid">
-					<div class="span8 content class">
-						<a id="method_getElementList" name="method_getElementList"
-							class="anchor"></a>
-						<article class="method">
-							<h3 class="public ">getElementList()</h3>
-							<a href="#source-view" role="button" class="pull-right btn"
-								data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i
-								class="icon-code"></i></a>
-							<pre class="signature" style="margin-right: 54px;">getElementList() </pre>
-							<p>
-								<em></em>
-							</p>
-
-
-
-
-
-						</article>
-					</div>
-					<aside class="span4 detailsbar">
-						<h1>
-							<i class="icon-arrow-down"></i>
-						</h1>
-						<dl>
-						</dl>
-						<h2>Tags</h2>
-						<table class="table table-condensed">
-							<tr>
-								<td colspan="2"><em>None found</em></td>
-							</tr>
-						</table>
-					</aside>
-				</div>
-
-				<div class="row-fluid">
-					<div class="span8 content class">
-						<a id="method_getAttributes" name="method_getAttributes"
-							class="anchor"></a>
-						<article class="method">
-							<h3 class="public ">getAttributes()</h3>
-							<a href="#source-view" role="button" class="pull-right btn"
-								data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i
-								class="icon-code"></i></a>
-							<pre class="signature" style="margin-right: 54px;">getAttributes() </pre>
-							<p>
-								<em></em>
-							</p>
-
-
-
-
-
-						</article>
-					</div>
-					<aside class="span4 detailsbar">
-						<h1>
-							<i class="icon-arrow-down"></i>
-						</h1>
-						<dl>
-						</dl>
-						<h2>Tags</h2>
-						<table class="table table-condensed">
-							<tr>
-								<td colspan="2"><em>None found</em></td>
-							</tr>
-						</table>
-					</aside>
-				</div>
-
-			</div>
-		</section>
-
-		<div id="source-view" class="modal hide fade" tabindex="-1"
-			role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal"
-					aria-hidden="true">×</button>
-				<h3 id="source-view-label">DataElement.php</h3>
-			</div>
-			<div class="modal-body">
-				<pre data-src="../files/Slothsoft\Schema\DataElement.php.txt"
-					class="language-php line-numbers"></pre>
-			</div>
-		</div>
-
-		<footer class="row-fluid">
-			<section class="span10 offset2">
-				<section class="row-fluid">
-					<section class="span10 offset1">
-						<section class="row-fluid footer-sections">
-							<section class="span4">
-								<h1>
-									<i class="icon-code"></i>
-								</h1>
-								<div>
-									<ul>
-										<li><a href="../namespaces/Slothsoft.html">\Slothsoft</a></li>
-									</ul>
-								</div>
-							</section>
-							<section class="span4">
-								<h1>
-									<i class="icon-bar-chart"></i>
-								</h1>
-								<div>
-									<ul>
-										<li><a href="../graphs/class.html">Class Hierarchy
-												Diagram</a></li>
-									</ul>
-								</div>
-							</section>
-							<section class="span4">
-								<h1>
-									<i class="icon-pushpin"></i>
-								</h1>
-								<div>
-									<ul>
-										<li><a href="../reports/errors.html">Errors</a></li>
-										<li><a href="../reports/markers.html">Markers</a></li>
-									</ul>
-								</div>
-							</section>
-						</section>
-					</section>
-				</section>
-				<section class="row-fluid">
-					<section class="span10 offset1">
-						<hr />
-						Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor
-						</a> and authored on June 23rd, 2018 at 18:11.
-					</section>
-				</section>
-			</section>
-		</footer>
-	</div>
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                                        <li class="dropdown">
+                        <a href="../index.html" class="dropdown-toggle" data-toggle="dropdown">
+                            API Documentation <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                                                        <li><a href="../namespaces/Slothsoft.html">\Slothsoft</a></li>
+                                                    </ul>
+                    </li>
+                                        <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">214</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/deprecated.html">
+                                                                                                            <i class="icon-list-alt"></i>&#160;Deprecated <span class="label label-info pull-right">0</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-281185289"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-281185289" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-290230607"></a>
+                                <a href="../namespaces/Slothsoft.html" style="margin-left: 30px; padding-left: 0">Slothsoft</a>
+            </div>
+            <div id="namespace-290230607" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1468320826"></a>
+                                <a href="../namespaces/Slothsoft.Schema.html" style="margin-left: 30px; padding-left: 0">Schema</a>
+            </div>
+            <div id="namespace-1468320826" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1540821500"></a>
+                                <a href="../namespaces/Slothsoft.Schema.Assets.html" style="margin-left: 30px; padding-left: 0">Assets</a>
+            </div>
+            <div id="namespace-1540821500" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Slothsoft.Schema.Assets.InfoBuilder.html">InfoBuilder</a></li>
+                                                    <li class="class"><a href="../classes/Slothsoft.Schema.Assets.ManifestBuilder.html">ManifestBuilder</a></li>
+                                                    <li class="class"><a href="../classes/Slothsoft.Schema.Assets.SchemaParameterFilter.html">SchemaParameterFilter</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1260638467"></a>
+                                <a href="../namespaces/Slothsoft.Schema.Documentation.html" style="margin-left: 30px; padding-left: 0">Documentation</a>
+            </div>
+            <div id="namespace-1260638467" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Slothsoft.Schema.Documentation.XSDAnnotation.html">XSDAnnotation</a></li>
+                                                    <li class="class"><a href="../classes/Slothsoft.Schema.Documentation.XSDAttribute.html">XSDAttribute</a></li>
+                                                    <li class="class"><a href="../classes/Slothsoft.Schema.Documentation.XSDCategory.html">XSDCategory</a></li>
+                                                    <li class="class"><a href="../classes/Slothsoft.Schema.Documentation.XSDElement.html">XSDElement</a></li>
+                                                    <li class="class"><a href="../classes/Slothsoft.Schema.Documentation.XSDFile.html">XSDFile</a></li>
+                                                    <li class="class"><a href="../classes/Slothsoft.Schema.Documentation.XSDGroup.html">XSDGroup</a></li>
+                                                    <li class="class"><a href="../classes/Slothsoft.Schema.Documentation.XSDNode.html">XSDNode</a></li>
+                                                    <li class="class"><a href="../classes/Slothsoft.Schema.Documentation.XSDType.html">XSDType</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1407823758"></a>
+                                <a href="../namespaces/Slothsoft.Schema.Exceptions.html" style="margin-left: 30px; padding-left: 0">Exceptions</a>
+            </div>
+            <div id="namespace-1407823758" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Slothsoft.Schema.Exceptions.SchemaVersioningNotFoundException.html">SchemaVersioningNotFoundException</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/Slothsoft.Schema.DataDocument.html">DataDocument</a></li>
+                                                    <li class="class"><a href="../classes/Slothsoft.Schema.DataElement.html">DataElement</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/Slothsoft.Schema.html">\Slothsoft\Schema</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\Slothsoft\Schema</small>DataElement</h1>
+                    <p><em></em></p>
+                    
+                    
+                                        
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/Slothsoft.Schema.DataElement.html#method_loadDocument" class="">loadDocument()</a><br />
+                                                                    <a href="../classes/Slothsoft.Schema.DataElement.html#method___construct" class="">__construct()</a><br />
+                                                                    <a href="../classes/Slothsoft.Schema.DataElement.html#method_appendAttributeList" class="">appendAttributeList()</a><br />
+                                                                    <a href="../classes/Slothsoft.Schema.DataElement.html#method_appendDataList" class="">appendDataList()</a><br />
+                                                                    <a href="../classes/Slothsoft.Schema.DataElement.html#method_getDataNode" class="">getDataNode()</a><br />
+                                                                    <a href="../classes/Slothsoft.Schema.DataElement.html#method_getElementList" class="">getElementList()</a><br />
+                                                                    <a href="../classes/Slothsoft.Schema.DataElement.html#method_getAttributes" class="">getAttributes()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No public properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <em>No protected methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/Slothsoft.Schema.DataElement.html#property_schema" class="">$schema</a><br />
+                                                                    <a href="../classes/Slothsoft.Schema.DataElement.html#property_dataXPath" class="">$dataXPath</a><br />
+                                                                    <a href="../classes/Slothsoft.Schema.DataElement.html#property_dataNode" class="">$dataNode</a><br />
+                                                                    <a href="../classes/Slothsoft.Schema.DataElement.html#property_elementList" class="">$elementList</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No private properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/Slothsoft.Schema.DataElement.html"><div class="path-wrapper">Slothsoft\Schema\DataElement.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">Default</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                    <div class="namespace-wrapper">\Slothsoft\Schema\DataElement</div>
+                            </dd>
+
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr><td colspan="2"><em>None found</em></td></tr>
+                                        </table>
+                </aside>
+            </div>
+
+                        
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_schema" name="property_schema" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$schema</h3>
+                <pre class="signature">$schema : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_dataXPath" name="property_dataXPath" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$dataXPath</h3>
+                <pre class="signature">$dataXPath : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_dataNode" name="property_dataNode" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$dataNode</h3>
+                <pre class="signature">$dataNode : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_elementList" name="property_elementList" class="anchor"></a>
+            <article class="property">
+                <h3 class="protected ">$elementList</h3>
+                <pre class="signature">$elementList : </pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_loadDocument" name="method_loadDocument" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">loadDocument()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">loadDocument(\DOMDocument  <span class="argument">$doc</span>, array  <span class="argument">$schema</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>\DOMDocument</td>
+                                <td>$doc </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$schema </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                            <span class="label label-info">static</span>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method___construct" name="method___construct" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">__construct()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">__construct(\DOMXPath  <span class="argument">$dataXPath</span>, array  <span class="argument">$schema</span>, \DOMElement  <span class="argument">$dataNode</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>\DOMXPath</td>
+                                <td>$dataXPath </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$schema </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>\DOMElement</td>
+                                <td>$dataNode </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_appendAttributeList" name="method_appendAttributeList" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">appendAttributeList()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">appendAttributeList(array  <span class="argument">$attributeList</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td>array</td>
+                                <td>$attributeList </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_appendDataList" name="method_appendDataList" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">appendDataList()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">appendDataList(  <span class="argument">$name</span>, array  <span class="argument">$dataList</span>) </pre>
+                <p><em></em></p>
+                
+
+                                    <h4>Parameters</h4>
+                    <table class="table table-condensed table-hover">
+                                                    <tr>
+                                <td></td>
+                                <td>$name </td>
+                                <td></td>
+                            </tr>
+                                                    <tr>
+                                <td>array</td>
+                                <td>$dataList </td>
+                                <td></td>
+                            </tr>
+                                            </table>
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getDataNode" name="method_getDataNode" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getDataNode()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getDataNode() </pre>
+                <p><em></em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getElementList" name="method_getElementList" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getElementList()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getElementList() </pre>
+                <p><em></em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_getAttributes" name="method_getAttributes" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">getAttributes()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">getAttributes() </pre>
+                <p><em></em></p>
+                
+
+                
+                
+                				
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr><td colspan="2"><em>None found</em></td></tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">DataElement.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/Slothsoft\Schema\DataElement.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                            <li><a href="../namespaces/Slothsoft.html">\Slothsoft</a></li>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on August 10th, 2018 at 12:37.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
 
 </body>
 </html>

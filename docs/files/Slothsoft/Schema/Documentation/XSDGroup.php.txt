@@ -4,6 +4,7 @@ namespace Slothsoft\Schema\Documentation;
 
 class XSDGroup extends XSDNode
 {
+
     protected $childElementList = array();
 
     protected function initRefNodeList()
@@ -31,7 +32,7 @@ class XSDGroup extends XSDNode
             }
         }
     }
-    
+
     public function getChildList()
     {
         return array_merge($this->childElementList, parent::getChildList());
