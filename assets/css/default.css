@@ -77,14 +77,6 @@ code {
 	background: rgba(127, 127, 255, 0.1);
 }
 
-.tag::before {
-	content: "<";
-}
-
-.tag::after {
-	content: ">";
-}
-
 .attribute {
 	background: rgba(255, 127, 127, 0.1);
 }
