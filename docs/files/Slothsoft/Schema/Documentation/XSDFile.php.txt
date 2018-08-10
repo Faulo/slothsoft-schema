@@ -138,7 +138,7 @@ class XSDFile
         }
         return $this->xsdList[$id];
     }
-    
+
     public function createXSDCategory(DOMElement $node)
     {
         $id = $this->getIdByNode($node, 'XSDCategory');
@@ -148,7 +148,7 @@ class XSDFile
         }
         return $this->xsdList[$id];
     }
-    
+
     public function createXSDGroup(DOMElement $node)
     {
         $id = $this->getIdByNode($node, 'XSDGroup');

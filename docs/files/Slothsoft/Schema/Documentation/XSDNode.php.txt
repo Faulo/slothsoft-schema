@@ -312,7 +312,7 @@ abstract class XSDNode
                         
                         try {
                             $content = $this->getExampleContent();
-                        } catch(\Exception $e) {
+                        } catch (\Exception $e) {
                             echo "Unknown content type!" . PHP_EOL . $e . PHP_EOL;
                             $content = null;
                         }
@@ -726,22 +726,22 @@ abstract class XSDNode
             $this->childCategoryList[] = $child;
         }
     }
-    
+
     protected function _addGroupParentNode(DOMElement $parentNode)
     {
-        $nodeList = $this->xpath->evaluate('xsd:group[@ref] | */xsd:group[@ref]', $parentNode);
+        $nodeList = $this->xpath->evaluate('xsd:group[@ref] | */xsd:group[@ref] | */*/xsd:group[@ref]', $parentNode);
         foreach ($nodeList as $node) {
             $this->_addGroupName($node->getAttribute('ref'));
         }
     }
-    
+
     protected function _addGroupNode(DOMElement $node)
     {
         if ($child = $this->ownerFile->createXSDGroup($node)) {
             $this->childCategoryList[] = $child;
         }
     }
-    
+
     protected function _addGroupName($group)
     {
         $nodeList = $this->xpath->evaluate(sprintf('/xsd:schema/xsd:group[@name = "%s"]', $group));
