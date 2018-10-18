@@ -35,7 +35,7 @@
 							</a>
 						</td>
 						<td>
-							<a href="/getAsset.php/{@url}" download="{$file}">
+							<a href="/{@url}" download="{$file}">
 								<xsl:value-of select="$file" />
 							</a>
 						</td>
