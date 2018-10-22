@@ -1,7 +1,7 @@
 {
     "name": "slothsoft/schema",
     "description": "A Farah module for processing XML Schema files.",
-    "license": "GPL",
+    "license": "WTFPL",
     "authors": [
         {
             "name": "Daniel Schulz",
