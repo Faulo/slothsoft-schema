@@ -929,9 +929,9 @@
 	</xsl:template>
 	<xsl:template match="token[@name]" mode="href">
 		<code class="token">
-			"
+			<xsl:text>"</xsl:text>
 			<xsl:value-of select="@name" />
-			"
+			<xsl:text>"</xsl:text>
 		</code>
 	</xsl:template>
 	<xsl:template match="pattern[@name]" mode="href">
