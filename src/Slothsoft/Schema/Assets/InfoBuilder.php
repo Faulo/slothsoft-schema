@@ -45,7 +45,7 @@ class InfoBuilder implements ExecutableBuilderStrategyInterface
                         $versionNode->setAttribute('url', (string) $url);
                         $rootNode->appendChild($versionNode);
                     } else {
-                        throw new SchemaVersioningNotFoundException("<ssv:info> not found for schema '$id'");
+                        throw new SchemaVersioningNotFoundException("<ssv:info> not found for schema '$url'");
                     }
                 }
                 return $rootNode;

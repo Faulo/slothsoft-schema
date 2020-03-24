@@ -169,6 +169,7 @@ abstract class XSDNode
     public function getSortIndex()
     {
         $sortBase = preg_replace('/\d+/', '', $this->id);
+        $match = null;
         $sortIndex = preg_match('/(\d+)/', $this->id, $match) ? (int) $match[1] : 0;
         return sprintf('%s-%05d', $sortBase, $sortIndex);
     }
@@ -322,7 +323,6 @@ abstract class XSDNode
                         
                         foreach ($childList as $child) {
                             $childNode = null;
-                            $copyChildren = false;
                             switch ($child->getClassName()) {
                                 case 'XSDElement':
                                     // echo $child->getName() . PHP_EOL;
@@ -559,6 +559,8 @@ abstract class XSDNode
                 case 'boolean':
                     return 'true';
                 case 'decimal':
+                case 'float':
+                case 'double':
                     return '0.0';
                 case 'byte':
                 case 'int':
@@ -685,6 +687,7 @@ abstract class XSDNode
     protected function _addTypeName($type)
     {
         // $this->ownerFile->getSchemaQuery()
+        $match = null;
         if (preg_match('/([^:]+):([^:]+)/', $type, $match)) {
             $this->_addForeignType($match[1], $match[2]);
         } else {
