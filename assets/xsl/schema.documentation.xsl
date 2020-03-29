@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ssv="http://schema.slothsoft.net/schema/versioning" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ibp="http://www.ibp-dresden.de" extension-element-prefixes="ibp">
+	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:lio="http://slothsoft.net">
 
 	<xsl:include href="farah://slothsoft@schema/xsl/schema.global" />
 
 	<xsl:variable name="tocElementLimit" select="2500" />
 
 	<xsl:variable name="rootElementList" select="$manifest/element[@isRoot]" />
-	<xsl:variable name="elementDefinitionList" select="ibp:getDescendantElements($rootElementList)" />
+	<xsl:variable name="elementDefinitionList" select="lio:getDescendantElements($rootElementList)" />
 	<xsl:variable name="elementReferenceList" select="$elementDefinitionList//elementReference" />
 
 	<xsl:variable name="attributeReferenceList" select="$elementDefinitionList//attributeReference" />
@@ -17,7 +17,7 @@
 	<xsl:variable name="rootAttributeList" select="$attributeDefinitionList[@isRoot]" />
 
 	<xsl:variable name="typeDefinitionList"
-		select="ibp:getDescendantTypes($elementDefinitionList | $attributeDefinitionList)" />
+		select="lio:getDescendantTypes($elementDefinitionList | $attributeDefinitionList)" />
 	<xsl:variable name="rootTypeList" select="$typeDefinitionList[@name]" />
 
 	<xsl:variable name="categoryDefinitionList" select="$manifest/category" />
@@ -51,6 +51,7 @@
 	<!-- Table of Contents -->
 	<xsl:template match="manifest" mode="toc">
 		<ul class="toc">
+			<li><a href="#changelog" data-dict="">doc/changelog</a></li>
 			<xsl:if test="count($elementDefinitionList)">
 				<li>
 					<a href="#{generate-id(.)}-elements">
@@ -199,6 +200,10 @@
 
 	<!-- Content -->
 	<xsl:template match="manifest" mode="content">
+		<xsl:if test="$info/ssv:changelog">
+			<h2 id="changelog" data-dict="">doc/changelog</h2>
+			<xsl:apply-templates select="$info" mode="changelog"/>
+		</xsl:if>
 		<xsl:if test="count($elementDefinitionList)">
 			<h2 id="{generate-id(.)}-elements">
 				<span data-dict=".">doc/elements-in-namespace</span>
