@@ -43,5 +43,9 @@
 				</xsl:for-each>
 			</tbody>
 		</table>
+		<xsl:if test="$info/ssv:changelog">
+			<p data-dict="">home/changelog</p>
+			<xsl:apply-templates select="$info" mode="changelog"/>
+		</xsl:if>
 	</xsl:template>
 </xsl:stylesheet>
