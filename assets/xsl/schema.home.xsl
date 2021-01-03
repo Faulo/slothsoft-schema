@@ -35,7 +35,7 @@
 							</a>
 						</td>
 						<td>
-							<a href="/{substring-after(@url, 'farah://')}" download="{$file}">
+							<a href="{ssv:version}.xsd" download="{$file}">
 								<xsl:value-of select="$file" />
 							</a>
 						</td>
