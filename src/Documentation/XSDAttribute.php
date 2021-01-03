@@ -2,11 +2,9 @@
 declare(strict_types = 1);
 namespace Slothsoft\Schema\Documentation;
 
-class XSDAttribute extends XSDNode
-{
+class XSDAttribute extends XSDNode {
 
-    protected function initRefNodeList()
-    {
+    protected function initRefNodeList() {
         $this->refNodeList[] = $this->rootNode;
         if ($this->rootNode->hasAttribute('ref')) {
             $name = $this->rootNode->getAttribute('ref');
@@ -17,12 +15,11 @@ class XSDAttribute extends XSDNode
         }
     }
 
-    protected function initChildren()
-    {
+    protected function initChildren() {
         $this->optionList['isRequired'] = '0';
         $this->optionList['minOccurs'] = '0';
         $this->optionList['maxOccurs'] = '1';
-        
+
         foreach ($this->refNodeList as $refNode) {
             if ($refNode->hasAttribute('use')) {
                 $use = $refNode->getAttribute('use');

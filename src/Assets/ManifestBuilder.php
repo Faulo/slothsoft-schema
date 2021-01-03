@@ -15,11 +15,9 @@ use Slothsoft\Schema\Documentation\XSDFile;
 use DOMDocument;
 use DOMElement;
 
-class ManifestBuilder implements ExecutableBuilderStrategyInterface
-{
+class ManifestBuilder implements ExecutableBuilderStrategyInterface {
 
-    public function buildExecutableStrategies(AssetInterface $context, FarahUrlArguments $args): ExecutableStrategies
-    {
+    public function buildExecutableStrategies(AssetInterface $context, FarahUrlArguments $args): ExecutableStrategies {
         if ($schemaId = $args->get('schema')) {
             if ($version = $args->get('version')) {
                 $schemaId .= "/$version";

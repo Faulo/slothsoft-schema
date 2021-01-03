@@ -34,5 +34,10 @@
 			"Slothsoft\\Schema\\" : "tests"
 		}
 	},
+	"extra" : {
+		"branch-alias" : {
+			"dev-develop" : "1.1.x-dev"
+		}
+	},
 	"homepage" : "http://farah.slothsoft.net/modules/schema"
 }

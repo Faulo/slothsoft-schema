@@ -5,8 +5,7 @@ namespace Slothsoft\Schema;
 use DOMDocument;
 use DOMXPath;
 
-class DataDocument
-{
+class DataDocument {
 
     protected $schema = [
         'name' => '',
@@ -20,18 +19,17 @@ class DataDocument
 
     protected $elementList = [];
 
-    public function __construct(DOMXPath $dataXPath, array $schema, DOMDocument $dataNode)
-    {
+    public function __construct(DOMXPath $dataXPath, array $schema, DOMDocument $dataNode) {
         foreach ($this->schema as $key => &$val) {
             if (isset($schema[$key])) {
                 $val = $schema[$key];
             }
         }
         unset($val);
-        
+
         $this->dataXPath = $dataXPath;
         $this->dataNode = $dataNode;
-        
+
         foreach ($this->schema['elements'] as $childSchema) {
             $childNodeList = $this->dataXPath->evaluate($childSchema['name'], $this->dataNode);
             foreach ($childNodeList as $childNode) {
