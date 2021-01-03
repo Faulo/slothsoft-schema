@@ -26,6 +26,11 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/Slothsoft-Schema-Assets-SchemaParameterFilter.html"
         },                {
+            "fqsen": "\\Slothsoft\\Schema\\Assets\\SchemaParameterFilter\u003A\u003AcreateSchemaVersions\u0028\u0029",
+            "name": "createSchemaVersions",
+            "summary": "",
+            "url": "classes/Slothsoft-Schema-Assets-SchemaParameterFilter.html#method_createSchemaVersions"
+        },                {
             "fqsen": "\\Slothsoft\\Schema\\Assets\\SchemaParameterFilter\u003A\u003AcreateValueSanitizers\u0028\u0029",
             "name": "createValueSanitizers",
             "summary": "",
