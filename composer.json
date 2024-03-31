@@ -21,7 +21,7 @@
 			"Slothsoft\\Schema\\" : "src"
 		},
 		"files" : [
-			"scripts/bootstrap.php"
+			"scripts/registerModule.php"
 		]
 	},
 	"keywords" : [
