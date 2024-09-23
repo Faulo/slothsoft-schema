@@ -36,8 +36,9 @@
 	},
 	"extra" : {
 		"branch-alias" : {
-			"dev-develop" : "1.1.x-dev"
+			"dev-main" : "1.1.x-dev"
 		}
 	},
-	"homepage" : "http://farah.slothsoft.net/modules/schema"
+	"homepage" : "http://farah.slothsoft.net/modules/schema",
+	"classmap-authoritative" : false
 }
