@@ -38,8 +38,55 @@ This namespace defines elements used in Rami Ismail's presskit(), indented for p
 				<xsd:element name="release-date" type="xsd:normalizedString" />
 				<xsd:element name="website" type="xsd:anyURI" />
 				<xsd:element name="press-can-request-copy" type="xsd:boolean" />
+				<xsd:element ref="platforms" />
+				<xsd:element ref="prices" />
+				<xsd:element ref="description" />
+				<xsd:element ref="history" />
 			</xsd:sequence>
 			<xsd:attributeGroup ref="schemaVersion" />
 		</xsd:complexType>
 	</xsd:element>
+
+	<xsd:element name="platforms">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="platform" minOccurs="0" maxOccurs="unbounded" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="platform">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="name" type="xsd:normalizedString" />
+				<xsd:element name="link" type="xsd:anyURI" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="prices">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element ref="price" minOccurs="0" maxOccurs="unbounded" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="price">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="currency" type="xsd:normalizedString" />
+				<xsd:element name="value" type="xsd:normalizedString" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:complexType name="html" mixed="true">
+		<xsd:sequence minOccurs="0" maxOccurs="unbounded">
+			<xsd:any namespace="http://www.w3.org/1999/xhtml" processContents="lax" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:element name="description" type="html" />
+	<xsd:element name="history" type="html" />
 </xsd:schema>
