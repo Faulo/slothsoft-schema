@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<xsd:schema targetNamespace="http://schema.slothsoft.net/schema/presskit" xmlns="http://schema.slothsoft.net/schema/presskit" xmlns:ssv="http://schema.slothsoft.net/schema/versioning"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<xsd:annotation>
+		<xsd:appinfo>
+			<ssv:info version="1.0">
+				<ssv:name>Presskit Schema</ssv:name>
+				<ssv:version>1.0</ssv:version>
+				<ssv:revision>R20250703</ssv:revision>
+				<ssv:prefix>ssp</ssv:prefix>
+				<ssv:namespace>http://schema.slothsoft.net/schema/presskit</ssv:namespace>
+				<ssv:author email="daniel.lio.schulz@gmail.com">Daniel Schulz</ssv:author>
+				<ssv:description><![CDATA[
+This namespace defines elements used in Rami Ismail's presskit(), indented for public-facing data about a video game's development.
+				]]></ssv:description>
+				<ssv:changelog><![CDATA[
+*** Version 1.0 ***
+	R20250703
+		- initial release
+				]]></ssv:changelog>
+			</ssv:info>
+		</xsd:appinfo>
+	</xsd:annotation>
+
+	<xsd:attributeGroup name="schemaVersion">
+		<xsd:attribute name="version" type="xsd:token" use="required" fixed="1.0">
+			<xsd:annotation>
+				<xsd:documentation>The schema version used by the instance document.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+	</xsd:attributeGroup>
+
+	<xsd:element name="game">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="title" type="xsd:normalizedString" />
+				<xsd:element name="release-date" type="xsd:normalizedString" />
+				<xsd:element name="website" type="xsd:anyURI" />
+				<xsd:element name="press-can-request-copy" type="xsd:boolean" />
+			</xsd:sequence>
+			<xsd:attributeGroup ref="schemaVersion" />
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>
