@@ -7,7 +7,8 @@
 	<xsl:variable name="company" select="/*/*[@name='company']/ssp:company" />
 	<xsl:variable name="game" select="/*/*[@name='game']/ssp:game" />
 	<xsl:variable name="images" select="/*/*[@name='images']/*/*" />
-	<xsl:variable name="logos" select="/*/*[@name='logos']/*/*" />
+    <xsl:variable name="logos" select="/*/*[@name='logos']/*/*" />
+    <xsl:variable name="header" select="/*/*[@name='header']/*/*" />
 
 	<xsl:variable name="trailers" select="$game/ssp:trailers/*" />
 	<xsl:variable name="awards" select="$game/ssp:awards/*" />
@@ -85,7 +86,11 @@
 							</ul>
 						</div>
 						<div id="content" class="uk-width-medium-3-4">
-							<img src="/header/" class="header" />
+						  <xsl:for-each select="$header">
+						      <img src="{@href}" alt="{@name}" class="header" />
+						  </xsl:for-each>
+						  
+							
 							<div class="uk-grid">
 								<div class="uk-width-medium-2-6">
 									<h2 id="factsheet">Factsheet</h2>
@@ -134,7 +139,7 @@
 											<br />
 											<xsl:for-each select="$prices">
 												<a href="{link}">
-													<xsl:value-of select="ssp:name" />
+													<xsl:value-of select="ssp:value" />
 												</a>
 												<br />
 											</xsl:for-each>
@@ -305,9 +310,20 @@
 												<xsl:value-of select="ssp:name" />
 											</strong>
 											<br />
+											<xsl:if test="ssp:mail">
+											
+											
 											<a href="mailto:{ssp:mail}">
 												<xsl:value-of select="ssp:mail" />
 											</a>
+                                            </xsl:if>
+                                            <xsl:if test="ssp:link">
+                                            
+                                            
+                                            <a href="{ssp:link}" rel="external">
+                                                <xsl:value-of select="ssp:link" />
+                                            </a>
+                                            </xsl:if>
 										</p>
 									</xsl:for-each>
 								</div>
