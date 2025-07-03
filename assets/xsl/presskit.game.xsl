@@ -6,7 +6,7 @@
 	<xsl:variable name="game" select="/*/*[@name='game']/ssp:game" />
 	<xsl:variable name="images" select="/*/*[@name='images']/*/*" />
 	<xsl:variable name="logos" select="/*/*[@name='logos']/*/*" />
-	<xsl:variable name="header" select="/*/*[@name='header']/*/*" />
+	<xsl:variable name="header" select="/*/*[@name='header']" />
 
 	<xsl:variable name="trailers" select="$game/ssp:trailers/*" />
 	<xsl:variable name="awards" select="$game/ssp:awards/*" />
