@@ -6,6 +6,15 @@
 
 	<resource-directory name="dictionary" type="application/xml" />
 
+	<directory name="examples">
+		<resource-directory name="presskit" type="application/xml" />
+		<fragment name="presskit-game">
+			<import ref="/api/presskit-game" />
+			<use-document ref="/examples/presskit/example-company" name="company" />
+			<use-document ref="/examples/presskit/example-game" name="game" />
+		</fragment>
+	</directory>
+
 	<directory name="schema">
 		<resource-directory name="presskit" type="application/x-xsd+xml" />
 		<resource-directory name="versioning" type="application/x-xsd+xml" />
@@ -30,5 +39,10 @@
 	<fragment name="api">
 		<custom-asset name="info" executable-builder="Slothsoft\Schema\Assets\InfoBuilder" parameter-filter="Slothsoft\Schema\Assets\SchemaParameterFilter" />
 		<custom-asset name="manifest" executable-builder="Slothsoft\Schema\Assets\ManifestBuilder" parameter-filter="Slothsoft\Schema\Assets\SchemaParameterFilter" />
+
+		<fragment name="presskit-game">
+			<use-template ref="/xsl/presskit.game" />
+			<link-stylesheet ref="/css/uikit-gradient" />
+		</fragment>
 	</fragment>
 </assets>
