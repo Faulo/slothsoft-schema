@@ -45,13 +45,29 @@ This namespace defines elements used in Rami Ismail's presskit(), indented for p
 		</xsd:sequence>
 	</xsd:complexType>
 
+	<xsd:simpleType name="bool">
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="TRUE" />
+			<xsd:enumeration value="FALSE" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="permission">
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="false" />
+			<xsd:enumeration value="ask" />
+			<xsd:enumeration value="non-commercial" />
+			<xsd:enumeration value="monetize" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
 	<xsd:element name="game">
 		<xsd:complexType>
 			<xsd:sequence>
 				<xsd:element name="title" type="xsd:token" />
 				<xsd:element name="release-date" type="date" minOccurs="0" />
 				<xsd:element name="website" type="xsd:anyURI" minOccurs="0" />
-				<xsd:element name="press-can-request-copy" type="xsd:boolean" minOccurs="0" />
+				<xsd:element name="press-can-request-copy" type="bool" minOccurs="0" />
 
 				<xsd:element name="platforms" type="platforms" minOccurs="0" />
 				<xsd:element name="prices" type="prices" minOccurs="0" />
@@ -69,6 +85,83 @@ This namespace defines elements used in Rami Ismail's presskit(), indented for p
 			<xsd:attributeGroup ref="schemaVersion" />
 		</xsd:complexType>
 	</xsd:element>
+
+	<xsd:element name="company">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="title" type="xsd:token" />
+				<xsd:element name="founding-date" type="date" minOccurs="0" />
+				<xsd:element name="website" type="xsd:anyURI" minOccurs="0" />
+				<xsd:element name="based-in" type="xsd:token" minOccurs="0" />
+				<xsd:element name="press-contact" type="xsd:anyURI" minOccurs="0" />
+				<xsd:element name="phone" type="xsd:token" minOccurs="0" />
+				<xsd:element name="address" type="lines" minOccurs="0" />
+
+				<xsd:element name="socials" type="socials" minOccurs="0" />
+				<xsd:element name="description" type="html" minOccurs="0" />
+				<xsd:element name="histories" type="histories" minOccurs="0" />
+
+				<xsd:element name="features" type="features" minOccurs="0" />
+				<xsd:element name="trailers" type="trailers" minOccurs="0" />
+				<xsd:element name="awards" type="awards" minOccurs="0" />
+				<xsd:element name="quotes" type="quotes" minOccurs="0" />
+
+				<xsd:element name="press-can-request-copy" type="bool" minOccurs="0" />
+				<xsd:element name="monetization-permission" type="permission" minOccurs="0" />
+
+				<xsd:element name="additionals" type="additionals" minOccurs="0" />
+				<xsd:element name="credits" type="credits" minOccurs="0" />
+				<xsd:element name="contacts" type="contacts" minOccurs="0" />
+			</xsd:sequence>
+			<xsd:attributeGroup ref="schemaVersion" />
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:complexType name="lines">
+		<xsd:sequence>
+			<xsd:element name="line" type="xsd:token" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="socials">
+		<xsd:sequence>
+			<xsd:element name="social" type="social" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="social">
+		<xsd:sequence>
+			<xsd:element name="name" type="xsd:token" />
+			<xsd:element name="link" type="xsd:anyURI" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="histories">
+		<xsd:sequence>
+			<xsd:element name="history" type="history" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="history">
+		<xsd:sequence>
+			<xsd:element name="header" type="xsd:token" />
+			<xsd:element name="text" type="html" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="contacts">
+		<xsd:sequence>
+			<xsd:element name="contact" type="contact" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="contact">
+		<xsd:sequence>
+			<xsd:element name="name" type="xsd:token" />
+			<xsd:element name="mail" type="xsd:anyURI" minOccurs="0" />
+			<xsd:element name="link" type="xsd:anyURI" minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
 
 	<xsd:complexType name="platforms">
 		<xsd:sequence>

@@ -1,9 +1,9 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <game xmlns="http://schema.slothsoft.net/schema/presskit">
 	<title>Game Name</title>
 	<release-date>1 May, 2012</release-date>
 	<website>http://www.gamesite.com/</website>
-	<press-can-request-copy>true</press-can-request-copy>
+	<press-can-request-copy>TRUE</press-can-request-copy>
 
 	<platforms>
 		<platform>
