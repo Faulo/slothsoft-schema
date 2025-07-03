@@ -178,10 +178,10 @@
 										<xsl:value-of select="ssp:name" />
 									</strong>
 									<xsl:text> </xsl:text>
-									<a href="https://www.youtube.com/watch?v={youtube}" rel="external" target="_blank">YouTube</a>
+									<a href="https://www.youtube.com/watch?v={ssp:youtube}" rel="external" target="_blank">YouTube</a>
 								</p>
 								<div class="uk-responsive-width iframe-container">
-									<iframe src="https://www.youtube.com/embed/{youtube}" allowfullscreen="" frameborder="0" />
+									<iframe src="https://www.youtube.com/embed/{ssp:youtube}" allowfullscreen="" frameborder="0" />
 								</div>
 							</xsl:for-each>
 						</xsl:when>
@@ -312,16 +312,12 @@
 									</strong>
 									<br />
 									<xsl:if test="ssp:mail">
-
-
 										<a href="mailto:{ssp:mail}">
 											<xsl:value-of select="ssp:mail" />
 										</a>
 									</xsl:if>
 									<xsl:if test="ssp:link">
-
-
-										<a href="{ssp:link}" rel="external">
+										<a href="{ssp:link}" rel="external" target="_blank">
 											<xsl:value-of select="ssp:link" />
 										</a>
 									</xsl:if>
