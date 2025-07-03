@@ -100,7 +100,7 @@
 							<p>
 								<strong>Developer:</strong>
 								<br />
-								<a href="{$company/website}">
+								<a href="{$company/ssp:website}">
 									<xsl:value-of select="$company/ssp:title" />
 								</a>
 								<br />
@@ -117,7 +117,7 @@
 									<strong>Platforms:</strong>
 									<br />
 									<xsl:for-each select="$platforms">
-										<a href="{link}">
+										<a href="{ssp:link}">
 											<xsl:value-of select="ssp:name" />
 										</a>
 										<br />
@@ -127,7 +127,7 @@
 							<p>
 								<strong>Website:</strong>
 								<br />
-								<a href="{$game/website}">
+								<a href="{$game/ssp:website}">
 									<xsl:value-of select="$game/ssp:website" />
 								</a>
 							</p>
@@ -136,7 +136,7 @@
 									<strong>Regular Price:</strong>
 									<br />
 									<xsl:for-each select="$prices">
-										<a href="{link}">
+										<a href="{ssp:link}">
 											<xsl:value-of select="ssp:value" />
 										</a>
 										<br />
@@ -297,7 +297,7 @@
 										<xsl:value-of select="ssp:person" />
 									</strong>
 									<br />
-									<a href="{website}">
+									<a href="{ssp:website}">
 										<xsl:value-of select="ssp:role" />
 									</a>
 								</p>
