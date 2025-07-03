@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ssv="http://schema.slothsoft.net/schema/versioning" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+<xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:ssv="http://schema.slothsoft.net/schema/versioning" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:lio="http://slothsoft.net">
 
 	<xsl:include href="farah://slothsoft@schema/xsl/schema.global" />
@@ -12,12 +11,10 @@
 	<xsl:variable name="elementReferenceList" select="$elementDefinitionList//elementReference" />
 
 	<xsl:variable name="attributeReferenceList" select="$elementDefinitionList//attributeReference" />
-	<xsl:variable name="attributeDefinitionList"
-		select="$manifest/attribute[@id = $attributeReferenceList/@id]" />
+	<xsl:variable name="attributeDefinitionList" select="$manifest/attribute[@id = $attributeReferenceList/@id]" />
 	<xsl:variable name="rootAttributeList" select="$attributeDefinitionList[@isRoot]" />
 
-	<xsl:variable name="typeDefinitionList"
-		select="lio:getDescendantTypes($elementDefinitionList | $attributeDefinitionList)" />
+	<xsl:variable name="typeDefinitionList" select="lio:getDescendantTypes($elementDefinitionList | $attributeDefinitionList)" />
 	<xsl:variable name="rootTypeList" select="$typeDefinitionList[@name]" />
 
 	<xsl:variable name="categoryDefinitionList" select="$manifest/category" />
@@ -27,8 +24,7 @@
 	<xsl:variable name="rootGroupList" select="$groupDefinitionList[@name]" />
 
 	<xsl:variable name="annotationDefinitionList" select="$manifest/annotation" />
-	<xsl:variable name="rootAnnotationList"
-		select="$annotationDefinitionList[not(@id = $manifest//annotationReference/@id)]" />
+	<xsl:variable name="rootAnnotationList" select="$annotationDefinitionList[not(@id = $manifest//annotationReference/@id)]" />
 
 
 
@@ -51,7 +47,9 @@
 	<!-- Table of Contents -->
 	<xsl:template match="manifest" mode="toc">
 		<ul class="toc">
-			<li><a href="#changelog" data-dict="">doc/changelog</a></li>
+			<li>
+				<a href="#changelog" data-dict="">doc/changelog</a>
+			</li>
 			<xsl:if test="count($elementDefinitionList)">
 				<li>
 					<a href="#{generate-id(.)}-elements">
@@ -179,8 +177,7 @@
 	<xsl:template match="element" mode="toc">
 		<xsl:param name="stack" select="/.." />
 		<xsl:variable name="currentNode" select="." />
-		<xsl:variable name="childElementNodeList"
-			select="$elementDefinitionList[@id = $currentNode//elementReference/@id]" />
+		<xsl:variable name="childElementNodeList" select="$elementDefinitionList[@id = $currentNode//elementReference/@id]" />
 
 		<xsl:if test="count($stack[@id = $currentNode/@id]) = 0">
 			<li>
@@ -202,7 +199,7 @@
 	<xsl:template match="manifest" mode="content">
 		<xsl:if test="$info/ssv:changelog">
 			<h2 id="changelog" data-dict="">doc/changelog</h2>
-			<xsl:apply-templates select="$info" mode="changelog"/>
+			<xsl:apply-templates select="$info" mode="changelog" />
 		</xsl:if>
 		<xsl:if test="count($elementDefinitionList)">
 			<h2 id="{generate-id(.)}-elements">
@@ -264,23 +261,16 @@
 	<xsl:template match="element" mode="content">
 		<xsl:variable name="currentNode" select="." />
 
-		<xsl:variable name="parentElementNodeList"
-			select="$elementDefinitionList[.//elementReference/@id = $currentNode/@id]" />
-		<xsl:variable name="childElementNodeList"
-			select=".//childNamespace | .//elementReference | $groupDefinitionList[@id = $currentNode//groupReference/@id]" />
-		<xsl:variable name="attributeNodeList"
-			select="$attributeDefinitionList[@id = $currentNode//attributeReference/@id]" />
+		<xsl:variable name="parentElementNodeList" select="$elementDefinitionList[.//elementReference/@id = $currentNode/@id]" />
+		<xsl:variable name="childElementNodeList" select=".//childNamespace | .//elementReference | $groupDefinitionList[@id = $currentNode//groupReference/@id]" />
+		<xsl:variable name="attributeNodeList" select="$attributeDefinitionList[@id = $currentNode//attributeReference/@id]" />
 
-		<xsl:variable name="parentTypeNodeList"
-			select="$rootTypeList[@id = ($currentNode//typeReference[@id = $rootTypeList/@id])[1]/@id]" />
+		<xsl:variable name="parentTypeNodeList" select="$rootTypeList[@id = ($currentNode//typeReference[@id = $rootTypeList/@id])[1]/@id]" />
 		<xsl:variable name="foreignTypeNodeList" select=".//foreignType" />
-		<xsl:variable name="typeNodeList"
-			select="$parentTypeNodeList | $foreignTypeNodeList[count($parentTypeNodeList) = 0]" />
+		<xsl:variable name="typeNodeList" select="$parentTypeNodeList | $foreignTypeNodeList[count($parentTypeNodeList) = 0]" />
 
-		<xsl:variable name="categoryNodeList"
-			select="$categoryDefinitionList[@id = $currentNode//categoryReference/@id]" />
-		<xsl:variable name="annotationNodeList"
-			select="$annotationDefinitionList[@id = $currentNode//annotationReference/@id]" />
+		<xsl:variable name="categoryNodeList" select="$categoryDefinitionList[@id = $currentNode//categoryReference/@id]" />
+		<xsl:variable name="annotationNodeList" select="$annotationDefinitionList[@id = $currentNode//annotationReference/@id]" />
 		<xsl:variable name="patternNodeList" select=".//pattern" />
 		<xsl:variable name="tokenNodeList" select=".//token" />
 
@@ -422,18 +412,13 @@
 	<xsl:template match="attribute" mode="content">
 		<xsl:variable name="currentNode" select="." />
 
-		<xsl:variable name="parentTypeNodeList"
-			select="$rootTypeList[@id = ($currentNode//typeReference[@id = $rootTypeList/@id])[1]/@id]" />
+		<xsl:variable name="parentTypeNodeList" select="$rootTypeList[@id = ($currentNode//typeReference[@id = $rootTypeList/@id])[1]/@id]" />
 		<xsl:variable name="foreignTypeNodeList" select=".//foreignType" />
-		<xsl:variable name="typeNodeList"
-			select="$parentTypeNodeList | $foreignTypeNodeList[count($parentTypeNodeList) = 0]" />
+		<xsl:variable name="typeNodeList" select="$parentTypeNodeList | $foreignTypeNodeList[count($parentTypeNodeList) = 0]" />
 
-		<xsl:variable name="ownerElementNodeList"
-			select="$elementDefinitionList[.//attributeReference/@id = $currentNode/@id]" />
-		<xsl:variable name="categoryNodeList"
-			select="$categoryDefinitionList[@id = $currentNode//categoryReference/@id]" />
-		<xsl:variable name="annotationNodeList"
-			select="$annotationDefinitionList[@id = $currentNode//annotationReference/@id]" />
+		<xsl:variable name="ownerElementNodeList" select="$elementDefinitionList[.//attributeReference/@id = $currentNode/@id]" />
+		<xsl:variable name="categoryNodeList" select="$categoryDefinitionList[@id = $currentNode//categoryReference/@id]" />
+		<xsl:variable name="annotationNodeList" select="$annotationDefinitionList[@id = $currentNode//annotationReference/@id]" />
 		<xsl:variable name="patternNodeList" select=".//pattern" />
 		<xsl:variable name="tokenNodeList" select=".//token" />
 
@@ -540,22 +525,16 @@
 		<xsl:variable name="currentNode" select="." />
 
 		<xsl:variable name="childElementNodeList" select=".//childNamespace | .//elementReference" />
-		<xsl:variable name="memberElementNodeList"
-			select="$elementDefinitionList[.//typeReference/@id = $currentNode/@id]" />
-		<xsl:variable name="childAttributeNodeList"
-			select="$attributeDefinitionList[@id = $currentNode//attributeReference/@id]" />
-		<xsl:variable name="memberAttributeNodeList"
-			select="$attributeDefinitionList[.//typeReference/@id = $currentNode/@id]" />
+		<xsl:variable name="memberElementNodeList" select="$elementDefinitionList[.//typeReference/@id = $currentNode/@id]" />
+		<xsl:variable name="childAttributeNodeList" select="$attributeDefinitionList[@id = $currentNode//attributeReference/@id]" />
+		<xsl:variable name="memberAttributeNodeList" select="$attributeDefinitionList[.//typeReference/@id = $currentNode/@id]" />
 		<xsl:variable name="childTypeNodeList" select="$rootTypeList[.//typeReference/@id = $currentNode/@id]" />
 
-		<xsl:variable name="parentTypeNodeList"
-			select="$rootTypeList[@id = ($currentNode//typeReference[@id = $rootTypeList/@id])[1]/@id]" />
+		<xsl:variable name="parentTypeNodeList" select="$rootTypeList[@id = ($currentNode//typeReference[@id = $rootTypeList/@id])[1]/@id]" />
 		<xsl:variable name="foreignTypeNodeList" select=".//foreignType" />
-		<xsl:variable name="typeNodeList"
-			select="$parentTypeNodeList | $foreignTypeNodeList[count($parentTypeNodeList) = 0]" />
+		<xsl:variable name="typeNodeList" select="$parentTypeNodeList | $foreignTypeNodeList[count($parentTypeNodeList) = 0]" />
 
-		<xsl:variable name="annotationNodeList"
-			select="$annotationDefinitionList[@id = $currentNode//annotationReference/@id]" />
+		<xsl:variable name="annotationNodeList" select="$annotationDefinitionList[@id = $currentNode//annotationReference/@id]" />
 		<xsl:variable name="patternNodeList" select=".//pattern" />
 		<xsl:variable name="tokenNodeList" select=".//token" />
 
@@ -712,10 +691,8 @@
 	<xsl:template match="category" mode="content">
 		<xsl:variable name="currentNode" select="." />
 
-		<xsl:variable name="memberElementNodeList"
-			select="$elementDefinitionList[.//categoryReference/@id = $currentNode/@id]" />
-		<xsl:variable name="annotationNodeList"
-			select="$annotationDefinitionList[@id = $currentNode//annotationReference/@id]" />
+		<xsl:variable name="memberElementNodeList" select="$elementDefinitionList[.//categoryReference/@id = $currentNode/@id]" />
+		<xsl:variable name="annotationNodeList" select="$annotationDefinitionList[@id = $currentNode//annotationReference/@id]" />
 
 		<h3 id="{@href}">
 			<span data-dict=".">doc/the-category</span>
@@ -750,10 +727,8 @@
 	<xsl:template match="group" mode="content">
 		<xsl:variable name="currentNode" select="." />
 
-		<xsl:variable name="memberElementNodeList"
-			select="$elementDefinitionList[@id = $currentNode//elementReference/@id] | $groupDefinitionList[@id = $currentNode//groupReference/@id]" />
-		<xsl:variable name="annotationNodeList"
-			select="$annotationDefinitionList[@id = $currentNode//annotationReference/@id]" />
+		<xsl:variable name="memberElementNodeList" select="$elementDefinitionList[@id = $currentNode//elementReference/@id] | $groupDefinitionList[@id = $currentNode//groupReference/@id]" />
+		<xsl:variable name="annotationNodeList" select="$annotationDefinitionList[@id = $currentNode//annotationReference/@id]" />
 
 		<h3 id="{@href}">
 			<span data-dict=".">doc/the-group</span>

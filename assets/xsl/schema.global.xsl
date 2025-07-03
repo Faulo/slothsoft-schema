@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:sfm="http://schema.slothsoft.net/farah/module" xmlns:ssv="http://schema.slothsoft.net/schema/versioning"
-	xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-	xmlns:exsl="http://exslt.org/common" xmlns:func="http://exslt.org/functions" xmlns:str="http://exslt.org/strings"
-	xmlns:lio="http://slothsoft.net" extension-element-prefixes="exsl func str lio"
-	xmlns:php="http://php.net/xsl">
+<xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:sfm="http://schema.slothsoft.net/farah/module" xmlns:ssv="http://schema.slothsoft.net/schema/versioning"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:exsl="http://exslt.org/common" xmlns:func="http://exslt.org/functions"
+	xmlns:str="http://exslt.org/strings" xmlns:lio="http://slothsoft.net" extension-element-prefixes="exsl func str lio" xmlns:php="http://php.net/xsl">
 
 	<xsl:include href="farah://slothsoft@farah/xsl/module" />
 
@@ -20,8 +17,7 @@
 		<func:result>
 			<xsl:for-each select="$rootNode[not(@id = $stack/@id)]">
 				<xsl:value-of select="concat(@id, ' ')" />
-				<xsl:value-of
-					select="lio:getDescendantElementIds($manifest/element[@id = current()//elementReference/@id], $stack | .)" />
+				<xsl:value-of select="lio:getDescendantElementIds($manifest/element[@id = current()//elementReference/@id], $stack | .)" />
 			</xsl:for-each>
 		</func:result>
 	</func:function>
@@ -90,9 +86,6 @@
 		</p>
 	</xsl:template>
 
-	<xsl:template match="*" mode="body">
-	</xsl:template>
-
 	<xsl:template match="*" mode="footer">
 		<div>
 			<span data-dict=".">footer/copyright</span>
@@ -116,8 +109,10 @@
 	<xsl:template match="*" mode="name">
 		<xsl:value-of select="concat(ssv:name, ' v', ssv:version, ' ', ssv:revision)" />
 	</xsl:template>
-	
+
 	<xsl:template match="*" mode="changelog">
-		<p class="changelog"><xsl:value-of select="php:function('trim', string(ssv:changelog))"/></p>
+		<p class="changelog">
+			<xsl:value-of select="php:function('trim', string(ssv:changelog))" />
+		</p>
 	</xsl:template>
 </xsl:stylesheet>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ssv="http://schema.slothsoft.net/schema/versioning">
+<xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ssv="http://schema.slothsoft.net/schema/versioning">
 
 	<xsl:include href="farah://slothsoft@schema/xsl/schema.global" />
 
@@ -45,7 +44,7 @@
 		</table>
 		<xsl:if test="$info/ssv:changelog">
 			<p data-dict="">home/changelog</p>
-			<xsl:apply-templates select="$info" mode="changelog"/>
+			<xsl:apply-templates select="$info" mode="changelog" />
 		</xsl:if>
 	</xsl:template>
 </xsl:stylesheet>
