@@ -24,62 +24,20 @@ This namespace defines elements used in Rami Ismail's presskit(), indented for p
 	</xsd:annotation>
 
 	<xsd:attributeGroup name="schemaVersion">
-		<xsd:attribute name="version" type="xsd:token" use="required" fixed="1.0">
+		<xsd:attribute name="version" type="xsd:token" use="optional" fixed="1.0">
 			<xsd:annotation>
 				<xsd:documentation>The schema version used by the instance document.</xsd:documentation>
 			</xsd:annotation>
 		</xsd:attribute>
 	</xsd:attributeGroup>
 
-	<xsd:element name="game">
-		<xsd:complexType>
-			<xsd:sequence>
-				<xsd:element name="title" type="xsd:normalizedString" />
-				<xsd:element name="release-date" type="xsd:normalizedString" />
-				<xsd:element name="website" type="xsd:anyURI" />
-				<xsd:element name="press-can-request-copy" type="xsd:boolean" />
-				<xsd:element ref="platforms" />
-				<xsd:element ref="prices" />
-				<xsd:element ref="description" />
-				<xsd:element ref="history" />
-			</xsd:sequence>
-			<xsd:attributeGroup ref="schemaVersion" />
-		</xsd:complexType>
-	</xsd:element>
-
-	<xsd:element name="platforms">
-		<xsd:complexType>
-			<xsd:sequence>
-				<xsd:element ref="platform" minOccurs="0" maxOccurs="unbounded" />
-			</xsd:sequence>
-		</xsd:complexType>
-	</xsd:element>
-
-	<xsd:element name="platform">
-		<xsd:complexType>
-			<xsd:sequence>
-				<xsd:element name="name" type="xsd:normalizedString" />
-				<xsd:element name="link" type="xsd:anyURI" />
-			</xsd:sequence>
-		</xsd:complexType>
-	</xsd:element>
-
-	<xsd:element name="prices">
-		<xsd:complexType>
-			<xsd:sequence>
-				<xsd:element ref="price" minOccurs="0" maxOccurs="unbounded" />
-			</xsd:sequence>
-		</xsd:complexType>
-	</xsd:element>
-
-	<xsd:element name="price">
-		<xsd:complexType>
-			<xsd:sequence>
-				<xsd:element name="currency" type="xsd:normalizedString" />
-				<xsd:element name="value" type="xsd:normalizedString" />
-			</xsd:sequence>
-		</xsd:complexType>
-	</xsd:element>
+	<xsd:complexType name="date">
+		<xsd:simpleContent>
+			<xsd:extension base="xsd:token">
+				<xsd:attribute name="datetime" type="xsd:date" use="optional" />
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
 
 	<xsd:complexType name="html" mixed="true">
 		<xsd:sequence minOccurs="0" maxOccurs="unbounded">
@@ -87,6 +45,139 @@ This namespace defines elements used in Rami Ismail's presskit(), indented for p
 		</xsd:sequence>
 	</xsd:complexType>
 
-	<xsd:element name="description" type="html" />
-	<xsd:element name="history" type="html" />
+	<xsd:element name="game">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="title" type="xsd:token" />
+				<xsd:element name="release-date" type="date" minOccurs="0" />
+				<xsd:element name="website" type="xsd:anyURI" minOccurs="0" />
+				<xsd:element name="press-can-request-copy" type="xsd:boolean" minOccurs="0" />
+
+				<xsd:element name="platforms" type="platforms" minOccurs="0" />
+				<xsd:element name="prices" type="prices" minOccurs="0" />
+				<xsd:element name="description" type="html" minOccurs="0" />
+				<xsd:element name="history" type="html" minOccurs="0" />
+
+				<xsd:element name="features" type="features" minOccurs="0" />
+				<xsd:element name="trailers" type="trailers" minOccurs="0" />
+				<xsd:element name="awards" type="awards" minOccurs="0" />
+				<xsd:element name="quotes" type="quotes" minOccurs="0" />
+				<xsd:element name="additionals" type="additionals" minOccurs="0" />
+				<xsd:element name="credits" type="credits" minOccurs="0" />
+				<xsd:element name="thanks" type="thanks" minOccurs="0" />
+			</xsd:sequence>
+			<xsd:attributeGroup ref="schemaVersion" />
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:complexType name="platforms">
+		<xsd:sequence>
+			<xsd:element name="platform" type="platform" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="platform">
+		<xsd:sequence>
+			<xsd:element name="name" type="xsd:token" />
+			<xsd:element name="link" type="xsd:anyURI" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="prices">
+		<xsd:sequence>
+			<xsd:element name="price" type="price" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="price">
+		<xsd:sequence>
+			<xsd:element name="currency" type="xsd:token" />
+			<xsd:element name="value" type="xsd:token" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="features">
+		<xsd:sequence>
+			<xsd:element name="feature" type="html" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="trailers">
+		<xsd:sequence>
+			<xsd:element name="trailer" type="trailer" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="trailer">
+		<xsd:sequence>
+			<xsd:element name="name" type="xsd:token" />
+			<xsd:element name="youtube" type="xsd:token" minOccurs="0" />
+			<xsd:element name="vimeo" type="xsd:token" minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="awards">
+		<xsd:sequence>
+			<xsd:element name="award" type="award" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="award">
+		<xsd:sequence>
+			<xsd:element name="description" type="html" />
+			<xsd:element name="info" type="html" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="quotes">
+		<xsd:sequence>
+			<xsd:element name="quote" type="quote" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="quote">
+		<xsd:sequence>
+			<xsd:element name="description" type="html" />
+			<xsd:element name="name" type="xsd:token" />
+			<xsd:element name="website" type="xsd:token" />
+			<xsd:element name="link" type="xsd:anyURI" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="additionals">
+		<xsd:sequence>
+			<xsd:element name="additional" type="additional" minOccurs="0" maxOccurs="unbounded">
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="additional">
+		<xsd:sequence>
+			<xsd:element name="title" type="xsd:token" />
+			<xsd:element name="description" type="html" />
+			<xsd:element name="link" type="xsd:anyURI" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="credits">
+		<xsd:sequence>
+			<xsd:element name="credit" type="credit" minOccurs="0" maxOccurs="unbounded">
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="thanks">
+		<xsd:sequence>
+			<xsd:element name="thank" type="credit" minOccurs="0" maxOccurs="unbounded">
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="credit">
+		<xsd:sequence>
+			<xsd:element name="person" type="xsd:token" />
+			<xsd:element name="website" type="xsd:anyURI" minOccurs="0" />
+			<xsd:element name="role" type="xsd:string" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
 </xsd:schema>
