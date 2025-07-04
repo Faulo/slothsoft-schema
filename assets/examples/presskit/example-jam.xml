@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<jam xmlns="http://schema.slothsoft.net/schema/presskit" version="1.1">
+	<title>Super Duper Game Jam</title>
+	<site>Somewhere</site>
+	<theme>some philosophical concept</theme>
+	<start-date datetime="2012-05-01" />
+	<end-date datetime="2012-05-03" />
+	<website>http://www.gamejamsite.com/</website>
+
+	<games>
+		<game>
+			<title>Game Name</title>
+		</game>
+	</games>
+</jam>

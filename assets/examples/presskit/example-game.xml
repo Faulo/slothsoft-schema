@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<game xmlns="http://schema.slothsoft.net/schema/presskit">
+<game xmlns="http://schema.slothsoft.net/schema/presskit" version="1.1">
 	<title>Game Name</title>
 	<release-date>1 May, 2012</release-date>
 	<website>http://www.gamesite.com/</website>
