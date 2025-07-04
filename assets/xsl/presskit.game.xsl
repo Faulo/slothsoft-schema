@@ -2,6 +2,8 @@
 <xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:sfs="http://schema.slothsoft.net/farah/sitemap" xmlns:html="http://www.w3.org/1999/xhtml"
 	xmlns:svg="http://www.w3.org/2000/svg" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ssp="http://schema.slothsoft.net/schema/presskit">
 
+	<xsl:import href="farah://slothsoft@schema/xsl/presskit.functions" />
+
 	<xsl:variable name="company" select="/*/*[@name='company']/ssp:company" />
 	<xsl:variable name="game" select="/*/*[@name='game']/ssp:game" />
 	<xsl:variable name="images" select="/*/*[@name='images']/*/*" />
@@ -107,11 +109,13 @@
 								Based in
 								<xsl:value-of select="$company/ssp:based-in" />
 							</p>
-							<p>
-								<strong>Release date:</strong>
-								<br />
-								<xsl:value-of select="$game/ssp:release-date" />
-							</p>
+							<xsl:for-each select="$game/ssp:release-date">
+								<p>
+									<strong>Release date:</strong>
+									<br />
+									<xsl:call-template name="ssp:date" />
+								</p>
+							</xsl:for-each>
 							<xsl:if test="$platforms">
 								<p>
 									<strong>Platforms:</strong>
