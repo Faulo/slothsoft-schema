@@ -31,4 +31,47 @@
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
+
+	<xsl:template name="ssp:link">
+		<xsl:param name="link" select="." />
+		<xsl:param name="name" select="." />
+		<xsl:param name="rel" select="''" />
+
+		<xsl:variable name="href" select="normalize-space($link)" />
+		<xsl:variable name="text" select="normalize-space($name)" />
+		<xsl:variable name="relationship" select="normalize-space($rel)" />
+
+		<xsl:choose>
+			<xsl:when test="concat($href, $text) = ''">
+				<code>ssp:link requires a "link" or a "name".</code>
+			</xsl:when>
+			<xsl:when test="$href = ''">
+				<span>
+					<xsl:value-of select="$text" />
+				</span>
+			</xsl:when>
+			<xsl:when test="$text = ''">
+				<a href="{$href}" rel="external" target="_blank">
+					<xsl:if test="$relationship != ''">
+						<xsl:attribute name="rel"><xsl:value-of select="$relationship" /></xsl:attribute>
+						<xsl:if test="contains($relationship, 'external')">
+							<xsl:attribute name="target">_blank</xsl:attribute>
+						</xsl:if>
+					</xsl:if>
+					<xsl:value-of select="$href" />
+				</a>
+			</xsl:when>
+			<xsl:otherwise>
+				<a href="{$href}" rel="external" target="_blank">
+					<xsl:if test="$relationship != ''">
+						<xsl:attribute name="rel"><xsl:value-of select="$relationship" /></xsl:attribute>
+						<xsl:if test="contains($relationship, 'external')">
+							<xsl:attribute name="target">_blank</xsl:attribute>
+						</xsl:if>
+					</xsl:if>
+					<xsl:value-of select="$text" />
+				</a>
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:template>
 </xsl:stylesheet>

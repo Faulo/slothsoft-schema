@@ -59,8 +59,9 @@ class PresskitDateTest extends TestCase {
         $this->assertSame($expected->localName, $actual->localName);
         $this->assertSame($expected->namespaceURI, $actual->namespaceURI);
         $this->assertSame($expected->textContent, $actual->textContent);
-        $this->assertSame($expected->hasAttribute('datetime'), $actual->hasAttribute('datetime'));
-        $this->assertSame($expected->getAttribute('datetime'), $actual->getAttribute('datetime'));
+        foreach ($expected->attributes as $attr) {
+            $this->assertSame($attr->value, $actual->getAttribute($attr->name));
+        }
     }
 
     private function transform(string $xmlString): DOMElement {

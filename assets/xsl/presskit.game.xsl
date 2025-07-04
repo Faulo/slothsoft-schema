@@ -102,12 +102,15 @@
 							<p>
 								<strong>Developer:</strong>
 								<br />
-								<a href="{$company/ssp:website}">
-									<xsl:value-of select="$company/ssp:title" />
-								</a>
-								<br />
-								Based in
-								<xsl:value-of select="$company/ssp:based-in" />
+								<xsl:call-template name="ssp:link">
+									<xsl:with-param name="link" select="$company/ssp:website" />
+									<xsl:with-param name="name" select="$company/ssp:title" />
+								</xsl:call-template>
+								<xsl:for-each select="$company/ssp:based-in">
+									<br />
+									<xsl:text>Based in </xsl:text>
+									<xsl:value-of select="." />
+								</xsl:for-each>
 							</p>
 							<xsl:for-each select="$game/ssp:release-date">
 								<p>
@@ -119,31 +122,35 @@
 							<xsl:if test="$platforms">
 								<p>
 									<strong>Platforms:</strong>
-									<br />
 									<xsl:for-each select="$platforms">
-										<a href="{ssp:link}">
-											<xsl:value-of select="ssp:name" />
-										</a>
 										<br />
+										<xsl:call-template name="ssp:link">
+											<xsl:with-param name="link" select="ssp:link" />
+											<xsl:with-param name="name" select="ssp:name" />
+											<xsl:with-param name="rel" select="'external'" />
+										</xsl:call-template>
 									</xsl:for-each>
 								</p>
 							</xsl:if>
-							<p>
-								<strong>Website:</strong>
-								<br />
-								<a href="{$game/ssp:website}">
-									<xsl:value-of select="$game/ssp:website" />
-								</a>
-							</p>
+							<xsl:for-each select="$game/ssp:website">
+								<p>
+									<strong>Website:</strong>
+									<br />
+									<xsl:call-template name="ssp:link">
+										<xsl:with-param name="rel" select="'me'" />
+									</xsl:call-template>
+								</p>
+							</xsl:for-each>
 							<xsl:if test="$prices">
 								<p>
 									<strong>Regular Price:</strong>
-									<br />
 									<xsl:for-each select="$prices">
-										<a href="{ssp:link}">
-											<xsl:value-of select="ssp:value" />
-										</a>
 										<br />
+										<xsl:call-template name="ssp:link">
+											<xsl:with-param name="link" select="ssp:link" />
+											<xsl:with-param name="name" select="ssp:value" />
+											<xsl:with-param name="rel" select="'external'" />
+										</xsl:call-template>
 									</xsl:for-each>
 								</p>
 							</xsl:if>
@@ -182,7 +189,11 @@
 										<xsl:value-of select="ssp:name" />
 									</strong>
 									<xsl:text> </xsl:text>
-									<a href="https://www.youtube.com/watch?v={ssp:youtube}" rel="external" target="_blank">YouTube</a>
+									<xsl:call-template name="ssp:link">
+										<xsl:with-param name="link" select="concat('https://www.youtube.com/watch?v=', ssp:youtube)" />
+										<xsl:with-param name="name" select="'YouTube'" />
+										<xsl:with-param name="rel" select="'external'" />
+									</xsl:call-template>
 								</p>
 								<div class="uk-responsive-width iframe-container">
 									<iframe src="https://www.youtube.com/embed/{ssp:youtube}" allowfullscreen="" frameborder="0" />
@@ -301,9 +312,10 @@
 										<xsl:value-of select="ssp:person" />
 									</strong>
 									<br />
-									<a href="{ssp:website}">
-										<xsl:value-of select="ssp:role" />
-									</a>
+									<xsl:call-template name="ssp:link">
+										<xsl:with-param name="link" select="ssp:website" />
+										<xsl:with-param name="name" select="ssp:role" />
+									</xsl:call-template>
 								</p>
 							</xsl:for-each>
 						</div>
@@ -315,16 +327,14 @@
 										<xsl:value-of select="ssp:name" />
 									</strong>
 									<br />
-									<xsl:if test="ssp:mail">
-										<a href="mailto:{ssp:mail}">
-											<xsl:value-of select="ssp:mail" />
-										</a>
-									</xsl:if>
-									<xsl:if test="ssp:link">
-										<a href="{ssp:link}" rel="external" target="_blank">
-											<xsl:value-of select="ssp:link" />
-										</a>
-									</xsl:if>
+									<xsl:for-each select="ssp:mail">
+										<xsl:call-template name="ssp:link">
+											<xsl:with-param name="link" select="concat('mailto:', .)" />
+										</xsl:call-template>
+									</xsl:for-each>
+									<xsl:for-each select="ssp:link">
+										<xsl:call-template name="ssp:link" />
+									</xsl:for-each>
 								</p>
 							</xsl:for-each>
 						</div>
@@ -347,11 +357,20 @@
 					</xsl:if>
 
 					<p>
-						<a href="http://dopresskit.com/">presskit()</a>
+						<xsl:call-template name="ssp:link">
+							<xsl:with-param name="link" select="'http://dopresskit.com/'" />
+							<xsl:with-param name="name" select="'presskit()'" />
+						</xsl:call-template>
 						<xsl:text> by Rami Ismail (</xsl:text>
-						<a href="https://www.vlambeer.com/">Vlambeer</a>
+						<xsl:call-template name="ssp:link">
+							<xsl:with-param name="link" select="'https://www.vlambeer.com/'" />
+							<xsl:with-param name="name" select="'Vlambeer'" />
+						</xsl:call-template>
 						<xsl:text>) - also thanks to </xsl:text>
-						<a href="https://www.vlambeer.com/press/sheet.php?p=credits">these fine folks</a>
+						<xsl:call-template name="ssp:link">
+							<xsl:with-param name="link" select="'https://www.vlambeer.com/press/sheet.php?p=credits'" />
+							<xsl:with-param name="name" select="'these fine folks'" />
+						</xsl:call-template>
 					</p>
 				</div>
 			</div>
