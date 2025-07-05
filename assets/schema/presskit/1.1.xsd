@@ -20,6 +20,7 @@ Starting with version 1.1, elements not part of presskit() will be introduced.
 *** Version 1.1 ***
     R20250704
         - added <jam> element.
+        - made <description> of <additional> optional.
 
 *** Version 1.0 ***
 	R20250703
@@ -140,7 +141,7 @@ Starting with version 1.1, elements not part of presskit() will be introduced.
 			<xsd:sequence>
 				<xsd:element name="title" type="xsd:token" />
 				<xsd:element name="site" type="xsd:token" minOccurs="0" />
-				<xsd:element name="theme" type="xsd:token" minOccurs="0" />
+				<xsd:element name="theme" type="html" minOccurs="0" />
 				<xsd:element name="start-date" type="date" minOccurs="0" />
 				<xsd:element name="end-date" type="date" minOccurs="0" />
 				<xsd:element name="website" type="xsd:anyURI" minOccurs="0" />
@@ -296,7 +297,7 @@ Starting with version 1.1, elements not part of presskit() will be introduced.
 	<xsd:complexType name="additional">
 		<xsd:sequence>
 			<xsd:element name="title" type="xsd:token" />
-			<xsd:element name="description" type="html" />
+			<xsd:element name="description" type="html" minOccurs="0" />
 			<xsd:element name="link" type="xsd:anyURI" />
 		</xsd:sequence>
 	</xsd:complexType>
