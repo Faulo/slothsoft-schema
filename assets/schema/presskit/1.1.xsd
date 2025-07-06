@@ -9,7 +9,7 @@
 			<ssv:info version="1.0">
 				<ssv:name>Presskit Schema</ssv:name>
 				<ssv:version>1.1</ssv:version>
-				<ssv:revision>R20250704</ssv:revision>
+				<ssv:revision>R20250706</ssv:revision>
 				<ssv:prefix>ssp</ssv:prefix>
 				<ssv:namespace>http://schema.slothsoft.net/schema/presskit</ssv:namespace>
 				<ssv:author email="daniel.lio.schulz@gmail.com">Daniel Schulz</ssv:author>
@@ -18,8 +18,12 @@ This namespace defines elements used in Rami Ismail's presskit(), indented for p
 
 Starting with version 1.1, elements not part of presskit() will be introduced.
 				]]></ssv:description>
-				<ssv:changelog><![CDATA[
+				<ssv:changelog><![CDATA[        
 *** Version 1.1 ***
+    R20250706
+        - added xml:lang attribute for html elements.
+        - allowed multiple <theme> in <jam>.
+
     R20250704
         - added <jam> element.
         - made <description> of <additional> optional.
