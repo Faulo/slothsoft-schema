@@ -41,7 +41,7 @@ Starting with version 1.1, elements not part of presskit() will be introduced.
 	<xsd:complexType name="html" mixed="true">
 		<xsd:annotation>
 			<xsd:documentation>
-				Text content or any content defined as HTML phrasing content: https://developer.mozilla.org/en-US/docs/Web/HTML/Guides/Content_categories#phrasing_content
+				Text content or any content defined as HTML phrasing content: https://www.w3.org/TR/2011/WD-html5-20110525/content-models.html#phrasing-content-0
 			</xsd:documentation>
 		</xsd:annotation>
 		<xsd:sequence minOccurs="0" maxOccurs="unbounded">
