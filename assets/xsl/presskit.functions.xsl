@@ -51,7 +51,7 @@
 				</span>
 			</xsl:when>
 			<xsl:when test="$text = ''">
-				<a href="{$href}" rel="external" target="_blank">
+				<a href="{$href}">
 					<xsl:if test="$relationship != ''">
 						<xsl:attribute name="rel"><xsl:value-of select="$relationship" /></xsl:attribute>
 						<xsl:if test="contains($relationship, 'external')">
@@ -62,7 +62,7 @@
 				</a>
 			</xsl:when>
 			<xsl:otherwise>
-				<a href="{$href}" rel="external" target="_blank">
+				<a href="{$href}">
 					<xsl:if test="$relationship != ''">
 						<xsl:attribute name="rel"><xsl:value-of select="$relationship" /></xsl:attribute>
 						<xsl:if test="contains($relationship, 'external')">
