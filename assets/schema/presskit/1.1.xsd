@@ -149,7 +149,7 @@ Starting with version 1.1, elements not part of presskit() will be introduced.
 			<xsd:sequence>
 				<xsd:element name="title" type="xsd:token" />
 				<xsd:element name="site" type="xsd:token" minOccurs="0" />
-				<xsd:element name="theme" type="html" minOccurs="0" />
+				<xsd:element name="theme" type="html" minOccurs="0" maxOccurs="unbounded" />
 				<xsd:element name="start-date" type="date" minOccurs="0" />
 				<xsd:element name="end-date" type="date" minOccurs="0" />
 				<xsd:element name="website" type="xsd:anyURI" minOccurs="0" />
