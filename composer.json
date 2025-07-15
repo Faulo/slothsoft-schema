@@ -11,7 +11,7 @@
 	"require" : {
 		"php" : ">=7.4",
 		"slothsoft/core" : "^1.5",
-		"slothsoft/farah" : "^1.6"
+		"slothsoft/farah" : "^1.16"
 	},
 	"require-dev" : {
 		"phpunit/phpunit" : "^9.6.23"
