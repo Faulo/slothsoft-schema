@@ -105,8 +105,9 @@ This namespace defines elements for the index file of https://historischer-spiel
 		</xsd:sequence>
 
 		<xsd:attribute ref="xml:id" use="optional" />
-		<xsd:attribute name="theme" type="xsd:token" />
-		<xsd:attribute name="type" type="event-type" />
+		<xsd:attribute name="theme" type="xsd:token" use="required" />
+		<xsd:attribute name="type" type="event-type" use="required" />
+
 		<xsd:attribute name="date" type="xsd:token" use="optional" />
 		<xsd:attribute name="moderator" type="xsd:token" use="optional" />
 		<xsd:attribute name="gfx" type="xsd:token" use="optional" />
@@ -115,11 +116,12 @@ This namespace defines elements for the index file of https://historischer-spiel
 	</xsd:complexType>
 
 	<xsd:complexType name="game">
-		<xsd:attribute name="name" type="xsd:token" />
-		<xsd:attribute name="from" type="release-date" />
-		<xsd:attribute name="by" type="xsd:token" />
-		<xsd:attribute name="on" type="xsd:token" />
-		<xsd:attribute name="country" type="country-code" />
+		<xsd:attribute name="name" type="xsd:token" use="required" />
+		<xsd:attribute name="from" type="release-date" use="required" />
+		<xsd:attribute name="by" type="xsd:token" use="required" />
+		<xsd:attribute name="on" type="xsd:token" use="required" />
+		<xsd:attribute name="country" type="country-code" use="required" />
+
 		<xsd:attribute name="href" type="xsd:anyURI" use="optional" />
 		<xsd:attribute name="wanted" type="xsd:token" use="optional" />
 		<xsd:attribute name="manual" type="xsd:token" use="optional" />
@@ -127,10 +129,10 @@ This namespace defines elements for the index file of https://historischer-spiel
 	</xsd:complexType>
 
 	<xsd:complexType name="read">
-		<xsd:attribute name="href" type="xsd:anyURI" />
-		<xsd:attribute name="title" type="xsd:token" />
-		<xsd:attribute name="year" type="release-date" />
-		<xsd:attribute name="author" type="xsd:token" />
+		<xsd:attribute name="href" type="xsd:anyURI" use="required" />
+		<xsd:attribute name="title" type="xsd:token" use="required" />
+		<xsd:attribute name="year" type="release-date" use="required" />
+		<xsd:attribute name="author" type="xsd:token" use="required" />
 	</xsd:complexType>
 
 	<xsd:complexType name="req">
