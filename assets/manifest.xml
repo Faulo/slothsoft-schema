@@ -16,6 +16,7 @@
 	</directory>
 
 	<directory name="schema">
+		<resource-directory name="historical-games-night" type="application/x-xsd+xml" />
 		<resource-directory name="presskit" type="application/x-xsd+xml" />
 		<resource-directory name="versioning" type="application/x-xsd+xml" />
 	</directory>
