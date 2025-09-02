@@ -14,7 +14,7 @@
 		"slothsoft/farah" : "^1.16.1"
 	},
 	"require-dev" : {
-		"phpunit/phpunit" : "^9.6.23"
+		"phpunit/phpunit" : "~9.6.23"
 	},
 	"autoload" : {
 		"psr-4" : {
@@ -39,5 +39,15 @@
 			"dev-main" : "1.4.x-dev"
 		}
 	},
-	"homepage" : "http://farah.slothsoft.net/modules/schema"
+	"homepage" : "http://farah.slothsoft.net/modules/schema",
+	"archive" : {
+		"exclude" : [
+			"/.jenkins/",
+			"/docs/",
+			"/phpdoc.xml",
+			"/tests/",
+			"/test-files/",
+			"/phpunit.xml"
+		]
+	}
 }
