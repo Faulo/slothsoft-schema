@@ -53,7 +53,7 @@ This namespace defines elements for the index file of https://historischer-spiel
 	</xsd:simpleType>
 
 	<!-- Root -->
-	<xsd:element name="events">
+	<xsd:element name="index">
 		<xsd:complexType>
 			<xsd:sequence>
 				<xsd:element name="tracks" type="tracks" />
@@ -65,6 +65,8 @@ This namespace defines elements for the index file of https://historischer-spiel
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>
+
+	<xsd:element name="events" type="event-list" />
 
 	<!-- Tracks -->
 	<xsd:complexType name="tracks">
