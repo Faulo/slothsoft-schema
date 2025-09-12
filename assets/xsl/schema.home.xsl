@@ -29,7 +29,7 @@
 							<xsl:value-of select="ssv:revision" />
 						</td>
 						<td>
-							<a href="{ssv:version}">
+							<a href="{ssv:version}/">
 								<xsl:apply-templates select="." mode="name" />
 							</a>
 						</td>
