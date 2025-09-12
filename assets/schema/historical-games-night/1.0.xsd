@@ -34,6 +34,12 @@ This namespace defines elements for the index file of https://historischer-spiel
 		</xsd:restriction>
 	</xsd:simpleType>
 
+	<xsd:simpleType name="asset-file">
+		<xsd:restriction base="xsd:token">
+			<xsd:pattern value="[^/]+" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
 	<xsd:simpleType name="event-type">
 		<xsd:restriction base="xsd:token">
 			<xsd:enumeration value="genre" />
@@ -112,7 +118,7 @@ This namespace defines elements for the index file of https://historischer-spiel
 
 		<xsd:attribute name="date" type="xsd:token" use="optional" />
 		<xsd:attribute name="moderator" type="xsd:token" use="optional" />
-		<xsd:attribute name="gfx" type="xsd:token" use="optional" />
+		<xsd:attribute name="gfx" type="asset-file" use="optional" />
 		<xsd:attribute name="rerun" type="event-id" use="optional" />
 		<xsd:attribute name="twitter" type="xsd:token" use="optional" />
 	</xsd:complexType>
@@ -126,7 +132,7 @@ This namespace defines elements for the index file of https://historischer-spiel
 
 		<xsd:attribute name="href" type="xsd:anyURI" use="optional" />
 		<xsd:attribute name="wanted" type="xsd:token" use="optional" />
-		<xsd:attribute name="manual" type="xsd:token" use="optional" />
+		<xsd:attribute name="manual" type="asset-file" use="optional" />
 		<xsd:attribute name="version" type="xsd:token" use="optional" />
 	</xsd:complexType>
 
