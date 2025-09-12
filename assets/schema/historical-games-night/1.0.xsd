@@ -10,13 +10,21 @@
 			<ssv:info version="1.0">
 				<ssv:name>Historical Games Night Schema</ssv:name>
 				<ssv:version>1.0</ssv:version>
-				<ssv:revision>R20250716</ssv:revision>
+				<ssv:revision>R20250912</ssv:revision>
 				<ssv:prefix>ssh</ssv:prefix>
 				<ssv:namespace>http://schema.slothsoft.net/schema/historical-games-night</ssv:namespace>
 				<ssv:author email="daniel.lio.schulz@gmail.com">Daniel Schulz</ssv:author>
 				<ssv:description><![CDATA[
 This namespace defines elements for the index file of https://historischer-spieleabend.slothsoft.net/.
                 ]]></ssv:description>
+				<ssv:changelog><![CDATA[
+*** Version 1.0 ***
+    R20250912
+        - "gfx" and "manual" attributes must be of type asset-file.
+
+    R20250716
+        - initial release.
+                ]]></ssv:changelog>
 			</ssv:info>
 		</xsd:appinfo>
 	</xsd:annotation>
