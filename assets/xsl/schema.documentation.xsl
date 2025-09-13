@@ -246,7 +246,7 @@
 			</xsl:apply-templates>
 		</xsl:if>
 		<xsl:if test="count($rootGroupList)">
-			<h2 id="{generate-id(.)}-categories">
+			<h2 id="{generate-id(.)}-groups">
 				<span data-dict=".">doc/groups-in-namespace</span>
 				<code class="namespace">
 					<xsl:value-of select="$info/ssv:namespace" />
