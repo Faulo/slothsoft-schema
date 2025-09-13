@@ -5,7 +5,6 @@
 	<resource-directory name="xsl" type="application/xslt+xml" />
 
 	<resource-directory name="dictionary" type="application/xml" />
-	<resource-directory name="third-party" type="application/x-xsd+xml" />
 
 	<directory name="examples">
 		<resource-directory name="presskit" type="application/xml" />
@@ -18,6 +17,7 @@
 
 	<directory name="schema">
 		<resource-directory name="historical-games-night" type="application/x-xsd+xml" />
+		<resource-directory name="junit" type="application/x-xsd+xml" />
 		<resource-directory name="presskit" type="application/x-xsd+xml" />
 		<resource-directory name="versioning" type="application/x-xsd+xml" />
 	</directory>
