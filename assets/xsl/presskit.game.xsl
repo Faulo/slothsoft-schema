@@ -343,7 +343,7 @@
 					<hr />
 
 					<xsl:if test="$thanks">
-						<h2 id="about">Special Thanks to our Playtesters</h2>
+						<h2>Special Thanks to our Playtesters</h2>
 						<xsl:for-each select="$thanks">
 							<xsl:sort select="substring-after(ssp:person, ' ')" />
 							<xsl:if test="position() > 1">
