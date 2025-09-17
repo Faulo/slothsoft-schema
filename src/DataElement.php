@@ -7,7 +7,7 @@ use DOMXPath;
 use DOMElement;
 
 class DataElement {
-
+    
     public static function loadDocument(DOMDocument $doc, array $schema) {
         $ret = null;
         $xpath = new DOMXpath($doc);
@@ -17,19 +17,19 @@ class DataElement {
         }
         return $ret;
     }
-
+    
     protected $schema = [
         'name' => '',
         'attributes' => [],
         'elements' => []
     ];
-
+    
     protected $dataXPath;
-
+    
     protected $dataNode;
-
+    
     protected $elementList = [];
-
+    
     public function __construct(DOMXPath $dataXPath, array $schema, DOMElement $dataNode) {
         foreach ($this->schema as $key => &$val) {
             if (isset($schema[$key])) {
@@ -37,10 +37,10 @@ class DataElement {
             }
         }
         unset($val);
-
+        
         $this->dataXPath = $dataXPath;
         $this->dataNode = $dataNode;
-
+        
         foreach ($this->schema['elements'] as $childSchema) {
             $childNodeList = $this->dataXPath->evaluate($childSchema['name'], $this->dataNode);
             foreach ($childNodeList as $childNode) {
@@ -51,13 +51,13 @@ class DataElement {
             // $this->elementList[] = new DataElement($this->dataXPath, $childSchema, $childNode);
         }
     }
-
+    
     public function appendAttributeList(array $attributeList) {
         foreach ($attributeList as $key => $val) {
             $this->dataNode->setAttribute($key, $val);
         }
     }
-
+    
     public function appendDataList($name, array $dataList) {
         foreach ($this->schema['elements'] as $childSchema) {
             if ($childSchema['name'] === $name) {
@@ -72,15 +72,15 @@ class DataElement {
             }
         }
     }
-
+    
     public function getDataNode() {
         return $this->dataNode;
     }
-
+    
     public function getElementList() {
         return $this->elementList;
     }
-
+    
     public function getAttributes() {
         $ret = [];
         foreach ($this->schema['attributes'] as $key => $type) {

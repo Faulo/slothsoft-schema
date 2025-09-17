@@ -6,19 +6,19 @@ use DOMDocument;
 use DOMXPath;
 
 class DataDocument {
-
+    
     protected $schema = [
         'name' => '',
         'attributes' => [],
         'elements' => []
     ];
-
+    
     protected $dataXPath;
-
+    
     protected $dataNode;
-
+    
     protected $elementList = [];
-
+    
     public function __construct(DOMXPath $dataXPath, array $schema, DOMDocument $dataNode) {
         foreach ($this->schema as $key => &$val) {
             if (isset($schema[$key])) {
@@ -26,10 +26,10 @@ class DataDocument {
             }
         }
         unset($val);
-
+        
         $this->dataXPath = $dataXPath;
         $this->dataNode = $dataNode;
-
+        
         foreach ($this->schema['elements'] as $childSchema) {
             $childNodeList = $this->dataXPath->evaluate($childSchema['name'], $this->dataNode);
             foreach ($childNodeList as $childNode) {

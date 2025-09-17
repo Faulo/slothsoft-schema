@@ -8,7 +8,7 @@ use Slothsoft\Farah\Module\Module;
 use Slothsoft\Farah\Module\Asset\ParameterFilterStrategy\AbstractMapParameterFilter;
 
 class SchemaParameterFilter extends AbstractMapParameterFilter {
-
+    
     public static function createSchemaVersions(string $schemaId, string $version): array {
         if ($version) {
             $schemaId .= "/$version";
@@ -28,7 +28,7 @@ class SchemaParameterFilter extends AbstractMapParameterFilter {
         }
         return $schemaVersions;
     }
-
+    
     protected function createValueSanitizers(): array {
         return [
             'schema' => new StringSanitizer(),

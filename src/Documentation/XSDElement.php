@@ -3,7 +3,7 @@ declare(strict_types = 1);
 namespace Slothsoft\Schema\Documentation;
 
 class XSDElement extends XSDNode {
-
+    
     protected function initRefNodeList() {
         $this->refNodeList[] = $this->rootNode;
         if ($this->rootNode->hasAttribute('ref')) {
@@ -14,7 +14,7 @@ class XSDElement extends XSDNode {
             }
         }
     }
-
+    
     protected function initChildren() {
         foreach (array_reverse($this->refNodeList) as $refNode) {
             if ($refNode->hasAttribute('minOccurs')) {

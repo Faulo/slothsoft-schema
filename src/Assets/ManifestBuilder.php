@@ -14,7 +14,7 @@ use DOMDocument;
 use DOMElement;
 
 class ManifestBuilder implements ExecutableBuilderStrategyInterface {
-
+    
     public function buildExecutableStrategies(AssetInterface $context, FarahUrlArguments $args): ExecutableStrategies {
         if ($schemaId = $args->get('schema')) {
             $schemaVersions = SchemaParameterFilter::createSchemaVersions($schemaId, $args->get('version'));

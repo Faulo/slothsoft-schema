@@ -7,68 +7,68 @@ use DOMElement;
 use Exception;
 
 abstract class XSDNode {
-
+    
     protected $ownerFile;
-
+    
     protected $xpath;
-
+    
     protected $rootNode;
-
+    
     protected $idNode;
-
+    
     protected $refNodeList;
-
+    
     protected $documentationNodeList;
-
+    
     protected $className;
-
+    
     protected $name;
-
+    
     protected $isDefaultName;
-
+    
     protected $id;
-
+    
     protected $optionList;
-
+    
     protected $childTypeList;
-
+    
     protected $childCategoryList;
-
+    
     protected $childAnnotationList;
-
+    
     protected $exampleNode;
-
+    
     protected $exampleStatus;
-
+    
     protected $manifestNode;
-
+    
     protected $manifestStatus;
-
+    
     const STATUS_EMPTY = 1;
-
+    
     const STATUS_PROCESSING = 2;
-
+    
     const STATUS_SUCCESS = 3;
-
+    
     const STATUS_ERROR = 4;
-
+    
     public function __construct(XSDFile $file) {
         $this->ownerFile = $file;
         $this->xpath = $this->ownerFile->getXPath();
     }
-
+    
     public function init(DOMElement $node) {
         $this->rootNode = $node;
         $this->exampleStatus = self::STATUS_EMPTY;
         $this->manifestStatus = self::STATUS_EMPTY;
-
+        
         $this->refNodeList = array();
         $this->documentationNodeList = array();
-
+        
         $this->childTypeList = array();
         $this->childCategoryList = array();
         $this->childAnnotationList = array();
-
+        
         $this->optionList = array();
         $this->optionList['minOccurs'] = '1';
         $this->optionList['maxOccurs'] = '1';
@@ -78,14 +78,14 @@ abstract class XSDNode {
         $this->optionList['tokenList'] = array();
         $this->optionList['patternList'] = array();
         $this->optionList['cardinality'] = null;
-
+        
         $this->className = basename(str_replace('\\', DIRECTORY_SEPARATOR, get_class($this)));
         $this->name = 'unknown' . $this->className;
         $this->isDefaultName = true;
         $this->setIdNode($this->rootNode);
-
+        
         $this->initRefNodeList();
-
+        
         foreach ($this->refNodeList as $refNode) {
             if ($refNode->hasAttribute('ref')) {
                 $ref = $refNode->getAttribute('ref');
@@ -97,7 +97,7 @@ abstract class XSDNode {
                 }
             }
         }
-
+        
         foreach ($this->refNodeList as $refNode) {
             if ($refNode->hasAttribute('name')) {
                 $this->isDefaultName = false;
@@ -105,7 +105,7 @@ abstract class XSDNode {
                 $this->setIdNode($refNode);
             }
         }
-
+        
         foreach ($this->refNodeList as $refNode) {
             $this->_addTypeParentNode($refNode);
             $this->_addCategoryParentNode($refNode);
@@ -113,58 +113,58 @@ abstract class XSDNode {
             $this->_addAnnotationParentNode($refNode);
             $this->_addTokenParentNode($refNode);
         }
-
+        
         $this->initChildren();
-
+        
         $this->optionList['cardinality'] = $this->_getCardinality();
     }
-
+    
     protected function initRefNodeList() {
         $this->refNodeList[] = $this->rootNode;
     }
-
+    
     protected function initChildren() {}
-
+    
     public function getChildList() {
         return array_merge($this->childTypeList, $this->childCategoryList, $this->childAnnotationList);
     }
-
+    
     public function getName() {
         return $this->name;
     }
-
+    
     public function hasName() {
         return ! $this->isDefaultName;
     }
-
+    
     public function getId() {
         return $this->id;
     }
-
+    
     public function setIdNode(DOMElement $node) {
         $this->idNode = $node;
         $this->id = $this->ownerFile->getIdByNode($this->idNode, $this->getClassName());
     }
-
+    
     public function getClassName() {
         return $this->className;
     }
-
+    
     public function getHtmlId() {
         return sprintf('%s-%s', preg_replace('/[^\w\-\.]+/', '', $this->name), md5($this->id));
     }
-
+    
     public function getSortIndex() {
         $sortBase = preg_replace('/\d+/', '', $this->id);
         $match = null;
         $sortIndex = preg_match('/(\d+)/', $this->id, $match) ? (int) $match[1] : 0;
         return sprintf('%s-%05d', $sortBase, $sortIndex);
     }
-
+    
     public function isRoot() {
         return $this->rootNode->parentNode === $this->xpath->document->documentElement;
     }
-
+    
     public function getBaseType() {
         foreach ($this->optionList['foreignTypeList'] as $schemaType) {
             return $schemaType['name'];
@@ -177,7 +177,7 @@ abstract class XSDNode {
         }
         return null;
     }
-
+    
     public function getSchemaTypeList() {
         $ret = array();
         foreach ($this->optionList['foreignTypeList'] as $type) {
@@ -187,15 +187,15 @@ abstract class XSDNode {
         }
         return $ret;
     }
-
+    
     public function getMin() {
         return $this->optionList['minOccurs'];
     }
-
+    
     public function getMax() {
         return $this->optionList['maxOccurs'];
     }
-
+    
     public function getComplexType() {
         $ret = null;
         foreach ($this->childTypeList as $childType) {
@@ -206,45 +206,45 @@ abstract class XSDNode {
         }
         return $ret;
     }
-
+    
     public function getCardinality() {
         return $this->optionList['cardinality'];
     }
-
+    
     public function getExcelNode(DOMDocument $doc, array $xsdStack = array()) {
         $xsdStack[] = $this;
-
+        
         $retNode = $doc->createElement($this->getClassName());
-
+        
         if ($this->hasName()) {
             $retNode->setAttribute('name', $this->getName());
         }
-
+        
         $retNode->setAttribute('id', $this->id);
         // $retNode->setAttribute('isRoot', (int) $this->isRoot());
-
+        
         $retNode->setAttribute('min', $this->getMin());
         $retNode->setAttribute('max', $this->getMax());
         $retNode->setAttribute('type', $this->getComplexType());
         $retNode->setAttribute('baseType', $this->getBaseType());
         $retNode->setAttribute('cardinality', $this->_getCardinalityPath($xsdStack));
         $retNode->setAttribute('path', $this->_getElementPath($xsdStack));
-
+        
         $retNode->setAttribute('example', $this->getExampleContent());
-
+        
         foreach ($this->getChildList() as $child) {
             $retNode->appendChild($child->getExcelNode($doc, $xsdStack));
         }
-
+        
         return $retNode;
     }
-
+    
     public function getManifestNode(DOMDocument $doc, array &$storage) {
         switch ($this->manifestStatus) {
             case self::STATUS_EMPTY:
                 $this->manifestStatus = self::STATUS_PROCESSING;
                 $storage[$this->id] = null;
-
+                
                 try {
                     $retNode = null;
                     if ($this->optionList['maxOccurs'] === '0') {
@@ -271,14 +271,14 @@ abstract class XSDNode {
                             $retNode = $doc->createElement('annotation');
                             break;
                     }
-
+                    
                     if ($retNode) {
                         // $this->manifestNode = $retNode;
-
+                        
                         if ($this->hasName()) {
                             $retNode->setAttribute('name', $this->getName());
                         }
-
+                        
                         $retNode->setAttribute('id', $this->getId());
                         $retNode->setAttribute('href', $this->getHtmlId());
                         $retNode->setAttribute('sort', $this->getSortIndex());
@@ -288,7 +288,7 @@ abstract class XSDNode {
                         if ($this->optionList['isRequired'] !== null) {
                             $retNode->setAttribute('isRequired', $this->optionList['isRequired']);
                         }
-
+                        
                         try {
                             $content = $this->getExampleContent();
                         } catch (\Exception $e) {
@@ -298,7 +298,7 @@ abstract class XSDNode {
                         if ($content !== null) {
                             $retNode->setAttribute('example', $content);
                         }
-
+                        
                         foreach ($childList as $child) {
                             $childNode = null;
                             switch ($child->getClassName()) {
@@ -382,10 +382,10 @@ abstract class XSDNode {
             case self::STATUS_ERROR:
                 break;
         }
-
+        
         return $this->manifestNode;
     }
-
+    
     public function getExampleNode(DOMDocument $doc) {
         // echo 'start: '.$this->name . PHP_EOL;flush();
         switch ($this->exampleStatus) {
@@ -482,14 +482,14 @@ abstract class XSDNode {
             case self::STATUS_ERROR:
                 break;
         }
-
+        
         return $this->exampleNode;
     }
-
+    
     public function getExampleStatus() {
         return $this->exampleStatus;
     }
-
+    
     public function getExampleContent() {
         foreach ($this->optionList['tokenList'] as $token) {
             return $token;
@@ -516,7 +516,7 @@ abstract class XSDNode {
         foreach ($this->getSchemaTypeList() as $schemaType) {
             switch ($schemaType) {
                 case 'token':
-
+                
                 case 'ENTITIES':
                 case 'ENTITY':
                 case 'ID':
@@ -583,7 +583,7 @@ abstract class XSDNode {
         }
         return null;
     }
-
+    
     protected function _getElementPath(array $xsdList) {
         $ret = array();
         foreach ($xsdList as $xsd) {
@@ -593,7 +593,7 @@ abstract class XSDNode {
         }
         return implode('', $ret);
     }
-
+    
     protected function _getCardinality() {
         $ret = null;
         switch ($this->getClassName()) {
@@ -618,7 +618,7 @@ abstract class XSDNode {
         }
         return $ret;
     }
-
+    
     protected function _getCardinalityPath(array $xsdList) {
         $ret = array();
         foreach ($xsdList as $xsd) {
@@ -628,7 +628,7 @@ abstract class XSDNode {
         }
         return implode('', $ret);
     }
-
+    
     protected function _addTypeParentNode(DOMElement $parentNode) {
         $nodeList = $this->xpath->evaluate('xsd:complexType | xsd:simpleType | xsd:union/xsd:complexType | xsd:union/xsd:simpleType', $parentNode);
         foreach ($nodeList as $node) {
@@ -643,7 +643,7 @@ abstract class XSDNode {
             $this->_addTypeName($parentNode->getAttribute('type'));
         }
     }
-
+    
     protected function _addTypeNode(DOMElement $node) {
         if (in_array($node, $this->refNodeList, true)) {
             // override!
@@ -653,7 +653,7 @@ abstract class XSDNode {
             }
         }
     }
-
+    
     protected function _addTypeName($type) {
         // $this->ownerFile->getSchemaQuery()
         $match = null;
@@ -666,7 +666,7 @@ abstract class XSDNode {
             }
         }
     }
-
+    
     protected function _addForeignType($prefix, $localName) {
         $this->optionList['foreignTypeList'][] = array(
             'prefix' => $prefix,
@@ -674,7 +674,7 @@ abstract class XSDNode {
             'namespace' => $this->xpath->document->lookupNamespaceURI($prefix)
         );
     }
-
+    
     protected function _addCategoryParentNode(DOMElement $parentNode) {
         $nodeList = $this->xpath->evaluate('xsd:annotation/xsd:appinfo/xsd:category', $parentNode);
         foreach ($nodeList as $node) {
@@ -689,40 +689,40 @@ abstract class XSDNode {
             }
         }
     }
-
+    
     protected function _addCategoryNode(DOMElement $node) {
         if ($child = $this->ownerFile->createXSDCategory($node)) {
             $this->childCategoryList[] = $child;
         }
     }
-
+    
     protected function _addGroupParentNode(DOMElement $parentNode) {
         $nodeList = $this->xpath->evaluate('xsd:group[@ref] | */xsd:group[@ref] | */*/xsd:group[@ref]', $parentNode);
         foreach ($nodeList as $node) {
             $this->_addGroupName($node->getAttribute('ref'));
         }
     }
-
+    
     protected function _addGroupNode(DOMElement $node) {
         if ($child = $this->ownerFile->createXSDGroup($node)) {
             $this->childCategoryList[] = $child;
         }
     }
-
+    
     protected function _addGroupName($group) {
         $nodeList = $this->xpath->evaluate(sprintf('/xsd:schema/xsd:group[@name = "%s"]', $group));
         foreach ($nodeList as $node) {
             $this->_addGroupNode($node);
         }
     }
-
+    
     protected function _addAnnotationParentNode(DOMElement $parentNode) {
         $nodeList = $this->xpath->evaluate('xsd:annotation | xsd:complexContent/xsd:annotation | xsd:simpleContent/xsd:annotation', $parentNode);
         foreach ($nodeList as $node) {
             $this->_addAnnotationNode($node);
         }
     }
-
+    
     protected function _addAnnotationNode(DOMElement $parentNode) {
         if ($child = $this->ownerFile->createXSDAnnotation($parentNode)) {
             $this->childAnnotationList[] = $child;
@@ -742,7 +742,7 @@ abstract class XSDNode {
          * //
          */
     }
-
+    
     protected function _addDocumentationNode(DOMElement $parentNode) {
         if ($parentNode->hasChildNodes()) {
             $retNode = $parentNode->ownerDocument->createDocumentFragment();
@@ -766,7 +766,7 @@ abstract class XSDNode {
             $this->documentationNodeList[] = $retNode;
         }
     }
-
+    
     protected function _addTokenParentNode(DOMElement $parentNode) {
         if ($parentNode->hasAttribute('fixed')) {
             array_unshift($this->optionList['tokenList'], $parentNode->getAttribute('fixed'));

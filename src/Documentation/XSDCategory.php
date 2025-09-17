@@ -3,9 +3,9 @@ declare(strict_types = 1);
 namespace Slothsoft\Schema\Documentation;
 
 class XSDCategory extends XSDNode {
-
+    
     protected $childElementList = array();
-
+    
     protected function initRefNodeList() {
         $this->refNodeList[] = $this->rootNode;
         if ($this->rootNode->hasAttribute('ref')) {
@@ -16,14 +16,14 @@ class XSDCategory extends XSDNode {
             }
         }
     }
-
+    
     protected function initChildren() {
         $this->childElementList = array();
-
+        
         foreach ($this->refNodeList as $refNode) {
             $this->_addAnnotationNode($refNode);
         }
-
+        
         foreach ($this->refNodeList as $typeNode) {
             $nodeList = $this->xpath->evaluate('*/xsd:element | */*/xsd:element', $typeNode);
             foreach ($nodeList as $node) {
@@ -33,7 +33,7 @@ class XSDCategory extends XSDNode {
             }
         }
     }
-
+    
     public function getChildList() {
         return array_merge($this->childElementList, parent::getChildList());
     }
