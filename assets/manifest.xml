@@ -26,14 +26,14 @@
 		<fragment name="home">
 			<use-template ref="/xsl/schema.home" />
 			<use-document ref="/api/info" name="schema-info" />
-			<import ref="//slothsoft@core/api/HTML5" />
+			<import ref="//slothsoft@farah/api/HTML5" />
 			<link-stylesheet ref="/css/default" />
 		</fragment>
 		<fragment name="documentation">
 			<use-template ref="/xsl/schema.documentation" />
 			<use-document ref="/api/info" name="schema-info" />
 			<use-document ref="/api/manifest" name="schema-manifest" />
-			<import ref="//slothsoft@core/api/HTML5" />
+			<import ref="//slothsoft@farah/api/HTML5" />
 			<link-stylesheet ref="/css/default" />
 		</fragment>
 	</fragment>
