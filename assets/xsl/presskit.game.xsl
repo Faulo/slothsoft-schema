@@ -295,7 +295,7 @@
 						<xsl:value-of select="$company/ssp:title" />
 					</h2>
 					<xsl:for-each select="$company/ssp:description">
-						<xsl:copy-of select="." />
+						<xsl:copy-of select="node()" />
 					</xsl:for-each>
 
 					<hr />
