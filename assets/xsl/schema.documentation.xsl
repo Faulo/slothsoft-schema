@@ -27,12 +27,7 @@
 	<xsl:variable name="rootAnnotationList" select="$annotationDefinitionList[not(@id = $manifest//annotationReference/@id)]" />
 
 
-
-
-	<xsl:template match="*" mode="nav">
-	</xsl:template>
-
-	<xsl:template match="*" mode="body">
+	<xsl:template match="ssv:info" mode="body">
 		<nav>
 			<details>
 				<summary>

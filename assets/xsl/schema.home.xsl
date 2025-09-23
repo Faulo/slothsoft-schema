@@ -3,9 +3,9 @@
 
 	<xsl:include href="farah://slothsoft@schema/xsl/schema.global" />
 
-	<xsl:template match="*" mode="body">
+	<xsl:template match="ssv:info" mode="body">
 		<p>
-			<xsl:value-of select="$info/ssv:description" />
+			<xsl:value-of select="ssv:description" />
 		</p>
 		<p data-dict="">home/table/caption</p>
 		<table>
@@ -42,9 +42,9 @@
 				</xsl:for-each>
 			</tbody>
 		</table>
-		<xsl:if test="$info/ssv:changelog">
+		<xsl:if test="ssv:changelog">
 			<p data-dict="">home/changelog</p>
-			<xsl:apply-templates select="$info" mode="changelog" />
+			<xsl:apply-templates select="." mode="changelog" />
 		</xsl:if>
 	</xsl:template>
 </xsl:stylesheet>

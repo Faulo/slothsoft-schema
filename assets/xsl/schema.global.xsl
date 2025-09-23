@@ -54,42 +54,42 @@
 			</head>
 			<body>
 				<header>
-					<xsl:apply-templates select="." mode="header" />
+					<xsl:apply-templates select="$info" mode="header" />
 				</header>
 				<main>
 					<xsl:apply-templates select="sfm:error" mode="sfm:html" />
-					<xsl:apply-templates select="." mode="body" />
+					<xsl:apply-templates select="$info" mode="body" />
 				</main>
 				<footer>
-					<xsl:apply-templates select="." mode="footer" />
+					<xsl:apply-templates select="$info" mode="footer" />
 				</footer>
 			</body>
 		</html>
 	</xsl:template>
 
-	<xsl:template match="*" mode="header">
+	<xsl:template match="ssv:info" mode="header">
 		<h1>
-			<xsl:apply-templates select="$info" mode="title" />
+			<xsl:apply-templates select="." mode="title" />
 		</h1>
 		<p>
 			<span data-dict=".">header/1</span>
-			<a href="{$info/ssv:namespace}">
+			<a href="{ssv:namespace}">
 				<code>
-					<xsl:value-of select="$info/ssv:namespace" />
+					<xsl:value-of select="ssv:namespace" />
 				</code>
 			</a>
 			<span data-dict=".">header/2</span>
 			<code>
-				<xsl:value-of select="$info/ssv:prefix" />
+				<xsl:value-of select="ssv:prefix" />
 			</code>
 			<span data-dict=".">header/3</span>
 		</p>
 	</xsl:template>
 
-	<xsl:template match="*" mode="footer">
+	<xsl:template match="ssv:info" mode="footer">
 		<div>
 			<span data-dict=".">footer/copyright</span>
-			<xsl:for-each select="$info/ssv:author">
+			<xsl:for-each select="ssv:author">
 				<a href="mailto:{@email}">
 					<xsl:value-of select="." />
 				</a>
