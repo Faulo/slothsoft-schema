@@ -47,7 +47,7 @@
 			</li>
 			<xsl:if test="count($elementDefinitionList)">
 				<li>
-					<a href="#{generate-id(.)}-elements">
+					<a href="#id-{count(preceding::*)}-elements">
 						<span data-dict=".">doc/elements-in-namespace</span>
 						<code class="namespace">
 							<xsl:value-of select="$info/ssv:namespace" />
@@ -77,7 +77,7 @@
 			</xsl:if>
 			<xsl:if test="count($attributeDefinitionList)">
 				<li>
-					<a href="#{generate-id(.)}-attributes">
+					<a href="#id-{count(preceding::*)}-attributes">
 						<span data-dict=".">doc/attributes-in-namespace</span>
 						<code class="namespace">
 							<xsl:value-of select="$info/ssv:namespace" />
@@ -100,7 +100,7 @@
 			</xsl:if>
 			<xsl:if test="count($rootTypeList)">
 				<li>
-					<a href="#{generate-id(.)}-types">
+					<a href="#id-{count(preceding::*)}-types">
 						<span data-dict=".">doc/content-models-in-namespace</span>
 						<code class="namespace">
 							<xsl:value-of select="$info/ssv:namespace" />
@@ -123,7 +123,7 @@
 			</xsl:if>
 			<xsl:if test="count($rootCategoryList)">
 				<li>
-					<a href="#{generate-id(.)}-categories">
+					<a href="#id-{count(preceding::*)}-categories">
 						<span data-dict=".">doc/categories-in-namespace</span>
 						<code class="namespace">
 							<xsl:value-of select="$info/ssv:namespace" />
@@ -146,7 +146,7 @@
 			</xsl:if>
 			<xsl:if test="count($rootGroupList)">
 				<li>
-					<a href="#{generate-id(.)}-groups">
+					<a href="#id-{count(preceding::*)}-groups">
 						<span data-dict=".">doc/groups-in-namespace</span>
 						<code class="namespace">
 							<xsl:value-of select="$info/ssv:namespace" />
@@ -197,7 +197,7 @@
 			<xsl:apply-templates select="$info" mode="changelog" />
 		</xsl:if>
 		<xsl:if test="count($elementDefinitionList)">
-			<h2 id="{generate-id(.)}-elements">
+			<h2 id="id-{count(preceding::*)}-elements">
 				<span data-dict=".">doc/elements-in-namespace</span>
 				<code class="namespace">
 					<xsl:value-of select="$info/ssv:namespace" />
@@ -208,7 +208,7 @@
 			</xsl:apply-templates>
 		</xsl:if>
 		<xsl:if test="count($attributeDefinitionList)">
-			<h2 id="{generate-id(.)}-attributes">
+			<h2 id="id-{count(preceding::*)}-attributes">
 				<span data-dict=".">doc/attributes-in-namespace</span>
 				<code class="namespace">
 					<xsl:value-of select="$info/ssv:namespace" />
@@ -219,7 +219,7 @@
 			</xsl:apply-templates>
 		</xsl:if>
 		<xsl:if test="count($rootTypeList)">
-			<h2 id="{generate-id(.)}-types">
+			<h2 id="id-{count(preceding::*)}-types">
 				<span data-dict=".">doc/content-models-in-namespace</span>
 				<code class="namespace">
 					<xsl:value-of select="$info/ssv:namespace" />
@@ -230,7 +230,7 @@
 			</xsl:apply-templates>
 		</xsl:if>
 		<xsl:if test="count($rootCategoryList)">
-			<h2 id="{generate-id(.)}-categories">
+			<h2 id="id-{count(preceding::*)}-categories">
 				<span data-dict=".">doc/categories-in-namespace</span>
 				<code class="namespace">
 					<xsl:value-of select="$info/ssv:namespace" />
@@ -241,7 +241,7 @@
 			</xsl:apply-templates>
 		</xsl:if>
 		<xsl:if test="count($rootGroupList)">
-			<h2 id="{generate-id(.)}-groups">
+			<h2 id="id-{count(preceding::*)}-groups">
 				<span data-dict=".">doc/groups-in-namespace</span>
 				<code class="namespace">
 					<xsl:value-of select="$info/ssv:namespace" />
