@@ -97,7 +97,7 @@
 
 	<xsl:template match="ssh:event">
 		<event track="{ssh:getTrack()}">
-			<xsl:copy-of select="@gfx | @moderator | @theme | @type" />
+			<xsl:copy-of select="@gfx | @moderator | @theme | @type | @twitter" />
 
 			<xsl:if test="@date">
 				<xsl:attribute name="date">
@@ -108,14 +108,8 @@
 	            </xsl:attribute>
 			</xsl:if>
 
-			<xsl:if test="@rerun">
-				<xsl:attribute name="rerun">
-                    <xsl:value-of select="ssh:getDate(id(@rerun)/@date)" />
-                </xsl:attribute>
-			</xsl:if>
-
 			<xsl:for-each select="ssh:req">
-				<req ref="{ssh:getDate(id(@ref)/@date)}" />
+				<req theme="{id(@ref)/@theme}" />
 			</xsl:for-each>
 
 			<xsl:for-each select="ssh:game">

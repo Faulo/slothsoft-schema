@@ -18,7 +18,7 @@
 	</platforms>
 
 	<present>
-		<event track="TST-1" date="2025-10-23" time="19:00" theme="Ersti-Abend 2025" type="special" moderator="Leo" gfx="worms.gif" rerun="2025-10-09">
+		<event track="TST-1" date="2025-10-23" time="19:00" theme="Ersti-Abend 2025" type="special" moderator="Leo" gfx="worms.gif">
 			<game name="Rogue" from="1980" by="A.I. Design" on="C64" country="US" />
 		</event>
 	</present>
@@ -31,7 +31,7 @@
 
 	<future>
 		<event track="TCK-2" date="" time="" theme="1980" type="special" moderator="Kadda">
-			<req ref="2025-10-09" />
+			<req theme="Player's Choice VI" />
 			<game name="Adventure" from="1980" by="Atari, Inc." on="Windows" country="US" />
 			<read href="https://en.wikipedia.org/wiki/List_of_video_games_considered_the_best" title="List of video games considered the best" year="2025" author="Wikipedia" />
 		</event>

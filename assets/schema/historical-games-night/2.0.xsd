@@ -22,6 +22,7 @@ This namespace defines elements for the index file of https://historischer-spiel
         - replaced "xml:id" with "track" for <event>
         - splitted "date" into "date" and "time" for <event>
         - added <platforms>
+        - removed "rerun" from <event>
 
 *** Version 1.0 ***        
     R20250912
@@ -151,16 +152,6 @@ This namespace defines elements for the index file of https://historischer-spiel
 			<xsd:field xpath="@date" />
 		</xsd:key>
 
-		<xsd:keyref name="event-rerun" refer="event-date">
-			<xsd:selector xpath=".//ssh:event" />
-			<xsd:field xpath="@rerun" />
-		</xsd:keyref>
-
-		<xsd:keyref name="event-requirement" refer="event-date">
-			<xsd:selector xpath=".//ssh:req" />
-			<xsd:field xpath="@ref" />
-		</xsd:keyref>
-
 		<xsd:key name="platform-id">
 			<xsd:selector xpath=".//ssh:platform" />
 			<xsd:field xpath="@id" />
@@ -226,7 +217,6 @@ This namespace defines elements for the index file of https://historischer-spiel
 		<xsd:attribute name="time" type="time" use="optional" />
 		<xsd:attribute name="moderator" type="xsd:token" use="optional" />
 		<xsd:attribute name="gfx" type="asset-file" use="optional" />
-		<xsd:attribute name="rerun" type="date" use="optional" />
 		<xsd:attribute name="twitter" type="xsd:token" use="optional" />
 	</xsd:complexType>
 
@@ -264,6 +254,6 @@ This namespace defines elements for the index file of https://historischer-spiel
 	</xsd:complexType>
 
 	<xsd:complexType name="req">
-		<xsd:attribute name="ref" type="date" use="required" />
+		<xsd:attribute name="theme" type="xsd:token" use="required" />
 	</xsd:complexType>
 </xsd:schema>
