@@ -4,19 +4,23 @@
 		<track id="TST" name="First-Person Shooters" color="fcc592">
 			<subtrack id="TST-1" name="Singleplayer&#160;FPS" />
 		</track>
+		<track id="TCK" name="First-Person Shooters" color="fcc592">
+			<subtrack id="TCK-1" name="track A" />
+			<subtrack id="TCK-2" name="track B" />
+		</track>
 	</tracks>
 
 	<platforms>
-		<platform id="C64" name="" href="" />
-		<platform id="Amiga" name="" href="" />
-		<platform id="GB" name="" href="" />
-		<platform id="Windows" name="" href="" />
+		<platform id="Amiga" name="Amiga" href="" />
+		<platform id="C64" name="C64" href="" />
+		<platform id="GB" name="GB" href="" />
+		<platform id="Windows" name="Windows" href="" />
 	</platforms>
 
 	<present>
-		<event track="TST-1" date="2025-10-23" time="19:00" theme="Ersti-Abend 2025" type="special" moderator="Leo" gfx="worms.gif">
+		<event track="TST-1" date="2025-10-23" time="19:00" theme="Ersti-Abend 2025" type="special" moderator="Leo" gfx="worms.gif" rerun="2025-10-09">
 			<req ref="2025-10-09" />
-			<game name="Rogue" from="1980" by="A.I. Design" on="Amiga" country="US" />
+			<game name="Rogue" from="1980" by="A.I. Design" on="C64" country="US" />
 		</event>
 	</present>
 
@@ -27,13 +31,13 @@
 	</past>
 
 	<future>
-		<event track="TST-1" date="" time="" theme="1980" type="special" moderator="Kadda">
+		<event track="TCK-2" date="" time="" theme="1980" type="special" moderator="Kadda">
 			<game name="Adventure" from="1980" by="Atari, Inc." on="Windows" country="US" />
 			<read href="https://en.wikipedia.org/wiki/List_of_video_games_considered_the_best" title="List of video games considered the best" year="2025" author="Wikipedia" />
 		</event>
 	</future>
 	<unfinished>
-		<event track="TST-1" date="" theme="Yu-Gi-Oh!" type="series" moderator="">
+		<event track="TST-1" date="" time="" theme="Yu-Gi-Oh!" type="series" moderator="">
 			<game name="Yu-Gi-Oh! Duel Monsters" from="1998" by="Konami" on="GB" country="JP" />
 		</event>
 	</unfinished>

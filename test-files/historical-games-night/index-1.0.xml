@@ -4,12 +4,16 @@
 		<track xml:id="TST" action="1" adventure="1" strategy="1" name="First-Person Shooters" color="fcc592">
 			<subtrack name="Singleplayer&#160;FPS" />
 		</track>
+		<track xml:id="TCK" action="1" adventure="1" strategy="1" name="First-Person Shooters" color="fcc592">
+			<subtrack name="track A" />
+			<subtrack name="track B" />
+		</track>
 	</tracks>
 
 	<present>
-		<event xml:id="TST101" date="Do, 23.10.2025 19:00" theme="Ersti-Abend 2025" type="special" moderator="Leo" gfx="worms.gif">
+		<event xml:id="TST101" date="Do, 23.10.2025 19:00" theme="Ersti-Abend 2025" type="special" moderator="Leo" gfx="worms.gif" rerun="TST102">
 			<req ref="2025-10-09" />
-			<game name="Rogue" from="1980" by="A.I. Design" on="Amiga" country="US" />
+			<game name="Rogue" from="1980" by="A.I. Design" on="C64" country="US" />
 		</event>
 	</present>
 
@@ -20,7 +24,7 @@
 	</past>
 
 	<future>
-		<event xml:id="TST103" date="" theme="1980" type="special" moderator="Kadda">
+		<event xml:id="TCK201" date="" theme="1980" type="special" moderator="Kadda">
 			<game name="Adventure" from="1980" by="Atari, Inc." on="Windows" country="US" />
 			<read href="https://en.wikipedia.org/wiki/List_of_video_games_considered_the_best" title="List of video games considered the best" year="2025" author="Wikipedia" />
 		</event>
