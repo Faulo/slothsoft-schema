@@ -1,0 +1,260 @@
+<?xml version="1.0"?>
+<xsd:schema targetNamespace="http://schema.slothsoft.net/schema/historical-games-night" xmlns="http://schema.slothsoft.net/schema/historical-games-night"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ssv="http://schema.slothsoft.net/schema/versioning" xmlns:ssh="http://schema.slothsoft.net/schema/historical-games-night"
+	xmlns:xml="http://www.w3.org/XML/1998/namespace" elementFormDefault="qualified" attributeFormDefault="unqualified">
+
+	<xsd:annotation>
+		<xsd:appinfo>
+			<ssv:info version="1.0">
+				<ssv:name>Historical Games Night Schema</ssv:name>
+				<ssv:version>2.0</ssv:version>
+				<ssv:revision>R20251015</ssv:revision>
+				<ssv:prefix>ssh</ssv:prefix>
+				<ssv:namespace>http://schema.slothsoft.net/schema/historical-games-night</ssv:namespace>
+				<ssv:author email="daniel.lio.schulz@gmail.com">Daniel Schulz</ssv:author>
+				<ssv:description><![CDATA[
+This namespace defines elements for the index file of https://historischer-spieleabend.slothsoft.net/.
+                ]]></ssv:description>
+				<ssv:changelog><![CDATA[
+*** Version 2.0 ***
+    R20251015
+        - "gfx" and "manual" attributes must be of type asset-file.
+        
+    R20250912
+        - "gfx" and "manual" attributes must be of type asset-file.
+
+    R20250716
+        - initial release.
+                ]]></ssv:changelog>
+			</ssv:info>
+		</xsd:appinfo>
+	</xsd:annotation>
+
+	<!-- Custom Types -->
+	<xsd:simpleType name="event-id">
+		<xsd:restriction base="xsd:token">
+			<xsd:pattern value="[A-Z]{3}\d{3}" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="country-code">
+		<xsd:restriction base="xsd:token">
+			<xsd:pattern value="[A-Z]{2}|\?" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="asset-file">
+		<xsd:restriction base="xsd:token">
+			<xsd:pattern value="[^/]+" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="platform-id">
+		<xsd:restriction base="xsd:token">
+			<xsd:pattern value="[A-Za-z0-9\-]+" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="track-id">
+		<xsd:restriction base="xsd:token">
+			<xsd:pattern value="[A-Z]{3}" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="subtrack-id">
+		<xsd:restriction base="xsd:token">
+			<xsd:pattern value="[A-Z]{3}-[^\s]+" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="date">
+		<xsd:restriction base="xsd:token">
+			<xsd:pattern value="(\d{4}-\d{2}-\d{2})|" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="time">
+		<xsd:restriction base="xsd:token">
+			<xsd:pattern value="(\d{2}:\d{2})|" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="event-type">
+		<xsd:restriction base="xsd:token">
+			<xsd:enumeration value="genre" />
+			<xsd:enumeration value="series" />
+			<xsd:enumeration value="platform" />
+			<xsd:enumeration value="special" />
+			<xsd:enumeration value="author" />
+			<xsd:enumeration value="loredump" />
+			<xsd:enumeration value="longplay" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:simpleType name="release-date">
+		<xsd:restriction base="xsd:token">
+			<xsd:pattern value="\d{4}|TBD" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:attributeGroup name="schemaVersion">
+		<xsd:attribute name="version" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>The schema version used by instances of a "company" document.</xsd:documentation>
+			</xsd:annotation>
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:token">
+					<xsd:enumeration value="1.0" />
+					<xsd:enumeration value="2.0" />
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+	</xsd:attributeGroup>
+
+	<!-- Root -->
+	<xsd:element name="index">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="tracks" type="track-list" />
+				<xsd:element name="platforms" type="platform-list" />
+
+				<xsd:element name="present" type="event-list" />
+				<xsd:element name="past" type="event-list" />
+				<xsd:element name="future" type="event-list" />
+				<xsd:element name="unfinished" type="event-list" />
+				<xsd:element name="unsorted" type="event-list" />
+			</xsd:sequence>
+			<xsd:attributeGroup ref="schemaVersion" />
+		</xsd:complexType>
+
+		<xsd:key name="track-id">
+			<xsd:selector xpath=".//ssh:track" />
+			<xsd:field xpath="@id" />
+		</xsd:key>
+
+		<xsd:key name="subtrack-id">
+			<xsd:selector xpath=".//ssh:subtrack" />
+			<xsd:field xpath="@id" />
+		</xsd:key>
+
+		<xsd:keyref name="event-track" refer="subtrack-id">
+			<xsd:selector xpath=".//ssh:event" />
+			<xsd:field xpath="@track" />
+		</xsd:keyref>
+
+		<xsd:key name="event-id">
+			<xsd:selector xpath="./ssh:past/ssh:event" />
+			<xsd:field xpath="@date" />
+		</xsd:key>
+
+		<xsd:keyref name="event-rerun" refer="event-id">
+			<xsd:selector xpath=".//ssh:event" />
+			<xsd:field xpath="@rerun" />
+		</xsd:keyref>
+
+		<xsd:key name="platform-id">
+			<xsd:selector xpath=".//ssh:platform" />
+			<xsd:field xpath="@id" />
+		</xsd:key>
+
+		<xsd:keyref name="game-on-platform" refer="platform-id">
+			<xsd:selector xpath=".//ssh:game" />
+			<xsd:field xpath="@on" />
+		</xsd:keyref>
+	</xsd:element>
+
+	<xsd:element name="events">
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:extension base="event-list">
+					<xsd:attributeGroup ref="schemaVersion" />
+				</xsd:extension>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+
+	<!-- Tracks -->
+	<xsd:complexType name="track-list">
+		<xsd:sequence>
+			<xsd:element name="track" type="track" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="track">
+		<xsd:sequence>
+			<xsd:element name="subtrack" type="subtrack" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+		<xsd:attribute name="id" type="track-id" use="required" />
+		<xsd:attribute name="name" type="xsd:token" use="required" />
+		<xsd:attribute name="color" type="xsd:token" use="required" />
+	</xsd:complexType>
+
+	<xsd:complexType name="subtrack">
+		<xsd:attribute name="id" type="subtrack-id" use="required" />
+		<xsd:attribute name="name" type="xsd:token" use="required" />
+	</xsd:complexType>
+
+	<!-- Event Container -->
+	<xsd:complexType name="event-list">
+		<xsd:sequence>
+			<xsd:element name="event" type="event" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<!-- Event -->
+	<xsd:complexType name="event">
+		<xsd:sequence>
+			<xsd:element name="req" type="req" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="game" type="game" minOccurs="0" maxOccurs="unbounded" />
+			<xsd:element name="read" type="read" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+
+		<xsd:attribute name="track" type="subtrack-id" use="required" />
+		<xsd:attribute name="theme" type="xsd:token" use="required" />
+		<xsd:attribute name="type" type="event-type" use="required" />
+
+		<xsd:attribute name="date" type="date" use="optional" />
+		<xsd:attribute name="time" type="time" use="optional" />
+		<xsd:attribute name="moderator" type="xsd:token" use="optional" />
+		<xsd:attribute name="gfx" type="asset-file" use="optional" />
+		<xsd:attribute name="rerun" type="event-id" use="optional" />
+		<xsd:attribute name="twitter" type="xsd:token" use="optional" />
+	</xsd:complexType>
+
+	<!-- Platforms -->
+	<xsd:complexType name="platform-list">
+		<xsd:sequence>
+			<xsd:element name="platform" type="platform" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="platform">
+		<xsd:attribute name="id" type="platform-id" use="required" />
+		<xsd:attribute name="name" type="xsd:token" use="required" />
+		<xsd:attribute name="href" type="xsd:anyURI" use="required" />
+	</xsd:complexType>
+
+	<xsd:complexType name="game">
+		<xsd:attribute name="name" type="xsd:token" use="required" />
+		<xsd:attribute name="from" type="release-date" use="required" />
+		<xsd:attribute name="by" type="xsd:token" use="required" />
+		<xsd:attribute name="on" type="platform-id" use="required" />
+		<xsd:attribute name="country" type="country-code" use="required" />
+
+		<xsd:attribute name="href" type="xsd:anyURI" use="optional" />
+		<xsd:attribute name="wanted" type="xsd:token" use="optional" />
+		<xsd:attribute name="manual" type="asset-file" use="optional" />
+		<xsd:attribute name="version" type="xsd:token" use="optional" />
+	</xsd:complexType>
+
+	<xsd:complexType name="read">
+		<xsd:attribute name="href" type="xsd:anyURI" use="required" />
+		<xsd:attribute name="title" type="xsd:token" use="required" />
+		<xsd:attribute name="year" type="release-date" use="required" />
+		<xsd:attribute name="author" type="xsd:token" use="required" />
+	</xsd:complexType>
+
+	<xsd:complexType name="req">
+		<xsd:attribute name="ref" type="xsd:token" use="required" />
+	</xsd:complexType>
+</xsd:schema>

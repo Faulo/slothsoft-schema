@@ -7,6 +7,7 @@
 	<resource-directory name="dictionary" type="application/xml" />
 
 	<directory name="examples">
+		<resource-directory name="historical-games-night" type="application/xml" />
 		<resource-directory name="presskit" type="application/xml" />
 		<fragment name="presskit-game">
 			<import ref="/api/presskit-game" />

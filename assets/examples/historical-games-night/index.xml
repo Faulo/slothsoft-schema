@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<index xmlns="http://schema.slothsoft.net/schema/historical-games-night" version="2.0">
+	<tracks>
+		<track id="TST" name="First-Person Shooters" color="fcc592">
+			<subtrack id="TST-1" name="Singleplayer&#160;FPS" />
+		</track>
+	</tracks>
+
+	<platforms>
+		<platform id="C64" name="" href="" />
+		<platform id="Amiga" name="" href="" />
+		<platform id="GB" name="" href="" />
+		<platform id="Windows" name="" href="" />
+	</platforms>
+
+	<present>
+		<event track="TST-1" date="2025-10-23" time="19:00" theme="Ersti-Abend 2025" type="special" moderator="Leo" gfx="worms.gif">
+			<game name="Rogue" from="1980" by="A.I. Design" on="Amiga" country="US" />
+		</event>
+	</present>
+
+	<past>
+		<event track="TST-1" date="2025-10-09" time="19:00" theme="Player's Choice VI" type="special" gfx="sloking.webp">
+			<game name="Sonic 3 &amp; Knuckles" from="1994" by="Sonic Team" on="Amiga" country="JP" wanted="Tom" />
+		</event>
+	</past>
+
+	<future>
+		<event track="TST-1" date="" time="" theme="1980" type="special" moderator="Kadda">
+			<game name="Adventure" from="1980" by="Atari, Inc." on="Windows" country="US" />
+			<read href="https://en.wikipedia.org/wiki/List_of_video_games_considered_the_best" title="List of video games considered the best" year="2025" author="Wikipedia" />
+		</event>
+	</future>
+	<unfinished>
+		<event track="TST-1" date="" theme="Yu-Gi-Oh!" type="series" moderator="">
+			<game name="Yu-Gi-Oh! Duel Monsters" from="1998" by="Konami" on="GB" country="JP" />
+		</event>
+	</unfinished>
+	<unsorted>
+		<event track="TST-1" theme="Historische LAN-Party" type="special">
+			<game name="Ultima Online" from="1997" by="Origin Systems" on="Windows" country="US" />
+		</event>
+	</unsorted>
+</index>
