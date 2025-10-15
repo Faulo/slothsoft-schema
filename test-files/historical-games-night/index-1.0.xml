@@ -17,7 +17,7 @@
 	</present>
 
 	<past>
-		<event xml:id="TST102" date="Do, 09.10.2025 19:00" theme="Player's Choice VI" type="special" gfx="sloking.webp">
+		<event xml:id="TST102" date="09.10.2025 19:00" theme="Player's Choice VI" type="special" gfx="sloking.webp">
 			<game name="Sonic 3 &amp; Knuckles" from="1994" by="Sonic Team" on="Amiga" country="JP" wanted="Tom" />
 		</event>
 	</past>

@@ -8,8 +8,12 @@
 			<xsl:when test="$date = ''">
 				<func:result select="''" />
 			</xsl:when>
+			<xsl:when test="contains($date, ', ')">
+				<xsl:variable name="timestamp" select="php:function('strtotime', substring-after($date, ', '))" />
+				<func:result select="php:function('date', 'Y-m-d', $timestamp)" />
+			</xsl:when>
 			<xsl:otherwise>
-				<xsl:variable name="timestamp" select="php:function('strtotime', substring-after($date, ','))" />
+				<xsl:variable name="timestamp" select="php:function('strtotime', string($date))" />
 				<func:result select="php:function('date', 'Y-m-d', $timestamp)" />
 			</xsl:otherwise>
 		</xsl:choose>
@@ -21,8 +25,11 @@
 			<xsl:when test="$date = ''">
 				<func:result select="''" />
 			</xsl:when>
-			<xsl:otherwise>
+			<xsl:when test="contains($date, ', ')">
 				<func:result select="substring-after(substring-after($date, ' '), ' ')" />
+			</xsl:when>
+			<xsl:otherwise>
+				<func:result select="substring-after($date, ' ')" />
 			</xsl:otherwise>
 		</xsl:choose>
 	</func:function>
