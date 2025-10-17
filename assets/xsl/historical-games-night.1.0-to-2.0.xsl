@@ -59,7 +59,7 @@
 			<platforms>
 				<xsl:for-each select="//ssh:game/@on[not(. = preceding::ssh:game/@on)]">
 					<xsl:sort select="." />
-					<platform id="{.}" name="{.}" href="" />
+					<platform id="{.}" name="{.}" />
 				</xsl:for-each>
 			</platforms>
 
