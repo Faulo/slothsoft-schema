@@ -8,7 +8,7 @@
 			<ssv:info version="1.0">
 				<ssv:name>Historical Games Night Schema</ssv:name>
 				<ssv:version>2.0</ssv:version>
-				<ssv:revision>R20251015</ssv:revision>
+				<ssv:revision>R20251017</ssv:revision>
 				<ssv:prefix>ssh</ssv:prefix>
 				<ssv:namespace>http://schema.slothsoft.net/schema/historical-games-night</ssv:namespace>
 				<ssv:author email="daniel.lio.schulz@gmail.com">Daniel Schulz</ssv:author>
@@ -17,10 +17,19 @@ This namespace defines elements for the index file of https://historischer-spiel
                 ]]></ssv:description>
 				<ssv:changelog><![CDATA[
 *** Version 2.0 ***
+    R20251017
+        - renamed "from" to "released" for <game>
+        - renamed "year" to "released" for <read>
+        - renamed "title" to "name" for <read>
+        - renamed "author" to "by" for <read>
+        - added "wiki" to <game>
+        - made "version" required for <index> and <events>
+
+*** Version 2.0 ***
     R20251015
-        - replaced "xml:id" with "id" for <track>
-        - replaced "xml:id" with "track" for <event>
-        - splitted "date" into "date" and "time" for <event>
+        - renamed "xml:id" to "id" in <track>
+        - replaced "xml:id" with "track" in <event>
+        - splitted "date" into "date" and "time" in <event>
         - added <platforms>
         - removed "rerun" from <event>
 
@@ -103,16 +112,10 @@ This namespace defines elements for the index file of https://historischer-spiel
 	</xsd:simpleType>
 
 	<xsd:attributeGroup name="schemaVersion">
-		<xsd:attribute name="version" use="optional">
+		<xsd:attribute name="version" use="required" fixed="2.0">
 			<xsd:annotation>
 				<xsd:documentation>The schema version used by instances of a "company" document.</xsd:documentation>
 			</xsd:annotation>
-			<xsd:simpleType>
-				<xsd:restriction base="xsd:token">
-					<xsd:enumeration value="1.0" />
-					<xsd:enumeration value="2.0" />
-				</xsd:restriction>
-			</xsd:simpleType>
 		</xsd:attribute>
 	</xsd:attributeGroup>
 
@@ -235,7 +238,7 @@ This namespace defines elements for the index file of https://historischer-spiel
 
 	<xsd:complexType name="game">
 		<xsd:attribute name="name" type="xsd:token" use="required" />
-		<xsd:attribute name="from" type="release-date" use="required" />
+		<xsd:attribute name="released" type="release-date" use="required" />
 		<xsd:attribute name="by" type="xsd:token" use="required" />
 		<xsd:attribute name="on" type="platform-id" use="required" />
 		<xsd:attribute name="country" type="country-code" use="required" />
@@ -247,10 +250,10 @@ This namespace defines elements for the index file of https://historischer-spiel
 	</xsd:complexType>
 
 	<xsd:complexType name="read">
+		<xsd:attribute name="name" type="xsd:token" use="required" />
+		<xsd:attribute name="released" type="release-date" use="required" />
+		<xsd:attribute name="by" type="xsd:token" use="required" />
 		<xsd:attribute name="href" type="xsd:anyURI" use="required" />
-		<xsd:attribute name="title" type="xsd:token" use="required" />
-		<xsd:attribute name="year" type="release-date" use="required" />
-		<xsd:attribute name="author" type="xsd:token" use="required" />
 	</xsd:complexType>
 
 	<xsd:complexType name="req">
