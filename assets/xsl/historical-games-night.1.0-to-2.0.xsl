@@ -114,13 +114,25 @@
 
 			<xsl:for-each select="ssh:game">
 				<game>
-					<xsl:copy-of select="@*" />
+					<xsl:attribute name="released">
+                        <xsl:value-of select="@from" />
+                    </xsl:attribute>
+					<xsl:copy-of select="@name | @by | @on | @country | @href | @wanted | @manual | @version" />
 				</game>
 			</xsl:for-each>
 
 			<xsl:for-each select="ssh:read">
 				<read>
-					<xsl:copy-of select="@*" />
+					<xsl:attribute name="released">
+                        <xsl:value-of select="@year" />
+                    </xsl:attribute>
+					<xsl:attribute name="name">
+                        <xsl:value-of select="@title" />
+                    </xsl:attribute>
+					<xsl:attribute name="by">
+                        <xsl:value-of select="@author" />
+                    </xsl:attribute>
+					<xsl:copy-of select="@href" />
 				</read>
 			</xsl:for-each>
 		</event>
