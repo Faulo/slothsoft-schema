@@ -111,6 +111,12 @@ This namespace defines elements for the index file of https://historischer-spiel
 		</xsd:restriction>
 	</xsd:simpleType>
 
+	<xsd:simpleType name="http-url">
+		<xsd:restriction base="xsd:anyURI">
+			<xsd:pattern value="https?://.+" />
+		</xsd:restriction>
+	</xsd:simpleType>
+
 	<xsd:attributeGroup name="schemaVersion">
 		<xsd:attribute name="version" use="required" fixed="2.0">
 			<xsd:annotation>
@@ -233,7 +239,7 @@ This namespace defines elements for the index file of https://historischer-spiel
 	<xsd:complexType name="platform">
 		<xsd:attribute name="id" type="platform-id" use="required" />
 		<xsd:attribute name="name" type="xsd:token" use="required" />
-		<xsd:attribute name="href" type="xsd:anyURI" use="required" />
+		<xsd:attribute name="wiki" type="http-url" use="optional" />
 	</xsd:complexType>
 
 	<xsd:complexType name="game">
@@ -243,7 +249,9 @@ This namespace defines elements for the index file of https://historischer-spiel
 		<xsd:attribute name="on" type="platform-id" use="required" />
 		<xsd:attribute name="country" type="country-code" use="required" />
 
-		<xsd:attribute name="href" type="xsd:anyURI" use="optional" />
+		<xsd:attribute name="href" type="http-url" use="optional" />
+		<xsd:attribute name="wiki" type="http-url" use="optional" />
+
 		<xsd:attribute name="wanted" type="xsd:token" use="optional" />
 		<xsd:attribute name="manual" type="asset-file" use="optional" />
 		<xsd:attribute name="version" type="xsd:token" use="optional" />
@@ -253,7 +261,7 @@ This namespace defines elements for the index file of https://historischer-spiel
 		<xsd:attribute name="name" type="xsd:token" use="required" />
 		<xsd:attribute name="released" type="release-date" use="required" />
 		<xsd:attribute name="by" type="xsd:token" use="required" />
-		<xsd:attribute name="href" type="xsd:anyURI" use="required" />
+		<xsd:attribute name="href" type="http-url" use="required" />
 	</xsd:complexType>
 
 	<xsd:complexType name="req">

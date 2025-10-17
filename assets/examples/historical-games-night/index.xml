@@ -11,10 +11,10 @@
 	</tracks>
 
 	<platforms>
-		<platform id="Amiga" name="Amiga" href="" />
-		<platform id="C64" name="C64" href="" />
-		<platform id="GB" name="GB" href="" />
-		<platform id="Windows" name="Windows" href="" />
+		<platform id="Amiga" name="Amiga" />
+		<platform id="C64" name="C64" />
+		<platform id="GB" name="GB" />
+		<platform id="Windows" name="Windows" />
 	</platforms>
 
 	<present>
