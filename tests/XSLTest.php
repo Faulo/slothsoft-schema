@@ -4,7 +4,7 @@ namespace Slothsoft\Schema;
 
 use PHPUnit\Framework\TestCase;
 use Slothsoft\Core\DOMHelper;
-use Slothsoft\Core\DOMTests\DOMNodeEqualTo;
+use Slothsoft\FarahTesting\Constraints\DOMNodeEqualTo;
 use DOMDocument;
 
 class XSLTest extends TestCase {
