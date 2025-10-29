@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+  <uri name="farah://slothsoft@schema/xsl/historical-games-night.1.0-to-2.0" uri="assets/xsl/historical-games-night.1.0-to-2.0.xsl"/>
+  <uri name="farah://slothsoft@schema/xsl/presskit.functions" uri="assets/xsl/presskit.functions.xsl"/>
+  <uri name="farah://slothsoft@schema/xsl/presskit.game" uri="assets/xsl/presskit.game.xsl"/>
+  <uri name="farah://slothsoft@schema/xsl/schema.documentation" uri="assets/xsl/schema.documentation.xsl"/>
+  <uri name="farah://slothsoft@schema/xsl/schema.global" uri="assets/xsl/schema.global.xsl"/>
+  <uri name="farah://slothsoft@schema/xsl/schema.home" uri="assets/xsl/schema.home.xsl"/>
+  <uri name="http://schema.slothsoft.net/schema/historical-games-night" uri="assets/schema/historical-games-night/2.0.xsd"/>
+  <uri name="http://schema.slothsoft.net/schema/presskit" uri="assets/schema/presskit/1.1.xsd"/>
+  <uri name="http://schema.slothsoft.net/schema/versioning" uri="assets/schema/versioning/1.0.xsd"/>
+  <system systemId="farah://slothsoft@schema/schema/historical-games-night/1.0" uri="assets/schema/historical-games-night/1.0.xsd"/>
+  <system systemId="farah://slothsoft@schema/schema/historical-games-night/2.0" uri="assets/schema/historical-games-night/2.0.xsd"/>
+  <system systemId="farah://slothsoft@schema/schema/junit/1.0" uri="assets/schema/junit/1.0.xsd"/>
+  <system systemId="farah://slothsoft@schema/schema/presskit/1.0" uri="assets/schema/presskit/1.0.xsd"/>
+  <system systemId="farah://slothsoft@schema/schema/presskit/1.1" uri="assets/schema/presskit/1.1.xsd"/>
+  <system systemId="farah://slothsoft@schema/schema/versioning/1.0" uri="assets/schema/versioning/1.0.xsd"/>
+</catalog>
