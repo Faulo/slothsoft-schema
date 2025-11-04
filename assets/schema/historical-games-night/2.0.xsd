@@ -294,7 +294,11 @@ This namespace defines elements for the index file of https://historischer-spiel
 
 		<xsd:attribute name="by" type="xsd:token" use="required">
 			<xsd:annotation>
-				<xsd:documentation>The name of the developer(s) or the development studio that made the game. Multiple names are separated by comma.</xsd:documentation>
+				<xsd:documentation>
+					The name of the developer(s) or the development studio that made the game. Multiple names are separated by
+					<html:code>;</html:code>
+                    <![CDATA[.]]>
+				</xsd:documentation>
 			</xsd:annotation>
 		</xsd:attribute>
 
