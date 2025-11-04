@@ -286,7 +286,7 @@ This namespace defines elements for the index file of https://historischer-spiel
 				<xsd:documentation>The country of origin for the developers listed under the "by" attribute.</xsd:documentation>
 				<xsd:documentation>
 					<![CDATA[Must be a valid ]]>
-					<html:a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements">ISO 3166-1 alpha-2 country code</html:a>
+					<html:a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements" rel="external">ISO 3166-1 alpha-2 country code</html:a>
 					<![CDATA[, or "?" for "unknown".]]>
 				</xsd:documentation>
 				<xsd:documentation>

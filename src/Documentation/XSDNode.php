@@ -5,6 +5,7 @@ namespace Slothsoft\Schema\Documentation;
 use DOMDocument;
 use DOMElement;
 use Exception;
+use Slothsoft\Core\DOMHelper;
 
 abstract class XSDNode {
     
@@ -746,15 +747,20 @@ abstract class XSDNode {
     protected function _addDocumentationNode(DOMElement $parentNode) {
         if ($parentNode->hasChildNodes()) {
             $retNode = $parentNode->ownerDocument->createDocumentFragment();
-            $nodeList = array();
+            $nodeList = [];
             foreach ($parentNode->childNodes as $node) {
                 switch ($node->nodeType) {
-                    case XML_CDATA_SECTION_NODE:
+                    case XML_TEXT_NODE:
+                        if (trim($node->textContent) !== '') {
+                            $nodeList[] = $node;
+                        }
+                        break;
                     case XML_COMMENT_NODE:
-                        $tmpNode = $node->ownerDocument->createElementNS('http://www.w3.org/1999/xhtml', 'pre');
+                        $tmpNode = $node->ownerDocument->createElementNS(DOMHelper::NS_HTML, 'pre');
                         $tmpNode->appendChild($node);
                         $nodeList[] = $tmpNode;
                         break;
+                    case XML_CDATA_SECTION_NODE:
                     default:
                         $nodeList[] = $node;
                         break;
