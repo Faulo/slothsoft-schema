@@ -283,19 +283,35 @@ This namespace defines elements for the index file of https://historischer-spiel
 
 		<xsd:attribute name="country" type="country-code" use="required">
 			<xsd:annotation>
-				<xsd:documentation>The country of origin for the developers listed under the "by" attribute.</xsd:documentation>
+				<xsd:documentation>
+                    <![CDATA[The country of origin for the developers listed under the ]]>
+					<html:code class="attribute">by</html:code>
+                    <![CDATA[ attribute.]]>
+				</xsd:documentation>
 				<xsd:documentation>
 					<![CDATA[Must be a valid ]]>
-					<html:a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements" rel="external">ISO 3166-1 alpha-2 country code</html:a>
+					<html:a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements" rel="external" target="_blank">ISO 3166-1 alpha-2 country code</html:a>
 					<![CDATA[, or "?" for "unknown".]]>
 				</xsd:documentation>
 				<xsd:documentation>
 					<![CDATA[Examples of valid country codes:]]>
 					<html:ul>
-						<html:li>"DE" for Germany</html:li>
-						<html:li>"GB" for the United Kingdom</html:li>
-						<html:li>"US" for the United States of America</html:li>
-						<html:li>"JP" for Japan</html:li>
+						<html:li>
+							<html:code>DE</html:code>
+							for Germany
+						</html:li>
+						<html:li>
+							<html:code>GB</html:code>
+							for the United Kingdom
+						</html:li>
+						<html:li>
+							<html:code>US</html:code>
+							for the United States of America
+						</html:li>
+						<html:li>
+							<html:code>JP</html:code>
+							for Japan
+						</html:li>
 					</html:ul>
 				</xsd:documentation>
 			</xsd:annotation>
