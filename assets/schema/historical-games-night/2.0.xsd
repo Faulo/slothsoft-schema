@@ -294,10 +294,10 @@ This namespace defines elements for the index file of https://historischer-spiel
 
 		<xsd:attribute name="by" type="xsd:token" use="required">
 			<xsd:annotation>
-				<xsd:documentation>
-					The name of the developer(s) or the development studio that made the game. Multiple names are separated by
+				<xsd:documentation>					
+					<![CDATA[The name of the developer(s) or the development studio that made the game. Multiple names are separated by semicolon (]]>
 					<html:code>;</html:code>
-                    <![CDATA[.]]>
+                    <![CDATA[).]]>
 				</xsd:documentation>
 			</xsd:annotation>
 		</xsd:attribute>
@@ -331,7 +331,9 @@ This namespace defines elements for the index file of https://historischer-spiel
 				<xsd:documentation>
 					<![CDATA[Must be a valid ]]>
 					<html:a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements" rel="external" target="_blank">ISO 3166-1 alpha-2 country code</html:a>
-					<![CDATA[, or <html:code>?</html:code> for "unknown".]]>
+					<![CDATA[, or ]]>
+					<html:code>?</html:code>
+					<![CDATA[ for "unknown".]]>
 				</xsd:documentation>
 				<xsd:documentation>
 					<![CDATA[Examples of valid country codes:]]>
