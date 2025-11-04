@@ -255,12 +255,12 @@ This namespace defines elements for the index file of https://historischer-spiel
 					<html:code class="attribute">ported</html:code>
 					and
 					<html:code class="attribute">on</html:code>
-					attributes, i.e., the showcased version was released for platform
+					attributes, i.e., the showcased version was released with the name
+					<html:code class="attribute">name</html:code>
+					for platform
 					<html:code class="attribute">on</html:code>
 					in the year
 					<html:code class="attribute">ported</html:code>
-					by the name of
-					<html:code class="attribute">name</html:code>
 					<![CDATA[.]]>
 				</xsd:documentation>
 			</xsd:annotation>
@@ -276,7 +276,19 @@ This namespace defines elements for the index file of https://historischer-spiel
 		<xsd:attribute name="ported" type="release-date" use="optional">
 			<xsd:annotation>
 				<xsd:documentation>The year of publication of the version of the game that is showcased. If omitted, it is assumed to be identical to the "released" date.</xsd:documentation>
-				<xsd:documentation>This relates to the "name" and "on" attributes, i.e., the showcased version was released for platform "on" in the year "ported" by the name of "name".</xsd:documentation>
+				<xsd:documentation>
+					This relates to the
+					<html:code class="attribute">name</html:code>
+					and
+					<html:code class="attribute">on</html:code>
+					attributes, i.e., the showcased version was released with the name
+					<html:code class="attribute">name</html:code>
+					for platform
+					<html:code class="attribute">on</html:code>
+					in the year
+					<html:code class="attribute">ported</html:code>
+                    <![CDATA[.]]>
+				</xsd:documentation>
 			</xsd:annotation>
 		</xsd:attribute>
 
@@ -289,7 +301,19 @@ This namespace defines elements for the index file of https://historischer-spiel
 		<xsd:attribute name="on" type="platform-id" use="required">
 			<xsd:annotation>
 				<xsd:documentation>The ID of the platform that runs the showcased version of the game.</xsd:documentation>
-				<xsd:documentation>This relates to the "name" and "ported" attributes, i.e., the showcased version was released for platform "on" in the year "ported" by the name of "name".</xsd:documentation>
+				<xsd:documentation>
+					This relates to the
+					<html:code class="attribute">name</html:code>
+					and
+					<html:code class="attribute">ported</html:code>
+					attributes, i.e., the showcased version was released with the name
+					<html:code class="attribute">name</html:code>
+					for platform
+					<html:code class="attribute">on</html:code>
+					in the year
+					<html:code class="attribute">ported</html:code>
+                    <![CDATA[.]]>
+				</xsd:documentation>
 			</xsd:annotation>
 		</xsd:attribute>
 
@@ -336,7 +360,11 @@ This namespace defines elements for the index file of https://historischer-spiel
 		</xsd:attribute>
 		<xsd:attribute name="wiki" type="http-url" use="optional">
 			<xsd:annotation>
-				<xsd:documentation>A URL that leads to a wikipedia article of the game. If omitted, the English wikipedia is searched with the "name" attribute used as query.</xsd:documentation>
+				<xsd:documentation>
+					A URL that leads to a wiki article of the game. If omitted, the English Wikipedia is searched with the
+					<html:code class="attribute">name</html:code>
+					attribute used as query.
+				</xsd:documentation>
 			</xsd:annotation>
 		</xsd:attribute>
 
