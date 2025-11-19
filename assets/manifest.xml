@@ -1,51 +1,49 @@
 <?xml version="1.0"?>
 <assets xmlns="http://schema.slothsoft.net/farah/module" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://schema.slothsoft.net/farah/module http://schema.slothsoft.net/farah/module/1.1.xsd" version="1.1">
-	<resource-directory name="css" type="text/css" />
-	<resource-directory name="xsl" type="application/xslt+xml" />
+    xsi:schemaLocation="http://schema.slothsoft.net/farah/module http://schema.slothsoft.net/farah/module/1.1.xsd" version="1.1">
+    <resource-directory name="css" type="text/css" />
+    <resource-directory name="xsl" type="application/xslt+xml" />
 
-	<resource-directory name="dictionary" type="application/xml" />
+    <directory name="examples">
+        <resource-directory name="historical-games-night" type="application/xml" />
+        <resource-directory name="presskit" type="application/xml" />
+        <fragment name="presskit-game">
+            <import ref="/api/presskit-game" />
+            <use-document ref="/examples/presskit/example-company" name="company" />
+            <use-document ref="/examples/presskit/example-game" name="game" />
+        </fragment>
+    </directory>
 
-	<directory name="examples">
-		<resource-directory name="historical-games-night" type="application/xml" />
-		<resource-directory name="presskit" type="application/xml" />
-		<fragment name="presskit-game">
-			<import ref="/api/presskit-game" />
-			<use-document ref="/examples/presskit/example-company" name="company" />
-			<use-document ref="/examples/presskit/example-game" name="game" />
-		</fragment>
-	</directory>
+    <directory name="schema">
+        <resource-directory name="historical-games-night" type="application/x-xsd+xml" />
+        <resource-directory name="junit" type="application/x-xsd+xml" />
+        <resource-directory name="presskit" type="application/x-xsd+xml" />
+        <resource-directory name="versioning" type="application/x-xsd+xml" />
+    </directory>
 
-	<directory name="schema">
-		<resource-directory name="historical-games-night" type="application/x-xsd+xml" />
-		<resource-directory name="junit" type="application/x-xsd+xml" />
-		<resource-directory name="presskit" type="application/x-xsd+xml" />
-		<resource-directory name="versioning" type="application/x-xsd+xml" />
-	</directory>
+    <fragment name="html">
+        <fragment name="home">
+            <use-template ref="/xsl/schema.home" />
+            <use-document ref="/api/info" name="schema-info" />
+            <import ref="//slothsoft@farah/api/HTML5" />
+            <link-stylesheet ref="/css/default" />
+        </fragment>
+        <fragment name="documentation">
+            <use-template ref="/xsl/schema.documentation" />
+            <use-document ref="/api/info" name="schema-info" />
+            <use-document ref="/api/manifest" name="schema-manifest" />
+            <import ref="//slothsoft@farah/api/HTML5" />
+            <link-stylesheet ref="/css/default" />
+        </fragment>
+    </fragment>
 
-	<fragment name="html">
-		<fragment name="home">
-			<use-template ref="/xsl/schema.home" />
-			<use-document ref="/api/info" name="schema-info" />
-			<import ref="//slothsoft@farah/api/HTML5" />
-			<link-stylesheet ref="/css/default" />
-		</fragment>
-		<fragment name="documentation">
-			<use-template ref="/xsl/schema.documentation" />
-			<use-document ref="/api/info" name="schema-info" />
-			<use-document ref="/api/manifest" name="schema-manifest" />
-			<import ref="//slothsoft@farah/api/HTML5" />
-			<link-stylesheet ref="/css/default" />
-		</fragment>
-	</fragment>
+    <fragment name="api">
+        <custom-asset name="info" executable-builder="Slothsoft\Schema\Assets\InfoBuilder" parameter-filter="Slothsoft\Schema\Assets\SchemaParameterFilter" />
+        <custom-asset name="manifest" executable-builder="Slothsoft\Schema\Assets\ManifestBuilder" parameter-filter="Slothsoft\Schema\Assets\SchemaParameterFilter" />
 
-	<fragment name="api">
-		<custom-asset name="info" executable-builder="Slothsoft\Schema\Assets\InfoBuilder" parameter-filter="Slothsoft\Schema\Assets\SchemaParameterFilter" />
-		<custom-asset name="manifest" executable-builder="Slothsoft\Schema\Assets\ManifestBuilder" parameter-filter="Slothsoft\Schema\Assets\SchemaParameterFilter" />
-
-		<fragment name="presskit-game">
-			<use-template ref="/xsl/presskit.game" />
-			<link-stylesheet ref="/css/uikit-gradient" />
-		</fragment>
-	</fragment>
+        <fragment name="presskit-game">
+            <use-template ref="/xsl/presskit.game" />
+            <link-stylesheet ref="/css/uikit-gradient" />
+        </fragment>
+    </fragment>
 </assets>
