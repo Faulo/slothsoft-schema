@@ -96,7 +96,7 @@
                 </a>
                 ,
             </xsl:for-each>
-            <span sfd:dict=".">footer/company</span>
+            <span sfd:dict=".">footer.company</span>
         </div>
     </xsl:template>
 
