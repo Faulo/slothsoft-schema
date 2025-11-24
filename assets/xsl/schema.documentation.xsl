@@ -915,11 +915,19 @@
         </code>
     </xsl:template>
     <xsl:template match="childNamespace[@name]" mode="href">
-        <xsl:text>Elemente aus dem Namensraum </xsl:text>
-        <a href="{@name}" target="_blank" rel="external">
-            <code class="namespace">
-                <xsl:value-of select="@name" />
-            </code>
-        </a>
+        <xsl:choose>
+            <xsl:when test="starts-with(@name, '#')">
+                <code class="namespace">
+                    <xsl:value-of select="@name" />
+                </code>
+            </xsl:when>
+            <xsl:otherwise>
+                <a href="{@name}" target="_blank" rel="external">
+                    <code class="namespace">
+                        <xsl:value-of select="@name" />
+                    </code>
+                </a>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:template>
 </xsl:stylesheet>
