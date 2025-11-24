@@ -1,42 +1,42 @@
 <?xml version="1.0"?>
-<index xmlns="http://schema.slothsoft.net/schema/historical-games-night">
-	<tracks>
-		<track xml:id="TST" action="1" adventure="1" strategy="1" name="First-Person Shooters" color="fcc592">
-			<subtrack name="Singleplayer&#160;FPS" />
-		</track>
-		<track xml:id="TCK" action="1" adventure="1" strategy="1" name="First-Person Shooters" color="fcc592">
-			<subtrack name="track A" />
-			<subtrack name="track B" />
-		</track>
-	</tracks>
+<index xmlns="http://schema.slothsoft.net/schema/historical-games-night" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://schema.slothsoft.net/schema/historical-games-night ../../assets/schema/historical-games-night/1.0.xsd">
+    <tracks>
+        <track xml:id="TST" action="1" adventure="1" strategy="1" name="First-Person Shooters" color="fcc592">
+            <subtrack name="Singleplayer&#160;FPS" />
+        </track>
+        <track xml:id="TCK" action="1" adventure="1" strategy="1" name="First-Person Shooters" color="fcc592">
+            <subtrack name="track A" />
+            <subtrack name="track B" />
+        </track>
+    </tracks>
 
-	<present>
-		<event xml:id="TST101" date="Do, 23.10.2025 19:00" theme="Ersti-Abend 2025" type="special" moderator="Leo" gfx="worms.gif" rerun="TST102">
-			<game name="Rogue" from="1980" by="A.I. Design" on="C64" country="US" />
-		</event>
-	</present>
+    <present>
+        <event xml:id="TST101" date="Do, 23.10.2025 19:00" theme="Ersti-Abend 2025" type="special" moderator="Leo" gfx="worms.gif" rerun="TST102">
+            <game name="Rogue" from="1980" by="A.I. Design" on="C64" country="US" />
+        </event>
+    </present>
 
-	<past>
-		<event xml:id="TST102" date="09.10.2025 19:00" theme="Player's Choice VI" type="special" gfx="sloking.webp">
-			<game name="Sonic 3 &amp; Knuckles" from="1994" by="Sonic Team" on="Amiga" country="JP" wanted="Tom" />
-		</event>
-	</past>
+    <past>
+        <event xml:id="TST102" date="09.10.2025 19:00" theme="Player's Choice VI" type="special" gfx="sloking.webp">
+            <game name="Sonic 3 &amp; Knuckles" from="1994" by="Sonic Team" on="Amiga" country="JP" wanted="Tom" />
+        </event>
+    </past>
 
-	<future>
-		<event xml:id="TCK201" date="" theme="1980" type="special" moderator="Kadda">
-			<req ref="TST102" />
-			<game name="Adventure" from="1980" by="Atari, Inc." on="Windows" country="US" />
-			<read href="https://en.wikipedia.org/wiki/List_of_video_games_considered_the_best" title="List of video games considered the best" year="2025" author="Wikipedia" />
-		</event>
-	</future>
-	<unfinished>
-		<event xml:id="TST104" date="" theme="Yu-Gi-Oh!" type="series" moderator="">
-			<game name="Yu-Gi-Oh! Duel Monsters" from="1998" by="Konami" on="GB" country="JP" />
-		</event>
-	</unfinished>
-	<unsorted>
-		<event xml:id="TST105" theme="Historische LAN-Party" type="special">
-			<game name="Ultima Online" from="1997" by="Origin Systems" on="Windows" country="US" />
-		</event>
-	</unsorted>
+    <future>
+        <event xml:id="TCK201" date="" theme="1980" type="special" moderator="Kadda">
+            <req ref="TST102" />
+            <game name="Adventure" from="1980" by="Atari, Inc." on="Windows" country="US" />
+            <read href="https://en.wikipedia.org/wiki/List_of_video_games_considered_the_best" title="List of video games considered the best" year="2025" author="Wikipedia" />
+        </event>
+    </future>
+    <unfinished>
+        <event xml:id="TST104" date="" theme="Yu-Gi-Oh!" type="series" moderator="">
+            <game name="Yu-Gi-Oh! Duel Monsters" from="1998" by="Konami" on="GB" country="JP" />
+        </event>
+    </unfinished>
+    <unsorted>
+        <event xml:id="TST105" theme="Historische LAN-Party" type="special">
+            <game name="Ultima Online" from="1997" by="Origin Systems" on="Windows" country="US" />
+        </event>
+    </unsorted>
 </index>
