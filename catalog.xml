@@ -1,5 +1,9 @@
 <?xml version="1.0"?>
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+  <uri name="farah://slothsoft@schema/examples/historical-games-night/index" uri="assets/examples/historical-games-night/index.xml"/>
+  <uri name="farah://slothsoft@schema/examples/presskit/example-company" uri="assets/examples/presskit/example-company.xml"/>
+  <uri name="farah://slothsoft@schema/examples/presskit/example-game" uri="assets/examples/presskit/example-game.xml"/>
+  <uri name="farah://slothsoft@schema/examples/presskit/example-jam" uri="assets/examples/presskit/example-jam.xml"/>
   <uri name="farah://slothsoft@schema/xsl/historical-games-night.1.0-to-2.0" uri="assets/xsl/historical-games-night.1.0-to-2.0.xsl"/>
   <uri name="farah://slothsoft@schema/xsl/presskit.functions" uri="assets/xsl/presskit.functions.xsl"/>
   <uri name="farah://slothsoft@schema/xsl/presskit.game" uri="assets/xsl/presskit.game.xsl"/>
