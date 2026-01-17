@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
  *
  * @todo auto-generated
  */
-class XSDGroupTest extends TestCase {
+final class XSDGroupTest extends TestCase {
     
     public function testClassExists(): void {
         $this->assertTrue(class_exists(XSDGroup::class), "Failed to load class 'Slothsoft\Schema\Documentation\XSDGroup'!");

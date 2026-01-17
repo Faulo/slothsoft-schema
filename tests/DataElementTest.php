@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
  *
  * @todo auto-generated
  */
-class DataElementTest extends TestCase {
+final class DataElementTest extends TestCase {
     
     public function testClassExists(): void {
         $this->assertTrue(class_exists(DataElement::class), "Failed to load class 'Slothsoft\Schema\DataElement'!");

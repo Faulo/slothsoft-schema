@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
  *
  * @todo auto-generated
  */
-class InfoBuilderTest extends TestCase {
+final class InfoBuilderTest extends TestCase {
     
     public function testClassExists(): void {
         $this->assertTrue(class_exists(InfoBuilder::class), "Failed to load class 'Slothsoft\Schema\Assets\InfoBuilder'!");

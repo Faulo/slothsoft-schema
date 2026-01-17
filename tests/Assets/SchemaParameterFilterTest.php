@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
  *
  * @todo auto-generated
  */
-class SchemaParameterFilterTest extends TestCase {
+final class SchemaParameterFilterTest extends TestCase {
     
     public function testClassExists(): void {
         $this->assertTrue(class_exists(SchemaParameterFilter::class), "Failed to load class 'Slothsoft\Schema\Assets\SchemaParameterFilter'!");

@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
  *
  * @todo auto-generated
  */
-class XSDElementTest extends TestCase {
+final class XSDElementTest extends TestCase {
     
     public function testClassExists(): void {
         $this->assertTrue(class_exists(XSDElement::class), "Failed to load class 'Slothsoft\Schema\Documentation\XSDElement'!");

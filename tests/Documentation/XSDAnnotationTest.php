@@ -11,7 +11,7 @@ use PHPUnit\Framework\TestCase;
  *
  * @todo auto-generated
  */
-class XSDAnnotationTest extends TestCase {
+final class XSDAnnotationTest extends TestCase {
     
     public function testClassExists(): void {
         $this->assertTrue(class_exists(XSDAnnotation::class), "Failed to load class 'Slothsoft\Schema\Documentation\XSDAnnotation'!");
