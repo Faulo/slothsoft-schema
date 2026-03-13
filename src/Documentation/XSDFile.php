@@ -197,7 +197,7 @@ class XSDFile {
         return $retNode->hasChildNodes() ? $retNode : $doc->createTextNode('');
     }
     
-    public function asManifest(DOMDocument $targetDoc = null) {
+    public function asManifest(?DOMDocument $targetDoc = null) {
         if ($targetDoc === null) {
             $retDoc = new DOMDocument();
             $manifestNode = $retDoc->createElement('manifest');
@@ -309,7 +309,7 @@ class XSDFile {
         return $retNode;
     }
     
-    public function xpathEvaluate($query, DOMNode $contextNode = null) {
+    public function xpathEvaluate($query, ?DOMNode $contextNode = null) {
         $result = $this->xpath->evaluate($query, $contextNode);
         if ($result instanceof DOMNodeList) {
             $ret = array();
