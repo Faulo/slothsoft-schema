@@ -109,6 +109,7 @@
         <xsd:attribute name="href" type="xsd:anyURI" use="optional" />
         <xsd:attribute name="price" type="xsd:float" use="optional" />
         <xsd:attribute name="price-uri" type="xsd:anyURI" use="optional" />
+        <xsd:attribute name="tdp" type="power" use="optional" />
     </xsd:complexType>
 
     <xsd:complexType name="mainboard">
