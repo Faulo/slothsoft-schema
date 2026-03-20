@@ -41,35 +41,53 @@
 
     <xsd:simpleType name="memory">
         <xsd:restriction base="xsd:token">
-            <xsd:pattern value="\d+ [A-Z]?B" />
+            <xsd:pattern value="\d+(.\d+)? [A-Z]?B" />
         </xsd:restriction>
     </xsd:simpleType>
 
     <xsd:simpleType name="frequency">
         <xsd:restriction base="xsd:token">
-            <xsd:pattern value="\d+ [A-Z]?Hz" />
+            <xsd:pattern value="\d+(.\d+)? [A-Z]?Hz" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="power">
+        <xsd:restriction base="xsd:token">
+            <xsd:pattern value="\d+ W" />
         </xsd:restriction>
     </xsd:simpleType>
 
     <!-- Root -->
     <xsd:element name="index">
         <xsd:complexType>
-            <xsd:sequence>
-                <xsd:element name="computer" type="computer" minOccurs="0" maxOccurs="unbounded" />
-            </xsd:sequence>
+            <xsd:choice minOccurs="0" maxOccurs="unbounded">
+                <xsd:element name="parts" type="part-list" />
+                <xsd:element name="computer" type="computer" />
+            </xsd:choice>
             <xsd:attributeGroup ref="schemaVersion" />
         </xsd:complexType>
     </xsd:element>
 
     <!-- Complex Types -->
-    <xsd:complexType name="computer">
+    <xsd:complexType name="part-list">
         <xsd:sequence>
             <xsd:element name="part" type="part" minOccurs="0" maxOccurs="unbounded" />
         </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="computer">
+        <xsd:choice minOccurs="0" maxOccurs="unbounded">
+            <xsd:element name="part" type="part" />
+            <xsd:element name="use-part" type="part-ref" />
+        </xsd:choice>
         <xsd:attribute name="name" type="xsd:token" use="required" />
         <xsd:attribute name="owner" type="xsd:token" use="optional" />
         <xsd:attribute name="year" type="year" use="optional" />
         <xsd:attribute name="final-price" type="xsd:float" use="optional" />
+    </xsd:complexType>
+
+    <xsd:complexType name="part-ref">
+        <xsd:attribute name="id" type="xsd:IDREF" use="required" />
     </xsd:complexType>
 
     <xsd:complexType name="part">
@@ -77,10 +95,16 @@
             <xsd:choice minOccurs="0" maxOccurs="1">
                 <xsd:element name="mainboard" type="mainboard" />
                 <xsd:element name="cpu" type="cpu" />
+                <xsd:element name="ram" type="ram" />
+                <xsd:element name="gpu" type="gpu" />
+                <xsd:element name="audio" type="audio" />
+                <xsd:element name="hdd" type="hdd" />
+                <xsd:element name="chassis" type="chassis" />
+                <xsd:element name="psu" type="psu" />
             </xsd:choice>
-            <xsd:element name="io" type="io" />
+            <xsd:element name="io" type="io" minOccurs="0" maxOccurs="1" />
         </xsd:sequence>
-        <xsd:attribute ref="xml:id" use="required" />
+        <xsd:attribute ref="xml:id" use="optional" />
         <xsd:attribute name="name" type="xsd:token" use="required" />
         <xsd:attribute name="href" type="xsd:anyURI" use="optional" />
         <xsd:attribute name="price" type="xsd:float" use="optional" />
@@ -103,6 +127,34 @@
         <xsd:attribute name="pcie" type="xsd:token" use="optional" />
         <xsd:attribute name="cache-l2" type="memory" use="optional" />
         <xsd:attribute name="cache-l3" type="memory" use="optional" />
+    </xsd:complexType>
+
+    <xsd:complexType name="ram">
+        <xsd:attribute name="frequency" type="frequency" use="required" />
+        <xsd:attribute name="form" type="xsd:token" use="required" />
+        <xsd:attribute name="type" type="xsd:token" use="required" />
+        <xsd:attribute name="size" type="memory" use="optional" />
+    </xsd:complexType>
+
+    <xsd:complexType name="gpu">
+        <xsd:attribute name="memory" type="memory" use="required" />
+        <xsd:attribute name="frequency" type="frequency" use="optional" />
+    </xsd:complexType>
+
+    <xsd:complexType name="hdd">
+        <xsd:attribute name="size" type="memory" use="required" />
+    </xsd:complexType>
+
+    <xsd:complexType name="psu">
+        <xsd:attribute name="power" type="power" use="required" />
+    </xsd:complexType>
+
+    <xsd:complexType name="chassis">
+        <xsd:attribute name="size" type="xsd:token" use="required" />
+    </xsd:complexType>
+
+    <xsd:complexType name="audio">
+        <xsd:attribute name="channels" type="xsd:token" use="required" />
     </xsd:complexType>
 
     <xsd:complexType name="io">
