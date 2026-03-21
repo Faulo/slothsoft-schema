@@ -2,12 +2,12 @@
 <xsl:stylesheet version="1.0" xmlns="http://www.w3.org/1999/xhtml" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:ssc="http://schema.slothsoft.net/schema/computers">
     <xsl:import href="farah://slothsoft@schema/xsl/computers.functions" />
 
-    <xsl:template match="ssc:index">
+    <xsl:template name="ssc:index" match="ssc:index">
         <article class="ssc">
             <details open="open" class="ssc__toc">
                 <summary>Table of Contents</summary>
                 <ul>
-                    <xsl:for-each select="ssc:computer">
+                    <xsl:for-each select=".//ssc:computer">
                         <li>
                             <a href="#{ssc:name-to-id()}">
                                 <xsl:value-of select="@name" />
@@ -18,7 +18,7 @@
             </details>
             <hr />
             <div class="ssc__list">
-                <xsl:for-each select="ssc:computer">
+                <xsl:for-each select=".//ssc:computer">
                     <h2 id="{ssc:name-to-id()}">
                         <a href="#{ssc:name-to-id()}">
                             <xsl:value-of select="@name" />
