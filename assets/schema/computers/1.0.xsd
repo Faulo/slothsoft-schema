@@ -102,13 +102,14 @@
                 <xsd:element name="chassis" type="chassis" />
                 <xsd:element name="psu" type="psu" />
             </xsd:choice>
-            <xsd:element name="io" type="io" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="io" type="io" minOccurs="0" maxOccurs="unbounded" />
         </xsd:sequence>
         <xsd:attribute ref="xml:id" use="optional" />
         <xsd:attribute name="name" type="xsd:token" use="required" />
         <xsd:attribute name="href" type="xsd:anyURI" use="optional" />
         <xsd:attribute name="price" type="xsd:float" use="optional" />
         <xsd:attribute name="price-uri" type="xsd:anyURI" use="optional" />
+        <xsd:attribute name="final-price" type="xsd:float" use="optional" />
         <xsd:attribute name="tdp" type="power" use="optional" />
     </xsd:complexType>
 
@@ -135,6 +136,7 @@
         <xsd:attribute name="form" type="xsd:token" use="required" />
         <xsd:attribute name="type" type="xsd:token" use="required" />
         <xsd:attribute name="size" type="memory" use="optional" />
+        <xsd:attribute name="count" type="xsd:integer" default="1" use="optional" />
     </xsd:complexType>
 
     <xsd:complexType name="gpu">
