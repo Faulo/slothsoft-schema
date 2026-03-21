@@ -88,6 +88,7 @@
 
     <xsd:complexType name="part-ref">
         <xsd:attribute name="id" type="xsd:IDREF" use="required" />
+        <xsd:attribute name="final-price" type="xsd:float" use="optional" />
     </xsd:complexType>
 
     <xsd:complexType name="part">
@@ -107,7 +108,7 @@
         <xsd:attribute ref="xml:id" use="optional" />
         <xsd:attribute name="name" type="xsd:token" use="required" />
         <xsd:attribute name="href" type="xsd:anyURI" use="optional" />
-        <xsd:attribute name="price" type="xsd:float" use="optional" />
+        <xsd:attribute name="price" type="xsd:float" use="required" />
         <xsd:attribute name="price-uri" type="xsd:anyURI" use="optional" />
         <xsd:attribute name="final-price" type="xsd:float" use="optional" />
         <xsd:attribute name="tdp" type="power" use="optional" />
@@ -158,6 +159,11 @@
 
     <xsd:complexType name="audio">
         <xsd:attribute name="channels" type="xsd:token" use="required" />
+    </xsd:complexType>
+
+    <xsd:complexType name="scanner">
+        <xsd:attribute name="scan-type" type="xsd:token" use="required" />
+        <xsd:attribute name="scan-resolution" type="xsd:token" use="required" />
     </xsd:complexType>
 
     <xsd:complexType name="io">

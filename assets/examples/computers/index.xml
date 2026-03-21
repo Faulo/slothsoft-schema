@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<index xmlns="http://schema.slothsoft.net/schema/computers" version="1.0">
+    <parts>
+        <part href="https://de.msi.com/Motherboard/B840-GAMING-PLUS-WIFI" name="MSI B840" tdp="6 W" price="135" price-uri="https://www.idealo.de/preisvergleich/OffersOfProduct/205554698_-b850-gaming-plus-wifi-msi.html">
+            <mainboard socket="AM5" banks="4" ram="DDR5-8200" sata="6 Gb/s" form="ATX" />
+            <io>AM5 Socket</io>
+            <io>PCIe 4.0 x16</io>
+            <io>M.2 PCIe 4.0 x4</io>
+            <io>DDR5-8200</io>
+            <io>Wi-Fi 7</io>
+            <io>Bluetooth 5.4</io>
+        </part>
+        <part href="https://www.amd.com/en/products/processors/desktops/ryzen/9000-series/amd-ryzen-5-9600x.html" name="AMD Ryzen 5 9600X" tdp="65 W" price="189" price-uri="https://www.idealo.de/preisvergleich/OffersOfProduct/204581794_-ryzen-5-9600x-boxed-amd.html">
+            <cpu frequency="3.90 GHz" cores="6" cache-l2="3 KB" cache-l3="32 MB" socket="AM4" pcie="5.0" />
+            <io>AM5 Socket</io>
+            <io>DDR5-5600</io>
+        </part>
+        <part xml:id="DDR5-5600" name="Kingston FURY Beast RGB" price="175" price-uri="https://www.idealo.de/preisvergleich/OffersOfProduct/202593458_-fury-beast-rgb-16gb-kit-ddr5-5600-cl40-kf556c40bwa-16-kingston.html" tdp="0 W">
+            <ram count="2" size="16 GB" form="DDR5-DIMM" type="DDR5-5600" frequency="5600 MHz" />
+            <io>DDR5-5600</io>
+        </part>
+        <part name="RealTek ALC897" price="0" tdp="0 W">
+            <audio channels="7.1" />
+        </part>
+        <part href="https://www.biwintech.com/product/nv7200-pcie-ssd/" name="Biwin NV7200" price="180" price-uri="https://www.idealo.de/preisvergleich/OffersOfProduct/206323557_-nv7200-2tb-biwin.html" tdp="5 W">
+            <hdd size="2048 GB" />
+            <io>M.2 PCIe 4.0 x4</io>
+        </part>
+        <part href="https://de.msi.com/Motherboard/B850-GAMING-PLUS-WIFI/Specification" name="MSI B850" tdp="6 W" price="175" price-uri="https://www.idealo.de/preisvergleich/OffersOfProduct/205554698_-b850-gaming-plus-wifi-msi.html">
+            <mainboard socket="AM5" banks="4" ram="DDR5-8200" sata="6 Gb/s" form="ATX" />
+            <io>AM5 Socket</io>
+            <io>PCIe 5.0 x16</io>
+            <io>M.2 PCIe 5.0 x4</io>
+            <io>DDR5-8200</io>
+            <io>Wi-Fi 7</io>
+            <io>Bluetooth 5.4</io>
+        </part>
+        <part href="https://www.amd.com/en/products/processors/desktops/ryzen/9000-series/amd-ryzen-7-9700x.html" name="AMD Ryzen 7 9700X" tdp="65 W" price="289" price-uri="https://www.idealo.de/preisvergleich/OffersOfProduct/204581415_-ryzen-7-9700x-boxed-amd.html">
+            <cpu frequency="3.80 GHz" cores="8" cache-l2="3 KB" cache-l3="32 MB" socket="AM4" pcie="5.0" />
+            <io>AM5 Socket</io>
+            <io>DDR5-5600</io>
+        </part>
+        <part name="RealTek ALC897" price="0" tdp="0 W">
+            <audio channels="7.1" />
+        </part>
+        <part href="https://www.lexar.com/global/products/Lexar-NM990-M-2-2280-PCIe-5-0-NVMe-SSD/" name="Lexar NM990" price="235" price-uri="https://www.idealo.de/preisvergleich/OffersOfProduct/206792641_-nm990-2tb-lexar.html" tdp="5 W">
+            <hdd size="2048 GB" />
+            <io>M.2 PCIe 5.0 x4</io>
+        </part>
+    </parts>
+
+    <parts>
+        <part xml:id="P2711" href="https://gzhls.at/blob/ldb/1/7/4/f/f7bbb0ffee9fd24f6e33e9d22722d2e14305.pdf" name="Fujitsu P2711 TS QHD" price="180" price-uri="https://www.idealo.de/preisvergleich/OffersOfProduct/202920578_-p2711-ts-qhd-fujitsu.html" />
+    </parts>
+
+    <computer name="Computer 1" year="2026" owner="Strayfarer" final-price="100">
+        <part href="https://de.msi.com/Motherboard/B840-GAMING-PLUS-WIFI" name="MSI B840" tdp="6 W" price="135" final-price="100" price-uri="https://www.idealo.de/preisvergleich/OffersOfProduct/205554698_-b850-gaming-plus-wifi-msi.html">
+            <mainboard socket="AM5" banks="4" ram="DDR5-8200" sata="6 Gb/s" form="ATX" />
+            <io>AM5 Socket</io>
+            <io>PCIe 4.0 x16</io>
+            <io>M.2 PCIe 4.0 x4</io>
+            <io>DDR5-8200</io>
+            <io>Wi-Fi 7</io>
+            <io>Bluetooth 5.4</io>
+        </part>
+        <part href="https://www.amd.com/en/products/processors/desktops/ryzen/9000-series/amd-ryzen-5-9600x.html" name="AMD Ryzen 5 9600X" tdp="65 W" price="189" price-uri="https://www.idealo.de/preisvergleich/OffersOfProduct/204581794_-ryzen-5-9600x-boxed-amd.html">
+            <cpu frequency="3.90 GHz" cores="6" cache-l2="3 KB" cache-l3="32 MB" socket="AM4" pcie="5.0" />
+            <io>AM5 Socket</io>
+            <io>DDR5-5600</io>
+        </part>
+        <part name="Kingston FURY Beast RGB" price="175" price-uri="https://www.idealo.de/preisvergleich/OffersOfProduct/202593458_-fury-beast-rgb-16gb-kit-ddr5-5600-cl40-kf556c40bwa-16-kingston.html" tdp="0 W">
+            <ram count="2" size="16 GB" form="DDR5-DIMM" type="DDR5-5600" frequency="5600 MHz" />
+            <io>DDR5-5600</io>
+        </part>
+    </computer>
+
+    <computer name="Computer 2" year="2026" owner="Strayfarer">
+        <use-part id="DDR5-5600" />
+        <use-part id="P2711" final-price="100" />
+        <use-part id="P2711" />
+    </computer>
+</index>
