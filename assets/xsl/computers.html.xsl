@@ -4,9 +4,8 @@
 
     <xsl:template match="ssc:index">
         <article class="ssc">
-            <h1>Hardware</h1>
-            <details open="open" class="ssc_toc">
-                <summary>Table of Contents:</summary>
+            <details open="open" class="ssc__toc">
+                <summary>Table of Contents</summary>
                 <ul>
                     <xsl:for-each select="ssc:computer">
                         <li>
@@ -18,26 +17,74 @@
                 </ul>
             </details>
             <hr />
-            <div class="ssc_list">
-                <xsl:apply-templates select="ssc:computer" />
+            <div class="ssc__list">
+                <xsl:for-each select="ssc:computer">
+                    <h2 id="{ssc:name-to-id()}">
+                        <a href="#{ssc:name-to-id()}">
+                            <xsl:value-of select="@name" />
+                        </a>
+                    </h2>
+                    <article class="ssc__computer">
+                        <xsl:apply-templates select="." mode="info" />
+                        <xsl:apply-templates select="." mode="table" />
+                    </article>
+                </xsl:for-each>
             </div>
         </article>
     </xsl:template>
 
-    <xsl:template match="ssc:computer">
+    <xsl:template match="ssc:computer" mode="info">
+        <xsl:variable name="parts" select="ssc:parts(.)" />
+
+        <dl class="ssc__info">
+            <xsl:for-each select="$parts//ssc:cpu">
+                <dt>
+                    <xsl:value-of select="../@name" />
+                </dt>
+                <dd>
+                    <xsl:value-of select="concat(@cores, '×', @frequency)" />
+                </dd>
+            </xsl:for-each>
+            <xsl:if test="$parts//ssc:ram">
+                <dt>RAM</dt>
+                <dd>
+                    <xsl:value-of select="ssc:ram()" />
+                </dd>
+            </xsl:if>
+            <xsl:for-each select="$parts//ssc:gpu">
+                <dt>
+                    <xsl:value-of select="../@name" />
+                </dt>
+                <dd>
+                    <div>
+                        <xsl:value-of select="@memory" />
+                    </div>
+                </dd>
+            </xsl:for-each>
+            <xsl:if test="$parts//ssc:hdd">
+                <dt>Hard Disk Space</dt>
+                <dd>
+                    <xsl:value-of select="ssc:hdd()" />
+                </dd>
+            </xsl:if>
+            <xsl:for-each select="$parts//ssc:display">
+                <dt>
+                    <xsl:value-of select="../@name" />
+                </dt>
+                <dd>
+                    <xsl:value-of select="concat(@resolution, ' @ ', @frequency)" />
+                </dd>
+            </xsl:for-each>
+        </dl>
+    </xsl:template>
+
+    <xsl:template match="ssc:computer" mode="table">
 
         <xsl:variable name="price" select="ssc:format-price(ssc:price(.))" />
 
         <xsl:variable name="final-price" select="ssc:format-price(ssc:final-price(.))" />
 
-        <table id="{ssc:name-to-id()}" class="ssc_computer">
-            <caption>
-                <h2>
-                    <a href="#{ssc:name-to-id()}">
-                        <xsl:value-of select="@name" />
-                    </a>
-                </h2>
-            </caption>
+        <table class="ssc__parts">
             <thead>
                 <tr>
                     <th>Part</th>
@@ -50,10 +97,10 @@
             <tfoot>
                 <tr>
                     <td />
+                    <th>Total</th>
                     <td />
                     <td />
-                    <td />
-                    <th class="ssc_price">
+                    <th class="ssc__price">
                         <xsl:choose>
                             <xsl:when test="$price != $final-price">
                                 <s>
@@ -70,12 +117,12 @@
                 </tr>
             </tfoot>
             <tbody>
-                <xsl:apply-templates select="*" mode="row" />
+                <xsl:apply-templates select="*" mode="table" />
             </tbody>
         </table>
     </xsl:template>
 
-    <xsl:template match="ssc:part | ssc:use-part" mode="row">
+    <xsl:template match="ssc:part | ssc:use-part" mode="table">
         <xsl:variable name="part" select="self::ssc:part | id(self::ssc:use-part/@id)" />
 
         <xsl:variable name="price">
@@ -130,7 +177,7 @@
                     </xsl:for-each>
                 </ul>
             </td>
-            <td class="ssc_price">
+            <td class="ssc__price">
                 <xsl:choose>
                     <xsl:when test="$price != '' and $final-price != ''">
                         <s>
@@ -163,20 +210,20 @@
     </xsl:template>
 
     <xsl:template match="ssc:ram" mode="properties">
-        <table>
-            <tr>
-                <th>Size:</th>
-                <td>
-                    <xsl:value-of select="@size" />
-                </td>
-            </tr>
-            <tr>
-                <th>Type:</th>
-                <td>
-                    <xsl:value-of select="@type" />
-                </td>
-            </tr>
-        </table>
+        <dl class="ssc__properties">
+
+            <dt>Size:</dt>
+            <dd>
+                <xsl:value-of select="concat(@count, '×', @size)" />
+            </dd>
+
+
+            <dt>Type:</dt>
+            <dd>
+                <xsl:value-of select="@type" />
+            </dd>
+
+        </dl>
     </xsl:template>
 
     <xsl:template match="ssc:hdd" mode="name">
@@ -184,14 +231,14 @@
     </xsl:template>
 
     <xsl:template match="ssc:hdd" mode="properties">
-        <table>
-            <tr>
-                <th>Size:</th>
-                <td>
-                    <xsl:value-of select="@size" />
-                </td>
-            </tr>
-        </table>
+        <dl class="ssc__properties">
+
+            <dt>Size:</dt>
+            <dd>
+                <xsl:value-of select="@size" />
+            </dd>
+
+        </dl>
     </xsl:template>
 
     <xsl:template match="ssc:chassis" mode="name">
@@ -199,14 +246,14 @@
     </xsl:template>
 
     <xsl:template match="ssc:chassis" mode="properties">
-        <table>
-            <tr>
-                <th>Size:</th>
-                <td>
-                    <xsl:value-of select="@size" />
-                </td>
-            </tr>
-        </table>
+        <dl class="ssc__properties">
+
+            <dt>Size:</dt>
+            <dd>
+                <xsl:value-of select="@size" />
+            </dd>
+
+        </dl>
     </xsl:template>
 
     <xsl:template match="ssc:cpu" mode="name">
@@ -214,20 +261,20 @@
     </xsl:template>
 
     <xsl:template match="ssc:cpu" mode="properties">
-        <table>
-            <tr>
-                <th>Frequency:</th>
-                <td>
-                    <xsl:value-of select="@frequency" />
-                </td>
-            </tr>
-            <tr>
-                <th>Cores:</th>
-                <td>
-                    <xsl:value-of select="@cores" />
-                </td>
-            </tr>
-        </table>
+        <dl class="ssc__properties">
+
+            <dt>Frequency:</dt>
+            <dd>
+                <xsl:value-of select="@frequency" />
+            </dd>
+
+
+            <dt>Cores:</dt>
+            <dd>
+                <xsl:value-of select="@cores" />
+            </dd>
+
+        </dl>
     </xsl:template>
 
     <xsl:template match="ssc:mainboard" mode="name">
@@ -235,26 +282,26 @@
     </xsl:template>
 
     <xsl:template match="ssc:mainboard" mode="properties">
-        <table>
-            <tr>
-                <th>Socket:</th>
-                <td>
-                    <xsl:value-of select="@socket" />
-                </td>
-            </tr>
-            <tr>
-                <th>RAM:</th>
-                <td>
-                    <xsl:value-of select="@ram" />
-                </td>
-            </tr>
-            <tr>
-                <th>Form:</th>
-                <td>
-                    <xsl:value-of select="@form" />
-                </td>
-            </tr>
-        </table>
+        <dl class="ssc__properties">
+
+            <dt>Socket:</dt>
+            <dd>
+                <xsl:value-of select="@socket" />
+            </dd>
+
+
+            <dt>RAM:</dt>
+            <dd>
+                <xsl:value-of select="@ram" />
+            </dd>
+
+
+            <dt>Form:</dt>
+            <dd>
+                <xsl:value-of select="@form" />
+            </dd>
+
+        </dl>
     </xsl:template>
 
     <xsl:template match="ssc:gpu" mode="name">
@@ -262,20 +309,20 @@
     </xsl:template>
 
     <xsl:template match="ssc:gpu" mode="properties">
-        <table>
-            <tr>
-                <th>Frequency:</th>
-                <td>
-                    <xsl:value-of select="@frequency" />
-                </td>
-            </tr>
-            <tr>
-                <th>RAM:</th>
-                <td>
-                    <xsl:value-of select="@memory" />
-                </td>
-            </tr>
-        </table>
+        <dl class="ssc__properties">
+
+            <dt>Frequency:</dt>
+            <dd>
+                <xsl:value-of select="@frequency" />
+            </dd>
+
+
+            <dt>RAM:</dt>
+            <dd>
+                <xsl:value-of select="@memory" />
+            </dd>
+
+        </dl>
     </xsl:template>
 
     <xsl:template match="ssc:psu" mode="name">
@@ -283,14 +330,14 @@
     </xsl:template>
 
     <xsl:template match="ssc:psu" mode="properties">
-        <table>
-            <tr>
-                <th>Power:</th>
-                <td>
-                    <xsl:value-of select="@power" />
-                </td>
-            </tr>
-        </table>
+        <dl class="ssc__properties">
+
+            <dt>Power:</dt>
+            <dd>
+                <xsl:value-of select="@power" />
+            </dd>
+
+        </dl>
     </xsl:template>
 
     <xsl:template match="ssc:audio" mode="name">
@@ -298,14 +345,41 @@
     </xsl:template>
 
     <xsl:template match="ssc:audio" mode="properties">
-        <table>
-            <tr>
-                <th>Channels:</th>
-                <td>
-                    <xsl:value-of select="@channels" />
-                </td>
-            </tr>
-        </table>
+        <dl class="ssc__properties">
+
+            <dt>Channels:</dt>
+            <dd>
+                <xsl:value-of select="@channels" />
+            </dd>
+
+        </dl>
+    </xsl:template>
+
+    <xsl:template match="ssc:display" mode="name">
+        Display
+    </xsl:template>
+
+    <xsl:template match="ssc:display" mode="properties">
+        <dl class="ssc__properties">
+
+            <dt>Size:</dt>
+            <dd>
+                <xsl:value-of select="@size" />
+            </dd>
+
+
+            <dt>Resolution:</dt>
+            <dd>
+                <xsl:value-of select="@resolution" />
+            </dd>
+
+
+            <dt>Frequency:</dt>
+            <dd>
+                <xsl:value-of select="@frequency" />
+            </dd>
+
+        </dl>
     </xsl:template>
 
     <xsl:template match="ssc:scanner" mode="name">
@@ -313,19 +387,19 @@
     </xsl:template>
 
     <xsl:template match="ssc:scanner" mode="properties">
-        <table>
-            <tr>
-                <th>Scan Type:</th>
-                <td>
-                    <xsl:value-of select="properties/@scan-type" />
-                </td>
-            </tr>
-            <tr>
-                <th>Scan Resolution:</th>
-                <td>
-                    <xsl:value-of select="properties/@scan-resolution" />
-                </td>
-            </tr>
-        </table>
+        <dl class="ssc__properties">
+
+            <dt>Scan Type:</dt>
+            <dd>
+                <xsl:value-of select="@scan-type" />
+            </dd>
+
+
+            <dt>Scan Resolution:</dt>
+            <dd>
+                <xsl:value-of select="@scan-resolution" />
+            </dd>
+
+        </dl>
     </xsl:template>
 </xsl:stylesheet>

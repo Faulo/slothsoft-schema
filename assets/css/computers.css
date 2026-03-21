@@ -1,0 +1,71 @@
+.ssc {
+	margin: 1em;
+}
+
+.ssc__toc {
+	background-color: rgba(255, 255, 250, 1);
+	width: fit-content;
+	border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.ssc__toc>summary {
+	font-weight: bold;
+	padding: 0.75em;
+	cursor: pointer;
+}
+
+.ssc__toc>ul {
+	margin: 0 0 0.75em 0;
+}
+
+.ssc__info {
+	display: grid;
+	grid-auto-flow: column;
+	gap: 0.25em 1em;
+	grid-template-rows: repeat(2, 1fr);
+	text-align: center;
+	width: fit-content;
+	padding: 0.5em;
+	border: 1px solid rgba(0, 0, 0, 0.5);
+	background-color: rgba(250, 250, 255, 1);
+}
+
+.ssc__info>* {
+	margin: 0;
+	white-space: nowrap;
+}
+
+.ssc__info>dt {
+	font-weight: bold;
+}
+
+.ssc__computer {
+	margin: 1em;
+}
+
+.ssc__parts {
+	border-collapse: collapse;
+	background-color: rgba(250, 255, 250, 1);
+}
+
+.ssc__parts th, .ssc__parts td {
+	border: 1px solid rgba(0, 0, 0, 0.3);
+	padding: 0.25em 0.5em;
+}
+
+.ssc__properties {
+	margin: 0;
+	display: grid;
+	grid-auto-flow: row;
+	gap: 0.25em 0.5em;
+	grid-template-columns: repeat(2, 1fr);
+}
+
+.ssc__properties>* {
+	margin: 0;
+}
+
+.ssc__properties>dt {
+	font-weight: bold;
+	text-align: right;
+}

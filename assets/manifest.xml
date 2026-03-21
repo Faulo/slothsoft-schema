@@ -8,6 +8,7 @@
         <fragment name="computers-index">
             <use-document ref="/examples/computers/index" />
             <use-template ref="/xsl/computers.html" />
+            <link-stylesheet ref="/css/computers" />
         </fragment>
         <resource-directory name="historical-games-night" type="application/xml" />
         <resource-directory name="presskit" type="application/xml" />

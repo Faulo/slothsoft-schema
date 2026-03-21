@@ -50,7 +50,9 @@
     </parts>
 
     <parts>
-        <part xml:id="P2711" href="https://gzhls.at/blob/ldb/1/7/4/f/f7bbb0ffee9fd24f6e33e9d22722d2e14305.pdf" name="Fujitsu P2711 TS QHD" price="180" price-uri="https://www.idealo.de/preisvergleich/OffersOfProduct/202920578_-p2711-ts-qhd-fujitsu.html" />
+        <part xml:id="P2711" href="https://gzhls.at/blob/ldb/1/7/4/f/f7bbb0ffee9fd24f6e33e9d22722d2e14305.pdf" name="Fujitsu P2711 TS QHD" price="180" price-uri="https://www.idealo.de/preisvergleich/OffersOfProduct/202920578_-p2711-ts-qhd-fujitsu.html">
+            <display size="27″" frequency="60 Hz" resolution="2560x1440" />
+        </part>
     </parts>
 
     <computer name="Computer 1" year="2026" owner="Strayfarer" final-price="100">
@@ -72,11 +74,24 @@
             <ram count="2" size="16 GB" form="DDR5-DIMM" type="DDR5-5600" frequency="5600 MHz" />
             <io>DDR5-5600</io>
         </part>
+        <part href="https://www.lexar.com/global/products/Lexar-NM990-M-2-2280-PCIe-5-0-NVMe-SSD/" name="Lexar NM990" price="235" price-uri="https://www.idealo.de/preisvergleich/OffersOfProduct/206792641_-nm990-2tb-lexar.html" tdp="5 W">
+            <hdd size="2048 GB" />
+            <io>M.2 PCIe 5.0 x4</io>
+        </part>
+        <part href="https://www.lexar.com/global/products/Lexar-NM990-M-2-2280-PCIe-5-0-NVMe-SSD/" name="Lexar NM990" price="235" price-uri="https://www.idealo.de/preisvergleich/OffersOfProduct/206792641_-nm990-2tb-lexar.html" tdp="5 W">
+            <hdd size="2048 GB" />
+            <io>M.2 PCIe 5.0 x4</io>
+        </part>
     </computer>
 
     <computer name="Computer 2" year="2026" owner="Strayfarer">
         <use-part id="DDR5-5600" />
         <use-part id="P2711" final-price="100" />
         <use-part id="P2711" />
+
+        <part href="https://www.techpowerup.com/gpu-specs/geforce-gt-730.c2590" name="Nvidia GeForce GT 730" tdp="49 W" price="32">
+            <gpu frequency="700 MHz" memory="2048 MB" />
+            <io>PCIe 2.0 x8</io>
+        </part>
     </computer>
 </index>

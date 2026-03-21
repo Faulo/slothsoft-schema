@@ -108,6 +108,8 @@
                 <xsd:element name="hdd" type="hdd" />
                 <xsd:element name="chassis" type="chassis" />
                 <xsd:element name="psu" type="psu" />
+                <xsd:element name="display" type="display" />
+                <xsd:element name="scanner" type="scanner" />
             </xsd:choice>
             <xsd:element name="io" type="io" minOccurs="0" maxOccurs="unbounded" />
         </xsd:sequence>
