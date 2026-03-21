@@ -79,6 +79,7 @@
         <xsd:sequence>
             <xsd:element name="part" type="part" minOccurs="0" maxOccurs="unbounded" />
         </xsd:sequence>
+        <xsd:attribute name="name" type="xsd:token" use="required" />
     </xsd:complexType>
 
     <xsd:complexType name="computer">

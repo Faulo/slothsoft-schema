@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <index xmlns="http://schema.slothsoft.net/schema/computers" version="1.0">
-    <parts>
+    <parts name="Ramsch">
         <part href="https://de.msi.com/Motherboard/B840-GAMING-PLUS-WIFI" name="MSI B840" tdp="6 W" price="135" price-uri="https://www.idealo.de/preisvergleich/OffersOfProduct/205554698_-b850-gaming-plus-wifi-msi.html">
             <mainboard socket="AM5" banks="4" ram="DDR5-8200" sata="6 Gb/s" form="ATX" />
             <io>AM5 Socket</io>
@@ -49,7 +49,7 @@
         </part>
     </parts>
 
-    <parts>
+    <parts name="Displays">
         <part xml:id="P2711" href="https://gzhls.at/blob/ldb/1/7/4/f/f7bbb0ffee9fd24f6e33e9d22722d2e14305.pdf" name="Fujitsu P2711 TS QHD" price="180" price-uri="https://www.idealo.de/preisvergleich/OffersOfProduct/202920578_-p2711-ts-qhd-fujitsu.html">
             <display size="27″" frequency="60 Hz" resolution="2560x1440" />
         </part>

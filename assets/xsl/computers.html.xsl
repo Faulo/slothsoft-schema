@@ -18,14 +18,14 @@
             </details>
             <hr />
             <div class="ssc__list">
-                <xsl:for-each select=".//ssc:computer">
+                <xsl:for-each select=".//ssc:parts | .//ssc:computer">
                     <h2 id="{ssc:name-to-id()}">
                         <a href="#{ssc:name-to-id()}">
                             <xsl:value-of select="@name" />
                         </a>
                     </h2>
                     <article class="ssc__computer">
-                        <xsl:apply-templates select="." mode="info" />
+                        <xsl:apply-templates select="self::ssc:computer" mode="info" />
                         <xsl:apply-templates select="." mode="table" />
                     </article>
                 </xsl:for-each>
@@ -78,7 +78,7 @@
         </dl>
     </xsl:template>
 
-    <xsl:template match="ssc:computer" mode="table">
+    <xsl:template match="ssc:computer | ssc:parts" mode="table">
 
         <xsl:variable name="price" select="ssc:format-price(ssc:price(.))" />
 
@@ -94,28 +94,30 @@
                     <th>Price</th>
                 </tr>
             </thead>
-            <tfoot>
-                <tr>
-                    <td />
-                    <th>Total</th>
-                    <td />
-                    <td />
-                    <th class="ssc__price">
-                        <xsl:choose>
-                            <xsl:when test="$price != $final-price">
-                                <s>
-                                    <xsl:copy-of select="$price" />
-                                </s>
-                                <xsl:text> </xsl:text>
-                                <xsl:copy-of select="$final-price" />
-                            </xsl:when>
-                            <xsl:otherwise>
-                                <xsl:copy-of select="$final-price" />
-                            </xsl:otherwise>
-                        </xsl:choose>
-                    </th>
-                </tr>
-            </tfoot>
+            <xsl:if test="self::ssc:computer">
+                <tfoot>
+                    <tr>
+                        <td />
+                        <th>Total</th>
+                        <td />
+                        <td />
+                        <th class="ssc__price">
+                            <xsl:choose>
+                                <xsl:when test="$price != $final-price">
+                                    <s>
+                                        <xsl:copy-of select="$price" />
+                                    </s>
+                                    <xsl:text> </xsl:text>
+                                    <xsl:copy-of select="$final-price" />
+                                </xsl:when>
+                                <xsl:otherwise>
+                                    <xsl:copy-of select="$final-price" />
+                                </xsl:otherwise>
+                            </xsl:choose>
+                        </th>
+                    </tr>
+                </tfoot>
+            </xsl:if>
             <tbody>
                 <xsl:apply-templates select="*" mode="table" />
             </tbody>
