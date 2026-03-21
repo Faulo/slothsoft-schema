@@ -72,7 +72,7 @@
                     <xsl:value-of select="../@name" />
                 </dt>
                 <dd>
-                    <xsl:value-of select="concat(@resolution, ' @ ', @frequency)" />
+                    <xsl:value-of select="concat(translate(@resolution, 'x', '×'), ' @ ', @frequency)" />
                 </dd>
             </xsl:for-each>
         </dl>
@@ -343,7 +343,7 @@
             </dd>
             <dt>Resolution:</dt>
             <dd>
-                <xsl:value-of select="@resolution" />
+                <xsl:value-of select="translate(@resolution, 'x', '×')" />
             </dd>
             <dt>Frequency:</dt>
             <dd>
