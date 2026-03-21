@@ -57,7 +57,7 @@
                 </dt>
                 <dd>
                     <div>
-                        <xsl:value-of select="@memory" />
+                        <xsl:value-of select="ssc:format-byte(ssc:parse-byte(@memory))" />
                     </div>
                 </dd>
             </xsl:for-each>
@@ -213,18 +213,14 @@
 
     <xsl:template match="ssc:ram" mode="properties">
         <dl class="ssc__properties">
-
             <dt>Size:</dt>
             <dd>
                 <xsl:value-of select="concat(@count, '×', @size)" />
             </dd>
-
-
             <dt>Type:</dt>
             <dd>
                 <xsl:value-of select="@type" />
             </dd>
-
         </dl>
     </xsl:template>
 
@@ -234,12 +230,10 @@
 
     <xsl:template match="ssc:hdd" mode="properties">
         <dl class="ssc__properties">
-
             <dt>Size:</dt>
             <dd>
-                <xsl:value-of select="@size" />
+                <xsl:value-of select="ssc:format-byte(ssc:parse-byte(@size))" />
             </dd>
-
         </dl>
     </xsl:template>
 
@@ -249,12 +243,10 @@
 
     <xsl:template match="ssc:chassis" mode="properties">
         <dl class="ssc__properties">
-
             <dt>Size:</dt>
             <dd>
                 <xsl:value-of select="@size" />
             </dd>
-
         </dl>
     </xsl:template>
 
@@ -264,18 +256,14 @@
 
     <xsl:template match="ssc:cpu" mode="properties">
         <dl class="ssc__properties">
-
             <dt>Frequency:</dt>
             <dd>
                 <xsl:value-of select="@frequency" />
             </dd>
-
-
             <dt>Cores:</dt>
             <dd>
                 <xsl:value-of select="@cores" />
             </dd>
-
         </dl>
     </xsl:template>
 
@@ -285,24 +273,18 @@
 
     <xsl:template match="ssc:mainboard" mode="properties">
         <dl class="ssc__properties">
-
             <dt>Socket:</dt>
             <dd>
                 <xsl:value-of select="@socket" />
             </dd>
-
-
             <dt>RAM:</dt>
             <dd>
                 <xsl:value-of select="@ram" />
             </dd>
-
-
             <dt>Form:</dt>
             <dd>
                 <xsl:value-of select="@form" />
             </dd>
-
         </dl>
     </xsl:template>
 
@@ -312,18 +294,14 @@
 
     <xsl:template match="ssc:gpu" mode="properties">
         <dl class="ssc__properties">
-
             <dt>Frequency:</dt>
             <dd>
                 <xsl:value-of select="@frequency" />
             </dd>
-
-
             <dt>RAM:</dt>
             <dd>
-                <xsl:value-of select="@memory" />
+                <xsl:value-of select="ssc:format-byte(ssc:parse-byte(@memory))" />
             </dd>
-
         </dl>
     </xsl:template>
 
@@ -333,12 +311,10 @@
 
     <xsl:template match="ssc:psu" mode="properties">
         <dl class="ssc__properties">
-
             <dt>Power:</dt>
             <dd>
                 <xsl:value-of select="@power" />
             </dd>
-
         </dl>
     </xsl:template>
 
@@ -348,12 +324,10 @@
 
     <xsl:template match="ssc:audio" mode="properties">
         <dl class="ssc__properties">
-
             <dt>Channels:</dt>
             <dd>
                 <xsl:value-of select="@channels" />
             </dd>
-
         </dl>
     </xsl:template>
 
@@ -363,24 +337,18 @@
 
     <xsl:template match="ssc:display" mode="properties">
         <dl class="ssc__properties">
-
             <dt>Size:</dt>
             <dd>
                 <xsl:value-of select="@size" />
             </dd>
-
-
             <dt>Resolution:</dt>
             <dd>
                 <xsl:value-of select="@resolution" />
             </dd>
-
-
             <dt>Frequency:</dt>
             <dd>
                 <xsl:value-of select="@frequency" />
             </dd>
-
         </dl>
     </xsl:template>
 
@@ -390,18 +358,14 @@
 
     <xsl:template match="ssc:scanner" mode="properties">
         <dl class="ssc__properties">
-
             <dt>Scan Type:</dt>
             <dd>
                 <xsl:value-of select="@scan-type" />
             </dd>
-
-
             <dt>Scan Resolution:</dt>
             <dd>
                 <xsl:value-of select="@scan-resolution" />
             </dd>
-
         </dl>
     </xsl:template>
 </xsl:stylesheet>
