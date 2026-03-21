@@ -57,6 +57,12 @@
         </xsd:restriction>
     </xsd:simpleType>
 
+    <xsd:simpleType name="resolution">
+        <xsd:restriction base="xsd:token">
+            <xsd:pattern value="\d+x\d+" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
     <!-- Root -->
     <xsd:element name="index">
         <xsd:complexType>
@@ -161,9 +167,15 @@
         <xsd:attribute name="channels" type="xsd:token" use="required" />
     </xsd:complexType>
 
+    <xsd:complexType name="display">
+        <xsd:attribute name="size" type="xsd:token" use="required" />
+        <xsd:attribute name="frequency" type="frequency" use="required" />
+        <xsd:attribute name="resolution" type="resolution" use="required" />
+    </xsd:complexType>
+
     <xsd:complexType name="scanner">
         <xsd:attribute name="scan-type" type="xsd:token" use="required" />
-        <xsd:attribute name="scan-resolution" type="xsd:token" use="required" />
+        <xsd:attribute name="scan-resolution" type="resolution" use="required" />
     </xsd:complexType>
 
     <xsd:complexType name="io">
