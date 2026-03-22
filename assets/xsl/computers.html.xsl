@@ -7,7 +7,7 @@
             <details open="open" class="ssc__toc">
                 <summary>Table of Contents</summary>
                 <ul>
-                    <xsl:for-each select=".//ssc:computer">
+                    <xsl:for-each select=".//ssc:parts | .//ssc:computer">
                         <li>
                             <a href="#{ssc:name-to-id()}">
                                 <xsl:value-of select="@name" />
