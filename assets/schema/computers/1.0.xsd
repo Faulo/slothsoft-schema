@@ -39,10 +39,35 @@
         </xsd:restriction>
     </xsd:simpleType>
 
+    <xsd:simpleType name="mainbaord-form">
+        <xsd:restriction base="xsd:token">
+            <xsd:enumeration value="ATX" />
+            <xsd:enumeration value="Micro-ATX" />
+            <xsd:enumeration value="Mini-ATX" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
     <xsd:simpleType name="memory">
         <xsd:restriction base="xsd:token">
             <xsd:pattern value="\d+(.\d+)? [A-Z]?B" />
         </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="ram-form">
+        <xsd:restriction base="xsd:token">
+            <xsd:enumeration value="DIMM" />
+            <xsd:enumeration value="SO-DIMM" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="ram-type">
+        <xsd:restriction base="xsd:token">
+            <xsd:pattern value="DDR\d-\d+" />
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="pcie-version">
+        <xsd:restriction base="xsd:integer" />
     </xsd:simpleType>
 
     <xsd:simpleType name="frequency">
@@ -61,6 +86,23 @@
         <xsd:restriction base="xsd:token">
             <xsd:pattern value="\d+x\d+" />
         </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:simpleType name="hdd-type">
+        <xsd:union>
+            <xsd:simpleType>
+                <xsd:restriction base="xsd:token">
+                    <xsd:enumeration value="IDE" />
+                    <xsd:enumeration value="SATA" />
+                    <xsd:enumeration value="M.2-SATA" />
+                </xsd:restriction>
+            </xsd:simpleType>
+            <xsd:simpleType>
+                <xsd:restriction base="xsd:token">
+                    <xsd:pattern value="M.2-PCIe\d+x\d+" />
+                </xsd:restriction>
+            </xsd:simpleType>
+        </xsd:union>
     </xsd:simpleType>
 
     <!-- Root -->
@@ -124,10 +166,11 @@
     </xsd:complexType>
 
     <xsd:complexType name="mainboard">
-        <xsd:attribute name="form" type="xsd:token" use="required" />
+        <xsd:attribute name="form" type="mainbaord-form" use="required" />
         <xsd:attribute name="socket" type="xsd:token" use="required" />
         <xsd:attribute name="banks" type="xsd:integer" use="required" />
-        <xsd:attribute name="ram" type="xsd:token" use="required" />
+        <xsd:attribute name="ram" type="ram-type" use="required" />
+        <xsd:attribute name="pcie" type="pcie-version" use="required" />
         <xsd:attribute name="sata" type="xsd:token" use="optional" />
     </xsd:complexType>
 
@@ -135,27 +178,31 @@
         <xsd:attribute name="socket" type="xsd:token" use="required" />
         <xsd:attribute name="frequency" type="frequency" use="required" />
         <xsd:attribute name="cores" type="xsd:integer" use="required" />
-        <xsd:attribute name="ram" type="xsd:token" use="optional" />
-        <xsd:attribute name="pcie" type="xsd:token" use="optional" />
+        <xsd:attribute name="ram" type="ram-type" use="required" />
+        <xsd:attribute name="pcie" type="pcie-version" use="required" />
+        <xsd:attribute name="cache-l1" type="memory" use="optional" />
         <xsd:attribute name="cache-l2" type="memory" use="optional" />
         <xsd:attribute name="cache-l3" type="memory" use="optional" />
     </xsd:complexType>
 
     <xsd:complexType name="ram">
-        <xsd:attribute name="frequency" type="frequency" use="required" />
-        <xsd:attribute name="form" type="xsd:token" use="required" />
-        <xsd:attribute name="type" type="xsd:token" use="required" />
-        <xsd:attribute name="size" type="memory" use="optional" />
-        <xsd:attribute name="count" type="xsd:integer" default="1" use="optional" />
+        <xsd:attribute name="size" type="memory" use="required" />
+        <xsd:attribute name="form" type="ram-form" use="required" />
+        <xsd:attribute name="count" type="xsd:integer" use="required" />
+        <xsd:attribute name="type" type="ram-type" use="required" />
     </xsd:complexType>
 
     <xsd:complexType name="gpu">
         <xsd:attribute name="memory" type="memory" use="required" />
+        <xsd:attribute name="pcie" type="pcie-version" use="optional" />
         <xsd:attribute name="frequency" type="frequency" use="optional" />
     </xsd:complexType>
 
     <xsd:complexType name="hdd">
         <xsd:attribute name="size" type="memory" use="required" />
+        <xsd:attribute name="type" type="hdd-type" use="required" />
+        <xsd:attribute name="sata" type="xsd:token" use="optional" />
+        <xsd:attribute name="pcie" type="pcie-version" use="optional" />
     </xsd:complexType>
 
     <xsd:complexType name="psu">
@@ -163,7 +210,7 @@
     </xsd:complexType>
 
     <xsd:complexType name="chassis">
-        <xsd:attribute name="size" type="xsd:token" use="required" />
+        <xsd:attribute name="size" type="mainbaord-form" use="required" />
     </xsd:complexType>
 
     <xsd:complexType name="audio">

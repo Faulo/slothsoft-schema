@@ -119,7 +119,7 @@
                     <xsl:value-of select="../@name" />
                 </dt>
                 <dd>
-                    <xsl:value-of select="concat(translate(@resolution, 'x', '×'), ' @ ', @frequency)" />
+                    <xsl:value-of select="concat(ssc:format-x(@resolution), ' @ ', @frequency)" />
                 </dd>
             </xsl:for-each>
         </dl>
@@ -281,6 +281,10 @@
             <dd>
                 <xsl:value-of select="ssc:format-byte(ssc:parse-byte(@size))" />
             </dd>
+            <dt>Type:</dt>
+            <dd>
+                <xsl:value-of select="ssc:format-x(@type)" />
+            </dd>
         </dl>
     </xsl:template>
 
@@ -290,7 +294,7 @@
 
     <xsl:template match="ssc:chassis" mode="properties">
         <dl class="ssc__properties">
-            <dt>Size:</dt>
+            <dt>Form Factor:</dt>
             <dd>
                 <xsl:value-of select="@size" />
             </dd>
@@ -315,6 +319,32 @@
             <dd>
                 <xsl:value-of select="@cores" />
             </dd>
+            <dt>RAM:</dt>
+            <dd>
+                <xsl:value-of select="@ram" />
+            </dd>
+            <dt>PCIe:</dt>
+            <dd>
+                <xsl:value-of select="concat('v', @pcie)" />
+            </dd>
+            <xsl:if test="@cache-l1">
+                <dt>Level 1 Cache:</dt>
+                <dd>
+                    <xsl:value-of select="@cache-l1" />
+                </dd>
+            </xsl:if>
+            <xsl:if test="@cache-l2">
+                <dt>Level 2 Cache:</dt>
+                <dd>
+                    <xsl:value-of select="@cache-l2" />
+                </dd>
+            </xsl:if>
+            <xsl:if test="@cache-l3">
+                <dt>Level 3 Cache:</dt>
+                <dd>
+                    <xsl:value-of select="@cache-l3" />
+                </dd>
+            </xsl:if>
         </dl>
     </xsl:template>
 
@@ -330,9 +360,19 @@
             </dd>
             <dt>RAM:</dt>
             <dd>
-                <xsl:value-of select="@ram" />
+                <xsl:value-of select="concat(@banks, '×', @ram)" />
             </dd>
-            <dt>Form:</dt>
+            <dt>PCIe:</dt>
+            <dd>
+                <xsl:value-of select="concat('v', @pcie)" />
+            </dd>
+            <xsl:if test="@sata">
+                <dt>SATA:</dt>
+                <dd>
+                    <xsl:value-of select="@sata" />
+                </dd>
+            </xsl:if>
+            <dt>Form Factor:</dt>
             <dd>
                 <xsl:value-of select="@form" />
             </dd>
@@ -353,6 +393,12 @@
             <dd>
                 <xsl:value-of select="ssc:format-byte(ssc:parse-byte(@memory))" />
             </dd>
+            <xsl:if test="@frequency">
+                <dt>Frequency:</dt>
+                <dd>
+                    <xsl:value-of select="@frequency" />
+                </dd>
+            </xsl:if>
         </dl>
     </xsl:template>
 
@@ -394,7 +440,7 @@
             </dd>
             <dt>Resolution:</dt>
             <dd>
-                <xsl:value-of select="translate(@resolution, 'x', '×')" />
+                <xsl:value-of select="ssc:format-x(@resolution)" />
             </dd>
             <dt>Frequency:</dt>
             <dd>

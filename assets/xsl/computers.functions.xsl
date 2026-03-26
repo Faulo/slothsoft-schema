@@ -7,6 +7,12 @@
         <func:result select="format-number($price, '0.00&#160;€')" />
     </func:function>
 
+    <func:function name="ssc:format-x">
+        <xsl:param name="value" select="." />
+
+        <func:result select="translate($value, 'x', '×')" />
+    </func:function>
+
     <func:function name="ssc:price">
         <xsl:param name="computer" select="." />
 
