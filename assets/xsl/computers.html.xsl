@@ -385,10 +385,6 @@
 
     <xsl:template match="ssc:gpu" mode="properties">
         <dl class="ssc__properties">
-            <dt>Frequency:</dt>
-            <dd>
-                <xsl:value-of select="@frequency" />
-            </dd>
             <dt>RAM:</dt>
             <dd>
                 <xsl:value-of select="ssc:format-byte(ssc:parse-byte(@memory))" />
@@ -397,6 +393,12 @@
                 <dt>Frequency:</dt>
                 <dd>
                     <xsl:value-of select="@frequency" />
+                </dd>
+            </xsl:if>
+            <xsl:if test="@pcie">
+                <dt>PCIe:</dt>
+                <dd>
+                    <xsl:value-of select="concat('v', @pcie)" />
                 </dd>
             </xsl:if>
         </dl>

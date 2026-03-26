@@ -42,7 +42,7 @@
             <audio channels="7.1" />
         </part>
         <part href="https://www.lexar.com/global/products/Lexar-NM990-M-2-2280-PCIe-5-0-NVMe-SSD/" name="Lexar NM990" price="235" price-uri="https://www.idealo.de/preisvergleich/OffersOfProduct/206792641_-nm990-2tb-lexar.html" tdp="5 W">
-            <hdd size="2048 GB" type="SATA" />
+            <hdd size="2048 GB" type="SATA II" />
             <io>M.2 PCIe 5.0 x4</io>
         </part>
     </parts>
@@ -71,12 +71,16 @@
             <io>DDR5-5600</io>
         </part>
         <part href="https://www.lexar.com/global/products/Lexar-NM990-M-2-2280-PCIe-5-0-NVMe-SSD/" name="Lexar NM990" price="235" price-uri="https://www.idealo.de/preisvergleich/OffersOfProduct/206792641_-nm990-2tb-lexar.html" tdp="5 W">
-            <hdd size="2048 GB" type="SATA" pcie="4" />
+            <hdd size="2048 GB" type="SATA III" pcie="4" />
             <io>M.2 PCIe 5.0 x4</io>
         </part>
         <part href="https://www.lexar.com/global/products/Lexar-NM990-M-2-2280-PCIe-5-0-NVMe-SSD/" name="Lexar NM990" price="235" price-uri="https://www.idealo.de/preisvergleich/OffersOfProduct/206792641_-nm990-2tb-lexar.html" tdp="5 W">
             <hdd size="2048 GB" type="M.2-PCIe4x2" />
             <io>M.2 PCIe 5.0 x4</io>
+        </part>
+
+        <part href="http://www.siliconmotion.com/A3.2_Partnumber_Detail.php?sn=11" name="Silicon Motion SM712" tdp="0 W" price="0">
+            <gpu frequency="135 MHz" memory="4 MB" />
         </part>
     </computer>
 
