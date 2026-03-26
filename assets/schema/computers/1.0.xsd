@@ -41,9 +41,10 @@
 
     <xsd:simpleType name="mainbaord-form">
         <xsd:restriction base="xsd:token">
+            <xsd:enumeration value="EATX" />
             <xsd:enumeration value="ATX" />
             <xsd:enumeration value="Micro-ATX" />
-            <xsd:enumeration value="Mini-ATX" />
+            <xsd:enumeration value="Mini-ITX" />
         </xsd:restriction>
     </xsd:simpleType>
 
@@ -92,8 +93,12 @@
         <xsd:union>
             <xsd:simpleType>
                 <xsd:restriction base="xsd:token">
+                    <xsd:enumeration value="USB 2" />
+                    <xsd:enumeration value="USB 3" />
                     <xsd:enumeration value="IDE" />
-                    <xsd:enumeration value="SATA" />
+                    <xsd:enumeration value="SATA I" />
+                    <xsd:enumeration value="SATA II" />
+                    <xsd:enumeration value="SATA III" />
                     <xsd:enumeration value="M.2-SATA" />
                 </xsd:restriction>
             </xsd:simpleType>
