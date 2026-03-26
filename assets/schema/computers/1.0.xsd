@@ -63,7 +63,7 @@
 
     <xsd:simpleType name="ram-type">
         <xsd:restriction base="xsd:token">
-            <xsd:pattern value="DDR\d-\d+" />
+            <xsd:pattern value="DDR\d-\d+( ECC)?" />
         </xsd:restriction>
     </xsd:simpleType>
 
