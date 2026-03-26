@@ -39,43 +39,47 @@
             </details>
             <hr />
             <xsl:if test=".//ssc:computer">
-                <h2 id="computers">
-                    <a href="#computers">Computers</a>
-                </h2>
-                <div class="ssc__list">
-                    <xsl:for-each select=".//ssc:computer">
-                        <h3 id="{ssc:name-to-id()}">
-                            <a href="#{ssc:name-to-id()}">
-                                <xsl:value-of select="@name" />
-                            </a>
-                        </h3>
-                        <article class="ssc__computer">
-                            <xsl:apply-templates select="self::ssc:computer" mode="info" />
-                            <xsl:apply-templates select="." mode="table" />
-                        </article>
-                    </xsl:for-each>
-                </div>
+                <article id="computers">
+                    <h2>
+                        <a href="#computers">Computers</a>
+                    </h2>
+                    <div class="ssc__list ssc__list--computers">
+                        <xsl:for-each select=".//ssc:computer">
+                            <article id="{ssc:name-to-id()}" class="ssc__computer">
+                                <h3>
+                                    <a href="#{ssc:name-to-id()}">
+                                        <xsl:value-of select="@name" />
+                                    </a>
+                                </h3>
+                                <xsl:apply-templates select="self::ssc:computer" mode="info" />
+                                <xsl:apply-templates select="." mode="table" />
+                            </article>
+                        </xsl:for-each>
+                    </div>
+                </article>
             </xsl:if>
             <xsl:if test=".//ssc:parts">
                 <xsl:if test=".//ssc:computer">
                     <hr />
                 </xsl:if>
-                <h2 id="parts">
-                    <a href="#parts">Parts</a>
-                </h2>
-                <div class="ssc__list">
-                    <xsl:for-each select=".//ssc:parts">
-                        <h3 id="{ssc:name-to-id()}">
-                            <a href="#{ssc:name-to-id()}">
-                                <xsl:value-of select="@name" />
-                            </a>
-                        </h3>
-                        <article class="ssc__computer">
-                            <xsl:apply-templates select="self::ssc:computer" mode="info" />
-                            <xsl:apply-templates select="." mode="table" />
-                        </article>
-                    </xsl:for-each>
-                </div>
+                <article id="parts">
+                    <h2>
+                        <a href="#parts">Parts</a>
+                    </h2>
+                    <div class="ssc__list ssc__list--parts">
+                        <xsl:for-each select=".//ssc:parts">
+                            <article id="{ssc:name-to-id()}" class="ssc__computer">
+                                <h3>
+                                    <a href="#{ssc:name-to-id()}">
+                                        <xsl:value-of select="@name" />
+                                    </a>
+                                </h3>
+                                <xsl:apply-templates select="self::ssc:computer" mode="info" />
+                                <xsl:apply-templates select="." mode="table" />
+                            </article>
+                        </xsl:for-each>
+                    </div>
+                </article>
             </xsl:if>
         </article>
     </xsl:template>

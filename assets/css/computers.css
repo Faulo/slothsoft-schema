@@ -39,8 +39,9 @@
 	font-weight: bold;
 }
 
-.ssc__computer {
-	margin: 1em;
+.ssc__list--computers {
+	display: flex;
+	gap: 2em;
 }
 
 .ssc__parts {
