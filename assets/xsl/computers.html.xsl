@@ -44,11 +44,11 @@
                 </h2>
                 <div class="ssc__list">
                     <xsl:for-each select=".//ssc:computer">
-                        <h2 id="{ssc:name-to-id()}">
+                        <h3 id="{ssc:name-to-id()}">
                             <a href="#{ssc:name-to-id()}">
                                 <xsl:value-of select="@name" />
                             </a>
-                        </h2>
+                        </h3>
                         <article class="ssc__computer">
                             <xsl:apply-templates select="self::ssc:computer" mode="info" />
                             <xsl:apply-templates select="." mode="table" />
