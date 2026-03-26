@@ -303,6 +303,10 @@
 
     <xsl:template match="ssc:cpu" mode="properties">
         <dl class="ssc__properties">
+            <dt>Socket:</dt>
+            <dd>
+                <xsl:value-of select="@socket" />
+            </dd>
             <dt>Frequency:</dt>
             <dd>
                 <xsl:value-of select="@frequency" />
