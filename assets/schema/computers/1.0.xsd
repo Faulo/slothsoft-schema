@@ -195,6 +195,8 @@
         <xsd:attribute name="form" type="ram-form" use="required" />
         <xsd:attribute name="count" type="xsd:integer" use="required" />
         <xsd:attribute name="type" type="ram-type" use="required" />
+        <xsd:attribute name="cl" type="xsd:integer" use="optional" />
+        <xsd:attribute name="speed" type="xsd:integer" use="optional" />
     </xsd:complexType>
 
     <xsd:complexType name="gpu">

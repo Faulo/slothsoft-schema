@@ -272,6 +272,24 @@
             <dd>
                 <xsl:value-of select="@type" />
             </dd>
+            <xsl:if test="@speed">
+                <dt>Data rate:</dt>
+                <dd>
+                    <xsl:value-of select="concat(@speed, '&#160;MT/s')" />
+                </dd>
+            </xsl:if>
+            <xsl:if test="@cl">
+                <dt>CAS latency:</dt>
+                <dd>
+                    <xsl:value-of select="concat('CL', @cl)" />
+                </dd>
+            </xsl:if>
+            <xsl:if test="@cl and @speed">
+                <dt>Total latency:</dt>
+                <dd>
+                    <xsl:value-of select="concat(@cl * 2000 div @speed, '&#160;ns')" />
+                </dd>
+            </xsl:if>
         </dl>
     </xsl:template>
 
