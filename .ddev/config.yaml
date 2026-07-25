@@ -136,7 +136,7 @@ webimage_extra_packages:
 # When Mutagen is enabled this path is bind-mounted so that all the files
 # in the upload_dirs don't have to be synced into Mutagen.
 
-# disable_upload_dirs_warning: false
+disable_upload_dirs_warning: true
 # If true, turns off the normal warning that says
 # "You have Mutagen enabled and your 'php' project type doesn't have upload_dirs set"
 
