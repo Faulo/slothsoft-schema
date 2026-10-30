@@ -26,6 +26,7 @@ class InfoBuilder implements ExecutableBuilderStrategyInterface {
                     $schemaDoc->load("$url#xml");
                     if ($versionNode = $schemaDoc->getElementsByTagNameNS(DOMHelper::NS_SCHEMA_VERSIONING, 'info')->item(0)) {
                         $versionNode = $targetDoc->importNode($versionNode, true);
+                        assert($versionNode instanceof DOMElement);
                         $versionNode->setAttribute('url', (string) $url);
                         $rootNode->appendChild($versionNode);
                     } else {
@@ -42,4 +43,3 @@ class InfoBuilder implements ExecutableBuilderStrategyInterface {
         return new ExecutableStrategies($resultBuilder);
     }
 }
-

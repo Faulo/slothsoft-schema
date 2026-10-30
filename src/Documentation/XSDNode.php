@@ -17,6 +17,7 @@ abstract class XSDNode {
     
     protected $idNode;
     
+    /** @var DOMElement[] */
     protected $refNodeList;
     
     protected $documentationNodeList;
@@ -120,6 +121,7 @@ abstract class XSDNode {
         $this->optionList['cardinality'] = $this->_getCardinality();
     }
     
+    /** @phpstan-impure */
     protected function initRefNodeList() {
         $this->refNodeList[] = $this->rootNode;
     }
@@ -197,8 +199,8 @@ abstract class XSDNode {
         return $this->optionList['maxOccurs'];
     }
     
-    public function getComplexType() {
-        $ret = null;
+    public function getComplexType() :string{
+        $ret = '';
         foreach ($this->childTypeList as $childType) {
             if ($childType->hasName()) {
                 $ret = $childType->getName();

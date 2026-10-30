@@ -209,7 +209,8 @@ class XSDFile {
             $retNode = $manifestNode;
         }
         
-        $storage = array();
+        /** @var array<string, DOMElement> $storage */
+        $storage = [];
         
         $nodeList = $this->xpathEvaluate('/xsd:schema/xsd:annotation');
         foreach ($nodeList as $node) {
@@ -239,7 +240,6 @@ class XSDFile {
             }
         }
         
-        // my_dump($storage);
         foreach ($storage as $node) {
             $manifestNode->appendChild($node);
         }
