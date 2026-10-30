@@ -34,9 +34,9 @@ Perform static analysis with `ddev exec php vendor/bin/phpstan analyse --configu
 
 Changed code must pass linting without a change in baseline.
 
-### Documentation and style
+### Documentation
 
-Generate documentation with `ddev exec vendor/bin/phpdoc`.
+Documentation is built automatically by GitHub CI and hosted on GitHub Pages.
 
 ## General
 
