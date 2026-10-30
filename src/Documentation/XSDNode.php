@@ -1,5 +1,6 @@
 <?php
 declare(strict_types = 1);
+
 namespace Slothsoft\Schema\Documentation;
 
 use DOMDocument;
@@ -126,7 +127,8 @@ abstract class XSDNode {
         $this->refNodeList[] = $this->rootNode;
     }
     
-    protected function initChildren() {}
+    protected function initChildren() {
+    }
     
     public function getChildList() {
         return array_merge($this->childTypeList, $this->childCategoryList, $this->childAnnotationList);
@@ -154,7 +156,7 @@ abstract class XSDNode {
     }
     
     public function getHtmlId() {
-        return sprintf('%s-%s', preg_replace('/[^\w\-\.]+/', '', $this->name), md5($this->id));
+        return sprintf('%s-%s', preg_replace('/[^\w\-.]+/', '', $this->name), md5($this->id));
     }
     
     public function getSortIndex() {
@@ -199,7 +201,7 @@ abstract class XSDNode {
         return $this->optionList['maxOccurs'];
     }
     
-    public function getComplexType() :string{
+    public function getComplexType(): string {
         $ret = '';
         foreach ($this->childTypeList as $childType) {
             if ($childType->hasName()) {
@@ -465,7 +467,7 @@ abstract class XSDNode {
                     // only process first choice
                     foreach ($this->xpath->evaluate('parent::xsd:choice/xsd:element[1]', $this->idNode) as $node) {
                         if ($node !== $this->idNode) {
-                            $retNode = $doc->createComment(preg_replace('/\<!--.+?--\>/', '', $doc->saveXML($retNode)));
+                            $retNode = $doc->createComment(preg_replace('/<!--.+?-->/', '', $doc->saveXML($retNode)));
                         }
                     }
                     $this->exampleNode = $retNode;
@@ -648,9 +650,7 @@ abstract class XSDNode {
     }
     
     protected function _addTypeNode(DOMElement $node) {
-        if (in_array($node, $this->refNodeList, true)) {
-            // override!
-        } else {
+        if (!in_array($node, $this->refNodeList, true)) {
             if ($child = $this->ownerFile->createXSDType($node)) {
                 $this->childTypeList[] = $child;
             }
