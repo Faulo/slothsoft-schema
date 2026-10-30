@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:complexType name="Record">
+        <xsd:attribute name="id" type="xsd:string" />
+    </xsd:complexType>
+    <xsd:element name="record" type="Record" />
+    <xsd:element name="label" type="xsd:string" />
+</xsd:schema>
