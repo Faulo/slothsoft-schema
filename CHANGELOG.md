@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Schema page browser titles no longer contain the heading's home link markup.
+- Require a PHP 8.4-compatible PHP 8.3 polyfill for isolated development tests on Windows.
 
 ## [1.7.4] - 2026-10-30
 
