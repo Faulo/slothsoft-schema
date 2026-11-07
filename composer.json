@@ -16,10 +16,10 @@
         "ext-dom": "*"
     },
     "require-dev": {
-        "phpstan/phpstan": "^2.3.4",
+        "phpstan/phpstan": "^2.3.5",
         "phpunit/phpunit": "~9.6.34",
         "slothsoft/farah-testing": "^1.3.14",
-        "symfony/polyfill-php83": "^1.31"
+        "symfony/polyfill-php83": "^1.43.0"
     },
     "autoload": {
         "psr-4": {
