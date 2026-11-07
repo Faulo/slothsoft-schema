@@ -50,7 +50,7 @@
         <html>
             <head>
                 <title>
-                    <xsl:apply-templates select="$info" mode="title" />
+                    <xsl:apply-templates select="$info" mode="document-title" />
                 </title>
             </head>
             <body>
@@ -98,6 +98,11 @@
             </xsl:for-each>
             <span sfd:dict=".">footer.company</span>
         </div>
+    </xsl:template>
+
+    <xsl:template match="*" mode="document-title">
+        <span sfd:dict=".">title</span>
+        <xsl:apply-templates select="." mode="name" />
     </xsl:template>
 
     <xsl:template match="*" mode="title">
