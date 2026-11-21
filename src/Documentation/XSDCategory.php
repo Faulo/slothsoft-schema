@@ -1,12 +1,14 @@
 <?php
 declare(strict_types = 1);
+
 namespace Slothsoft\Schema\Documentation;
 
 class XSDCategory extends XSDNode {
     
-    protected $childElementList = array();
+    /** @var list<XSDElement> */
+    protected array $childElementList = array();
     
-    protected function initRefNodeList() {
+    protected function initRefNodeList(): void {
         $this->refNodeList[] = $this->rootNode;
         if ($this->rootNode->hasAttribute('ref')) {
             $name = $this->rootNode->getAttribute('ref');
@@ -17,7 +19,7 @@ class XSDCategory extends XSDNode {
         }
     }
     
-    protected function initChildren() {
+    protected function initChildren(): void {
         $this->childElementList = array();
         
         foreach ($this->refNodeList as $refNode) {
@@ -27,14 +29,13 @@ class XSDCategory extends XSDNode {
         foreach ($this->refNodeList as $typeNode) {
             $nodeList = $this->xpath->evaluate('*/xsd:element | */*/xsd:element', $typeNode);
             foreach ($nodeList as $node) {
-                if ($child = $this->ownerFile->createXSDElement($node)) {
-                    $this->childElementList[] = $child;
-                }
+                $this->childElementList[] = $this->ownerFile->createXSDElement($node);
             }
         }
     }
     
-    public function getChildList() {
+    /** @return list<XSDNode> */
+    public function getChildList(): array {
         return array_merge($this->childElementList, parent::getChildList());
     }
 }

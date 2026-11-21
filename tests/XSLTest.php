@@ -1,5 +1,6 @@
 <?php
 declare(strict_types = 1);
+
 namespace Slothsoft\Schema;
 
 use PHPUnit\Framework\TestCase;
@@ -9,6 +10,7 @@ use DOMDocument;
 
 class XSLTest extends TestCase {
     
+    /** @return array<string, array{string, string, string}> */
     public function exampleProvider(): array {
         return [
             'farah://slothsoft@schema/xsl/historical-games-night.1.0-to-2.0' => [

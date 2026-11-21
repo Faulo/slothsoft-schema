@@ -4,48 +4,69 @@ declare(strict_types = 1);
 namespace Slothsoft\Schema\Documentation;
 
 use DOMDocument;
+use DOMDocumentFragment;
 use DOMElement;
+use DOMNode;
+use DOMXPath;
 use Exception;
+use LogicException;
+use RuntimeException;
 use Slothsoft\Core\DOMHelper;
 
 abstract class XSDNode {
     
-    protected $ownerFile;
+    protected XSDFile $ownerFile;
     
-    protected $xpath;
+    protected DOMXPath $xpath;
     
-    protected $rootNode;
+    protected DOMElement $rootNode;
     
-    protected $idNode;
+    protected DOMElement $idNode;
     
     /** @var DOMElement[] */
-    protected $refNodeList;
+    protected array $refNodeList;
     
-    protected $documentationNodeList;
+    /** @var list<DOMDocumentFragment> */
+    protected array $documentationNodeList;
     
-    protected $className;
+    protected string $className;
     
-    protected $name;
+    protected string $name;
     
-    protected $isDefaultName;
+    protected bool $isDefaultName;
     
-    protected $id;
+    protected string $id;
     
-    protected $optionList;
+    /**
+     * @var array{
+     *     minOccurs: string,
+     *     maxOccurs: string,
+     *     isRequired: string|null,
+     *     foreignTypeList: list<array{prefix: string, name: string, namespace: string|null}>,
+     *     childNamespaceList: array<string, string>,
+     *     tokenList: list<string>,
+     *     patternList: list<string>,
+     *     cardinality: string|null
+     * }
+     */
+    protected array $optionList;
     
-    protected $childTypeList;
+    /** @var list<XSDType> */
+    protected array $childTypeList;
     
-    protected $childCategoryList;
+    /** @var list<XSDCategory|XSDGroup> */
+    protected array $childCategoryList;
     
-    protected $childAnnotationList;
+    /** @var list<XSDAnnotation> */
+    protected array $childAnnotationList;
     
-    protected $exampleNode;
+    protected ?DOMNode $exampleNode = null;
     
-    protected $exampleStatus;
+    protected ?int $exampleStatus = null;
     
-    protected $manifestNode;
+    protected ?DOMElement $manifestNode = null;
     
-    protected $manifestStatus;
+    protected ?int $manifestStatus = null;
     
     const STATUS_EMPTY = 1;
     
@@ -60,7 +81,7 @@ abstract class XSDNode {
         $this->xpath = $this->ownerFile->getXPath();
     }
     
-    public function init(DOMElement $node) {
+    public function init(DOMElement $node): void {
         $this->rootNode = $node;
         $this->exampleStatus = self::STATUS_EMPTY;
         $this->manifestStatus = self::STATUS_EMPTY;
@@ -72,15 +93,16 @@ abstract class XSDNode {
         $this->childCategoryList = array();
         $this->childAnnotationList = array();
         
-        $this->optionList = array();
-        $this->optionList['minOccurs'] = '1';
-        $this->optionList['maxOccurs'] = '1';
-        $this->optionList['isRequired'] = null;
-        $this->optionList['foreignTypeList'] = array();
-        $this->optionList['childNamespaceList'] = array();
-        $this->optionList['tokenList'] = array();
-        $this->optionList['patternList'] = array();
-        $this->optionList['cardinality'] = null;
+        $this->optionList = [
+            'minOccurs' => '1',
+            'maxOccurs' => '1',
+            'isRequired' => null,
+            'foreignTypeList' => [],
+            'childNamespaceList' => [],
+            'tokenList' => [],
+            'patternList' => [],
+            'cardinality' => null
+        ];
         
         $this->className = basename(str_replace('\\', DIRECTORY_SEPARATOR, get_class($this)));
         $this->name = 'unknown' . $this->className;
@@ -123,54 +145,55 @@ abstract class XSDNode {
     }
     
     /** @phpstan-impure */
-    protected function initRefNodeList() {
+    protected function initRefNodeList(): void {
         $this->refNodeList[] = $this->rootNode;
     }
     
-    protected function initChildren() {
+    protected function initChildren(): void {
     }
     
-    public function getChildList() {
+    /** @return list<XSDNode> */
+    public function getChildList(): array {
         return array_merge($this->childTypeList, $this->childCategoryList, $this->childAnnotationList);
     }
     
-    public function getName() {
+    public function getName(): string {
         return $this->name;
     }
     
-    public function hasName() {
+    public function hasName(): bool {
         return ! $this->isDefaultName;
     }
     
-    public function getId() {
+    public function getId(): string {
         return $this->id;
     }
     
-    public function setIdNode(DOMElement $node) {
+    public function setIdNode(DOMElement $node): void {
         $this->idNode = $node;
         $this->id = $this->ownerFile->getIdByNode($this->idNode, $this->getClassName());
     }
     
-    public function getClassName() {
+    public function getClassName(): string {
         return $this->className;
     }
     
-    public function getHtmlId() {
+    public function getHtmlId(): string {
         return sprintf('%s-%s', preg_replace('/[^\w\-.]+/', '', $this->name), md5($this->id));
     }
     
-    public function getSortIndex() {
+    public function getSortIndex(): string {
         $sortBase = preg_replace('/\d+/', '', $this->id);
         $match = null;
         $sortIndex = preg_match('/(\d+)/', $this->id, $match) ? (int) $match[1] : 0;
         return sprintf('%s-%05d', $sortBase, $sortIndex);
     }
     
-    public function isRoot() {
+    public function isRoot(): bool {
         return $this->rootNode->parentNode === $this->xpath->document->documentElement;
     }
     
-    public function getBaseType() {
+    public function getBaseType(): ?string {
         foreach ($this->optionList['foreignTypeList'] as $schemaType) {
             return $schemaType['name'];
         }
@@ -183,7 +206,8 @@ abstract class XSDNode {
         return null;
     }
     
-    public function getSchemaTypeList() {
+    /** @return list<string> */
+    public function getSchemaTypeList(): array {
         $ret = array();
         foreach ($this->optionList['foreignTypeList'] as $type) {
             if ($type['namespace'] === $this->ownerFile->getSchemaNS()) {
@@ -193,11 +217,11 @@ abstract class XSDNode {
         return $ret;
     }
     
-    public function getMin() {
+    public function getMin(): string {
         return $this->optionList['minOccurs'];
     }
     
-    public function getMax() {
+    public function getMax(): string {
         return $this->optionList['maxOccurs'];
     }
     
@@ -212,11 +236,12 @@ abstract class XSDNode {
         return $ret;
     }
     
-    public function getCardinality() {
+    public function getCardinality(): ?string {
         return $this->optionList['cardinality'];
     }
     
-    public function getExcelNode(DOMDocument $doc, array $xsdStack = array()) {
+    /** @param array<XSDNode> $xsdStack */
+    public function getExcelNode(DOMDocument $doc, array $xsdStack = array()): DOMElement {
         $xsdStack[] = $this;
         
         $retNode = $doc->createElement($this->getClassName());
@@ -231,11 +256,11 @@ abstract class XSDNode {
         $retNode->setAttribute('min', $this->getMin());
         $retNode->setAttribute('max', $this->getMax());
         $retNode->setAttribute('type', $this->getComplexType());
-        $retNode->setAttribute('baseType', $this->getBaseType());
+        $retNode->setAttribute('baseType', $this->getBaseType() ?? '');
         $retNode->setAttribute('cardinality', $this->_getCardinalityPath($xsdStack));
         $retNode->setAttribute('path', $this->_getElementPath($xsdStack));
         
-        $retNode->setAttribute('example', $this->getExampleContent());
+        $retNode->setAttribute('example', $this->getExampleContent() ?? '');
         
         foreach ($this->getChildList() as $child) {
             $retNode->appendChild($child->getExcelNode($doc, $xsdStack));
@@ -244,7 +269,11 @@ abstract class XSDNode {
         return $retNode;
     }
     
-    public function getManifestNode(DOMDocument $doc, array &$storage) {
+    /**
+     * @param array<string, DOMElement|null> $storage
+     * @param-out array<string, DOMElement|null> $storage
+     */
+    public function getManifestNode(DOMDocument $doc, array &$storage): ?DOMElement {
         switch ($this->manifestStatus) {
             case self::STATUS_EMPTY:
                 $this->manifestStatus = self::STATUS_PROCESSING;
@@ -312,7 +341,7 @@ abstract class XSDNode {
                                     $childNode = $doc->createElement('elementReference');
                                     $childNode->setAttribute('min', $child->getMin());
                                     $childNode->setAttribute('max', $child->getMax());
-                                    $childNode->setAttribute('cardinality', $child->getCardinality());
+                                    $childNode->setAttribute('cardinality', $child->getCardinality() ?? '');
                                     break;
                                 case 'XSDAttribute':
                                     $childNode = $doc->createElement('attributeReference');
@@ -339,7 +368,7 @@ abstract class XSDNode {
                         foreach ($this->optionList['foreignTypeList'] as $type) {
                             $node = $doc->createElement('foreignType');
                             foreach ($type as $key => $val) {
-                                $node->setAttribute($key, $val);
+                                $node->setAttribute($key, $val ?? '');
                             }
                             $retNode->appendChild($node);
                         }
@@ -391,7 +420,7 @@ abstract class XSDNode {
         return $this->manifestNode;
     }
     
-    public function getExampleNode(DOMDocument $doc) {
+    public function getExampleNode(DOMDocument $doc): ?DOMNode {
         // echo 'start: '.$this->name . PHP_EOL;flush();
         switch ($this->exampleStatus) {
             case self::STATUS_EMPTY:
@@ -435,7 +464,7 @@ abstract class XSDNode {
                                         $retNode->appendChild($childNode);
                                         break;
                                     case 'XSDType':
-                                        foreach ($childNode->attributes as $node) {
+                                        foreach ($childNode->attributes ?? [] as $node) {
                                             // $retNode->appendChild($node->cloneNode(true));
                                             $retNode->appendChild($this->ownerFile->createTargetAttribute($doc, $node->name, $node->value));
                                         }
@@ -467,7 +496,11 @@ abstract class XSDNode {
                     // only process first choice
                     foreach ($this->xpath->evaluate('parent::xsd:choice/xsd:element[1]', $this->idNode) as $node) {
                         if ($node !== $this->idNode) {
-                            $retNode = $doc->createComment(preg_replace('/<!--.+?-->/', '', $doc->saveXML($retNode)));
+                            $xml = $doc->saveXML($retNode);
+                            if ($xml === false) {
+                                throw new RuntimeException('Unable to serialize the example choice.');
+                            }
+                            $retNode = $doc->createComment(preg_replace('/<!--.+?-->/', '', $xml) ?? $xml);
                         }
                     }
                     $this->exampleNode = $retNode;
@@ -482,7 +515,7 @@ abstract class XSDNode {
             case self::STATUS_PROCESSING:
                 break;
             case self::STATUS_SUCCESS:
-                $this->exampleNode = $this->exampleNode->cloneNode(true);
+                $this->exampleNode = $this->exampleNode?->cloneNode(true) ?: null;
                 break;
             case self::STATUS_ERROR:
                 break;
@@ -491,11 +524,11 @@ abstract class XSDNode {
         return $this->exampleNode;
     }
     
-    public function getExampleStatus() {
+    public function getExampleStatus(): ?int {
         return $this->exampleStatus;
     }
     
-    public function getExampleContent() {
+    public function getExampleContent(): ?string {
         foreach ($this->optionList['tokenList'] as $token) {
             return $token;
         }
@@ -583,13 +616,14 @@ abstract class XSDNode {
                 case 'anyType':
                     return 'anyType';
                 default:
-                    throw new Exception(json_encode($schemaType));
+                    throw new Exception(json_encode($schemaType) ?: $schemaType);
             }
         }
         return null;
     }
     
-    protected function _getElementPath(array $xsdList) {
+    /** @param array<XSDNode> $xsdList */
+    protected function _getElementPath(array $xsdList): string {
         $ret = array();
         foreach ($xsdList as $xsd) {
             if ($xsd instanceof XSDElement or $xsd instanceof XSDAttribute) {
@@ -599,7 +633,7 @@ abstract class XSDNode {
         return implode('', $ret);
     }
     
-    protected function _getCardinality() {
+    protected function _getCardinality(): ?string {
         $ret = null;
         switch ($this->getClassName()) {
             case 'XSDElement':
@@ -624,7 +658,8 @@ abstract class XSDNode {
         return $ret;
     }
     
-    protected function _getCardinalityPath(array $xsdList) {
+    /** @param array<XSDNode> $xsdList */
+    protected function _getCardinalityPath(array $xsdList): string {
         $ret = array();
         foreach ($xsdList as $xsd) {
             if ($val = $xsd->getCardinality()) {
@@ -634,7 +669,7 @@ abstract class XSDNode {
         return implode('', $ret);
     }
     
-    protected function _addTypeParentNode(DOMElement $parentNode) {
+    protected function _addTypeParentNode(DOMElement $parentNode): void {
         $nodeList = $this->xpath->evaluate('xsd:complexType | xsd:simpleType | xsd:union/xsd:complexType | xsd:union/xsd:simpleType', $parentNode);
         foreach ($nodeList as $node) {
             $this->_addTypeNode($node);
@@ -649,15 +684,13 @@ abstract class XSDNode {
         }
     }
     
-    protected function _addTypeNode(DOMElement $node) {
-        if (!in_array($node, $this->refNodeList, true)) {
-            if ($child = $this->ownerFile->createXSDType($node)) {
-                $this->childTypeList[] = $child;
-            }
+    protected function _addTypeNode(DOMElement $node): void {
+        if (! in_array($node, $this->refNodeList, true)) {
+            $this->childTypeList[] = $this->ownerFile->createXSDType($node);
         }
     }
     
-    protected function _addTypeName($type) {
+    protected function _addTypeName(string $type): void {
         // $this->ownerFile->getSchemaQuery()
         $match = null;
         if (preg_match('/([^:]+):([^:]+)/', $type, $match)) {
@@ -670,7 +703,7 @@ abstract class XSDNode {
         }
     }
     
-    protected function _addForeignType($prefix, $localName) {
+    protected function _addForeignType(string $prefix, string $localName): void {
         $this->optionList['foreignTypeList'][] = array(
             'prefix' => $prefix,
             'name' => $localName,
@@ -678,7 +711,7 @@ abstract class XSDNode {
         );
     }
     
-    protected function _addCategoryParentNode(DOMElement $parentNode) {
+    protected function _addCategoryParentNode(DOMElement $parentNode): void {
         $nodeList = $this->xpath->evaluate('xsd:annotation/xsd:appinfo/xsd:category', $parentNode);
         foreach ($nodeList as $node) {
             if ($node->hasAttribute('ref')) {
@@ -693,43 +726,37 @@ abstract class XSDNode {
         }
     }
     
-    protected function _addCategoryNode(DOMElement $node) {
-        if ($child = $this->ownerFile->createXSDCategory($node)) {
-            $this->childCategoryList[] = $child;
-        }
+    protected function _addCategoryNode(DOMElement $node): void {
+        $this->childCategoryList[] = $this->ownerFile->createXSDCategory($node);
     }
     
-    protected function _addGroupParentNode(DOMElement $parentNode) {
+    protected function _addGroupParentNode(DOMElement $parentNode): void {
         $nodeList = $this->xpath->evaluate('xsd:group[@ref] | */xsd:group[@ref] | */*/xsd:group[@ref]', $parentNode);
         foreach ($nodeList as $node) {
             $this->_addGroupName($node->getAttribute('ref'));
         }
     }
     
-    protected function _addGroupNode(DOMElement $node) {
-        if ($child = $this->ownerFile->createXSDGroup($node)) {
-            $this->childCategoryList[] = $child;
-        }
+    protected function _addGroupNode(DOMElement $node): void {
+        $this->childCategoryList[] = $this->ownerFile->createXSDGroup($node);
     }
     
-    protected function _addGroupName($group) {
+    protected function _addGroupName(string $group): void {
         $nodeList = $this->xpath->evaluate(sprintf('/xsd:schema/xsd:group[@name = "%s"]', $group));
         foreach ($nodeList as $node) {
             $this->_addGroupNode($node);
         }
     }
     
-    protected function _addAnnotationParentNode(DOMElement $parentNode) {
+    protected function _addAnnotationParentNode(DOMElement $parentNode): void {
         $nodeList = $this->xpath->evaluate('xsd:annotation | xsd:complexContent/xsd:annotation | xsd:simpleContent/xsd:annotation', $parentNode);
         foreach ($nodeList as $node) {
             $this->_addAnnotationNode($node);
         }
     }
     
-    protected function _addAnnotationNode(DOMElement $parentNode) {
-        if ($child = $this->ownerFile->createXSDAnnotation($parentNode)) {
-            $this->childAnnotationList[] = $child;
-        }
+    protected function _addAnnotationNode(DOMElement $parentNode): void {
+        $this->childAnnotationList[] = $this->ownerFile->createXSDAnnotation($parentNode);
         /*
          * if ($parentNode->hasChildNodes()) {
          * $retNode = $parentNode->ownerDocument->createDocumentFragment();
@@ -746,9 +773,13 @@ abstract class XSDNode {
          */
     }
     
-    protected function _addDocumentationNode(DOMElement $parentNode) {
+    protected function _addDocumentationNode(DOMElement $parentNode): void {
         if ($parentNode->hasChildNodes()) {
-            $retNode = $parentNode->ownerDocument->createDocumentFragment();
+            $doc = $parentNode->ownerDocument;
+            if ($doc === null) {
+                throw new LogicException('Cannot process documentation without an owner document.');
+            }
+            $retNode = $doc->createDocumentFragment();
             $nodeList = [];
             foreach ($parentNode->childNodes as $node) {
                 switch ($node->nodeType) {
@@ -758,7 +789,7 @@ abstract class XSDNode {
                         }
                         break;
                     case XML_COMMENT_NODE:
-                        $tmpNode = $node->ownerDocument->createElementNS(DOMHelper::NS_HTML, 'pre');
+                        $tmpNode = $doc->createElementNS(DOMHelper::NS_HTML, 'pre');
                         $tmpNode->appendChild($node);
                         $nodeList[] = $tmpNode;
                         break;
@@ -775,7 +806,7 @@ abstract class XSDNode {
         }
     }
     
-    protected function _addTokenParentNode(DOMElement $parentNode) {
+    protected function _addTokenParentNode(DOMElement $parentNode): void {
         if ($parentNode->hasAttribute('fixed')) {
             array_unshift($this->optionList['tokenList'], $parentNode->getAttribute('fixed'));
         }

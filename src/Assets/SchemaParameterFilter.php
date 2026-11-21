@@ -1,5 +1,6 @@
 <?php
 declare(strict_types = 1);
+
 namespace Slothsoft\Schema\Assets;
 
 use Slothsoft\Core\IO\Sanitizer\StringSanitizer;
@@ -9,6 +10,7 @@ use Slothsoft\Farah\Module\Asset\ParameterFilterStrategy\AbstractMapParameterFil
 
 class SchemaParameterFilter extends AbstractMapParameterFilter {
     
+    /** @return array<array-key, FarahUrl> */
     public static function createSchemaVersions(string $schemaId, string $version): array {
         if ($version) {
             $schemaId .= "/$version";
@@ -23,7 +25,7 @@ class SchemaParameterFilter extends AbstractMapParameterFilter {
                 $version = $asset->getManifestElement()->getAttribute('name');
                 $schemaVersions[$version] = $asset->createUrl();
             }
-            uksort($schemaVersions, 'version_compare');
+            uksort($schemaVersions, static fn(int|string $left, int|string $right): int => version_compare((string) $left, (string) $right));
             $schemaVersions = array_reverse($schemaVersions);
         }
         return $schemaVersions;

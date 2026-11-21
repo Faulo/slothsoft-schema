@@ -1,24 +1,30 @@
 <?php
 declare(strict_types = 1);
+
 namespace Slothsoft\Schema;
 
 use DOMDocument;
+use DOMElement;
+use DOMNodeList;
 use DOMXPath;
 
 class DataDocument {
     
-    protected $schema = [
+    /** @var array{name: string, attributes: array<string, string>, elements: array<array<string, mixed>>} */
+    protected array $schema = [
         'name' => '',
         'attributes' => [],
         'elements' => []
     ];
     
-    protected $dataXPath;
+    protected DOMXPath $dataXPath;
     
-    protected $dataNode;
+    protected DOMDocument $dataNode;
     
-    protected $elementList = [];
+    /** @var list<DataElement> */
+    protected array $elementList = [];
     
+    /** @param array<string, mixed> $schema */
     public function __construct(DOMXPath $dataXPath, array $schema, DOMDocument $dataNode) {
         foreach ($this->schema as $key => &$val) {
             if (isset($schema[$key])) {
@@ -32,12 +38,20 @@ class DataDocument {
         
         foreach ($this->schema['elements'] as $childSchema) {
             $childNodeList = $this->dataXPath->evaluate($childSchema['name'], $this->dataNode);
-            foreach ($childNodeList as $childNode) {
+            $hasChildElement = false;
+            if ($childNodeList instanceof DOMNodeList) {
+                foreach ($childNodeList as $childNode) {
+                    if ($childNode instanceof DOMElement) {
+                        $this->elementList[] = new DataElement($this->dataXPath, $childSchema, $childNode);
+                        $hasChildElement = true;
+                    }
+                }
+            }
+            if (! $hasChildElement) {
+                $childNode = $this->dataNode->createElement($childSchema['name']);
+                $this->dataNode->appendChild($childNode);
                 $this->elementList[] = new DataElement($this->dataXPath, $childSchema, $childNode);
             }
-            $childNode = $this->dataNode->ownerDocument->createElementNS($this->dataNode->namespaceURI, $childSchema['name']);
-            $this->dataNode->appendChild($childNode);
-            $this->elementList[] = new DataElement($this->dataXPath, $childSchema, $childNode);
         }
     }
 }

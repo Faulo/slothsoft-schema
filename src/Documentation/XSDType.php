@@ -1,14 +1,17 @@
 <?php
 declare(strict_types = 1);
+
 namespace Slothsoft\Schema\Documentation;
 
 class XSDType extends XSDNode {
     
-    protected $childAttributeList = array();
+    /** @var list<XSDAttribute> */
+    protected array $childAttributeList = array();
     
-    protected $childElementList = array();
+    /** @var list<XSDElement> */
+    protected array $childElementList = array();
     
-    protected function initChildren() {
+    protected function initChildren(): void {
         $this->childAttributeList = array();
         $this->childElementList = array();
         
@@ -53,18 +56,14 @@ class XSDType extends XSDNode {
         foreach ($attributeGroupNodeList as $groupNode) {
             $nodeList = $this->xpath->evaluate('xsd:attribute | */xsd:attribute', $groupNode);
             foreach ($nodeList as $node) {
-                if ($child = $this->ownerFile->createXSDAttribute($node)) {
-                    $this->childAttributeList[] = $child;
-                }
+                $this->childAttributeList[] = $this->ownerFile->createXSDAttribute($node);
             }
         }
         
         foreach ($this->refNodeList as $typeNode) {
             $nodeList = $this->xpath->evaluate('*/xsd:element | */*/xsd:element', $typeNode);
             foreach ($nodeList as $node) {
-                if ($child = $this->ownerFile->createXSDElement($node)) {
-                    $this->childElementList[] = $child;
-                }
+                $this->childElementList[] = $this->ownerFile->createXSDElement($node);
             }
         }
         
@@ -78,7 +77,8 @@ class XSDType extends XSDNode {
         }
     }
     
-    public function getChildList() {
+    /** @return list<XSDNode> */
+    public function getChildList(): array {
         return array_merge($this->childAttributeList, $this->childElementList, parent::getChildList());
     }
 }

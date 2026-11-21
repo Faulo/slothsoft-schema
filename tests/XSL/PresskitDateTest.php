@@ -1,5 +1,6 @@
 <?php
 declare(strict_types = 1);
+
 namespace Slothsoft\Schema\XSL;
 
 use PHPUnit\Framework\TestCase;
@@ -30,6 +31,7 @@ class PresskitDateTest extends TestCase {
         $this->assertMatchesXML($expectedOutput, $this->transform($inputXml));
     }
     
+    /** @return array<string, array{string, string}> */
     public static function provideDateTransformations(): array {
         return [
             'with datetime and text' => [
@@ -51,10 +53,11 @@ class PresskitDateTest extends TestCase {
         ];
     }
     
-    private function assertMatchesXML(string $expectedXml, DOMElement $actual) {
+    private function assertMatchesXML(string $expectedXml, DOMElement $actual): void {
         $expectedDocument = new DOMDocument();
         $expectedDocument->loadXML($expectedXml);
         $expected = $expectedDocument->documentElement;
+        $this->assertInstanceOf(DOMElement::class, $expected);
         
         $this->assertSame($expected->localName, $actual->localName);
         $this->assertSame($expected->namespaceURI, $actual->namespaceURI);
@@ -75,6 +78,10 @@ class PresskitDateTest extends TestCase {
         $xslt->registerPHPFunctions();
         $xslt->importStylesheet($template);
         
-        return $xslt->transformToDoc($data)->documentElement;
+        $result = $xslt->transformToDoc($data);
+        $this->assertInstanceOf(DOMDocument::class, $result);
+        $element = $result->documentElement;
+        $this->assertInstanceOf(DOMElement::class, $element);
+        return $element;
     }
 }

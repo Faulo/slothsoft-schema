@@ -1,47 +1,56 @@
 <?php
 declare(strict_types = 1);
+
 namespace Slothsoft\Schema\Documentation;
 
+use DOMAttr;
 use DOMDocument;
-use DOMXPath;
+use DOMDocumentFragment;
 use DOMElement;
+use DOMNameSpaceNode;
 use DOMNode;
 use DOMNodeList;
+use DOMText;
+use DOMXPath;
+use LogicException;
+use RuntimeException;
 
 class XSDFile {
     
-    protected $file;
+    protected string $file;
     
-    protected $doc;
+    protected DOMDocument $doc;
     
-    protected $xpath;
+    protected DOMXPath $xpath;
     
-    protected $targetNS;
+    protected string $targetNS;
     
-    protected $targetPrefix;
+    protected string $targetPrefix;
     
-    protected $targetQuery;
+    protected string $targetQuery;
     
-    protected $schemaNS;
+    protected string $schemaNS;
     
-    protected $schemaPrefix;
+    protected ?string $schemaPrefix = null;
     
-    protected $schemaQuery;
+    protected string $schemaQuery;
     
-    protected $elementsQualified;
+    protected bool $elementsQualified;
     
-    protected $attributesQualified;
+    protected bool $attributesQualified;
     
-    protected $xsdList;
+    /** @var array<string, XSDNode> */
+    protected array $xsdList;
     
-    public function __construct($file) {
+    public function __construct(string $file) {
         $this->file = $file;
         $this->doc = new DOMDocument();
         $this->doc->load($this->file);
         $this->xpath = new DOMXPath($this->doc);
         $this->xpath->registerNamespace('xsd', 'http://www.w3.org/2001/XMLSchema');
         
-        $this->targetNS = $this->xpathEvaluate('string(/xsd:schema/@targetNamespace)');
+        $targetNS = $this->xpathEvaluate('string(/xsd:schema/@targetNamespace)');
+        $this->targetNS = is_string($targetNS) ? $targetNS : '';
         $this->targetPrefix = basename($this->targetNS);
         $this->targetQuery = sprintf('/^%s:(\w+)$/', $this->targetPrefix);
         
@@ -49,45 +58,48 @@ class XSDFile {
         $this->schemaPrefix = $this->xpath->document->lookupPrefix($this->schemaNS);
         $this->schemaQuery = sprintf('/^%s:(\w+)$/', $this->schemaPrefix);
         
-        $this->elementsQualified = $this->xpathEvaluate('boolean(/xsd:schema/@elementFormDefault = "qualified")');
-        $this->attributesQualified = $this->xpathEvaluate('boolean(/xsd:schema/@attributeFormDefault = "qualified")');
+        $this->elementsQualified = $this->xpathEvaluate('boolean(/xsd:schema/@elementFormDefault = "qualified")') === true;
+        $this->attributesQualified = $this->xpathEvaluate('boolean(/xsd:schema/@attributeFormDefault = "qualified")') === true;
         
         $includeList = array();
         $overrideNodeList = array();
-        while ($nodeList = $this->xpathEvaluate('/xsd:schema/xsd:include | /xsd:schema/xsd:redefine')) {
+        while ($nodeList = $this->xpathElements('/xsd:schema/xsd:include | /xsd:schema/xsd:redefine')) {
             foreach ($nodeList as $oldNode) {
                 $newNode = $this->doc->createDocumentFragment();
                 if ($include = $oldNode->getAttribute('schemaLocation')) {
-                    $include = dirname($this->doc->documentURI) . DIRECTORY_SEPARATOR . $include;
+                    $include = dirname($this->doc->documentURI ?? $this->file) . DIRECTORY_SEPARATOR . $include;
                     if ($include = realpath($include)) {
                         if (! isset($includeList[$include])) {
                             $includeList[$include] = true;
                         }
                         $includeDoc = new DOMDocument();
                         $includeDoc->load($include);
-                        foreach ($includeDoc->documentElement->childNodes as $node) {
+                        foreach ($includeDoc->documentElement->childNodes ?? [] as $node) {
                             $newNode->appendChild($this->doc->importNode($node, true));
                         }
                     }
                 }
-                foreach ($this->xpathEvaluate('xsd:complexType', $oldNode) as $heirNode) {
-                    $overrideNodeList[] = $heirNode->cloneNode(true);
+                foreach ($this->xpathElements('xsd:complexType', $oldNode) as $heirNode) {
+                    $override = $heirNode->cloneNode(true);
+                    if ($override instanceof DOMElement) {
+                        $overrideNodeList[] = $override;
+                    }
                 }
-                $oldNode->parentNode->replaceChild($newNode, $oldNode);
+                $oldNode->parentNode?->replaceChild($newNode, $oldNode);
             }
         }
         foreach ($overrideNodeList as $heirNode) {
             $name = $heirNode->getAttribute('name');
-            $isRestriction = $this->xpathEvaluate('boolean(xsd:complexContent/xsd:restriction)', $heirNode);
-            $elementNodeList = $this->xpathEvaluate('xsd:complexContent/*/xsd:all | xsd:complexContent/*/xsd:sequence | xsd:complexContent/*/xsd:attributeGroup', $heirNode);
-            $attributeNodeList = $this->xpathEvaluate('xsd:complexContent/*/xsd:attribute', $heirNode);
+            $isRestriction = $this->xpathEvaluate('boolean(xsd:complexContent/xsd:restriction)', $heirNode) === true;
+            $elementNodeList = $this->xpathElements('xsd:complexContent/*/xsd:all | xsd:complexContent/*/xsd:sequence | xsd:complexContent/*/xsd:attributeGroup', $heirNode);
+            $attributeNodeList = $this->xpathElements('xsd:complexContent/*/xsd:attribute', $heirNode);
             
-            $ancestorNodeList = $this->xpath->evaluate(sprintf('/xsd:schema/xsd:complexType[@name = "%s"]', $name));
+            $ancestorNodeList = $this->xpathElements(sprintf('/xsd:schema/xsd:complexType[@name = "%s"]', $name));
             foreach ($ancestorNodeList as $ancestorNode) {
-                $parentNodeList = $this->xpathEvaluate('(. | xsd:complexContent/xsd:restriction | xsd:complexContent/xsd:extension)[last()]', $ancestorNode);
+                $parentNodeList = $this->xpathElements('(. | xsd:complexContent/xsd:restriction | xsd:complexContent/xsd:extension)[last()]', $ancestorNode);
                 foreach ($parentNodeList as $parentNode) {
                     if ($isRestriction) {
-                        foreach ($this->xpathEvaluate('xsd:all | xsd:sequence', $parentNode) as $node) {
+                        foreach ($this->xpathElements('xsd:all | xsd:sequence', $parentNode) as $node) {
                             $parentNode->removeChild($node);
                         }
                     }
@@ -96,7 +108,7 @@ class XSDFile {
                     }
                     foreach ($attributeNodeList as $attributeNode) {
                         $attributeName = $attributeNode->getAttribute('name');
-                        foreach ($this->xpathEvaluate(sprintf('xsd:attribute[@name = "%s"]', $attributeName), $parentNode) as $node) {
+                        foreach ($this->xpathElements(sprintf('xsd:attribute[@name = "%s"]', $attributeName), $parentNode) as $node) {
                             $parentNode->removeChild($node);
                         }
                         $parentNode->appendChild($attributeNode->cloneNode(true));
@@ -107,97 +119,88 @@ class XSDFile {
         $this->xsdList = array();
     }
     
-    public function createXSDElement(DOMElement $node) {
-        $id = $this->getIdByNode($node, 'XSDElement');
-        if (! isset($this->xsdList[$id])) {
-            $this->xsdList[$id] = new XSDElement($this);
-            $this->xsdList[$id]->init($node);
+    /**
+     * @template T of XSDNode
+     * @param class-string<T> $class
+     * @return T
+     */
+    private function getOrCreateNode(DOMElement $node, string $className, string $class): XSDNode {
+        $id = $this->getIdByNode($node, $className);
+        $xsd = $this->xsdList[$id] ?? null;
+        if ($xsd === null) {
+            $xsd = new $class($this);
+            $this->xsdList[$id] = $xsd;
+            $xsd->init($node);
         }
-        return $this->xsdList[$id];
+        if (! ($xsd instanceof $class)) {
+            throw new LogicException("The cached schema node '$id' is not a $class.");
+        }
+        return $xsd;
     }
     
-    public function createXSDAttribute(DOMElement $node) {
-        $id = $this->getIdByNode($node, 'XSDAttribute');
-        if (! isset($this->xsdList[$id])) {
-            $this->xsdList[$id] = new XSDAttribute($this);
-            $this->xsdList[$id]->init($node);
-        }
-        return $this->xsdList[$id];
+    public function createXSDElement(DOMElement $node): XSDElement {
+        return $this->getOrCreateNode($node, 'XSDElement', XSDElement::class);
     }
     
-    public function createXSDType(DOMElement $node) {
-        $id = $this->getIdByNode($node, 'XSDType');
-        if (! isset($this->xsdList[$id])) {
-            $this->xsdList[$id] = new XSDType($this);
-            $this->xsdList[$id]->init($node);
-        }
-        return $this->xsdList[$id];
+    public function createXSDAttribute(DOMElement $node): XSDAttribute {
+        return $this->getOrCreateNode($node, 'XSDAttribute', XSDAttribute::class);
     }
     
-    public function createXSDCategory(DOMElement $node) {
-        $id = $this->getIdByNode($node, 'XSDCategory');
-        if (! isset($this->xsdList[$id])) {
-            $this->xsdList[$id] = new XSDCategory($this);
-            $this->xsdList[$id]->init($node);
-        }
-        return $this->xsdList[$id];
+    public function createXSDType(DOMElement $node): XSDType {
+        return $this->getOrCreateNode($node, 'XSDType', XSDType::class);
     }
     
-    public function createXSDGroup(DOMElement $node) {
-        $id = $this->getIdByNode($node, 'XSDGroup');
-        if (! isset($this->xsdList[$id])) {
-            $this->xsdList[$id] = new XSDGroup($this);
-            $this->xsdList[$id]->init($node);
-        }
-        return $this->xsdList[$id];
+    public function createXSDCategory(DOMElement $node): XSDCategory {
+        return $this->getOrCreateNode($node, 'XSDCategory', XSDCategory::class);
     }
     
-    public function createXSDAnnotation(DOMElement $node) {
-        $id = $this->getIdByNode($node, 'XSDAnnotation');
-        if (! isset($this->xsdList[$id])) {
-            $this->xsdList[$id] = new XSDAnnotation($this);
-            $this->xsdList[$id]->init($node);
-        }
-        return $this->xsdList[$id];
+    public function createXSDGroup(DOMElement $node): XSDGroup {
+        return $this->getOrCreateNode($node, 'XSDGroup', XSDGroup::class);
     }
     
-    public function getIdByNode(DOMElement $node, $className) {
+    public function createXSDAnnotation(DOMElement $node): XSDAnnotation {
+        return $this->getOrCreateNode($node, 'XSDAnnotation', XSDAnnotation::class);
+    }
+    
+    public function getIdByNode(DOMElement $node, string $className): string {
         return sprintf('%s(%s)', $className, $node->getNodePath());
     }
     
-    public function getElementByName($name) {
-        $nodeList = $this->xpathEvaluate(sprintf('/xsd:schema/xsd:element[@name = "%s"]', $name));
+    public function getElementByName(string $name): ?XSDElement {
+        $nodeList = $this->xpathElements(sprintf('/xsd:schema/xsd:element[@name = "%s"]', $name));
         foreach ($nodeList as $node) {
             return $this->createXSDElement($node);
         }
+        return null;
     }
     
-    public function getXPath() {
+    public function getXPath(): DOMXPath {
         return $this->xpath;
     }
     
-    public function getTargetNS() {
+    public function getTargetNS(): string {
         return $this->targetNS;
     }
     
-    public function getSchemaQuery() {
+    public function getSchemaQuery(): string {
         return $this->schemaQuery;
     }
     
-    public function getSchemaNS() {
+    public function getSchemaNS(): string {
         return $this->schemaNS;
     }
     
-    public function asNode(DOMDocument $doc) {
+    public function asNode(DOMDocument $doc): DOMDocumentFragment|DOMText {
         $retNode = $doc->createDocumentFragment();
-        $nodeList = $this->xpathEvaluate('/xsd:schema/xsd:element[@name]');
+        $nodeList = $this->xpathElements('/xsd:schema/xsd:element[@name]');
         foreach ($nodeList as $node) {
             $retNode->appendChild($doc->createElementNS($this->targetNS, $node->getAttribute('name')));
         }
         return $retNode->hasChildNodes() ? $retNode : $doc->createTextNode('');
     }
     
-    public function asManifest(?DOMDocument $targetDoc = null) {
+    /** @return ($targetDoc is null ? DOMDocument : DOMElement) */
+    public function asManifest(?DOMDocument $targetDoc = null): DOMDocument|DOMElement {
         if ($targetDoc === null) {
             $retDoc = new DOMDocument();
             $manifestNode = $retDoc->createElement('manifest');
@@ -209,53 +212,51 @@ class XSDFile {
             $retNode = $manifestNode;
         }
         
-        /** @var array<string, DOMElement> $storage */
         $storage = [];
         
-        $nodeList = $this->xpathEvaluate('/xsd:schema/xsd:annotation');
+        $nodeList = $this->xpathElements('/xsd:schema/xsd:annotation');
         foreach ($nodeList as $node) {
-            $xsd = $this->createXSDAnnotation($node);
-            $manifestNode->appendChild($xsd->getManifestNode($retDoc, $storage));
+            $annotation = $this->createXSDAnnotation($node)->getManifestNode($retDoc, $storage);
+            if ($annotation !== null) {
+                $manifestNode->appendChild($annotation);
+            }
         }
         
-        $nodeList = $this->xpathEvaluate('/xsd:schema/xsd:element[@name]');
+        $nodeList = $this->xpathElements('/xsd:schema/xsd:element[@name]');
         foreach ($nodeList as $node) {
-            if ($xsd = $this->createXSDElement($node)) {
-                // echo $xsd->getId() . PHP_EOL;flush();
-                $xsd->getManifestNode($retDoc, $storage);
-            }
+            $this->createXSDElement($node)->getManifestNode($retDoc, $storage);
         }
-        $nodeList = $this->xpathEvaluate('/xsd:schema/xsd:complexType[@name]');
+        $nodeList = $this->xpathElements('/xsd:schema/xsd:complexType[@name]');
         foreach ($nodeList as $node) {
-            if ($xsd = $this->createXSDType($node)) {
-                // echo $xsd->getId() . PHP_EOL;flush();
-                $xsd->getManifestNode($retDoc, $storage);
-            }
+            $this->createXSDType($node)->getManifestNode($retDoc, $storage);
         }
-        $nodeList = $this->xpathEvaluate('/xsd:schema/xsd:simpleType[@name]');
+        $nodeList = $this->xpathElements('/xsd:schema/xsd:simpleType[@name]');
         foreach ($nodeList as $node) {
-            if ($xsd = $this->createXSDType($node)) {
-                // echo $xsd->getId() . PHP_EOL;flush();
-                $xsd->getManifestNode($retDoc, $storage);
-            }
+            $this->createXSDType($node)->getManifestNode($retDoc, $storage);
         }
         
         foreach ($storage as $node) {
-            $manifestNode->appendChild($node);
+            if ($node !== null) {
+                $manifestNode->appendChild($node);
+            }
         }
         $xpath = new DOMXPath($retDoc);
         do {
             $nodeList = array();
-            $tmpList = $xpath->evaluate('.//typeReference[not(type) and not(@id = ancestor::*/@id)]', $manifestNode);
-            foreach ($tmpList as $node) {
-                $nodeList[] = $node;
+            $references = $xpath->query('.//typeReference[not(type) and not(@id = ancestor::*/@id)]', $manifestNode);
+            if ($references !== false) {
+                foreach ($references as $node) {
+                    if ($node instanceof DOMElement) {
+                        $nodeList[] = $node;
+                    }
+                }
             }
             foreach ($nodeList as $node) {
                 $id = $node->getAttribute('id');
                 if (isset($storage[$id])) {
                     $node->appendChild($storage[$id]->cloneNode(true));
                 } else {
-                    $node->parentNode->removeChild($node);
+                    $node->parentNode?->removeChild($node);
                 }
             }
         } while (count($nodeList));
@@ -263,41 +264,47 @@ class XSDFile {
         return $retNode;
     }
     
-    public function asExcel() {
+    public function asExcel(): DOMDocument {
         $retDoc = new DOMDocument();
-        $retDoc->appendChild($retDoc->createElement('excel'));
+        $rootNode = $retDoc->createElement('excel');
+        $retDoc->appendChild($rootNode);
         
-        $nodeList = $this->xpathEvaluate('/xsd:schema/xsd:element[@name]');
+        $nodeList = $this->xpathElements('/xsd:schema/xsd:element[@name]');
         foreach ($nodeList as $node) {
             if ($element = $this->getElementByName($node->getAttribute('name'))) {
-                $retDoc->documentElement->appendChild($element->getExcelNode($retDoc));
+                $rootNode->appendChild($element->getExcelNode($retDoc));
             }
         }
         return $retDoc;
     }
     
-    public function getExampleDocument(XSDElement $xsd) {
+    public function getExampleDocument(XSDElement $xsd): DOMDocument {
         $retDoc = new DOMDocument();
         // PHP Bug: muss Namensraum-Prefix explizit und im documentElement vergeben, sonst verschwindet er
         if ($this->attributesQualified) {
             $tempNode = $retDoc->createElementNS($this->targetNS, $this->targetPrefix . ':' . $this->targetPrefix);
             $retDoc->appendChild($tempNode);
             $retDoc->createAttributeNS($this->targetNS, $this->targetPrefix . ':' . $this->targetPrefix);
-            $exampleNode = $xsd->getExampleNode($retDoc);
+        }
+        $exampleNode = $xsd->getExampleNode($retDoc);
+        if ($exampleNode === null) {
+            throw new RuntimeException('Unable to create an example for ' . $xsd->getName());
+        }
+        if (isset($tempNode)) {
             $tempNode->appendChild($exampleNode);
             $retDoc->replaceChild($exampleNode, $tempNode);
         } else {
-            $retDoc->appendChild($xsd->getExampleNode($retDoc));
+            $retDoc->appendChild($exampleNode);
         }
         $retDoc->formatOutput = true;
         return $retDoc;
     }
     
-    public function createTargetElement(DOMDocument $doc, $name) {
+    public function createTargetElement(DOMDocument $doc, string $name): DOMElement {
         return $this->elementsQualified ? $doc->createElementNS($this->targetNS, $name) : $doc->createElement($name);
     }
     
-    public function createTargetAttribute(DOMDocument $doc, $name, $value = null) {
+    public function createTargetAttribute(DOMDocument $doc, string $name, ?string $value = null): DOMAttr {
         if ($this->attributesQualified) {
             $retNode = $doc->createAttributeNS($this->targetNS, $name);
         } else {
@@ -309,7 +316,17 @@ class XSDFile {
         return $retNode;
     }
     
-    public function xpathEvaluate($query, ?DOMNode $contextNode = null) {
+    /** @return list<DOMElement> */
+    private function xpathElements(string $query, ?DOMNode $contextNode = null): array {
+        $result = $this->xpathEvaluate($query, $contextNode);
+        if (! is_array($result)) {
+            return [];
+        }
+        return array_values(array_filter($result, static fn(DOMNode|DOMNameSpaceNode $node): bool => $node instanceof DOMElement));
+    }
+    
+    /** @return list<DOMNode|DOMNameSpaceNode>|bool|float|string */
+    public function xpathEvaluate(string $query, ?DOMNode $contextNode = null): array|bool|float|string {
         $result = $this->xpath->evaluate($query, $contextNode);
         if ($result instanceof DOMNodeList) {
             $ret = array();

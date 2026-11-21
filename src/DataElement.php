@@ -1,35 +1,46 @@
 <?php
 declare(strict_types = 1);
+
 namespace Slothsoft\Schema;
 
 use DOMDocument;
-use DOMXPath;
 use DOMElement;
+use DOMNodeList;
+use DOMXPath;
+use LogicException;
 
 class DataElement {
     
-    public static function loadDocument(DOMDocument $doc, array $schema) {
+    /** @param array{name: string, attributes?: array<string, string>, elements?: array<array<string, mixed>>} $schema */
+    public static function loadDocument(DOMDocument $doc, array $schema): ?DataElement {
         $ret = null;
-        $xpath = new DOMXpath($doc);
+        $xpath = new DOMXPath($doc);
         $nodeList = $xpath->evaluate($schema['name']);
-        foreach ($nodeList as $node) {
-            $ret = new DataElement($xpath, $schema, $node);
+        if ($nodeList instanceof DOMNodeList) {
+            foreach ($nodeList as $node) {
+                if ($node instanceof DOMElement) {
+                    $ret = new DataElement($xpath, $schema, $node);
+                }
+            }
         }
         return $ret;
     }
     
-    protected $schema = [
+    /** @var array{name: string, attributes: array<string, string>, elements: array<array<string, mixed>>} */
+    protected array $schema = [
         'name' => '',
         'attributes' => [],
         'elements' => []
     ];
     
-    protected $dataXPath;
+    protected DOMXPath $dataXPath;
     
-    protected $dataNode;
+    protected DOMElement $dataNode;
     
-    protected $elementList = [];
+    /** @var list<DataElement> */
+    protected array $elementList = [];
     
+    /** @param array<string, mixed> $schema */
     public function __construct(DOMXPath $dataXPath, array $schema, DOMElement $dataNode) {
         foreach ($this->schema as $key => &$val) {
             if (isset($schema[$key])) {
@@ -43,26 +54,33 @@ class DataElement {
         
         foreach ($this->schema['elements'] as $childSchema) {
             $childNodeList = $this->dataXPath->evaluate($childSchema['name'], $this->dataNode);
-            foreach ($childNodeList as $childNode) {
-                $this->elementList[] = new DataElement($this->dataXPath, $childSchema, $childNode);
+            if ($childNodeList instanceof DOMNodeList) {
+                foreach ($childNodeList as $childNode) {
+                    if ($childNode instanceof DOMElement) {
+                        $this->elementList[] = new DataElement($this->dataXPath, $childSchema, $childNode);
+                    }
+                }
             }
-            // $childNode = $this->dataNode->ownerDocument->createElementNS($this->dataNode->namespaceURI, $childSchema['name']);
-            // $this->dataNode->appendChild($childNode);
-            // $this->elementList[] = new DataElement($this->dataXPath, $childSchema, $childNode);
         }
     }
     
-    public function appendAttributeList(array $attributeList) {
+    /** @param array<string, string> $attributeList */
+    public function appendAttributeList(array $attributeList): void {
         foreach ($attributeList as $key => $val) {
             $this->dataNode->setAttribute($key, $val);
         }
     }
     
-    public function appendDataList($name, array $dataList) {
+    /** @param array<array<string, string>> $dataList */
+    public function appendDataList(string $name, array $dataList): void {
         foreach ($this->schema['elements'] as $childSchema) {
             if ($childSchema['name'] === $name) {
                 foreach ($dataList as $data) {
-                    $childNode = $this->dataNode->ownerDocument->createElementNS($this->dataNode->namespaceURI, $childSchema['name']);
+                    $doc = $this->dataNode->ownerDocument;
+                    if ($doc === null) {
+                        throw new LogicException('Cannot append data to an element without an owner document.');
+                    }
+                    $childNode = $doc->createElementNS($this->dataNode->namespaceURI, $childSchema['name']);
                     foreach ($data as $key => $val) {
                         $childNode->setAttribute($key, $val);
                     }
@@ -73,15 +91,17 @@ class DataElement {
         }
     }
     
-    public function getDataNode() {
+    public function getDataNode(): DOMElement {
         return $this->dataNode;
     }
     
-    public function getElementList() {
+    /** @return list<DataElement> */
+    public function getElementList(): array {
         return $this->elementList;
     }
     
-    public function getAttributes() {
+    /** @return array<string, string|float|int|bool|null> */
+    public function getAttributes(): array {
         $ret = [];
         foreach ($this->schema['attributes'] as $key => $type) {
             $val = $this->dataNode->hasAttribute($key) ? $this->dataNode->getAttribute($key) : null;
